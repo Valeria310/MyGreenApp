@@ -1,4 +1,6 @@
-import './App.css';
+import './App.scss';
+
+import { NavSection } from './components/nav-section/nav-section';
 
 function App() {
   return (
