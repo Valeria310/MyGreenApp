@@ -3,6 +3,7 @@ import './recycle-section.scss';
 import plasticImg from '../../assets/images/plastic.png';
 import paperImg from '../../assets/images/paper.png';
 import largeImg from '../../assets/images/large.png';
+import glassImg from '../../assets/images/glass.png';
 
 export const RecycleSection = () => (
     <section className='recycle'>
@@ -48,10 +49,33 @@ export const RecycleSection = () => (
                     </div>
                 </div>
                 <div className="recycle-cards">
-                    <div className="recycle-card">Стекло</div>
+                    <div className="recycle-card glass-card">
+                            <div className="recycle-card__heading">Стекло</div>
+                            <div className="recycle-card__glass-image">
+                                <img className='glass-image' src={glassImg} alt='card' />
+                            </div>
+                            <div className="glass-card__info">
+                                <div className='recycle-card__text'>
+                                    оперативная информация, которая
+                                </div>
+                                <div className="recycle-card__button">Читать</div>
+                            </div>
+                    </div>
                     <div className="recycle-stack-small">
-                        <div className="recycle-card">Опасные отходы</div>
-                        <div className="recycle-card">Металл</div>
+                        <div className="recycle-card small-card danger-card">
+                            <div className="recycle-card__heading">Опасные отходы</div>
+                            <div className='recycle-card__text'>
+                                оперативная информация, которая представляет политический
+                            </div>
+                            <div className="recycle-card__button">Читать</div>
+                        </div>
+                        <div className="recycle-card small-card metal-card">
+                            <div className="recycle-card__heading">Металл</div>
+                            <div className='recycle-card__text'>
+                                оперативная информация, которая представляет политический
+                            </div>
+                            <div className="recycle-card__button">Читать</div>
+                        </div>
                     </div>
                 </div>
             </div>

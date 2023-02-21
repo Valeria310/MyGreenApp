@@ -1,11 +1,10 @@
 .recycle {
     width: 1440px;
     margin: 0 auto;
-    border: 1px solid gray;
 }
 
 .recycle-wrapper {
-    padding: 23px 135px 44px;
+    padding: 23px 135px 55px;
     background: #DDC8FF;
 }
 
@@ -123,6 +122,56 @@
     }
 }
 
+.glass-card {
+    width: 470px;
+    background: #F6FCEA;
+    box-shadow: 0px 75px 30px rgba(19, 0, 51, 0.01), 0px 42px 25px rgba(19, 0, 51, 0.05), 0px 19px 19px rgba(19, 0, 51, 0.09), 0px 5px 10px rgba(19, 0, 51, 0.1), 0px 0px 0px rgba(19, 0, 51, 0.1);
+    .recycle-card__heading {
+        margin-bottom: 10px;
+    }
+    .recycle-card__text {
+        width: 229px;
+        line-height: 23px;
+    }
+}
+
+.glass-card__info {
+    display: flex;
+    flex-direction: row;
+    column-gap: 31px;
+    align-items: flex-end;
+    margin-left: 26px;
+    margin-right: 13px;
+}
+
+.small-card {
+    width: 223px;
+    .recycle-card__heading {
+        min-height: 40px;
+        margin-bottom: 28px;
+    }
+    .recycle-card__text {
+        width: 182px;
+        margin-bottom: 32px;
+    }
+}
+
+.danger-card {
+    background: #DDC8FF;
+    box-shadow: 0px 87px 35px rgba(45, 1, 121, 0.01), 0px 49px 29px rgba(45, 1, 121, 0.05), 0px 22px 22px rgba(45, 1, 121, 0.09), 0px 5px 12px rgba(45, 1, 121, 0.1), 0px 0px 0px rgba(45, 1, 121, 0.1);
+    .recycle-card__heading {
+        margin-top: 24px;
+    }
+}
+
+.metal-card {
+    background: #F6FCEA;
+    box-shadow: 0px 88px 35px rgba(19, 0, 51, 0.01), 0px 50px 30px rgba(19, 0, 51, 0.05), 0px 22px 22px rgba(19, 0, 51, 0.09), 0px 6px 12px rgba(19, 0, 51, 0.1), 0px 0px 0px rgba(19, 0, 51, 0.1);
+    .recycle-card__heading {
+        margin-top: 20px;
+    }
+}
+
 .recycle-card__heading {
     align-self: flex-start;
     font-family: 'Neucha';
@@ -153,6 +202,12 @@
 .recycle-card__large-image {
     width: 302px;
     height: 274px;
+}
+
+.recycle-card__glass-image {
+    width: 405px;
+    height: 150px;
+    margin-bottom: 40px;
 }
 
 .underliner {
