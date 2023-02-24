@@ -1,1 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&family=Neucha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+
+
+@font-face {
+    font-family: 'Rising Sun';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Rising Sun Light'), url('../assets/fonts/RisingSun-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Rising Sun';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Rising Sun Regular'), url('../assets/fonts/RisingSun-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Rising Sun';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Rising Sun Medium'), url('../assets/fonts/RisingSun-Medium.ttf') format('truetype');
+}
+    
+@font-face {
+    font-family: 'Rising Sun';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Rising Sun DemiBold'), url('../assets/fonts/RisingSun-DemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Rising Sun';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Rising Sun Bold'), url('../assets/fonts/RisingSun-Bold.woff') format('woff');
+}
+
+// font-family: 'Neucha', cursive;
+// font-family: 'Rising Sun', sans-serif;

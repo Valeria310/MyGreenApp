@@ -1,0 +1,40 @@
+@import '../../index.scss';
+
+.recycle {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.recycle-wrapper {
+    padding: 38px 135px 55px;
+    background: $color-bright;
+}
+
+.recycle-heading {
+    margin: 0 0 34px;
+}
+
+.recycle-info {
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+
+.recycle-cards {
+    display: flex;
+    flex-direction: column;
+    row-gap: 21px;
+}
+
+.recycle-stack {
+    display: flex;
+    flex-direction: row;
+    &.recycle-stack-vert-big {
+        column-gap: 20px;
+    }
+    &.recycle-stack-vert-small {
+        column-gap: 27px;
+    }
+}
+
+
