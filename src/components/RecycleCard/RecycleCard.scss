@@ -153,10 +153,10 @@
         color: $color-black;
     }
     .recycle-card__image::after {
-        border: 0.5px dashed $color-black;
+        border: 0.5px dotted $color-black;
     }
     .underliner {
-        border-top: 0.5px dashed $color-black;
+        border-top: 0.5px dotted $color-black;
     }
 }
 
@@ -169,10 +169,10 @@
         color: $color-white;
     }
     .recycle-card__image::after {
-        border: 0.5px dashed $color-white;
+        border: 0.5px dotted $color-white;
     }
     .underliner {
-        border-top: 0.5px dashed $color-white;
+        border-top: 0.5px dotted $color-white;
     }
 }
 
