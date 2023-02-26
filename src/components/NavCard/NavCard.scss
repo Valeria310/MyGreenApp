@@ -1,0 +1,27 @@
+@import '../../index.scss';
+
+.nav-card__image {
+    height: 291px;
+    img {
+        border-radius: 30px;
+    }
+}
+
+.nav-card__text {
+    font-size: 20px;
+    line-height: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    min-height: 130px;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+}
+
+.nav-card__button {
+    background: $color-primary;
+    box-shadow: $nav-button-shadow;
+    width: 100%;
+    padding: 10px 0;
+}

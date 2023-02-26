@@ -1,0 +1,20 @@
+@import '../../index.scss';
+
+.nav-cards {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.nav-cards-wrapper {
+    padding: 177px 135px 239px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+
+.nav-card {
+    width: 570px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 22px;
+}

@@ -1,0 +1,31 @@
+@import '../../index.scss';
+
+body {
+    font-family: $font-primary;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: $color-black;
+}
+
+h2 {
+    display: inline-block;
+    font-family: $font-secondary;
+    font-size: 40px;
+    line-height: 44px;
+    color: $color-black;
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    border-radius: $button-radius;
+    text-align: center;
+    font-family: $font-secondary;
+    font-size: 30px;
+    line-height: 33px;
+    color: $color-black;
+}
