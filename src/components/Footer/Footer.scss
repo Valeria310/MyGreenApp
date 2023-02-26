@@ -1,0 +1,61 @@
+@import '../../index.scss';
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer {
+    position: relative;
+    max-width: 1440px;
+    height: 637px;
+    padding-top: 43px;
+    margin: 0 auto;
+    background-image: url(../../assets/images/footer_img.png);
+}
+
+.footer-logo {
+    background-image: url(../../assets/images/footer_logo.png);
+    width: 94px;
+    height: 140px;
+}
+
+.footer .navigation {
+    gap: 40px;
+}
+
+.footer .navigation_link {
+    font-family: 'Neucha';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 33px;
+}
+
+.socials {
+    font-family: 'Rising Sun';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.up-btn {
+    position: absolute;
+    display: block;
+    width: 86px;
+    height: 86px;
+    background: #DDC8FF;
+    border-radius: 50%;
+    bottom: 158px;
+    right: 168px;
+    background-image: url(../../assets/images/up-arrow.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
