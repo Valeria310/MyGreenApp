@@ -1,13 +1,16 @@
 @import '../../index.scss';
 
 .recycle {
-    width: 1440px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
 .recycle-wrapper {
-    padding: 38px 135px 55px;
+    padding: 20px;
     background: $color-bright;
+    @media screen and (min-width: 1200px) {
+        padding: 38px 135px 55px;
+    }
 }
 
 .recycle-heading {
@@ -17,18 +20,25 @@
 .recycle-info {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 50px;
     column-gap: 30px;
 }
 
 .recycle-cards {
     display: flex;
     flex-direction: column;
+    align-items: center;
     row-gap: 21px;
 }
 
 .recycle-stack {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
     &.recycle-stack-vert-big {
         column-gap: 20px;
     }
