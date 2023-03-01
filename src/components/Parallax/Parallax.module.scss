@@ -24,16 +24,16 @@ $duration: 3s;
         position: absolute;
         left: 312px;
         top: -228px;
-        font-family: 'Rising Sun';
+        font-family: $font-primary;
         font-style: normal;
         font-weight: 800;
         font-size: 80px;
         line-height: 100%;
-        color: #94B9AB;
+        color: $color-primary;
         animation-duration: $duration;
         animation-name: hide-main_title;
         & span {
-            color: #0C6DCE;
+            color: $color-secondary;
         }
     }
     
@@ -41,19 +41,19 @@ $duration: 3s;
         position: absolute;
         left: 589px;
         top: -127px;
-        font-family: 'Neucha';
+        font-family: $font-secondary;
         font-style: normal;
         font-weight: 400;
         font-size: 50px;
         line-height: 55px;
-        color: #070707;
+        color: $color-black;
         animation-duration: $duration;
         animation-name: hide-main_text;
     }
 }
 
 .about {
-    font-family: 'Rising Sun';
+    font-family: $font-primary;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -81,7 +81,7 @@ $duration: 3s;
     }
 
     &_title {
-        font-family: 'Neucha';
+        font-family: $font-secondary;
         font-weight: 400;
         font-size: 50px;
         line-height: 55px;
