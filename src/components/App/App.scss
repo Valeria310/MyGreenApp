@@ -1,5 +1,13 @@
 @import '../../index.scss';
 
+* {
+    transition: all .3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: $font-primary;
     font-style: normal;
