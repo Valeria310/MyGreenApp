@@ -7,7 +7,7 @@ import { HoriSmallCard } from '../../constants/RecycleCards';
 import { HoriBigCard } from '../../constants/RecycleCards';
 
 export const RecycleSection = () => (
-    <section className='recycle'>
+    <section className='recycle' id="recycle">
         <div className="recycle-wrapper">
             <h2 className='recycle-heading'>Что перерабатываем?</h2>
             <div className="recycle-info">

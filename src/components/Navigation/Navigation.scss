@@ -1,0 +1,17 @@
+@import '../../index.scss';
+
+.navigation {
+    display: flex;
+}
+
+.navigation_link {
+    color: $color-black;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.navigation_link:hover {
+    border-color: #000000;
+}
