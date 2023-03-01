@@ -1,4 +1,3 @@
-import React from 'react';
 import c from './Parallax.module.scss';
 
 export const ParallaxSection = () => (

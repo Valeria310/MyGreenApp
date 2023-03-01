@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import './Header.scss';
 import { Navigation } from './../Navigation/Navigation';
 
@@ -31,7 +31,7 @@ export const Header = () => {
             window.addEventListener("scroll", scrollHandler, false)
         }, 1000);
         return () => window.removeEventListener("scroll", scrollHandler, false)
-    }, [])
+    })
     return (<header className='header' id='header'>
         <div className="container">
             <a href='#about' className="logo"></a>
