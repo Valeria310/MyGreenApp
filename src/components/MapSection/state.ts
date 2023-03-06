@@ -1,6 +1,6 @@
 import {filterType} from "./MapSection";
 
-export const waste:Array<filterType> = ["пластик", "бумага", "стекло", "крупногабаритные отходы", "опасные отходы", "металл"]
+export const waste:Array<filterType> = ["пластик", "бумага", "стекло", "электронная и бытовая техника", "крупногабаритные отходы", "опасные отходы", "металл"]
 
 
 // ["plastic", "paper", "glass", "oversized", "dangerous", "metal"]
@@ -26,5 +26,6 @@ export const buttons:Array<ButtonObjType> = [
     {id: 3, wasteTitle:  waste[2], isActive: true},
     {id: 4, wasteTitle:  waste[3], isActive: true},
     {id: 5, wasteTitle:  waste[4], isActive: true},
-    {id: 6, wasteTitle:  waste[5], isActive: false},
+    {id: 6, wasteTitle:  waste[5], isActive: true},
+    {id: 7, wasteTitle:  waste[6], isActive: false},
 ]

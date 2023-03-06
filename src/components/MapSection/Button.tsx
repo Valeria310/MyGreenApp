@@ -18,9 +18,8 @@ export const Button = (props:PropsType) => {
 
     return (
         <button
-            style={props.isActive ? {backgroundColor: "green"} : {backgroundColor: "white"}}
-            onClick={onClickHandler}
-            className={s.filterButton}>
+            className={props.isActive ? s.filterButtonActive : s.filterButton}
+            onClick={onClickHandler}>
             {props.title}
         </button>
     )
