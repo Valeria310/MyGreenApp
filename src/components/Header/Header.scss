@@ -1,0 +1,42 @@
+@import "../../index.scss";
+
+.header {
+    position: sticky;
+    top: -106px;
+    z-index: 7;
+    margin: 0 auto;
+    max-width: 1440px;
+    height: 106px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(25px);
+
+    & .container {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        gap: 306px;
+    }
+
+    &.visible {
+        top: 0;
+    }
+
+    & .navigation {
+        gap: 50px;
+    }
+
+    & .navigation_link {
+        font-family: $font-primary;
+        font-size: 20px;
+        line-height: 26px;
+    }
+}
+
+.logo {
+    display: block;
+    left: 0;
+    width: 70px;
+    height: 81px;
+    background-image: url(../../assets/images/Logo.png);
+    background-size: contain;
+}
