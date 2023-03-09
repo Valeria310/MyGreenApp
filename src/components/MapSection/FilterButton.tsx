@@ -1,6 +1,6 @@
-import {filterType} from "./MapSection";
+import {filterType} from "../../constants/MapState";
+import s from "./FilterButton.module.scss"
 
-import s from "./Button.module.scss"
 
 type PropsType = {
     title: filterType,
@@ -8,7 +8,7 @@ type PropsType = {
     isActive:boolean,
 }
 
-export const Button = (props:PropsType) => {
+export const FilterButton = (props:PropsType) => {
 
     let wasteType:filterType = props.title
 
