@@ -32,7 +32,13 @@
   margin-bottom: 60px;
 }
 
+.mappp {
+  position: relative;
+  overflow: hidden;
+}
+
 .mapContainer {
   width: 1170px;
   height: 543px;
+  z-index: 1;
 }

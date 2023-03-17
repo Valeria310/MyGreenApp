@@ -7,6 +7,7 @@ import {filterButtons, FilterButtonsObjType, filterType, markers, waste} from ".
 import {FilterButton} from "./FilterButton";
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
+import { MapSectionModal } from './MapSectionModal';
 
 
 function MapSection() {
@@ -36,6 +37,8 @@ function MapSection() {
 
     const token = 'xZpKoSPd2lxvjHa2OY9UT0kBT6StaY0c7pnbhNF1RPCPKAexPRuo2P8x8KKICtO3';
 
+    const [show, setShow] = useState(false);
+
     return (
 
         <section className={s.map} id="map">
@@ -48,9 +51,14 @@ function MapSection() {
                         changeButtonStatus={changeButtonStatus}
                         isActive={f.isActive}
                     />)}
+                    <button
+                        type='button'
+                        onClick={() => setShow(!show)}
+                    >
+                        Show modal
+                    </button>
                 </div>
-                <div>
-
+                <div className={s.mappp}>
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11} scrollWheelZoom={true}
                                   className={s.mapContainer}>
                         <TileLayer
@@ -71,9 +79,9 @@ function MapSection() {
                             : "")}
                         </MarkerClusterGroup>
                     </MapContainer>
+                    <MapSectionModal show={show} onClose={() => setShow(false)} />
                 </div>
             </div>
-
 
         </section>
 
