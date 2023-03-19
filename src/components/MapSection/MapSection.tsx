@@ -5,9 +5,7 @@ import s from './MapSection.module.scss';
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
 import {filterButtons, FilterButtonsObjType, filterType, markers, waste} from "../../constants/MapState";
 import {FilterButton} from "./FilterButton";
-import MarkerClusterGroup from 'react-leaflet-cluster';
-import L from 'leaflet';
-import { MapSectionModal } from './MapSectionModal';
+
 
 
 function MapSection() {
@@ -30,14 +28,6 @@ function MapSection() {
         }
     }
 
-    const customIcon = new L.Icon({
-        iconUrl: require("../../assets/icons/marker.svg").default,
-        iconSize: new L.Point(26.85, 31.76)
-    });
-
-    const token = 'xZpKoSPd2lxvjHa2OY9UT0kBT6StaY0c7pnbhNF1RPCPKAexPRuo2P8x8KKICtO3';
-
-    const [show, setShow] = useState(false);
 
     return (
 
@@ -51,37 +41,31 @@ function MapSection() {
                         changeButtonStatus={changeButtonStatus}
                         isActive={f.isActive}
                     />)}
-                    <button
-                        type='button'
-                        onClick={() => setShow(!show)}
-                    >
-                        Show modal
-                    </button>
                 </div>
-                <div className={s.mappp}>
-                    <MapContainer center={[53.9024716, 27.5618225]} zoom={11} scrollWheelZoom={true}
+                <div>
+
+                    <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
                                   className={s.mapContainer}>
                         <TileLayer
-                            attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
-                            url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
 
-                        <MarkerClusterGroup chunkedLoading>
-                            {filteredMarkers.map((m,i) => m.display ?
-                                <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
+                        {
+                            filteredMarkers.map((m,i) =>
+                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]}>
                                     <Popup>
                                         <h3>{m.title}</h3>
                                         {m.address}<br/>
                                         {m.info}<br/>
                                         Перерабатываем: {m.wasteTypes}
                                     </Popup>
-                                </Marker>
-                            : "")}
-                        </MarkerClusterGroup>
+                                </Marker> : ""
+                            )}
                     </MapContainer>
-                    <MapSectionModal show={show} onClose={() => setShow(false)} />
                 </div>
             </div>
+
 
         </section>
 
