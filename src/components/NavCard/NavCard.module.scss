@@ -1,7 +1,7 @@
 @import '../../index.scss';
 
 .navCard {
-    // max-width: 280px;
+    max-width: 280px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -9,13 +9,14 @@
     &:nth-child(even) {
         flex-direction: row-reverse;
     }
-    // @media screen and (min-width: 1200px) {
-    //     max-width: 570px;
-    // }
+    @media screen and (min-width: 1200px) {
+        max-width: 1170px;
+    }
 }
 
 .navCardContent {
     display: flex;
+    width: 100%;
     flex-direction: column;
     row-gap: 22px;
     @media screen and (min-width: 1200px) {
@@ -25,6 +26,12 @@
 
 .navCardHeading {
     margin: 0;
+    font-size: 38px;
+    line-height: 40px;
+    @media screen and (min-width: 1200px) {
+        font-size: 48px;
+        line-height: 50px;
+    }
 }
 
 .navCardText {
