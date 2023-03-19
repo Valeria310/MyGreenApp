@@ -7,7 +7,7 @@ import {filterButtons, FilterButtonsObjType, filterType, markers, waste} from ".
 import {FilterButton} from "./FilterButton";
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
-
+import { MapSectionModal } from './MapSectionModal';
 
 
 function MapSection() {
@@ -32,10 +32,12 @@ function MapSection() {
 
     const customIcon = new L.Icon({
         iconUrl: require("../../assets/icons/location.svg").default,
-        iconSize: new L.Point(40, 47)
+        iconSize: new L.Point(26.85, 31.76)
     });
 
     const token = 'xZpKoSPd2lxvjHa2OY9UT0kBT6StaY0c7pnbhNF1RPCPKAexPRuo2P8x8KKICtO3';
+
+    const [show, setShow] = useState(false);
 
     return (
 
@@ -49,24 +51,24 @@ function MapSection() {
                         changeButtonStatus={changeButtonStatus}
                         isActive={f.isActive}
                     />)}
+                    <button
+                        type='button'
+                        onClick={() => setShow(!show)}
+                    >
+                        Show modal
+                    </button>
                 </div>
-                <div>
-
+                <div className={s.mappp}>
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11} scrollWheelZoom={true}
                                   className={s.mapContainer}>
                         <TileLayer
-                            // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
                             url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
-                            // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
+
                         <MarkerClusterGroup chunkedLoading>
                             {filteredMarkers.map((m,i) => m.display ?
-                                <Marker
-                                    key={i}
-                                    position={[m.latitude, m.longitude]}
-                                    icon={customIcon}
-                                >
+                                <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
                                     <Popup>
                                         <h3>{m.title}</h3>
                                         {m.address}<br/>
@@ -77,9 +79,9 @@ function MapSection() {
                             : "")}
                         </MarkerClusterGroup>
                     </MapContainer>
+                    <MapSectionModal show={show} onClose={() => setShow(false)} />
                 </div>
             </div>
-
 
         </section>
 
