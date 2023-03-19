@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.1",
-    "sass": "^1.58.3"
+    "sass": "^1.58.3",
+    "typescript-plugin-css-modules": "^4.2.3"
   }
 }

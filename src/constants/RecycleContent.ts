@@ -11,7 +11,7 @@ interface RecycleInfo {
   image: string;
   description: RecycleInfoDescription[];
   status: string;
-  color: 'red' | 'green';
+  color: 'Red' | 'Green';
 }
 
 export interface RecycleContent {
@@ -37,7 +37,7 @@ export const PlasticContent: RecycleContent = {
         }
       ],
       status: 'Подлежит переработке',
-      color: 'green'
+      color: 'Green'
     },
     {
       id: 2,
@@ -62,7 +62,7 @@ export const PlasticContent: RecycleContent = {
         }
       ],
       status: 'Подлежит переработке',
-      color: 'red'
+      color: 'Red'
     },
     {
       id: 3,
@@ -91,7 +91,7 @@ export const PlasticContent: RecycleContent = {
         }
       ],
       status: 'Подлежит переработке',
-      color: 'green'
+      color: 'Green'
     },
     {
       id: 4,
@@ -120,7 +120,7 @@ export const PlasticContent: RecycleContent = {
         }
       ],
       status: 'Подлежит переработке',
-      color: 'green'
+      color: 'Green'
     },
     {
       id: 5,
@@ -145,7 +145,7 @@ export const PlasticContent: RecycleContent = {
         }
       ],
       status: 'Подлежит переработке',
-      color: 'green'
+      color: 'Green'
     },
     {
       id: 6,
@@ -166,7 +166,7 @@ export const PlasticContent: RecycleContent = {
         }
       ],
       status: 'Не подлежит переработке',
-      color: 'red'
+      color: 'Red'
     }
   ]
 }

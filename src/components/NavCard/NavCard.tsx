@@ -1,26 +1,28 @@
 import { FC } from 'react';
-import { NavCardProps } from './NavCardProps';
 
-import './NavCard.scss';
+import s from './NavCard.module.scss';
 import NavArrow from '../../assets/icons/nav-arrow.svg';
 
+import { NavCardProps } from './NavCardProps';
+
+
 export const NavCard: FC<NavCardProps> = ({card}) => (
-    <div className="nav-card">
-        <div className="nav-card__content">
-            <h2 className="nav-card__heading">
+    <div className={s.navCard}>
+        <div className={s.navCardContent}>
+            <h2 className={s.navCardHeading}>
                 {card.heading}
             </h2>
-            <div className="nav-card__text">
+            <div className={s.navCardText}>
                 { card.content.map(content => <p key={content.id}>{ content.text }</p>) }
             </div>
-            <div className="nav-card__button">
+            <div className={s.navCardButton}>
                 <a href={card.href}>
                     <span>{card.buttonValue}</span>
                     <img src={NavArrow} alt='arrow' />
                 </a>
             </div>
         </div>
-        <div className="nav-card__image">
+        <div className={s.navCardImage}>
             <img src={card.image} alt="card" />
         </div>
     </div>

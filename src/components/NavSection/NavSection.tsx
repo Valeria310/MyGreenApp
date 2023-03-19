@@ -1,11 +1,10 @@
-import './NavSection.scss';
-
-import { NavCards } from '../../constants/NavCards';
 import NavCard from '../NavCard';
+import { NavCards } from '../../constants/NavCards';
+import s from './NavSection.module.scss';
 
 export const NavSection = () => (
-    <section className="nav-cards">
-        <div className="nav-cards-wrapper">
+    <section className={s.navCards}>
+        <div className={s.navCardsWrapper}>
             {NavCards.map(card => 
                 <NavCard key={card.image} card={card} />   
             )}

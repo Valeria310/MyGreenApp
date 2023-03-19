@@ -1,27 +1,28 @@
 import { FC, useState } from 'react';
+
 import { RecycleCardProps } from './RecycleCardProps';
 
+import s from './RecycleCard.module.scss';
 import RecycleArrow from '../../assets/icons/recycle-arrow.svg';
 import RecycleCross from '../../assets/icons/recycle-cross.svg';
 
-import './RecycleCard.scss';
 
 export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
     const { content } = card;
     const [isExpanded, setExpanded] = useState(false);
     
     return (
-        <div className={`recycle-card ${card.type}-card ${isExpanded ? 'recycle-card-expanded' : ''}`}>
-            <div className="recycle-card__header">
-                <img src={card.image} alt={card.type} className='recycle-card__image' />
-                <div className='recycle-card__description'>
-                    <div className="recycle-card__info">
-                        <h3 className='recycle-card__heading'>{card.heading}</h3>
-                        <p className='recycle-card__text'>{card.text}</p>
+        <div className={`${s.recycleCard} ${card.type}Card ${isExpanded ? s.recycleCardExpanded : ''}`}>
+            <div className={s.recycleCardHeader}>
+                <img src={card.image} alt={card.type} />
+                <div className={s.recycleCardDescription}>
+                    <div className={s.recycleCardInfo}>
+                        <h3 className={s.recycleCardHeading}>{card.heading}</h3>
+                        <p className={s.recycleCardText}>{card.text}</p>
                     </div>
                     <button
                         type='button'
-                        className='recycle-card__button'
+                        className={s.recycleCardButton}
                         onClick={() => setExpanded(!isExpanded)}
                     >
                         <img src={isExpanded ? RecycleCross : RecycleArrow} alt={isExpanded ? 'recycle-cross' : 'recycle-arrow'} />
@@ -29,8 +30,8 @@ export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
                 </div>
             </div>
             { isExpanded &&
-                <div className="recycle-card__content">
-                    <table className='recycle-table'>
+                <div className={s.recycleCardContent}>
+                    <table className={s.recycleTable}>
                         <thead>
                             <tr>
                                 {content.columns.map(col => 
@@ -39,25 +40,27 @@ export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
                             </tr>
                         </thead>    
                         <tbody>
-                            <tr className='recycle-table__images'>
+                            <tr>
                                 {content.columns.map(col => 
-                                    <td key={col.id} className='recycle-table__image'>
+                                    <td key={col.id} className={s.recycleTableImage}>
                                         <img src={col.image} alt={card.type} />
                                     </td>
                                 )}
                             </tr>
-                            <tr className='recycle-table__descriptions'>
+                            <tr>
                                 {content.columns.map(col => 
-                                    <td key={col.id} className='recycle-table__description'>
+                                    <td key={col.id} className={s.recycleTableDescription}>
                                         {col.description.map(par => 
                                             <p key={par.id}>{par.text}</p>    
                                         )}
                                     </td> 
                                 )}
                             </tr>
-                            <tr className='recycle-table__statuses'>
+                            <tr>
                                 {content.columns.map(col => 
-                                    <td key={col.id} className={`recycle-table__status recycle-status-${col.color}`}>{col.status}</td>
+                                    <td key={col.id} className={`${s.recycleTableStatus} ${s[`recycleStatus${col.color}`]}`}>
+                                        {col.status}
+                                    </td>
                                 )}
                             </tr>
                         </tbody>

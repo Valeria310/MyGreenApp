@@ -1,9 +1,9 @@
 @import '../../index.scss';
 
-.recycle-card {
+.recycleCard {
     width: 100%;
-    &-expanded {
-        .recycle-card__header {
+    &Expanded {
+        .recycleCardHeader {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             max-height: auto;
@@ -11,7 +11,7 @@
     }
 }
 
-.recycle-card__header {
+.recycleCardHeader {
     background-color: $color-white;
     display: flex;
     flex-direction: row;
@@ -24,7 +24,7 @@
     transition: none;
 }
 
-.recycle-card__description {
+.recycleCardDescription {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,13 +33,13 @@
     margin-right: 32px;
 }
 
-.recycle-card__info {
+.recycleCardInfo {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
 }
 
-.recycle-card__heading {
+.recycleCardHeading {
     font-family: $font-primary;
     font-weight: 500;
     font-size: 30px;
@@ -48,7 +48,7 @@
     margin: 0;
 }
 
-.recycle-card__text {
+.recycleCardText {
     font-family: $font-primary;
     font-weight: 300;
     font-size: 18px;
@@ -61,7 +61,7 @@
     -webkit-box-orient: vertical;
 }
 
-.recycle-card__button {
+.recycleCardButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,13 +74,13 @@
     border: 0;
 }
 
-.recycle-card__content {
+.recycleCardContent {
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     background-color: $color-white;
 }
 
-.recycle-table {
+.recycleTable {
     border-collapse: collapse;
     th {
         font-weight: 500;
@@ -103,11 +103,11 @@
     tr:last-child td {
         border-bottom: none;
     }
-    &__image {
+    &Image {
         text-align: center;
         padding: 16.55px 0;
     }
-    &__description {
+    &Description {
         font-weight: 400;
         font-size: 16px;
         line-height: 21px;
@@ -121,7 +121,7 @@
             }
         }
     }
-    &__status {
+    &Status {
         padding: 22.7px 38px;
         &:first-child {
             border-bottom-left-radius: 30px;
@@ -132,11 +132,11 @@
     }
 }
 
-.recycle-status {
-    &-red {
+.recycleStatus {
+    &Red {
         background: #FF9595;
     }
-    &-green {
+    &Green {
         background: #94B9AB;
     }
 }
