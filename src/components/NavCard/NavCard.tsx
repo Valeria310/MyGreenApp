@@ -11,8 +11,8 @@ export const NavCard: FC<NavCardProps> = ({card}) => (
         <div className="nav-card__text">
             {card.text}
         </div>
-        <button type='button' className="button nav-card__button">
+        <a href={card.href} className="button nav-card__button">
             {card.buttonValue}
-        </button>
+        </a>
     </div>
 )

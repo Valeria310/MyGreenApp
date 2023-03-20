@@ -1,31 +1,20 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 import s from './MapSection.module.scss';
 
-import {MapContainer, Marker, Popup, TileLayer, useMap} from 'react-leaflet'
-import {ButtonObjType, buttons, markers, waste} from "./state";
-import {Button} from "./Button";
+import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
+import {filterButtons, FilterButtonsObjType, filterType, markers, waste} from "../../constants/MapState";
+import {FilterButton} from "./FilterButton";
 
 
-// export type filterType = "all" | "plastic" | "paper" | "glass"
-
-export type filterType =
-    "все"
-    | "пластик"
-    | "бумага"
-    | "стекло"
-    | "электронная и бытовая техника"
-    | "крупногабаритные отходы"
-    | "опасные отходы"
-    | "металл"
 
 function MapSection() {
 
-    const [buttonsStatus, setButtonsStatus] = useState<Array<ButtonObjType>>(buttons)
+    const [filterButtonsStatus, setFilterButtonsStatus] = useState<Array<FilterButtonsObjType>>(filterButtons)
 
     const changeButtonStatus = (wasteType: filterType) => {
-        buttons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b)
-        setButtonsStatus({...buttonsStatus})
+        filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b)
+        setFilterButtonsStatus({...filterButtonsStatus})
 
     }
 
@@ -33,8 +22,8 @@ function MapSection() {
 
     filteredMarkers.map(m => m.display = false)
 
-    for (let i = 0; i < buttons.length; i++) {
-        if (buttons[i].isActive) {
+    for (let i = 0; i < filterButtons.length; i++) {
+        if (filterButtons[i].isActive) {
             filteredMarkers.map(m => m.wasteTypes.includes(waste[i]) ? m.display = true : m)
         }
     }
@@ -46,10 +35,11 @@ function MapSection() {
             <div className={s.mapWrapper}>
                 <h2>Куда сдать?</h2>
                 <div className={s.buttonsWrapper}>
-                    {buttons.map(b => <Button
-                        title={b.wasteTitle}
+                    {filterButtons.map((f,i) => <FilterButton
+                        key={i}
+                        title={f.wasteTitle}
                         changeButtonStatus={changeButtonStatus}
-                        isActive={b.isActive}
+                        isActive={f.isActive}
                     />)}
                 </div>
                 <div>
@@ -62,8 +52,8 @@ function MapSection() {
                         />
 
                         {
-                            filteredMarkers.map(m =>
-                                m.display ? <Marker position={[m.latitude, m.longitude]}>
+                            filteredMarkers.map((m,i) =>
+                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]}>
                                     <Popup>
                                         <h3>{m.title}</h3>
                                         {m.address}<br/>

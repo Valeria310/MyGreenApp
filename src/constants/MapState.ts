@@ -1,9 +1,14 @@
-import {filterType} from "./MapSection";
-
 export const waste:Array<filterType> = ["пластик", "бумага", "стекло", "электронная и бытовая техника", "крупногабаритные отходы", "опасные отходы", "металл"]
 
-
-// ["plastic", "paper", "glass", "oversized", "dangerous", "metal"]
+export type filterType =
+    "все"
+    | "пластик"
+    | "бумага"
+    | "стекло"
+    | "электронная и бытовая техника"
+    | "крупногабаритные отходы"
+    | "опасные отходы"
+    | "металл"
 
 export const markers = [
     {id: 1, title: "Пункт 1", address: "г.Минск, ул.Сурганова, 23", latitude: 53.884, longitude: 27.600, info: "Some info about point 1", wasteTypes: [waste[0],waste[1]], display: false },
@@ -13,14 +18,14 @@ export const markers = [
 ]
 
 
-export type ButtonObjType = {
+export type FilterButtonsObjType = {
     id: number,
     wasteTitle: filterType,
     isActive: boolean
 }
 
 
-export const buttons:Array<ButtonObjType> = [
+export const filterButtons:Array<FilterButtonsObjType> = [
     {id: 1, wasteTitle: waste[0], isActive: true},
     {id: 2, wasteTitle: waste[1], isActive: false},
     {id: 3, wasteTitle:  waste[2], isActive: true},
