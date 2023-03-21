@@ -6,7 +6,7 @@ import electroImg from '../assets/images/recycle-electro.jpg';
 import dangerImg from '../assets/images/recycle-danger.jpg';
 import metalImg from '../assets/images/recycle-metal.jpg';
 
-import { GlassContent, PaperContent, PlasticContent, RecycleContent } from './RecycleContent';
+import { DangerContent, ElectroContent, GlassContent, LargeContent, MetalContent, PaperContent, PlasticContent, RecycleContent } from './RecycleContent';
 
 
 export interface RecycleCard {
@@ -44,27 +44,27 @@ export const RecycleCards: RecycleCard[] = [
         image: largeImg,
         text: 'оперативная информация, которая представляет политический',
         type: 'large',
-        content: null
+        content: LargeContent
     },
     {
         heading: 'Электронная, бытовая техника',
         image: electroImg,
         text: 'оперативная информация, которая представляет политический',
         type: 'electro',
-        content: null
+        content: ElectroContent
     },
     {
         heading: 'Опасные отходы',
         image: dangerImg,
         text: 'оперативная информация, которая представляет политический',
         type: 'danger',
-        content: null
+        content: DangerContent
     },
     {
         heading: 'Металл',
         image: metalImg,
         text: 'оперативная информация, которая представляет политический',
         type: 'metal',
-        content: null
+        content: MetalContent
     }
 ];

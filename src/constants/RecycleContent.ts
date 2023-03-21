@@ -14,7 +14,7 @@ interface RecycleInfo {
 }
 
 export interface RecycleContent {
-  recycleType: string;
+  recycleType: 'plastic' | 'paper' | 'glass' | 'large' | 'electro' | 'danger' | 'metal';
   columns: RecycleInfo[];
 }
 
@@ -413,6 +413,206 @@ export const GlassContent: RecycleContent = {
         {
           id: 3,
           text: 'Гаджетов'
+        }
+      ],
+      status: 'Подлежит переработке'
+    }
+  ]
+}
+
+export const LargeContent: RecycleContent = {
+  recycleType: 'large',
+  columns: [
+    {
+      id: 1,
+      name: 'Крупно-габаритные отходы',
+      image: plasticIcon,
+      description: [
+        {
+          id: 1,
+          text: 'Диваны'
+        },
+        {
+          id: 2,
+          text: 'Шкафы'
+        },
+        {
+          id: 3,
+          text: 'Другие габаритные предметы'
+        }
+      ],
+      status: 'Подлежит переработке'
+    },
+    {
+      id: 2,
+      name: 'Строительный мусор',
+      image: plasticIcon,
+      description: [
+        {
+          id: 1,
+          text: 'Строительный мусор'
+        }
+      ],
+      status: 'Подлежит переработке'
+    }
+  ]
+}
+
+export const DangerContent: RecycleContent = {
+  recycleType: 'danger',
+  columns: [
+    {
+      id: 1,
+      name: 'Батарейки и аккумуляторы',
+      image: plasticIcon,
+      description: [
+        {
+          id: 1,
+          text: 'Пальчиковые батарейки.'
+        },
+        {
+          id: 2,
+          text: 'Многоразовые аккумуляторы.'
+        },
+        {
+          id: 3,
+          text: 'Литий-ионные батареи'
+        }
+      ],
+      status: 'Подлежит переработке'
+    },
+    {
+      id: 2,
+      name: 'Лекарства',
+      image: plasticIcon,
+      description: [
+        {
+          id: 1,
+          text: 'Блистеры с лекарствами.'
+        },
+        {
+          id: 2,
+          text: 'Ампулы с лекарствами.'
+        },
+        {
+          id: 3,
+          text: 'Химические и лекарственнеы отходы'
+        }
+      ],
+      status: 'Подлежит переработке'
+    },
+    {
+      id: 3,
+      name: 'Автомобиль-ные отходы',
+      image: plasticIcon,
+      description: [
+        {
+          id: 1,
+          text: 'Шины'
+        },
+        {
+          id: 2,
+          text: 'Масла'
+        },
+        {
+          id: 3,
+          text: 'Аккумуляторы'
+        },
+        {
+          id: 4,
+          text: 'Катализаторы'
+        }
+      ],
+      status: 'Подлежит переработке'
+    },
+    {
+      id: 4,
+      name: 'Лампы',
+      image: plasticIcon,
+      description: [
+        {
+          id: 1,
+          text: 'Люминесцентные'
+        },
+        {
+          id: 2,
+          text: 'Светодиодные'
+        }
+      ],
+      status: 'Подлежит переработке'
+    },
+    {
+      id: 5,
+      name: 'Ртуть-содержащие',
+      image: plasticIcon,
+      description: [
+        {
+          id: 1,
+          text: 'Градусники'
+        }
+      ],
+      status: 'Подлежит переработке'
+    }
+  ]
+}
+
+export const ElectroContent: RecycleContent = {
+  recycleType: 'electro',
+  columns: [
+    {
+      id: 1,
+      name: 'Электронная и бытовая техника',
+      image: plasticIcon,
+      description: [
+        {
+          id: 1,
+          text: 'Стиральная машина'
+        },
+        {
+          id: 2,
+          text: 'Телевизор и компьютер.'
+        },
+        {
+          id: 3,
+          text: 'Холодильник, плита и другая кухонная техника.'
+        },
+        {
+          id: 4,
+          text: 'Музыкальная техника.'
+        },
+        {
+          id: 5,
+          text: 'Другая техника.'
+        }
+      ],
+      status: 'Подлежит переработке'
+    }
+  ]
+}
+
+export const MetalContent: RecycleContent = {
+  recycleType: 'metal',
+  columns: [
+    {
+      id: 1,
+      name: 'Металл',
+      image: plasticIcon,
+      description: [
+        {
+          id: 1,
+          text: 'Цветной металл (медь, алюминий, цинк, серебро, золото).'
+        },
+        {
+          id: 2,
+          text: 'Лом и отходы черных металлов (чугунные изделия и ванны) '
+        },
+        {
+          id: 3,
+          text: 'Инструмент. '
+        },
+        {
+          id: 4,
+          text: 'Различное оборудование и его корпуса'
         }
       ],
       status: 'Подлежит переработке'
