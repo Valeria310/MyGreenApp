@@ -13,6 +13,10 @@
   border: 0;
 }
 
+svg {
+  transition: transform .35s;
+}
+
 svg.cross {
   fill: $color-white;
 }

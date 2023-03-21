@@ -7,9 +7,10 @@ import s from './RecycleCard.module.scss';
 
 
 export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
-    const { content } = card;
     const [isExpanded, setExpanded] = useState(false);
-    
+    const { content } = card;
+    const tableClassName = content && content.columns.length < 6 ? `${s.recycleTable} ${s.recycleTableRightBorder}` : s.recycleTable;
+
     return (
         <div className={`${s.recycleCard} ${card.type}Card ${isExpanded ? s.recycleCardExpanded : ''}`}>
             <div className={s.recycleCardHeader}>
@@ -21,13 +22,13 @@ export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
                     </div>
                     <RecycleButton
                         onClick={() => setExpanded(!isExpanded)}
-                        state={isExpanded ? 'cross' : 'arrow'}
+                        state={content && isExpanded ? 'cross' : 'arrow'}
                     />
                 </div>
             </div>
-            { isExpanded &&
+            {content &&
                 <div className={s.recycleCardContent}>
-                    <table className={s.recycleTable}>
+                    <table className={tableClassName}>
                         <thead>
                             <tr>
                                 {content.columns.map(col => 
@@ -45,7 +46,7 @@ export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
                             </tr>
                             <tr>
                                 {content.columns.map(col => 
-                                    <td key={col.id} className={s.recycleTableDescription}>
+                                    <td key={col.id} className={`${s.recycleTableDescription} ${s[`recycleTableDescription${card.type}`]}`}>
                                         {col.description.map(par => 
                                             <p key={par.id}>{par.text}</p>    
                                         )}
@@ -53,10 +54,14 @@ export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
                                 )}
                             </tr>
                             <tr>
-                                {content.columns.map(col => 
-                                    <td key={col.id} className={`${s.recycleTableStatus} ${s[`recycleStatus${col.color}`]}`}>
-                                        {col.status}
-                                    </td>
+                                {content.columns.map(col => {
+                                    const status = col.status === 'Подлежит переработке' ? 'Green' : 'Red';
+                                    
+                                    return (
+                                        <td key={col.id} className={`${s.recycleTableStatus} ${s[`recycleStatus${status}`]}`}>
+                                            {col.status}
+                                        </td>
+                                    )}
                                 )}
                             </tr>
                         </tbody>
