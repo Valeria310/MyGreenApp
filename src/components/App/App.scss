@@ -21,9 +21,13 @@ h2 {
     display: inline-block;
     font-family: $font-primary;
     font-weight: 700;
-    font-size: 48px;
-    line-height: 50px;
     color: $color-black;
+    font-size: 25px;
+    line-height: 30px;
+    @media screen and (min-width: 1200px) {
+        font-size: 48px;
+        line-height: 50px;
+    }
 }
 
 .button {
