@@ -62,7 +62,7 @@ export const PlasticContent: RecycleContent = {
         }
       ],
       status: 'Подлежит переработке',
-      color: 'Red'
+      color: 'Green'
     },
     {
       id: 3,
