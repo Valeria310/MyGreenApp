@@ -6,11 +6,23 @@
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 30px;
-    &:nth-child(even) {
+    &:nth-child(odd) {
         flex-direction: row-reverse;
     }
     @media screen and (min-width: 1200px) {
         max-width: 1170px;
+    }
+}
+
+.navCardImage {
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+    }
+    @media screen and (min-width: 1200px) {
+        max-width: 570px;
+        height: 360px;
     }
 }
 
@@ -57,17 +69,5 @@
     }
     span {
         margin-right: 20px;
-    }
-}
-
-.navCardImage {
-    img {
-        width: 100%;
-        height: 100%;
-        border-radius: 30px;
-    }
-    @media screen and (min-width: 1200px) {
-        max-width: 570px;
-        height: 360px;
     }
 }

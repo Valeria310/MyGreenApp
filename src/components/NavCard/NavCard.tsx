@@ -8,6 +8,9 @@ import { NavCardProps } from './NavCardProps';
 
 export const NavCard: FC<NavCardProps> = ({card}) => (
     <div className={s.navCard}>
+        <div className={s.navCardImage}>
+            <img src={card.image} alt="card" />
+        </div>
         <div className={s.navCardContent}>
             <h2 className={s.navCardHeading}>
                 {card.heading}
@@ -21,9 +24,6 @@ export const NavCard: FC<NavCardProps> = ({card}) => (
                     <img src={NavArrow} alt='arrow' />
                 </a>
             </div>
-        </div>
-        <div className={s.navCardImage}>
-            <img src={card.image} alt="card" />
         </div>
     </div>
 )
