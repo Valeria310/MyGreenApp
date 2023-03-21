@@ -34,15 +34,17 @@ function MapSection() {
             <div className={s.mapWrapper}>
                 <h2>Куда сдать?</h2>
                 <div className={s.buttonsWrapper}>
-                    {filterButtons.map((f, i) => <FilterButton
-                        key={i}
-                        title={f.wasteTitle}
-                        changeButtonStatus={changeButtonStatus}
-                        isActive={f.isActive}
-                    />)}
+                    {filterButtons.map((f, i) =>
+                        <FilterButton
+                            key={i}
+                            title={f.wasteTitle}
+                            changeButtonStatus={changeButtonStatus}
+                            isActive={f.isActive}
+                        />
+                    )}
                 </div>
-                <div><input placeholder={"asfasfsfqf"}/></div>
-
+                <div>
+                    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>
                 <div>
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
                                   className={s.mapContainer}>

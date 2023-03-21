@@ -1,3 +1,25 @@
 @import './scss/fonts';
 @import './scss/normalize';
 @import './scss/variables';
+
+
+.leaflet-pane {
+  z-index: auto;
+}
+.leaflet-control {
+  z-index: auto;
+}
+.leaflet-top,
+.leaflet-bottom {
+  z-index: auto;
+}
+.leaflet-pane {
+  z-index: auto;
+}
+.leaflet-control {
+  z-index: auto;
+}
+.leaflet-top,
+.leaflet-bottom {
+  z-index: auto;
+}
