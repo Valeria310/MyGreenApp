@@ -4,7 +4,7 @@ export const ParallaxSection = () => (
     <section className={c.parallax} id='about'>
         <div className={c.parallax_img}></div>
         <h1 className={c.info_title}>My <span>Green</span></h1>
-        <p className={c.info_text}>У нас нет запасной<br />планеты!</p>
+        <p className={c.info_text}>У нас нет запасной планеты!</p>
         <div className={c.hill}></div>
         <div className={c.small_trees}></div>
         <div className={c.darh_hill}></div>
@@ -17,16 +17,8 @@ export const ParallaxSection = () => (
         </div>
         <div className={c.about_bg}>
             <div className={c.about}>
-                <p className={c.about_title}>Твои эко-принципы помогут миру стать чище!</p>
-                <p className={c.about_text}>Присоединяйся к нам и пользуйся сервисом удобной сортировки бытовых отходов.</p>
-                <ul className={c.about_list}>
-                    <p>Здесь мы пишем:</p>
-                    <li>- что и как перерабатывается в Беларуси, а что нет;</li>
-                    <li>- куда это нести;</li>
-                    <li>- как сократить количество мусора и с чего начать;</li>
-                    <li>- про экологичные альтернативы привычным решениям;</li>
-                    <li>- про многое другое, что сделает ваш дом и наш мир чище и безопаснее.</li>
-                </ul>
+                <h3 className={c.about_title}>Забота о чистоте  планеты начинается с каждого из нас!</h3>
+                <p className={c.about_text}>Здесь мы научим вас сортировать бытовые отходы в Беларуси и&nbsp;покажем на карте пункты приема для их последующей переработки. Вы поймете, что внедрить в свою жизнь эко-привычки — это проще, чем&nbsp;кажется.</p>
             </div>
         </div>
     </section>

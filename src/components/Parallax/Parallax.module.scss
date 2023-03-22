@@ -22,30 +22,32 @@ $duration: 3s;
 .info {
     &_title {
         position: absolute;
-        left: 312px;
-        top: -228px;
+        left: 50%;
+        transform: translate(calc(-50% - 190px), 0);
         font-family: $font-primary;
+        top: -228px;
         font-style: normal;
         font-weight: 800;
         font-size: 80px;
         line-height: 100%;
-        color: $color-primary;
+        color: #1B7A59;
         animation-duration: $duration;
         animation-name: hide-main_title;
         & span {
-            color: $color-secondary;
+            color: #2073E3;
         }
     }
     
     &_text {
         position: absolute;
-        left: 589px;
+        left: 50%;
+        transform: translate(calc(-50% + 96px), 0);
         top: -127px;
-        font-family: $font-secondary;
+        font-family: $font-primary;
         font-style: normal;
-        font-weight: 400;
-        font-size: 50px;
-        line-height: 55px;
+        font-weight: 300;
+        font-size: 40px;
+        line-height: 70px;
         color: $color-black;
         animation-duration: $duration;
         animation-name: hide-main_text;
@@ -53,18 +55,14 @@ $duration: 3s;
 }
 
 .about {
+    width: 830px;
     font-family: $font-primary;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 31px;
     color: #FFFFFF;
     position: absolute;
     opacity: 1;
     left: 50%;
     top: 190px;
-    transform: translate(calc(-50% - 90px), 0);
-    white-space: nowrap;
+    transform: translate(-50%, 0);
     animation-duration: $duration;
     animation-name: show-about_text;
     &_bg {
@@ -81,27 +79,21 @@ $duration: 3s;
     }
 
     &_title {
-        font-family: $font-secondary;
+        font-style: normal;
         font-weight: 400;
-        font-size: 50px;
-        line-height: 55px;
+        font-size: 56px;
+        line-height: 105%;
         margin: 0;
         margin-block-end: 0;
-        margin-bottom: 32px;
+        margin-bottom: 30px;
     }
 
     &_text {
         margin: 0;
-    }
-
-    &_list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        & p {
-            margin: 0;
-        }
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 31px;
     }
 }
 
@@ -234,24 +226,22 @@ $duration: 3s;
 
 @keyframes hide-main_title{
     from {
-        left: 341px;
+        transform: translate(calc(-50% - 224px), 0);
         top: 198px;
     }
 
     to {
-        left: 312px;
-        top: -228px;
+        transform: translate(calc(-50% - 190px), 0);
+        top: -230px;
     }
 }
 
 @keyframes hide-main_text{
     from {
-        left: 618px;
         top: 299px;
     }
 
     to {
-        left: 589px;
         top: -127px;
     }
 }
