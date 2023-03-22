@@ -21,27 +21,16 @@
 }
 
 .footer-logo {
-    background-image: url(../../assets/images/footer_logo.png);
-    width: 94px;
-    height: 140px;
-}
-
-.footer .navigation {
-    gap: 40px;
-}
-
-.footer .navigation_link {
-    font-family: $font-secondary;
-    font-size: 30px;
-    line-height: 33px;
+    background-image: url(../../assets/images/Logo.png);
+    width: 66px;
+    height: 76px;
 }
 
 .socials {
-    font-family: $font-secondary;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 33px;
+    font-family: $font-primary;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
 }
 
 .up-btn {
@@ -49,11 +38,59 @@
     display: block;
     width: 86px;
     height: 86px;
-    background: $color-bright;
+    background: #CAE3F9;
     border-radius: 50%;
     bottom: 158px;
     right: 168px;
-    background-image: url(../../assets/images/up-arrow.png);
+    background-image: url(../../assets/images/up_arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
+    transition-duration: .2s;
+    
+    &:hover {
+        background-position-y: 12px;
+    }
+    
+    &:active {
+        background-position-y: 22px;
+    }
+}
+
+.big_trees {
+    position: absolute;
+    top: 94px;
+    width: 100%;
+    height: 507px;
+    background-image: url(../../assets/images/footer_trees.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.darh_hill {
+    position: absolute;
+    top: 279px;
+    width: 100%;
+    height: 358px;
+    background-image: url(../../assets/images/footer_dark_hill.png);
+    background-repeat: no-repeat;
+}
+
+.small_trees {
+    position: absolute;
+    top: 182px;
+    left: 50%;
+    width: 960px;
+    height: 362px;
+    transform: translateX(calc(-50% - 78px));
+    background-image: url(../../assets/images/footer_small_trees.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.hill {
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    height: 421px;
+    background-image: url(../../assets/images/footer_hill.png);
 }
