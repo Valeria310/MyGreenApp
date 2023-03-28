@@ -138,21 +138,25 @@
         }
     }
     &Description {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 21px;
-        color: $color-black;
-        white-space: pre-line;
         padding: 9.5px 20px;
         width: 585px;
-        ul {
+        ul {     
+            
             margin: 0;
             padding-inline-start: 25px;
             padding-inline-end: 10px;
+            li {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 21px;
+                color: $color-black;
+                white-space: pre-line;
+            }
             li::marker{
                 font-size: 10px;
+                line-height: 16px;
                 color: $color-black;
-             }
+            }
         }
         &paper {
             padding: 20px 19px;
