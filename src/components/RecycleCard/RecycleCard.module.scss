@@ -90,30 +90,52 @@
 
 .recycleTable {
     border-collapse: collapse;
-    th {
+    &Row {  
+        border-top: 1px solid $color-black;
+    }
+    &Heading {
         font-weight: 500;
         font-size: 20px;
         line-height: 26px;
         color: $color-black;
-        padding: 13px 19px;
+        padding: 12.5px 15px;
         white-space: pre-line;
     }
-    th, td {
-        max-width: 195px;
-        border: 1px solid $color-black;
+    &Heading, &Data {
+        width: 195px;
+        border-style: solid;
+        border-color: $color-black;
+        border-width: 0 1px;
     }
-    tr th:first-child, tr td:first-child {
+    &Row &Heading:first-child {
         border-left: none;
     }
-    tr th:last-child, tr td:last-child {
+    &Row &Data:last-child {
         border-right: none;
     }
-    tr:last-child td {
-        border-bottom: none;
+    &Row:nth-child(5) {
+        .recycleTableDescriptionplastic {
+            padding: 20px;
+        }
     }
-    &Image {
-        text-align: center;
-        padding: 16.55px 0;
+    &Row:last-child {
+        .recycleTableDescriptionplastic {
+            padding: 9.5px 20px;
+        }
+    }
+    &Images {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        width: 195px;
+        height: 100%;
+        padding: 8px;
+        &:last-child {
+            column-gap: 5px;
+        }
     }
     &Description {
         font-weight: 400;
@@ -121,15 +143,16 @@
         line-height: 21px;
         color: $color-black;
         white-space: pre-line;
-        p {
+        padding: 9.5px 20px;
+        width: 585px;
+        ul {
             margin: 0;
-            margin-bottom: 21px;
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-        &plastic {
-            padding: 9.5px 19px;
+            padding-inline-start: 25px;
+            padding-inline-end: 10px;
+            li::marker{
+                font-size: 10px;
+                color: $color-black;
+             }
         }
         &paper {
             padding: 20px 19px;
@@ -156,24 +179,12 @@
         }
     }
     &Status {
-        padding: 22.7px 38px;
-        &:first-child {
-            border-bottom-left-radius: 30px;
-        }
-        &:last-child {
-            border-bottom-right-radius: 30px;
-        }
-    }
-}
-
-.recycleTableRightBorder {
-    tr th:last-child, tr td:last-child {
-        border-right: 1px solid $color-black;
-    }
-    .recycleTableStatus {
-        &:last-child {
-            border-bottom-right-radius: 0;
-        }
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 23px;
+        color: $color-black;
+        padding: 15px 38px;
+        text-align: center;
     }
 }
 

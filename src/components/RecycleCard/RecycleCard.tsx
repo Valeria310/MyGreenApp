@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+    import { FC, useState } from 'react';
 
 import { RecycleCardProps } from './RecycleCardProps';
 import { RecycleButton } from './RecycleButton';
@@ -9,7 +9,6 @@ import s from './RecycleCard.module.scss';
 export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
     const [isExpanded, setExpanded] = useState(false);
     const { content } = card;
-    const tableClassName = content && content.columns.length < 6 ? `${s.recycleTable} ${s.recycleTableRightBorder}` : s.recycleTable;
 
     return (
         <div className={`${s.recycleCard} ${card.type}Card ${isExpanded ? s.recycleCardExpanded : ''}`}>
@@ -28,43 +27,33 @@ export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
             </div>
             {content &&
                 <div className={s.recycleCardContent}>
-                    <table className={tableClassName}>
-                        <thead>
-                            <tr>
-                                {content.columns.map(col => 
-                                    <th key={col.id}>{col.name}</th>    
-                                )}
-                            </tr>
-                        </thead>    
-                        <tbody>
-                            <tr>
-                                {content.columns.map(col => 
-                                    <td key={col.id} className={s.recycleTableImage}>
-                                        <img src={col.image} alt={card.type} />
+                    <table className={s.recycleTable}>
+                        {content.columns.map(col => {
+                            const status = col.status === 'Подлежит переработке' ? 'Green' : 'Red';
+
+                            return (
+                                <tr className={s.recycleTableRow}>
+                                    <th key={col.id} className={s.recycleTableHeading}>{col.name}</th>
+                                    <td key={col.id}  className={s.recycleTableData}>
+                                        <div className={s.recycleTableImages}>
+                                            {col.images.map(image => 
+                                                <img key={image.id} src={image.url} alt={card.type} />
+                                            )}
+                                        </div>
                                     </td>
-                                )}
-                            </tr>
-                            <tr>
-                                {content.columns.map(col => 
-                                    <td key={col.id} className={`${s.recycleTableDescription} ${s[`recycleTableDescription${card.type}`]}`}>
-                                        {col.description.map(par => 
-                                            <p key={par.id}>{par.text}</p>    
-                                        )}
-                                    </td> 
-                                )}
-                            </tr>
-                            <tr>
-                                {content.columns.map(col => {
-                                    const status = col.status === 'Подлежит переработке' ? 'Green' : 'Red';
-                                    
-                                    return (
-                                        <td key={col.id} className={`${s.recycleTableStatus} ${s[`recycleStatus${status}`]}`}>
-                                            {col.status}
-                                        </td>
-                                    )}
-                                )}
-                            </tr>
-                        </tbody>
+                                    <td key={col.id} className={`${s.recycleTableData} ${s.recycleTableDescription} ${s[`recycleTableDescription${card.type}`]}`}>
+                                        <ul>
+                                            {col.description.map(item => 
+                                                <li key={item.id}>{item.text}</li>    
+                                            )}
+                                        </ul>
+                                    </td>
+                                    <td key={col.id} className={`${s.recycleTableData} ${s.recycleTableStatus} ${s[`recycleStatus${status}`]}`}>
+                                        {col.status}
+                                    </td>     
+                                </tr>
+                            )}
+                        )}
                     </table>
                 </div>
             }

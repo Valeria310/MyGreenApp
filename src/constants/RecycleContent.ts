@@ -1,14 +1,33 @@
 import plasticIcon from '../assets/icons/plastic-icon.svg';
 
+import PETE from '../assets/icons/plastic/1_PETE.svg';
+import bottles from '../assets/icons/plastic/1_bottles.svg';
+import HDPE from '../assets/icons/plastic/2_HDPE.svg';
+import shampoo from '../assets/icons/plastic/2_shampoo.svg';
+import hose from '../assets/icons/plastic/3_hose.svg';
+import PVC from '../assets/icons/plastic/3_PVC.svg';
+import canister from '../assets/icons/plastic/4_canister.svg';
+import LDPE from '../assets/icons/plastic/4_LDPE.svg';
+import PP from '../assets/icons/plastic/5_PP.svg';
+import yogurt from '../assets/icons/plastic/5_yogurt.svg';
+import babyBottle from '../assets/icons/plastic/6_baby-bottle.svg';
+import PS from '../assets/icons/plastic/6_PS.svg';
+import OTHER from '../assets/icons/plastic/7_OTHER.svg';
+
 interface RecycleInfoDescription {
   id: number;
   text: string;
 }
 
+interface RecycleInfoImage {
+  id: number;
+  url: string;
+}
+
 interface RecycleInfo {
   id: number;
   name: string;
-  image: string;
+  images: RecycleInfoImage[];
   description: RecycleInfoDescription[];
   status: 'Подлежит переработке' | 'Не подлежит переработке';
 }
@@ -24,7 +43,16 @@ export const PlasticContent: RecycleContent = {
     {
       id: 1,
       name: 'Полиэтилен-терефталат',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: PETE
+        },
+        {
+          id: 2,
+          url: bottles
+        }
+      ],
       description: [
         {
           id: 1,
@@ -39,8 +67,17 @@ export const PlasticContent: RecycleContent = {
     },
     {
       id: 2,
-      name: 'Полиэтилен низкого давления',
-      image: plasticIcon,
+      name: 'Полиэтилен высокой плотности',
+      images: [
+        {
+          id: 1,
+          url: HDPE
+        },
+        {
+          id: 2,
+          url: shampoo
+        }
+      ],
       description: [
         {
           id: 1,
@@ -64,7 +101,16 @@ export const PlasticContent: RecycleContent = {
     {
       id: 3,
       name: 'Поливинил-хлорид',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: PVC
+        },
+        {
+          id: 2,
+          url: hose
+        }
+      ],
       description: [
         {
           id: 1,
@@ -87,12 +133,21 @@ export const PlasticContent: RecycleContent = {
           text: 'Искусственная кожа.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Не подлежит переработке'
     },
     {
       id: 4,
-      name: 'Полиэтилен высокого давления',
-      image: plasticIcon,
+      name: 'Полиэтилен низкой плотности',
+      images: [
+        {
+          id: 1,
+          url: LDPE
+        },
+        {
+          id: 2,
+          url: canister
+        }
+      ],
       description: [
         {
           id: 1,
@@ -120,7 +175,16 @@ export const PlasticContent: RecycleContent = {
     {
       id: 5,
       name: 'Полипропилен',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: PP
+        },
+        {
+          id: 2,
+          url: yogurt
+        }
+      ],
       description: [
         {
           id: 1,
@@ -133,10 +197,6 @@ export const PlasticContent: RecycleContent = {
         {
           id: 3,
           text: 'Корпуса техники.'
-        },
-        {
-          id: 4,
-          text: 'Пластиковое медицинское оборудование.'
         }
       ],
       status: 'Подлежит переработке'
@@ -144,18 +204,51 @@ export const PlasticContent: RecycleContent = {
     {
       id: 6,
       name: 'Полистирол\nи прочие пластики\n(PC, O, OTHER)',
-      image: plasticIcon,
-      description: [
+      images: [
         {
           id: 1,
-          text: 'Одноразовая посуда. Стаканчики и контейнеры для быстрого питания. Термопосуда Пищевая упаковка.'
+          url: PS
         },
         {
           id: 2,
-          text: 'Пенопласт. Смеси пластиков. Поликарбонат.'
+          url: OTHER
         },
         {
           id: 3,
+          url: babyBottle
+        }
+      ],
+      description: [
+        {
+          id: 1,
+          text: 'Одноразовая посуда.'
+        },
+        {
+          id: 2,
+          text: 'Стаканчики и контейнеры для быстрого питания.'
+        },
+        {
+          id: 3,
+          text: 'Термопосуда'
+        },
+        {
+          id: 4,
+          text: 'Пищевая упаковка.'
+        },
+        {
+          id: 5,
+          text: 'Пенопласт.'
+        },
+        {
+          id: 6,
+          text: 'Смеси пластиков.'
+        },
+        {
+          id: 7,
+          text: 'Поликарбонат.'
+        },
+        {
+          id: 8,
           text: 'Детские бутылочки и грушки.'
         }
       ],
@@ -170,7 +263,12 @@ export const PaperContent: RecycleContent = {
     {
       id: 1,
       name: 'Бумажная упаковка\nи Тетра-пак',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -182,7 +280,12 @@ export const PaperContent: RecycleContent = {
     {
       id: 2,
       name: 'Блокноты, тетради, книги, печатная\nи офисная продукция',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -218,7 +321,12 @@ export const PaperContent: RecycleContent = {
     {
       id: 3,
       name: 'Ламинирован-\nная бумага',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -250,7 +358,12 @@ export const PaperContent: RecycleContent = {
     {
       id: 4,
       name: 'Использован-\nная / грязная бумага',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -270,7 +383,12 @@ export const PaperContent: RecycleContent = {
     {
       id: 5,
       name: 'Бумажные стаканы\nи посуда',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -286,7 +404,12 @@ export const PaperContent: RecycleContent = {
     {
       id: 6,
       name: 'Чеки, фиксовая, пергаментная бумага',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -312,7 +435,12 @@ export const GlassContent: RecycleContent = {
     {
       id: 1,
       name: 'Бутылки',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -324,7 +452,12 @@ export const GlassContent: RecycleContent = {
     {
       id: 2,
       name: 'Стекло',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -344,7 +477,12 @@ export const GlassContent: RecycleContent = {
     {
       id: 3,
       name: 'Промышлен-ное стекло\nи зеркала',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -372,7 +510,12 @@ export const GlassContent: RecycleContent = {
     {
       id: 4,
       name: 'Посуда',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -400,7 +543,12 @@ export const GlassContent: RecycleContent = {
     {
       id: 5,
       name: 'Экраны',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -426,7 +574,12 @@ export const LargeContent: RecycleContent = {
     {
       id: 1,
       name: 'Крупно-габаритные отходы',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -446,7 +599,12 @@ export const LargeContent: RecycleContent = {
     {
       id: 2,
       name: 'Строительный мусор',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -464,7 +622,12 @@ export const DangerContent: RecycleContent = {
     {
       id: 1,
       name: 'Батарейки и аккумуляторы',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -484,7 +647,12 @@ export const DangerContent: RecycleContent = {
     {
       id: 2,
       name: 'Лекарства',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -504,7 +672,12 @@ export const DangerContent: RecycleContent = {
     {
       id: 3,
       name: 'Автомобиль-ные отходы',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -528,7 +701,12 @@ export const DangerContent: RecycleContent = {
     {
       id: 4,
       name: 'Лампы',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -544,7 +722,12 @@ export const DangerContent: RecycleContent = {
     {
       id: 5,
       name: 'Ртуть-содержащие',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -562,7 +745,12 @@ export const ElectroContent: RecycleContent = {
     {
       id: 1,
       name: 'Электронная и бытовая техника',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
@@ -596,7 +784,12 @@ export const MetalContent: RecycleContent = {
     {
       id: 1,
       name: 'Металл',
-      image: plasticIcon,
+      images: [
+        {
+          id: 1,
+          url: plasticIcon
+        }
+      ],
       description: [
         {
           id: 1,
