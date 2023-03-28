@@ -28,32 +28,34 @@ export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
             {content &&
                 <div className={s.recycleCardContent}>
                     <table className={s.recycleTable}>
+                        <tbody>
                         {content.columns.map(col => {
                             const status = col.status === 'Подлежит переработке' ? 'Green' : 'Red';
 
                             return (
-                                <tr className={s.recycleTableRow}>
-                                    <th key={col.id} className={s.recycleTableHeading}>{col.name}</th>
-                                    <td key={col.id}  className={s.recycleTableData}>
+                                <tr key={col.id} className={`${s.recycleTableRow} ${s[`recycleTableRow${card.type}`]}`}>
+                                    <th className={s.recycleTableHeading}>{col.name}</th>
+                                    <td className={s.recycleTableData}>
                                         <div className={s.recycleTableImages}>
                                             {col.images.map(image => 
                                                 <img key={image.id} src={image.url} alt={card.type} />
                                             )}
                                         </div>
                                     </td>
-                                    <td key={col.id} className={`${s.recycleTableData} ${s.recycleTableDescription} ${s[`recycleTableDescription${card.type}`]}`}>
+                                    <td className={`${s.recycleTableData} ${s.recycleTableDescription}`}>
                                         <ul>
                                             {col.description.map(item => 
                                                 <li key={item.id}>{item.text}</li>    
                                             )}
                                         </ul>
                                     </td>
-                                    <td key={col.id} className={`${s.recycleTableData} ${s.recycleTableStatus} ${s[`recycleStatus${status}`]}`}>
+                                    <td className={`${s.recycleTableData} ${s.recycleTableStatus} ${s[`recycleStatus${status}`]}`}>
                                         {col.status}
                                     </td>     
                                 </tr>
                             )}
                         )}
+                        </tbody>
                     </table>
                 </div>
             }

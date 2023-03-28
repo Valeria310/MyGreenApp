@@ -14,6 +14,15 @@ import babyBottle from '../assets/icons/plastic/6_baby-bottle.svg';
 import PS from '../assets/icons/plastic/6_PS.svg';
 import OTHER from '../assets/icons/plastic/7_OTHER.svg';
 
+import box from '../assets/icons/paper/1_box.svg';
+import pack from '../assets/icons/paper/1_pack.svg';
+import notepad from '../assets/icons/paper/2_notepad.svg';
+import laminated from '../assets/icons/paper/3_laminated.svg';
+import used from '../assets/icons/paper/4_used.svg';
+import cup from '../assets/icons/paper/5_cup.svg';
+import check from '../assets/icons/paper/6_check.svg';
+
+
 interface RecycleInfoDescription {
   id: number;
   text: string;
@@ -266,13 +275,45 @@ export const PaperContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: box
+        },
+        {
+          id: 2,
+          url: pack
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Картон (в т.ч. цветной).\nУпаковка без блестящих включений, липкой ленты, пленки.\nЧистая бумажная упаковка.\nБумажные пакеты (от муки и сахара)\nКоробки от косметики.\nБумажные конфети, из шредера.\nВтулки от туалетной бумаги и бумажных полотенец.\nУпаковка от соков и молока'
+          text: 'Картон (в т.ч. цветной).'
+        },
+        {
+          id: 2,
+          text: 'Упаковка без блестящих включений, липкой ленты, пленки.'
+        },
+        {
+          id: 3,
+          text: 'Чистая бумажная упаковка.'
+        },
+        {
+          id: 4,
+          text: 'Бумажные пакеты (от муки и сахара).'
+        },
+        {
+          id: 5,
+          text: 'Коробки от косметики.'
+        },
+        {
+          id: 6,
+          text: 'Бумажные конфети, из шредера.'
+        },
+        {
+          id: 7,
+          text: 'Втулки от туалетной бумаги и бумажных полотенец.'
+        },
+        {
+          id: 8,
+          text: 'Упаковка от соков и молока.'
         }
       ],
       status: 'Подлежит переработке'
@@ -283,37 +324,53 @@ export const PaperContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: notepad
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Блокноты\nТетради\nЕжедневники\nКниги\nГазеты'
+          text: 'Блокноты.'
         },
         {
           id: 2,
-          text: 'Рекламные буклеты и брошюры'
+          text: 'Тетради.'
         },
         {
           id: 3,
-          text: 'Глянцевые\nжурналы'
+          text: 'Ежедневники.'
         },
         {
           id: 4,
-          text: 'Инструкции'
+          text: 'Книги.'
         },
         {
           id: 5,
-          text: 'Писчая бумага'
+          text: 'Газеты.'
         },
         {
           id: 6,
-          text: 'Календари'
+          text: 'Рекламные буклеты и брошюры.'
         },
         {
           id: 7,
-          text: 'Конверты без пластиковых\nокошек'
+          text: 'Глянцевые журналы.'
+        },
+        {
+          id: 8,
+          text: 'Инструкции.'
+        },
+        {
+          id: 9,
+          text: 'Писчая бумага.'
+        },
+        {
+          id: 10,
+          text: 'Календари.'
+        },
+        {
+          id: 11,
+          text: 'Конверты без пластиковых окошек.'
         }
       ],
       status: 'Подлежит переработке'
@@ -324,44 +381,48 @@ export const PaperContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: laminated
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Фотографии\nОбои'
+          text: 'Фотографии.'
         },
         {
           id: 2,
-          text: 'Упаковка пищевых товаров (от сливочного масла, творога, конфет).'
+          text: 'Обои.'
         },
         {
           id: 3,
-          text: 'Бумажный скотч.'
+          text: 'Упаковка пищевых товаров (от сливочного масла, творога, конфет).'
         },
         {
           id: 4,
-          text: 'Стикеры для заметок.'
+          text: 'Бумажный скотч.'
         },
         {
           id: 5,
-          text: 'Твердые переплеты книг.'
+          text: 'Стикеры для заметок.'
         },
         {
           id: 6,
-          text: 'Подарочные блестящие пакеты'
+          text: 'Твердые переплеты книг.'
+        },
+        {
+          id: 7,
+          text: 'Подарочные блестящие пакеты.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Не подлежит переработке'
     },
     {
       id: 4,
-      name: 'Использован-\nная / грязная бумага',
+      name: 'Использованная или грязная бумага',
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: used
         }
       ],
       description: [
@@ -378,7 +439,7 @@ export const PaperContent: RecycleContent = {
           text: 'Грязная или мокрая бумага, картон'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Не подлежит переработке'
     },
     {
       id: 5,
@@ -386,7 +447,7 @@ export const PaperContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: cup
         }
       ],
       description: [
@@ -399,7 +460,7 @@ export const PaperContent: RecycleContent = {
           text: 'Одноразовая бумажная посуда'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Не подлежит переработке'
     },
     {
       id: 6,
@@ -407,7 +468,7 @@ export const PaperContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: check
         }
       ],
       description: [

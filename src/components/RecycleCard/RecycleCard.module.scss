@@ -93,16 +93,35 @@
     &Row {  
         border-top: 1px solid $color-black;
     }
+    &Rowpaper {
+        border-top: 1px solid $color-black;
+    }
+    &Rowglass {
+        border-top: 1px solid $color-black;
+    }
+    
+    &Rowlarge {
+        border-top: 1px solid $color-black;
+    }
+    &Rowelectro {
+        border-top: 1px solid $color-black;
+    }
+    &Rowdanger {
+        border-top: 1px solid $color-black;
+    }
+    &Rowmetal {
+        border-top: 1px solid $color-black;
+    }
     &Heading {
         font-weight: 500;
         font-size: 20px;
         line-height: 26px;
         color: $color-black;
-        padding: 12.5px 15px;
+        padding: 10px 15px;
         white-space: pre-line;
     }
     &Heading, &Data {
-        width: 195px;
+        min-width: 195px;
         border-style: solid;
         border-color: $color-black;
         border-width: 0 1px;
@@ -114,12 +133,22 @@
         border-right: none;
     }
     &Row:nth-child(5) {
-        .recycleTableDescriptionplastic {
+        .recycleTableHeading {
+            padding: 12.5px 15px;
+        }
+    }
+    &Rowplastic:nth-child(5) {
+        .recycleTableDescription {
             padding: 20px;
         }
     }
     &Row:last-child {
-        .recycleTableDescriptionplastic {
+        .recycleTableHeading {
+            padding: 16px 15px;
+        }
+    }
+    &Rowplastic:last-child {
+        .recycleTableDescription {
             padding: 9.5px 20px;
         }
     }
@@ -130,7 +159,6 @@
         gap: 10px;
         justify-content: center;
         align-items: center;
-        width: 195px;
         height: 100%;
         padding: 8px;
         &:last-child {
@@ -157,29 +185,6 @@
                 line-height: 16px;
                 color: $color-black;
             }
-        }
-        &paper {
-            padding: 20px 19px;
-        }
-        &glass {
-            padding: 20px 19px;
-            height: 482px;
-        }
-        &large {
-            padding: 20px 19px;
-            height: 288px;
-        }
-        &electro {
-            padding: 20px 19px;
-            height: 375px;
-        }
-        &danger {
-            padding: 20px 19px;
-            height: 288px;
-        }
-        &metal {
-            padding: 20px 19px;
-            height: 375px;
         }
     }
     &Status {
