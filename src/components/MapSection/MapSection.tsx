@@ -5,6 +5,8 @@ import s from './MapSection.module.scss';
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
 import {filterButtons, FilterButtonsObjType, filterType, markers, waste} from "../../constants/MapState";
 import {FilterButton} from "./FilterButton";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
+import 'react-leaflet-markercluster/dist/styles.min.css';
 
 
 function MapSection() {
@@ -34,6 +36,7 @@ function MapSection() {
             <div className={s.mapWrapper}>
                 <h2>Куда сдать?</h2>
                 <div className={s.buttonsWrapper}>
+                    <MarkerClusterGroup chunkedLoading>
                     {filterButtons.map((f, i) =>
                         <FilterButton
                             key={i}
@@ -42,6 +45,7 @@ function MapSection() {
                             isActive={f.isActive}
                         />
                     )}
+                        </MarkerClusterGroup>
                 </div>
                 <div>
                     <input placeholder={"Искать по адресу"} className={s.searchField}/></div>
