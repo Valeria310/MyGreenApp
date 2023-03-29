@@ -94,32 +94,29 @@
         border-top: 1px solid $color-black;
     }
     &Rowpaper {
-        border-top: 1px solid $color-black;
         &:last-child .recycleTableHeading {
             padding: 16px 15px;
         }
     }
     &Rowglass {
-        border-top: 1px solid $color-black;
         &:first-child .recycleTableHeading {
             padding: 28px 15px;
         }
     }
     
     &Rowlarge {
-        border-top: 1px solid $color-black;
+        min-height: 83px;
     }
     &Rowelectro {
-        border-top: 1px solid $color-black;
         .recycleTableHeading {
             padding: 10px 13px;
         }
     }
     &Rowdanger {
-        border-top: 1px solid $color-black;
+        min-height: 83px;
     }
     &Rowmetal {
-        border-top: 1px solid $color-black;
+        min-height: 83px;
     }
     &Heading {
         font-weight: 500;
