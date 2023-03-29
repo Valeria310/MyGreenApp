@@ -32,7 +32,7 @@ export const Header = () => {
         }, 1000);
         return () => window.removeEventListener("scroll", scrollHandler, false)
     })
-    return (<header className='header' id='header'>
+    return (<header className='header visible' id='header'>
         <div className="container">
             <a href='#about' className="logo"></a>
             <Navigation />

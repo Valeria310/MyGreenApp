@@ -10,6 +10,8 @@
     background: $color-white;
 
     & .container {
+        margin: 0 auto;
+        max-width: 1194px;
         display: flex;
         align-items: center;
         padding: 12px;
