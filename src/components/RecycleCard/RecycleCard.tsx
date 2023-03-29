@@ -17,7 +17,6 @@ export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
                 <div className={s.recycleCardDescription}>
                     <div className={s.recycleCardInfo}>
                         <h3 className={s.recycleCardHeading}>{card.heading}</h3>
-                        <p className={s.recycleCardText}>{card.text}</p>
                     </div>
                     <RecycleButton
                         onClick={() => setExpanded(!isExpanded)}

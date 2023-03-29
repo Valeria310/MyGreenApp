@@ -98,6 +98,9 @@
     }
     &Rowglass {
         border-top: 1px solid $color-black;
+        &:first-child .recycleTableHeading {
+            padding: 28px 15px;
+        }
     }
     
     &Rowlarge {

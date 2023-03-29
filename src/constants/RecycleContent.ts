@@ -1,7 +1,7 @@
 import plasticIcon from '../assets/icons/plastic-icon.svg';
 
 import PETE from '../assets/icons/plastic/1_PETE.svg';
-import bottles from '../assets/icons/plastic/1_bottles.svg';
+import plBottles from '../assets/icons/plastic/1_bottles.svg';
 import HDPE from '../assets/icons/plastic/2_HDPE.svg';
 import shampoo from '../assets/icons/plastic/2_shampoo.svg';
 import hose from '../assets/icons/plastic/3_hose.svg';
@@ -22,6 +22,11 @@ import used from '../assets/icons/paper/4_used.svg';
 import cup from '../assets/icons/paper/5_cup.svg';
 import check from '../assets/icons/paper/6_check.svg';
 
+import glBottles from '../assets/icons/glass/1_bottles.svg';
+import jar from '../assets/icons/glass/2_jar.svg';
+import mirror from '../assets/icons/glass/3_mirror.svg';
+import utensil from '../assets/icons/glass/4_utensil.svg';
+import display from '../assets/icons/glass/5_display.svg';
 
 interface RecycleInfoDescription {
   id: number;
@@ -59,7 +64,7 @@ export const PlasticContent: RecycleContent = {
         },
         {
           id: 2,
-          url: bottles
+          url: plBottles
         }
       ],
       description: [
@@ -499,13 +504,13 @@ export const GlassContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: glBottles
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Бутылки от:\nнапитков\nпива\nвина\nшампанского\nкрепкого алкоголя'
+          text: 'Бутылки от напитков, пива, вина, шампанского, крепкого алкоголя.'
         }
       ],
       status: 'Подлежит переработке'
@@ -516,7 +521,7 @@ export const GlassContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: jar
         }
       ],
       description: [
@@ -526,7 +531,7 @@ export const GlassContent: RecycleContent = {
         },
         {
           id: 2,
-          text: 'Баночки от\nдетского питания,'
+          text: 'Баночки от детского питания,'
         },
         {
           id: 3,
@@ -537,36 +542,36 @@ export const GlassContent: RecycleContent = {
     },
     {
       id: 3,
-      name: 'Промышлен-ное стекло\nи зеркала',
+      name: 'Промышленное стекло и зеркала',
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: mirror
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Оконные'
+          text: 'Оконные стекла.'
         },
         {
           id: 2,
-          text: 'Мебельные'
+          text: 'Мебельные стекла.'
         },
         {
           id: 3,
-          text: 'Автомобильные'
+          text: 'Автомобильные стекла.'
         },
         {
           id: 4,
-          text: 'Армированные'
+          text: 'Армированные стекла.'
         },
         {
           id: 5,
-          text: 'Зеркала'
+          text: 'Зеркала.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Не подлежит переработке'
     },
     {
       id: 4,
@@ -574,32 +579,32 @@ export const GlassContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: utensil
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Стеклянная'
+          text: 'Стеклянная посуда.'
         },
         {
           id: 2,
-          text: 'Жаропрочная'
+          text: 'Жаропрочная посуда.'
         },
         {
           id: 3,
-          text: 'Хрусталь'
+          text: 'Хрусталь.'
         },
         {
           id: 4,
-          text: 'Керамика'
+          text: 'Керамика.'
         },
         {
           id: 5,
           text: 'Фарфор'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Не подлежит переработке'
     },
     {
       id: 5,
@@ -607,24 +612,28 @@ export const GlassContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: display
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Мониторов'
+          text: 'Экраны мониторов.'
         },
         {
           id: 2,
-          text: 'Телевизоров'
+          text: 'Экраны телевизоров.'
         },
         {
           id: 3,
-          text: 'Гаджетов'
+          text: 'Экраны телефонов.'
+        },
+        {
+          id: 4,
+          text: 'Экраны планшетов.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Не подлежит переработке'
     }
   ]
 }
