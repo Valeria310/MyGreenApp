@@ -1,5 +1,3 @@
-import plasticIcon from '../assets/icons/plastic-icon.svg';
-
 import PETE from '../assets/icons/plastic/1_PETE.svg';
 import plBottles from '../assets/icons/plastic/1_bottles.svg';
 import HDPE from '../assets/icons/plastic/2_HDPE.svg';
@@ -38,6 +36,8 @@ import pills from '../assets/icons/danger/2_pills.svg';
 import tires from '../assets/icons/danger/3_tires.svg';
 import lamp from '../assets/icons/danger/4_lamp.svg';
 import thermometer from '../assets/icons/danger/5_thermometer.svg';
+
+import metal from '../assets/icons/metal/1_metal.svg';
 
 interface RecycleInfoDescription {
   id: number;
@@ -868,7 +868,7 @@ export const MetalContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: metal
         }
       ],
       description: [
@@ -878,18 +878,22 @@ export const MetalContent: RecycleContent = {
         },
         {
           id: 2,
-          text: 'Лом и отходы черных металлов (чугунные изделия и ванны) '
+          text: 'Лом и отходы черных металлов (чугунные изделия и ванны).'
         },
         {
           id: 3,
-          text: 'Инструмент. '
+          text: 'Инструмент.'
         },
         {
           id: 4,
-          text: 'Различное оборудование и его корпуса'
+          text: 'Аллюминивые банки'
+        },
+        {
+          id: 5,
+          text: 'Различное оборудование и его корпуса.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Подлежит\nпереработке\nв специальных пунктах приема'
     }
   ]
 }
