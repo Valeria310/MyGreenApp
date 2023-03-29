@@ -1,0 +1,256 @@
+@import "../../index.scss";
+
+$duration: 3s;
+
+.parallax {
+    max-width: 1440px;
+    height: 2048px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    margin-top: -106px;
+    transition: all $duration;
+    &.active {
+        margin-top: 0;
+        height: 902px;
+        top: -106px;
+    }
+    &_img {
+        width: 100%;
+        height: 1027px;
+        background-image: url(../../assets/images/parallax-img.png);
+        background-size: cover;
+        background-position-y: top;
+        background-repeat: no-repeat;
+        &.active {
+            height: 902px;
+        }
+    }
+}
+
+.info {
+    &_title {
+        position: absolute;
+        left: 50%;
+        transform: translate(-104%, 0);
+        top: 198px;
+        font-family: $font-primary;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 80px;
+        line-height: 100%;
+        color: #1B7A59;
+        margin: 0;
+        transition: all $duration;
+        &.active {
+            transform: translate(-110%, 0);
+            top: -230px;
+        }
+        & span {
+            color: #2073E3;
+        }
+    }
+    
+    &_text {
+        position: absolute;
+        left: 50%;
+        transform: translate(-33%, 0);
+        top: 299px;
+        font-family: $font-primary;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 40px;
+        line-height: 70px;
+        color: $color-black;
+        margin: 0;
+        letter-spacing: 0.2px;
+        transition: all $duration;
+        &.active {
+            top: -127px;
+        }
+    }
+}
+
+.about {
+    width: 830px;
+    font-family: $font-primary;
+    color: #FFFFFF;
+    position: absolute;
+    opacity: 0;
+    left: 50%;
+    top: 170px;
+    transform: translate(-50%, 0);
+    transition: all $duration;
+    &.active {
+        opacity: 1;
+    }
+
+    &_bg {
+        background-image: url(../../assets/images/text_bg.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: 0;
+        height: 1152px;
+        width: 100%;
+        position: absolute;
+        top: 898px;
+        z-index: 2;
+        transition: all $duration;
+        &.active {
+            background-image: url(../../assets/images/text_bg-after.png);
+            top: 419px;
+            height: 481px;
+        }
+    }
+
+    &_title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 105%;
+        margin: 0;
+        margin-block-end: 0;
+        margin-bottom: 30px;
+        letter-spacing: 0.6px;
+    }
+
+    &_text {
+        margin: 0;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 31px;
+        letter-spacing: 0.3px;
+    }
+}
+
+.trees {
+    top: 369px;
+    width: 100%;
+    height: 556px;
+    left: 50%;
+    transform: translate(-50%);
+    background-image: url(../../assets/images/trees.png);
+    background-size: 112% auto;
+    background-position-x: 44%;
+    background-repeat: no-repeat;
+    position: absolute;
+    transition: all $duration;
+    z-index: 3;
+    &.active {
+        top: 98px;
+        height: 378px;
+        width: 84%;
+        transform: translate(-48%);
+        background-image: url(../../assets/images/trees-after.png);
+        background-size: contain;
+    }
+}
+
+.hill {
+    position: absolute;
+    top: 598px;
+    width: 100%;
+    height: 560px;
+    background-image: url(../../assets/images/hill.png);
+    transition: all $duration;
+    &.active {
+        top: 158px;
+        height: 356px;
+        background-image: url(../../assets/images/hill-after.png);
+    }
+}
+
+.big_trees {
+    position: absolute;
+    top: 610px;
+    width: 100%;
+    height: 522px;
+    background-image: url(../../assets/images/big_trees.png);
+    background-size: cover;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    transition: all $duration;
+    &.active {
+        top: 58px;
+        height: 535px;
+        background-image: url(../../assets/images/big_trees-after.png);
+    }
+}
+
+.dark_hill {
+    position: absolute;
+    top: 700px;
+    width: 100%;
+    height: 460px;
+    background-image: url(../../assets/images/dark_hill.png);
+    background-position-x: center;
+    background-size: 101% auto;
+    background-repeat: no-repeat;
+    transition: all $duration;
+    &.active {
+        top: 226px;
+        height: 302px;
+        background-image: url(../../assets/images/dark_hill-after.png);
+    }
+}
+
+.garbage {
+    &_r {
+        position: absolute;
+        top: 759px;
+        right: 136px;
+        width: 370px;
+        height: 223px;
+        background-image: url(../../assets/images/garbage.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: all $duration;
+        &.active {
+            top: 588px;
+            right: 0;
+            width: 129px;
+            height: 228px;
+        }
+    }
+    &_l {
+        position: absolute;
+        width: 370px;
+        height: 223px;
+        top: 754px;
+        left: 13px;
+        background-image: url(../../assets/images/garbage.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: all $duration;
+        &.active {
+            width: 154px;
+            height: 228px;
+            left: 0;
+            top: 575px;
+        }
+    }
+}
+
+.small_trees {
+    position: absolute;
+    top: 462px;
+    left: 50%;
+    width: 77.6%;
+    height: 502px;
+    transform: translateX(-49%);
+    background-image: url(../../assets/images/small_trees.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all $duration;
+    &.active {
+        background-image: url(../../assets/images/small_trees-after.png);
+        top: 145px;
+        width: 47.7%;
+        height: 306px;
+        transform: translateX(-55%);
+    }
+}

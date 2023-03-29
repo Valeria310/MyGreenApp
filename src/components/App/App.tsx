@@ -13,9 +13,9 @@ export const App = () => (
         <Header/>
         <ParallaxSection/>
         <NavSection/>
-        <Ticker/>
         <RecycleSection/>
         <MapSection/>
+        <Ticker/>
         <Footer/>
     </div>
 );
