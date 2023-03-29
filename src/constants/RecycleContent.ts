@@ -33,6 +33,12 @@ import garbage from '../assets/icons/large/2_garbage.svg';
 
 import appliance from '../assets/icons/electro/1_appliance.svg';
 
+import accumulator from '../assets/icons/danger/1_accumulator.svg';
+import pills from '../assets/icons/danger/2_pills.svg';
+import tires from '../assets/icons/danger/3_tires.svg';
+import lamp from '../assets/icons/danger/4_lamp.svg';
+import thermometer from '../assets/icons/danger/5_thermometer.svg';
+
 interface RecycleInfoDescription {
   id: number;
   text: string;
@@ -700,7 +706,7 @@ export const DangerContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: accumulator
         }
       ],
       description: [
@@ -714,10 +720,10 @@ export const DangerContent: RecycleContent = {
         },
         {
           id: 3,
-          text: 'Литий-ионные батареи'
+          text: 'Литий-ионные батареи.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Подлежит\nпереработке\nв специальных пунктах приема'
     },
     {
       id: 2,
@@ -725,7 +731,7 @@ export const DangerContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: pills
         }
       ],
       description: [
@@ -739,39 +745,39 @@ export const DangerContent: RecycleContent = {
         },
         {
           id: 3,
-          text: 'Химические и лекарственнеы отходы'
+          text: 'Химические и лекарственнеы отходы.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Подлежит\nпереработке\nв специальных пунктах приема'
     },
     {
       id: 3,
-      name: 'Автомобиль-ные отходы',
+      name: 'Автомобильные отходы',
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: tires
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Шины'
+          text: 'Шины.'
         },
         {
           id: 2,
-          text: 'Масла'
+          text: 'Масла.'
         },
         {
           id: 3,
-          text: 'Аккумуляторы'
+          text: 'Аккумуляторы.'
         },
         {
           id: 4,
-          text: 'Катализаторы'
+          text: 'Катализаторы.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Подлежит\nпереработке\nв специальных пунктах приема'
     },
     {
       id: 4,
@@ -779,20 +785,20 @@ export const DangerContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: lamp
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Люминесцентные'
+          text: 'Люминесцентные лампы'
         },
         {
           id: 2,
-          text: 'Светодиодные'
+          text: 'Светодиодные лампы'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Подлежит\nпереработке\nв специальных пунктах приема'
     },
     {
       id: 5,
@@ -800,7 +806,7 @@ export const DangerContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: thermometer
         }
       ],
       description: [
@@ -809,7 +815,7 @@ export const DangerContent: RecycleContent = {
           text: 'Градусники'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Подлежит\nпереработке\nв специальных пунктах приема'
     }
   ]
 }
