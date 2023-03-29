@@ -93,6 +93,11 @@
     &Row {  
         border-top: 1px solid $color-black;
     }
+    &Rowplastic:last-child {
+        .recycleTableImages {
+            padding: 5px;
+        }
+    }
     &Rowpaper {
         &:last-child .recycleTableHeading {
             padding: 16px 15px;
