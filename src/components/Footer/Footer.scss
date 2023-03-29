@@ -56,17 +56,17 @@
     }
 }
 
-.big_trees {
+.footer_big_trees {
     position: absolute;
     top: 94px;
     width: 100%;
     height: 507px;
-    background-image: url(../../assets/images/footer_trees.png);
+    background-image: url(../../assets/images/footer_big_trees.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-.darh_hill {
+.footer_dark_hill {
     position: absolute;
     top: 279px;
     width: 100%;
@@ -75,22 +75,24 @@
     background-repeat: no-repeat;
 }
 
-.small_trees {
+.footer_small_trees {
     position: absolute;
     top: 182px;
     left: 50%;
-    width: 960px;
+    width: 67%;
     height: 362px;
-    transform: translateX(calc(-50% - 78px));
+    transform: translateX(-58%);
     background-image: url(../../assets/images/footer_small_trees.png);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
-.hill {
+.footer_hill {
     position: absolute;
     top: 200px;
     width: 100%;
     height: 421px;
-    background-image: url(../../assets/images/footer_hill.png);
+    background-image: url(../../assets/images/hill-after.png);
+    background-size: 119% auto;
+    background-position-x: center;
 }
