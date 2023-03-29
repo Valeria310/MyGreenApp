@@ -28,6 +28,9 @@ import mirror from '../assets/icons/glass/3_mirror.svg';
 import utensil from '../assets/icons/glass/4_utensil.svg';
 import display from '../assets/icons/glass/5_display.svg';
 
+import sofa from '../assets/icons/large/1_sofa.svg';
+import garbage from '../assets/icons/large/2_garbage.svg';
+
 interface RecycleInfoDescription {
   id: number;
   text: string;
@@ -43,7 +46,7 @@ interface RecycleInfo {
   name: string;
   images: RecycleInfoImage[];
   description: RecycleInfoDescription[];
-  status: 'Подлежит переработке' | 'Не подлежит переработке';
+  status: 'Подлежит переработке' | 'Не подлежит переработке' | 'Подлежит\nпереработке\nв специальных пунктах приема';
 }
 
 export interface RecycleContent {
@@ -647,24 +650,24 @@ export const LargeContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: sofa
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Диваны'
+          text: 'Диваны.'
         },
         {
           id: 2,
-          text: 'Шкафы'
+          text: 'Шкафы.'
         },
         {
           id: 3,
-          text: 'Другие габаритные предметы'
+          text: 'Другие габаритные предметы.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Подлежит\nпереработке\nв специальных пунктах приема'
     },
     {
       id: 2,
@@ -672,7 +675,7 @@ export const LargeContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: garbage
         }
       ],
       description: [
@@ -681,7 +684,7 @@ export const LargeContent: RecycleContent = {
           text: 'Строительный мусор'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Подлежит\nпереработке\nв специальных пунктах приема'
     }
   ]
 }

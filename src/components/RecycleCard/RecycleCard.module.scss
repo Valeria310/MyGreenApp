@@ -196,7 +196,8 @@
         line-height: 23px;
         color: $color-black;
         padding: 15px 38px;
-        text-align: center;
+        text-align: left;
+        white-space: pre-line;
     }
 }
 
@@ -205,6 +206,10 @@
         background: #FF9595;
     }
     &Green {
+        background: #94B9AB;
+    }
+    &SubGreen {
+        padding: 10.5px 20px;
         background: #94B9AB;
     }
 }
