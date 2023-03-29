@@ -1,51 +1,64 @@
-import { FC } from 'react';
+    import { FC, useState } from 'react';
+
 import { RecycleCardProps } from './RecycleCardProps';
+import { RecycleButton } from './RecycleButton';
 
-import './RecycleCard.scss';
+import s from './RecycleCard.module.scss';
 
-export const RecycleCard: FC<RecycleCardProps> = ({card}) => (
-    <div className={`recycle-card ${card.direction}-${card.size}-card ${card.tone}-card`}>
-        {(card.direction === 'vert' || card.size === 'small') &&
-            <div className='recycle-card__heading'>{card.heading}</div>
-        }
-        {card.image && 
-            <div className="recycle-card__image">
-                <img className={`${card.direction}-${card.size}-image`} src={card.image} alt='card' />
-            </div>
-        }
-        {card.direction === 'vert' && card.size === 'big' &&
-            <div className='underliner' />
-        }
-        {card.direction === 'hori' && card.size === 'big' &&
-            <div className='hori-big-card__info'>
-                <div className='recycle-card__heading'>{card.heading}</div>
-                <div className='recycle-card__text'>
-                    {card.text}
+
+export const RecycleCard: FC<RecycleCardProps> = ({card}) => {
+    const [isExpanded, setExpanded] = useState(false);
+    const { content } = card;
+
+    return (
+        <div className={`${s.recycleCard} ${card.type}Card ${isExpanded ? s.recycleCardExpanded : ''}`}>
+            <div className={s.recycleCardHeader}>
+                <img src={card.image} alt={card.type} className={s.recycleCardImage} />
+                <div className={s.recycleCardDescription}>
+                    <div className={s.recycleCardInfo}>
+                        <h3 className={s.recycleCardHeading}>{card.heading}</h3>
+                    </div>
+                    <RecycleButton
+                        onClick={() => setExpanded(!isExpanded)}
+                        state={content && isExpanded ? 'cross' : 'arrow'}
+                    />
                 </div>
-                <button className='button recycle-card__button' type='button'>
-                    {card.buttonValue}
-                </button>
             </div>
-        }
-        {card.direction === 'hori' && card.size === 'small' &&
-            <div className={`hori-small-card__info`}>
-                <div className='recycle-card__text'>
-                    {card.text}
+            {content &&
+                <div className={s.recycleCardContent}>
+                    <table className={s.recycleTable}>
+                        <tbody>
+                        {content.columns.map(col => {
+                            const status = col.status === 'Не подлежит переработке' ? 'Red' :
+                                col.status === 'Подлежит переработке' ? 'Green' : 'SubGreen';
+
+                            return (
+                                <tr key={col.id} className={`${s.recycleTableRow} ${s[`recycleTableRow${card.type}`]}`}>
+                                    <th className={s.recycleTableHeading}>{col.name}</th>
+                                    <td className={s.recycleTableData}>
+                                        <div className={s.recycleTableImages}>
+                                            {col.images.map(image => 
+                                                <img key={image.id} src={image.url} alt={card.type} />
+                                            )}
+                                        </div>
+                                    </td>
+                                    <td className={`${s.recycleTableData} ${s.recycleTableDescription}`}>
+                                        <ul>
+                                            {col.description.map(item => 
+                                                <li key={item.id}>{item.text}</li>    
+                                            )}
+                                        </ul>
+                                    </td>
+                                    <td className={`${s.recycleTableData} ${s.recycleTableStatus} ${s[`recycleStatus${status}`]}`}>
+                                        {col.status}
+                                    </td>     
+                                </tr>
+                            )}
+                        )}
+                        </tbody>
+                    </table>
                 </div>
-                <button className='button recycle-card__button' type='button'>
-                    {card.buttonValue}
-                </button>
-            </div>
-        }
-        {(card.direction !== 'hori') &&
-            <>
-                <div className='recycle-card__text'>
-                    {card.text}
-                </div>
-                <button className='button recycle-card__button' type='button'>
-                    {card.buttonValue}
-                </button>
-            </>
-        }
-    </div>
-)
+            }
+        </div>
+    )
+}

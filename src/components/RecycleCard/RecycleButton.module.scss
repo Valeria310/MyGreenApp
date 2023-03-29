@@ -1,0 +1,44 @@
+@import '../../index.scss';
+
+.recycleCardButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background-color: #1B7A59;;
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  @media screen and (min-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+svg {
+  transition: transform .35s;
+}
+
+svg.cross {
+  fill: $color-white;
+  transform: scale(0.6);
+  @media screen and (min-width: 768px) {
+    transform: scale(1);
+  }
+}
+
+svg.arrow {
+  transform: translateY(5px) scale(0.6);
+  @media screen and (min-width: 768px) {
+    transform: translateY(7px) scale(1);
+  }
+
+  path:first-child {
+    d: path('M14.2852 14.5205L27.001 2.19532');
+  }
+  path:last-child {
+    d: path('M14.1621 14.5205L2.2832 2.02051');
+  }
+}

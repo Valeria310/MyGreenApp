@@ -1,0 +1,26 @@
+@import '../../index.scss';
+
+.recycle {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.recycleWrapper {
+    padding: 20px;
+    background: #CAE3F9;
+    @media screen and (min-width: 1200px) {
+        padding: 50px 135px;
+    }
+}
+
+.recycleHeading {
+    margin: 0 0 50px;
+    letter-spacing: 0.4px;
+}
+
+.recycleInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+}
