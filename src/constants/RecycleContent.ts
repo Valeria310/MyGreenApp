@@ -31,6 +31,8 @@ import display from '../assets/icons/glass/5_display.svg';
 import sofa from '../assets/icons/large/1_sofa.svg';
 import garbage from '../assets/icons/large/2_garbage.svg';
 
+import appliance from '../assets/icons/electro/1_appliance.svg';
+
 interface RecycleInfoDescription {
   id: number;
   text: string;
@@ -821,13 +823,13 @@ export const ElectroContent: RecycleContent = {
       images: [
         {
           id: 1,
-          url: plasticIcon
+          url: appliance
         }
       ],
       description: [
         {
           id: 1,
-          text: 'Стиральная машина'
+          text: 'Стиральная машина.'
         },
         {
           id: 2,
@@ -846,7 +848,7 @@ export const ElectroContent: RecycleContent = {
           text: 'Другая техника.'
         }
       ],
-      status: 'Подлежит переработке'
+      status: 'Подлежит\nпереработке\nв специальных пунктах приема'
     }
   ]
 }

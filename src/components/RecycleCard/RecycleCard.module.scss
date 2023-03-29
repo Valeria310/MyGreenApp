@@ -95,6 +95,9 @@
     }
     &Rowpaper {
         border-top: 1px solid $color-black;
+        &:last-child .recycleTableHeading {
+            padding: 16px 15px;
+        }
     }
     &Rowglass {
         border-top: 1px solid $color-black;
@@ -108,6 +111,9 @@
     }
     &Rowelectro {
         border-top: 1px solid $color-black;
+        .recycleTableHeading {
+            padding: 10px 13px;
+        }
     }
     &Rowdanger {
         border-top: 1px solid $color-black;
@@ -143,11 +149,6 @@
     &Rowplastic:nth-child(5) {
         .recycleTableDescription {
             padding: 20px;
-        }
-    }
-    &Row:last-child {
-        .recycleTableHeading {
-            padding: 16px 15px;
         }
     }
     &Rowplastic:last-child {
