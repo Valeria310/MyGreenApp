@@ -40,6 +40,7 @@
     margin: 0;
     font-size: 38px;
     line-height: 40px;
+    letter-spacing: 0.4px;
     @media screen and (min-width: 1200px) {
         font-size: 48px;
         line-height: 50px;
@@ -49,6 +50,7 @@
 .navCardText {
     display: flex;
     flex-direction: column;
+    letter-spacing: 0.2px;
     row-gap: 26px;
     font-size: 20px;
     line-height: 26px;
@@ -64,6 +66,7 @@
         display: flex;
         font-size: 24px;
         line-height: 31px;
+        letter-spacing: 0.2px;
         color: #1B7A59;
         text-decoration: none;
     }
