@@ -5,9 +5,14 @@ import s from './MapSection.module.scss';
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
 import {filterButtons, FilterButtonsObjType, filterType, markers, waste} from "../../constants/MapState";
 import {FilterButton} from "./FilterButton";
-import MarkerClusterGroup from 'react-leaflet-markercluster';
-import 'react-leaflet-markercluster/dist/styles.min.css';
+import MarkerClusterGroup from 'react-leaflet-cluster';
+import L from "leaflet";
 
+
+const customIcon = new L.Icon({
+    iconUrl: require("../../assets/images/point_icon.svg").default,
+    iconSize: new L.Point(27, 32)
+});
 
 function MapSection() {
 
@@ -29,6 +34,7 @@ function MapSection() {
         }
     }
 
+    const token = 'xZpKoSPd2lxvjHa2OY9UT0kBT6StaY0c7pnbhNF1RPCPKAexPRuo2P8x8KKICtO3';
 
     return (
 
@@ -36,7 +42,8 @@ function MapSection() {
             <div className={s.mapWrapper}>
                 <h2>Куда сдать?</h2>
                 <div className={s.buttonsWrapper}>
-                    <MarkerClusterGroup chunkedLoading>
+
+
                     {filterButtons.map((f, i) =>
                         <FilterButton
                             key={i}
@@ -45,7 +52,7 @@ function MapSection() {
                             isActive={f.isActive}
                         />
                     )}
-                        </MarkerClusterGroup>
+
                 </div>
                 <div>
                     <input placeholder={"Искать по адресу"} className={s.searchField}/></div>
@@ -53,13 +60,12 @@ function MapSection() {
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
                                   className={s.mapContainer}>
                         <TileLayer
-                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
+                            url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
                         />
-
-                        {
-                            filteredMarkers.map((m, i) =>
-                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]}>
+                        <MarkerClusterGroup chunkedLoading>
+                        {filteredMarkers.map((m, i) =>
+                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
                                     <Popup>
                                         <h3>{m.title}</h3>
                                         {m.address}<br/>
@@ -68,6 +74,7 @@ function MapSection() {
                                     </Popup>
                                 </Marker> : ""
                             )}
+                        </MarkerClusterGroup>
                     </MapContainer>
                 </div>
             </div>
