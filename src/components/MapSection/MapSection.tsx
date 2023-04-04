@@ -64,7 +64,7 @@ function MapSection() {
                             url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
                         />
                         <MarkerClusterGroup chunkedLoading>
-                        {filteredMarkers.map((m, i) =>
+                            {filteredMarkers.map((m, i) =>
                                 m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
                                     <Popup>
                                         <h3>{m.title}</h3>
