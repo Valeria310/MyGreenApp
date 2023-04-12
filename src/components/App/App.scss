@@ -63,8 +63,10 @@ h2 {
 //.leaflet-bottom {
 //    z-index: auto;
 //}
-//.leaflet-pane {
-//    z-index: auto;
+//.leaflet-pane,
+//.leaflet-map-pane
+//{
+//    transform: translate3d(0px, 0px, 0px) !important;
 //}
 //.leaflet-control {
 //    z-index: auto;
@@ -72,7 +74,4 @@ h2 {
 //.leaflet-top,
 //.leaflet-bottom {
 //    z-index: auto;
-//}
-.leaflet-popup-pane {
-  z-index: 700;
-}
+////}

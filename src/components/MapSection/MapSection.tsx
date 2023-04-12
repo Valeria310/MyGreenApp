@@ -14,6 +14,9 @@ const customIcon = new L.Icon({
     iconSize: new L.Point(27, 32)
 });
 
+
+var point = L.point(0, 0);
+
 function MapSection() {
 
     const [filterButtonsStatus, setFilterButtonsStatus] = useState<Array<FilterButtonsObjType>>(filterButtons)
@@ -54,9 +57,9 @@ function MapSection() {
                     )}
 
                 </div>
-                <div>
-                    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>
-                <div>
+                {/*<div>*/}
+                {/*    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>*/}
+                <div className={s.mapBlock}>
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
                                   className={s.mapContainer}>
                         <TileLayer
@@ -65,8 +68,8 @@ function MapSection() {
                         />
                         <MarkerClusterGroup chunkedLoading>
                             {filteredMarkers.map((m, i) =>
-                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
-                                    <Popup>
+                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon} >
+                                    <Popup  className={s.popup}  keepInView={false} >
                                         <h3>{m.title}</h3>
                                         {m.address}<br/>
                                         {m.info}<br/>
