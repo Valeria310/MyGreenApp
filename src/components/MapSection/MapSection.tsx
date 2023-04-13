@@ -8,6 +8,12 @@ import {FilterButton} from "./FilterButton";
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from "leaflet";
 
+import locationPointImage from '../../assets/images/u_location-point.svg';
+import phoneImage from '../../assets/images/u_phone.svg';
+import clockImage from '../../assets/images/u_clock-three.svg';
+import linkImage from '../../assets/images/fi_link.svg';
+
+
 
 const customIcon = new L.Icon({
     iconUrl: require("../../assets/images/point_icon.svg").default,
@@ -68,12 +74,38 @@ function MapSection() {
                         />
                         <MarkerClusterGroup chunkedLoading>
                             {filteredMarkers.map((m, i) =>
-                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon} >
-                                    <Popup  className={s.popup}  keepInView={false} >
-                                        <h3>{m.title}</h3>
-                                        {m.address}<br/>
-                                        {m.info}<br/>
-                                        Перерабатываем: {m.wasteTypes}
+                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
+                                    <Popup className={s.popup} keepInView={false}>
+                                        <div className={s.popupHeader}>{m.title}</div>
+                                        <div className={s.popupAddressWrapper}>
+                                            <ul>
+                                                <li className={s.locationPoint}>
+                                                    <div className={s.popupAddressContent}>{m.address}</div>
+                                                </li>
+                                                <li className={s.phone}>
+                                                    <div className={s.popupAddressContent}>{m.phone}</div>
+                                                </li>
+                                                <li className={s.schedule}>
+                                                    <div className={s.popupAddressContent}>{m.schedule}</div>
+                                                </li>
+                                                <li className={s.website}>
+                                                    <div className={s.popupAddressContent}><a href={m.website}>{m.website}</a></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className={s.popupFooter}>
+                                            Перерабатываем:
+
+                                            <ul className={s.wasteTypes}>
+                                                {m.wasteTypes.map((item,i) =>
+                                                    <li key={i}>{item}</li>
+                                                )}
+                                            </ul>
+
+
+                                        </div>
+
+
                                     </Popup>
                                 </Marker> : ""
                             )}
