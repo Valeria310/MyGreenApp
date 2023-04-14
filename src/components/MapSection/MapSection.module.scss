@@ -61,7 +61,8 @@ input.searchField:focus {
 
 .popupHeader {
   background: $color-primary;
-  padding: 47px 13px 10px 10px;
+  //padding: 47px 13px 10px 10px;
+  padding: 10px;
   font-family: 'Rising Sun';
   font-style: normal;
   font-weight: 400;
@@ -92,15 +93,15 @@ li {
  }
  .phone {
    list-style-image:url(../../assets/images/u_phone.svg);
-  //padding-left:30px;
+
 }
 .schedule {
    list-style-image:url(../../assets/images/u_clock-three.svg);
-  //padding-left:30px;
+
 }
 .website {
    list-style-image:url(../../assets/images/fi_link.svg);
-  //padding-left:30px;
+
 }
 
 .popupAddressContent {
@@ -110,7 +111,7 @@ li {
 
 .popupFooter {
   background:#CAE3F9;
-  padding-top: 10px;
+  padding: 10px;
 
 
   font-family: 'Rising Sun';
@@ -124,6 +125,23 @@ li {
 
 ul.wasteTypes {
 
-  list-style-type: none
+  list-style-type: none;
+  font-family: 'Rising Sun';
+  font-style: normal;
+  //text-transform: capitalize;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: $color-black;
+  padding: 0px;
+  margin: 5px 0px;
+
+}
+
+ul.wasteTypes li::first-letter {
+
+
+  text-transform: capitalize;
+
 
 }
