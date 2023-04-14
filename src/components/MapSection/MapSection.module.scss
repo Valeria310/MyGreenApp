@@ -1,8 +1,10 @@
 @import '../../index.scss';
 
+
 .map {
   max-width: 1440px;
   margin: 0 auto;
+
 }
 
 .mapWrapper {
@@ -28,6 +30,7 @@
 .mapContainer {
   width: 100%;
   height: 543px;
+
 }
 
 input.searchField {
@@ -54,4 +57,91 @@ input.searchField:focus {
 ::placeholder {
   color: #A9A9A9;
   opacity: 1;
+}
+
+.popupHeader {
+  background: $color-primary;
+  //padding: 47px 13px 10px 10px;
+  padding: 10px;
+  font-family: 'Rising Sun';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: $color-black;
+}
+
+.popupAddressWrapper {
+  background: $color-white;
+  padding: 10px 10px 10px 0px;
+  font-family: 'Rising Sun';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: $color-black;
+
+}
+
+li {
+  margin: 0 0 3px 0;
+}
+
+
+ .locationPoint {
+   list-style-image: url(../../assets/images/u_location-point.svg);
+ }
+ .phone {
+   list-style-image:url(../../assets/images/u_phone.svg);
+
+}
+.schedule {
+   list-style-image:url(../../assets/images/u_clock-three.svg);
+
+}
+.website {
+   list-style-image:url(../../assets/images/fi_link.svg);
+
+}
+
+.popupAddressContent {
+  position: relative;
+  top: -7px;
+}
+
+.popupFooter {
+  background:#CAE3F9;
+  padding: 10px;
+
+
+  font-family: 'Rising Sun';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: $color-black;
+}
+
+
+ul.wasteTypes {
+
+  list-style-type: none;
+  font-family: 'Rising Sun';
+  font-style: normal;
+  //text-transform: capitalize;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: $color-black;
+  padding: 0px;
+  margin: 5px 0px;
+
+}
+
+ul.wasteTypes li::first-letter {
+
+
+  text-transform: capitalize;
+
+
 }

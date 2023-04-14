@@ -5,6 +5,14 @@ import s from './MapSection.module.scss';
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
 import {filterButtons, FilterButtonsObjType, filterType, markers, waste} from "../../constants/MapState";
 import {FilterButton} from "./FilterButton";
+import MarkerClusterGroup from 'react-leaflet-cluster';
+import L from "leaflet";
+
+
+const customIcon = new L.Icon({
+    iconUrl: require("../../assets/images/point_icon.svg").default,
+    iconSize: new L.Point(27, 32)
+});
 
 
 function MapSection() {
@@ -27,6 +35,7 @@ function MapSection() {
         }
     }
 
+    const token = 'xZpKoSPd2lxvjHa2OY9UT0kBT6StaY0c7pnbhNF1RPCPKAexPRuo2P8x8KKICtO3';
 
     return (
 
@@ -34,6 +43,8 @@ function MapSection() {
             <div className={s.mapWrapper}>
                 <h2>Куда сдать?</h2>
                 <div className={s.buttonsWrapper}>
+
+
                     {filterButtons.map((f, i) =>
                         <FilterButton
                             key={i}
@@ -42,28 +53,51 @@ function MapSection() {
                             isActive={f.isActive}
                         />
                     )}
+
                 </div>
-                <div>
-                    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>
-                <div>
+                {/*<div>*/}
+                {/*    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>*/}
+                <div className={s.mapBlock}>
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
                                   className={s.mapContainer}>
                         <TileLayer
-                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
+                            url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
                         />
+                        <MarkerClusterGroup chunkedLoading>
+                            {filteredMarkers.map((m, i) =>
+                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
+                                    <Popup className={s.popup} keepInView={false}>
+                                        <div className={s.popupHeader}>{m.title}</div>
+                                        <div className={s.popupAddressWrapper}>
+                                            <ul>
+                                                <li className={s.locationPoint}>
+                                                    <div className={s.popupAddressContent}>{m.address}</div>
+                                                </li>
+                                                <li className={s.phone}>
+                                                    <div className={s.popupAddressContent}>{m.phone}</div>
+                                                </li>
+                                                <li className={s.schedule}>
+                                                    <div className={s.popupAddressContent}>{m.schedule}</div>
+                                                </li>
+                                                <li className={s.website}>
+                                                    <div className={s.popupAddressContent}><a href={m.website}>{m.website}</a></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className={s.popupFooter}>
+                                            Перерабатываем:
 
-                        {
-                            filteredMarkers.map((m, i) =>
-                                m.display ? <Marker key={i} position={[m.latitude, m.longitude]}>
-                                    <Popup>
-                                        <h3>{m.title}</h3>
-                                        {m.address}<br/>
-                                        {m.info}<br/>
-                                        Перерабатываем: {m.wasteTypes}
+                                            <ul className={s.wasteTypes}>
+                                                {m.wasteTypes.map((item,i) =>
+                                                    <li key={i}>{item}</li>
+                                                )}
+                                            </ul>
+                                        </div>
                                     </Popup>
                                 </Marker> : ""
                             )}
+                        </MarkerClusterGroup>
                     </MapContainer>
                 </div>
             </div>

@@ -57,24 +57,26 @@ h2 {
 }
 
 //to correct leaflet map z-index
-
-.leaflet-pane {
-    z-index: auto;
-}
-.leaflet-control {
-    z-index: auto;
-}
-.leaflet-top,
-.leaflet-bottom {
-    z-index: auto;
-}
-.leaflet-pane {
-    z-index: auto;
-}
-.leaflet-control {
-    z-index: auto;
-}
-.leaflet-top,
-.leaflet-bottom {
-    z-index: auto;
-}
+//
+//.leaflet-pane {
+//    z-index: auto;
+//}
+//.leaflet-control {
+//    z-index: auto;
+//}
+//.leaflet-top,
+//.leaflet-bottom {
+//    z-index: auto;
+//}
+//.leaflet-pane,
+//.leaflet-map-pane
+//{
+//    transform: translate3d(0px, 0px, 0px) !important;
+//}
+//.leaflet-control {
+//    z-index: auto;
+//}
+//.leaflet-top,
+//.leaflet-bottom {
+//    z-index: auto;
+////}
