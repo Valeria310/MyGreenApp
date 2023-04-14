@@ -8,20 +8,12 @@ import {FilterButton} from "./FilterButton";
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from "leaflet";
 
-import locationPointImage from '../../assets/images/u_location-point.svg';
-import phoneImage from '../../assets/images/u_phone.svg';
-import clockImage from '../../assets/images/u_clock-three.svg';
-import linkImage from '../../assets/images/fi_link.svg';
-
-
 
 const customIcon = new L.Icon({
     iconUrl: require("../../assets/images/point_icon.svg").default,
     iconSize: new L.Point(27, 32)
 });
 
-
-var point = L.point(0, 0);
 
 function MapSection() {
 
@@ -101,11 +93,7 @@ function MapSection() {
                                                     <li key={i}>{item}</li>
                                                 )}
                                             </ul>
-
-
                                         </div>
-
-
                                     </Popup>
                                 </Marker> : ""
                             )}
