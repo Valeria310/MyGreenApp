@@ -20,15 +20,29 @@
     background-image: url(../../assets/images/footer_img.png);
 }
 
+.footer_info {
+    font-family: $font-primary;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #070707;
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .footer-logo {
     background-image: url(../../assets/images/Logo.png);
     width: 66px;
     height: 76px;
+    z-index: 1;
 }
 
 .socials {
     font-family: $font-primary;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 20px;
     line-height: 26px;
 }
@@ -48,11 +62,29 @@
     transition-duration: .2s;
     
     &:hover {
+        animation: move_up-btn 0.4s infinite;
+    }
+}
+
+@keyframes move_up-btn {
+    0% {
+        background-position-y: center;
+    }
+    
+    25% {
         background-position-y: 12px;
     }
     
-    &:active {
+    50% {
+        background-position-y: center;
+    }
+    
+    75% {
         background-position-y: 22px;
+    }
+    
+    100% {
+        background-position-y: center;
     }
 }
 
