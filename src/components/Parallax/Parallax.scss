@@ -32,7 +32,7 @@ $duration: 3s;
     &_title {
         position: absolute;
         left: 50%;
-        transform: translate(-104%, 0);
+        transform: translateX(-50%);
         top: 198px;
         font-family: $font-primary;
         font-style: normal;
@@ -43,7 +43,6 @@ $duration: 3s;
         margin: 0;
         transition: all $duration;
         &.active {
-            transform: translate(-110%, 0);
             top: -230px;
         }
         & span {
@@ -54,7 +53,7 @@ $duration: 3s;
     &_text {
         position: absolute;
         left: 50%;
-        transform: translate(-33%, 0);
+        transform: translate(-50%, 0);
         top: 299px;
         font-family: $font-primary;
         font-style: normal;

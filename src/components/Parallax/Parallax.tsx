@@ -38,7 +38,7 @@ export const ParallaxSection = () => {
     return (
         <section className="parallax" id='about'>
             <div className="parallax_img"></div>
-            <h1 className="info_title">My <span>Green</span></h1>
+            <h1 className="info_title">Eco <span>Hub</span></h1>
             <p className="info_text">У нас нет запасной планеты!</p>
             <div className="hill"></div>
             <div className="small_trees"></div>
