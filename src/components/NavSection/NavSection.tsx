@@ -1,6 +1,7 @@
-import NavCard from '../NavCard';
-import { NavCards } from '../../constants/NavCards';
 import s from './NavSection.module.scss';
+import { NavCards } from '../../constants/NavCards';
+import NavCard from '../NavCard';
+
 
 export const NavSection = () => (
     <section className={s.navCards}>
@@ -10,4 +11,4 @@ export const NavSection = () => (
             )}
         </div>
     </section>
-)
+);

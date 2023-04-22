@@ -6,4 +6,4 @@ export const Navigation = () => (
         <a href="#recycle" className='navigation_link'>Что перерабатываем</a>
         <a href="#about" className='navigation_link'>О нас</a>
     </nav>
-)
+);

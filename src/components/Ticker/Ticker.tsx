@@ -1,4 +1,5 @@
-import Marquee from "react-fast-marquee";
+import Marquee from 'react-fast-marquee';
+
 import c from './Ticker.module.scss';
 
 export const Ticker = () => (
@@ -11,4 +12,4 @@ export const Ticker = () => (
             </Marquee>
         </section>
     </div>
-)
+);

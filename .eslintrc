@@ -7,8 +7,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -21,8 +20,8 @@
   "plugins": [
     "react",
     "react-hooks",
-    "@typescript-eslint",
-    "prettier"
+    "import",
+    "@typescript-eslint"
   ],
   "rules": {
       "react/react-in-jsx-scope": ["off"],
@@ -40,15 +39,26 @@
         "comma-dangle": ["error", "never"],
         "func-call-spacing": ["error", "never"],
         "dot-location": ["error", "property"],
-        "object-curly-newline": ["error", {
-            "ObjectExpression": { "minProperties": 1 },
-            "ObjectPattern": "never",
-            "ImportDeclaration": { "minProperties": 7 },
-            "ExportDeclaration": { "minProperties": 2 }
-        }],
         "object-curly-spacing": ["error", "always"],
         "template-curly-spacing": ["error", "never"],
-        "quotes": ["error", "single", { "avoidEscape": true }]
+        "quotes": ["error", "single", { "avoidEscape": true }],
+        "import/order": ["error", {
+            "groups": ["builtin", "external", "internal"],
+            "pathGroups": [
+              {
+                "pattern": "react",
+                "group": "external",
+                "position": "before"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["react"],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
+          }
+        ]
   },
   "settings": {
     "import/resolver": {

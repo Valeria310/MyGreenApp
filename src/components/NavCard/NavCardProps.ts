@@ -1,4 +1,4 @@
-import { NavCard } from "../../constants/NavCards";
+import { NavCard } from '../../constants/NavCards';
 
 export interface NavCardProps {
     card: NavCard;
