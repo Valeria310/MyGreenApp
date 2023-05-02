@@ -1,4 +1,4 @@
 export interface RecycleButtonProps {
   onClick: () => void;
-  state: 'arrow' | 'cross';
+  icon: React.FunctionComponent
 }
