@@ -1,13 +1,13 @@
-import './Footer.scss';
-
 import { Navigation } from '../Navigation/Navigation';
+
+import './Footer.scss';
 
 export const Footer = () => {
     const handleClick = () => {
         setTimeout(() => {
             window.location.reload();
         }, 500);
-    }
+    };
 
     return (<footer className="footer">
         <div className="footer_hill"></div>
@@ -21,5 +21,5 @@ export const Footer = () => {
         </div>
         <div className="footer_info">© 2023 EcoHub. All Rights Reserved.</div>
         <a href="#" className='up-btn'></a>
-    </footer>)
-}
+    </footer>);
+};

@@ -1,12 +1,12 @@
-import plasticImg from '../assets/images/recycle-plastic.jpg';
-import paperImg from '../assets/images/recycle-paper.jpg';
+import { DangerContent, ElectroContent, GlassContent, LargeContent, MetalContent, PaperContent, PlasticContent, RecycleContent } from './RecycleContent';
+import dangerImg from '../assets/images/recycle-danger.jpg';
+import electroImg from '../assets/images/recycle-electro.jpg';
 import glassImg from '../assets/images/recycle-glass.jpg';
 import largeImg from '../assets/images/recycle-large.jpg';
-import electroImg from '../assets/images/recycle-electro.jpg';
-import dangerImg from '../assets/images/recycle-danger.jpg';
 import metalImg from '../assets/images/recycle-metal.jpg';
+import paperImg from '../assets/images/recycle-paper.jpg';
+import plasticImg from '../assets/images/recycle-plastic.jpg';
 
-import { DangerContent, ElectroContent, GlassContent, LargeContent, MetalContent, PaperContent, PlasticContent, RecycleContent } from './RecycleContent';
 
 
 export interface RecycleCard {

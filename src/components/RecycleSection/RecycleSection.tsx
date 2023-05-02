@@ -1,6 +1,7 @@
-import RecycleCard from '../RecycleCard';
 import s from './RecycleSection.module.scss';
 import { RecycleCards } from '../../constants/RecycleCards';
+import RecycleCard from '../RecycleCard';
+
 
 export const RecycleSection = () => (
     <section className={s.recycle} id="recycle">
@@ -11,4 +12,4 @@ export const RecycleSection = () => (
             </div>
         </div>
     </section>
-)
+);

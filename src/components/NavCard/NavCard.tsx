@@ -1,12 +1,10 @@
 import { FC } from 'react';
 
 import s from './NavCard.module.scss';
+import { NavCardProps } from './NavCardProps';
 import NavArrow from '../../assets/icons/nav-arrow.svg';
 
-import { NavCardProps } from './NavCardProps';
-
-
-export const NavCard: FC<NavCardProps> = ({card}) => (
+export const NavCard: FC<NavCardProps> = ({ card }) => (
     <div className={s.navCard}>
         <div className={s.navCardImage}>
             <img src={card.image} alt="card" />
@@ -26,4 +24,4 @@ export const NavCard: FC<NavCardProps> = ({card}) => (
             </div>
         </div>
     </div>
-)
+);
