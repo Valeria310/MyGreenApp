@@ -14,6 +14,7 @@ $duration: 3s;
         margin-top: 0;
         height: 902px;
         top: -106px;
+        margin-bottom: -106px;
     }
     &_img {
         width: 100%;
@@ -104,7 +105,7 @@ $duration: 3s;
 
     &_title {
         font-style: normal;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 56px;
         line-height: 105%;
         margin: 0;
@@ -118,7 +119,7 @@ $duration: 3s;
         font-style: normal;
         font-weight: 400;
         font-size: 24px;
-        line-height: 31px;
+        line-height: 140%;
         letter-spacing: 0.3px;
     }
 }
