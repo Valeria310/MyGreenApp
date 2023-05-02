@@ -69,7 +69,8 @@ function MapSection() {
                             {filteredMarkers.map((m, i) =>
                                 m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
                                     <Popup className={s.popup} keepInView={false} maxWidth={350}>
-                                        <div className={s.popupHeader}>{m.title}</div>
+                                        {/*<div className={s.popupHeader}>{m.title}</div>*/}
+                                        <div className={s.popupHeader}>ПУНКТ ПРИЕМА ОТРАБОТАННЫХ РТУТЬСОДЕРЖАЩИХ ЛАМП № 41</div>
                                         <div className={s.popupAddressWrapper}>
                                             <ul>
                                                 <li className={s.locationPoint}>
