@@ -38,22 +38,15 @@
 
 .navCardHeading {
     margin: 0;
-    font-size: 38px;
-    line-height: 40px;
     letter-spacing: 0.4px;
-    @media screen and (min-width: 1200px) {
-        font-size: 48px;
-        line-height: 50px;
-    }
 }
 
 .navCardText {
     display: flex;
     flex-direction: column;
-    letter-spacing: 0.2px;
-    row-gap: 26px;
+    row-gap: 20px;
     font-size: 20px;
-    line-height: 26px;
+    line-height: 140%;
     color: #000;
     p {
         margin: 0;
@@ -61,16 +54,20 @@
 }
 
 .navCardButton {
-    height: 31px;
+    height: 25.2px;
     a {
         display: flex;
         font-size: 24px;
-        line-height: 31px;
+        line-height: 105%;
         letter-spacing: 0.2px;
         color: #1B7A59;
         text-decoration: none;
     }
     span {
         margin-right: 20px;
+    }
+    img {
+        width: 12.72px;
+        height: 25.03px;
     }
 }
