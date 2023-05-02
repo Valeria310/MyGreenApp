@@ -2,18 +2,17 @@ import { FC } from 'react';
 
 import s from './RecycleButton.module.scss';
 import { RecycleButtonProps } from './RecycleButtonProps';
-import { ReactComponent as RecycleButtonIcon } from '../../assets/icons/recycle-cross.svg';
 
 
 
-export const RecycleButton: FC<RecycleButtonProps> = ({ onClick, state }) => {
+export const RecycleButton: FC<RecycleButtonProps> = (props) => {
     return (
         <button
             type='button'
             className={s.recycleCardButton}
-            onClick={onClick}
+            onClick={props.onClick}
         >
-            <RecycleButtonIcon className={s[state]} />
+            {<props.icon />}
         </button>
     );
 };

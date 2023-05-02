@@ -3,7 +3,8 @@ import { FC, useState } from 'react';
 import { RecycleButton } from './RecycleButton';
 import s from './RecycleCard.module.scss';
 import { RecycleCardProps } from './RecycleCardProps';
-
+import { ReactComponent as IconArrow } from '../../assets/icons/recycle-arrow.svg';
+import { ReactComponent as IconCross } from '../../assets/icons/recycle-cross.svg';
 
 
 export const RecycleCard: FC<RecycleCardProps> = ({ card }) => {
@@ -20,7 +21,7 @@ export const RecycleCard: FC<RecycleCardProps> = ({ card }) => {
                     </div>
                     <RecycleButton
                         onClick={() => setExpanded(!isExpanded)}
-                        state={content && isExpanded ? 'cross' : 'arrow'}
+                        icon={content && isExpanded ? IconCross : IconArrow}
                     />
                 </div>
             </div>
