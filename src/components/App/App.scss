@@ -75,3 +75,21 @@ h2 {
 //.leaflet-bottom {
 //    z-index: auto;
 ////}
+
+
+.leaflet-popup-content {
+    margin: 0px;
+}
+
+.leaflet-popup-content-wrapper {
+    padding: 0px;
+    border-radius: 20px;
+
+}
+.leaflet-popup-tip {
+    background:#CAE3F9;
+}
+
+.leaflet-attribution-flag {
+    display: none !important;
+}

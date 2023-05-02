@@ -59,6 +59,12 @@ input.searchField:focus {
   opacity: 1;
 }
 
+
+.popup {
+  width: 235px;
+  //border-radius: 0px;
+}
+
 .popupHeader {
   background: $color-primary;
   //padding: 47px 13px 10px 10px;
@@ -66,20 +72,29 @@ input.searchField:focus {
   font-family: 'Rising Sun';
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
+  font-size: 10px;
+  line-height: 14px;
+  text-transform: uppercase;
   color: $color-black;
+  border-radius: 20px 20px 0px 0px;
 }
 
 .popupAddressWrapper {
   background: $color-white;
-  padding: 10px 10px 10px 0px;
+  padding: 1px 1px 1px 0px;
+  margin: 0px;
   font-family: 'Rising Sun';
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 21px;
+  font-size: 10px;
+  line-height: 14px;
   color: $color-black;
+
+}
+
+ul {
+
+ padding: 0px 0px 0px 27px;
 
 }
 
@@ -106,20 +121,20 @@ li {
 
 .popupAddressContent {
   position: relative;
-  top: -7px;
+  top: -1px;
+
 }
 
 .popupFooter {
   background:#CAE3F9;
-  padding: 10px;
-
-
+  padding: 10px 10px 5px 10px;
   font-family: 'Rising Sun';
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
+  font-size: 10px;
+  line-height: 14px;
   color: $color-black;
+  border-radius: 0px 0px 20px 20px ;
 }
 
 
@@ -130,8 +145,8 @@ ul.wasteTypes {
   font-style: normal;
   //text-transform: capitalize;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 21px;
+  font-size: 10px;
+  line-height: 14px;
   color: $color-black;
   padding: 0px;
   margin: 5px 0px;
@@ -145,3 +160,4 @@ ul.wasteTypes li::first-letter {
 
 
 }
+
