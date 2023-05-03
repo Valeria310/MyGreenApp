@@ -7,12 +7,13 @@
 }
 
 .navCardsWrapper {
-    padding: 20px;
+    padding: 32px 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 70px;
+    row-gap: 48px;
     @media screen and (min-width: 1200px) {
         padding: 55px 135px;
+        row-gap: 70px;
     }
 }
