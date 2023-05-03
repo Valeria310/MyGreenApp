@@ -10,6 +10,10 @@
     &:nth-child(odd) {
         flex-direction: row-reverse;
     }
+    @media screen and (min-width: 768px) {
+        row-gap: 32px;
+        max-width: 570px;
+    }
     @media screen and (min-width: 1200px) {
         max-width: 1170px;
     }
@@ -23,7 +27,7 @@
         height: 100%;
         border-radius: 30px;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 768px) {
         max-width: 570px;
         height: 360px;
     }
@@ -34,6 +38,9 @@
     width: 100%;
     flex-direction: column;
     row-gap: 24px;
+    @media screen and (min-width: 768px) {
+        row-gap: 20px;
+    }
     @media screen and (min-width: 1200px) {
         row-gap: 22px;
         max-width: 570px;
@@ -52,6 +59,11 @@
     font-size: 16px;
     line-height: 140%;
     color: $color-black;
+    @media screen and (min-width: 768px) {
+        row-gap: 16px;
+        font-size: 20px;
+        letter-spacing: 0.1px;
+    }
     @media screen and (min-width: 1200px) {
         row-gap: 20px;
         font-size: 20px;
@@ -63,6 +75,9 @@
 
 .navCard:nth-child(2) .navCardText {
     row-gap: 12px;
+    @media screen and (min-width: 768px) {
+        row-gap: 16px;
+    }
     @media screen and (min-width: 1200px) {
         row-gap: 20px;
     }
@@ -70,6 +85,9 @@
 
 .navCardButton {
     height: 24px;
+    @media screen and (min-width: 768px) {
+        height: 40px;
+    }
     @media screen and (min-width: 1200px) {
         height: 25.2px;
     }
@@ -85,15 +103,22 @@
         font-weight: 500;
         font-size: 20px;
         margin-right: 10px;
-        @media screen and (min-width: 1200px) {
+        @media screen and (min-width: 768px) {
             font-weight: 400;
             font-size: 24px;
+            margin-right: 8px;
+        }
+        @media screen and (min-width: 1200px) {
             margin-right: 20px;
         }
     }
     img {
         width: 24px;
         height: 24px;
+        @media screen and (min-width: 768px) {
+            width: 40px;
+            height: 40px;
+        }
         @media screen and (min-width: 1200px) {
             width: 12.72px;
             height: 25.03px;

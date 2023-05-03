@@ -5,6 +5,7 @@ import { useWindowWidth } from 'src/hooks/useWindowWidth';
 import s from './NavCard.module.scss';
 import { NavCardProps } from './NavCardProps';
 import NavArrowMobile from '../../assets/icons/nav-arrow-mobile.svg';
+import NavArrowTab from '../../assets/icons/nav-arrow-tab.svg';
 import NavArrow from '../../assets/icons/nav-arrow.svg';
 
 export const NavCard: FC<NavCardProps> = ({ card }) => {
@@ -25,7 +26,7 @@ export const NavCard: FC<NavCardProps> = ({ card }) => {
                 <div className={s.navCardButton}>
                     <a href={card.href}>
                         <span>{card.buttonValue}</span>
-                        <img src={width < 1200 ? NavArrowMobile : NavArrow} alt='arrow' />
+                        <img src={width < 1200 ? (width < 768 ? NavArrowMobile : NavArrowTab) : NavArrow} alt='arrow' />
                     </a>
                 </div>
             </div>
