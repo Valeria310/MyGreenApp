@@ -532,7 +532,7 @@ export const GlassContent: RecycleContent = {
             description: [
                 {
                     id: 1,
-                    text: 'Стеклянные банки от консерв (закаток и соков)'
+                    text: 'Стеклянные банки от консервов (закаток и соков)'
                 },
                 {
                     id: 2,
