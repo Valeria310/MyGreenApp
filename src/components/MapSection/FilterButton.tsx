@@ -1,5 +1,5 @@
-import {filterType} from "../../constants/MapState";
-import s from "./FilterButton.module.scss"
+import s from './FilterButton.module.scss';
+import { filterType } from '../../constants/MapState';
 
 
 type PropsType = {
@@ -9,18 +9,18 @@ type PropsType = {
 }
 
 export const FilterButton = (props:PropsType) => {
-
-    let wasteType:filterType = props.title
+    const wasteType:filterType = props.title;
 
     const onClickHandler=()=>{
-        props.changeButtonStatus(wasteType)
-    }
+        props.changeButtonStatus(wasteType);
+    };
 
     return (
         <button
             className={props.isActive ? s.filterButtonActive : s.filterButton}
-            onClick={onClickHandler}>
+            onClick={onClickHandler}
+        >
             {props.title}
         </button>
-    )
-}
+    );
+};

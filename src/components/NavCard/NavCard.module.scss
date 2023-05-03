@@ -1,0 +1,73 @@
+@import '../../index.scss';
+
+.navCard {
+    max-width: 280px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    &:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+    @media screen and (min-width: 1200px) {
+        max-width: 1170px;
+    }
+}
+
+.navCardImage {
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+    }
+    @media screen and (min-width: 1200px) {
+        max-width: 570px;
+        height: 360px;
+    }
+}
+
+.navCardContent {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    row-gap: 22px;
+    @media screen and (min-width: 1200px) {
+        max-width: 570px;
+    }
+}
+
+.navCardHeading {
+    margin: 0;
+    letter-spacing: 0.4px;
+}
+
+.navCardText {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    font-size: 20px;
+    line-height: 140%;
+    color: #000;
+    p {
+        margin: 0;
+    }
+}
+
+.navCardButton {
+    height: 25.2px;
+    a {
+        display: flex;
+        font-size: 24px;
+        line-height: 105%;
+        letter-spacing: 0.2px;
+        color: #1B7A59;
+        text-decoration: none;
+    }
+    span {
+        margin-right: 20px;
+    }
+    img {
+        width: 12.72px;
+        height: 25.03px;
+    }
+}

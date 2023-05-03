@@ -1,37 +1,37 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
-import s from './MapSection.module.scss';
-
-import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
-import {filterButtons, FilterButtonsObjType, filterType, markers, waste} from "../../constants/MapState";
-import {FilterButton} from "./FilterButton";
+import L from 'leaflet';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import L from "leaflet";
+
+import { FilterButton } from './FilterButton';
+import s from './MapSection.module.scss';
+import pointIcon from '../../assets/images/point_icon.svg';
+import { filterButtons, FilterButtonsObjType, filterType, markers, waste } from '../../constants/MapState';
 
 
 const customIcon = new L.Icon({
-    iconUrl: require("../../assets/images/point_icon.svg").default,
+    iconUrl: pointIcon,
     iconSize: new L.Point(27, 32)
 });
 
-
 function MapSection() {
 
-    const [filterButtonsStatus, setFilterButtonsStatus] = useState<Array<FilterButtonsObjType>>(filterButtons)
+    const [filterButtonsStatus, setFilterButtonsStatus] = useState<Array<FilterButtonsObjType>>(filterButtons);
 
     const changeButtonStatus = (wasteType: filterType) => {
-        filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b)
-        setFilterButtonsStatus({...filterButtonsStatus})
+        filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
+        setFilterButtonsStatus({ ...filterButtonsStatus });
 
-    }
+    };
 
-    let filteredMarkers = markers;
+    const filteredMarkers = markers;
 
-    filteredMarkers.map(m => m.display = false)
+    filteredMarkers.map(m => m.display = false);
 
     for (let i = 0; i < filterButtons.length; i++) {
         if (filterButtons[i].isActive) {
-            filteredMarkers.map(m => m.wasteTypes.includes(waste[i]) ? m.display = true : m)
+            filteredMarkers.map(m => m.wasteTypes.includes(waste[i]) ? m.display = true : m);
         }
     }
 
@@ -58,9 +58,7 @@ function MapSection() {
                 {/*<div>*/}
                 {/*    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>*/}
                 <div>
-                    <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
-                                  className={s.mapContainer}>
-
+                    <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true} className={s.mapContainer}>
                         <TileLayer
                             attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
                             url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
@@ -68,7 +66,7 @@ function MapSection() {
                         <MarkerClusterGroup chunkedLoading>
                             {filteredMarkers.map((m, i) =>
                                 m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
-                                    <Popup className={s.popup} keepInView={false} maxWidth={350}>
+                                    <Popup className={s.popup} keepInView={false}>
                                         <div className={s.popupHeader}>{m.title}</div>
                                         <div className={s.popupAddressWrapper}>
                                             <ul>
@@ -82,22 +80,20 @@ function MapSection() {
                                                     <div className={s.popupAddressContent}>{m.schedule}</div>
                                                 </li>
                                                 <li className={s.website}>
-                                                    <div className={s.popupAddressContent}><a
-                                                        href={m.website}>{m.website}</a></div>
+                                                    <div className={s.popupAddressContent}><a href={m.website}>{m.website}</a></div>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div className={s.popupFooter}>
                                             Перерабатываем:
-
                                             <ul className={s.wasteTypes}>
-                                                {m.wasteTypes.map((item,i) =>
+                                                {m.wasteTypes.map((item, i) =>
                                                     <li key={i}>{item}</li>
                                                 )}
                                             </ul>
                                         </div>
                                     </Popup>
-                                </Marker> : ""
+                                </Marker> : ''
                             )}
                         </MarkerClusterGroup>
                     </MapContainer>

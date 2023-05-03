@@ -1,22 +1,34 @@
-import {useEffect} from 'react';
-import './Header.scss';
+import { useEffect } from 'react';
+
 import { Navigation } from './../Navigation/Navigation';
 
+import './Header.scss';
+
 export const Header = () => {
-    let prevPos:number=0;
-    let changeVisible:NodeJS.Timeout;
-    let isStarted:boolean = false;
-    const firtsBlockHeight = 1024;
+    let prevPos = 0;
+    let changeVisible: NodeJS.Timeout;
+    let isStarted = false;
+    let mousePosition = 'out';
+    const firtsBlockHeight = 902;
 
     const scrollHandler = () => {
         const elem = document.getElementById('header');
-        let currentPos:number = window.pageYOffset;
+        elem?.addEventListener('mouseover', handleMouseover, false);
+        elem?.addEventListener('mouseout', handleMouseout, false);
+        const currentPos:number = window.pageYOffset;
         if((currentPos>=firtsBlockHeight) && (currentPos < prevPos) && !isStarted){
             elem?.classList.add('visible');
             isStarted = true;
             changeVisible = setTimeout(() => {
-                elem?.classList.remove('visible');
-                isStarted = false;
+                if(mousePosition === 'out') {
+                    elem?.classList.remove('visible');
+                    isStarted = false;
+                } else {
+                    elem?.addEventListener('mouseout', () => {
+                        elem?.classList.remove('visible');
+                        isStarted = false;
+                    }, { once: true });
+                }
             }, 3000);
         } else if((currentPos<firtsBlockHeight) || (currentPos > prevPos)) {
             isStarted = false;
@@ -24,18 +36,30 @@ export const Header = () => {
             elem?.classList.remove('visible');
         }
         prevPos=currentPos;
-    }
+    };
+
+    const handleClick = () => {
+        window.location.reload();
+    };
+
+    const handleMouseover = () => {
+        mousePosition = 'over';
+    };
+
+    const handleMouseout = () => {
+        mousePosition = 'out';
+    };
 
     useEffect(() => {
         setTimeout(() => {
-            window.addEventListener("scroll", scrollHandler, false)
+            window.addEventListener('scroll', scrollHandler, false);
         }, 1000);
-        return () => window.removeEventListener("scroll", scrollHandler, false)
-    })
-    return (<header className='header' id='header'>
+        return () => window.removeEventListener('scroll', scrollHandler, false);
+    });
+    return (<header className='header visible' id='header'>
         <div className="container">
-            <a href='#about' className="logo"></a>
+            <a href='#' className="logo" onClick={handleClick}></a>
             <Navigation />
         </div>
-    </header>)
-}
+    </header>);
+};

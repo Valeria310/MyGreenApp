@@ -1,0 +1,18 @@
+@import '../../index.scss';
+
+.recycleCardButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background-color: #1B7A59;;
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  @media screen and (min-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+}

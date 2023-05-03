@@ -1,0 +1,18 @@
+@import '../../index.scss';
+
+.navCards {
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: $color-white;
+}
+
+.navCardsWrapper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 70px;
+    @media screen and (min-width: 1200px) {
+        padding: 55px 135px;
+    }
+}
