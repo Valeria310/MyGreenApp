@@ -6,25 +6,27 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 
 import { FilterButton } from './FilterButton';
 import s from './MapSection.module.scss';
-import markerIcon from '../../assets/images/point_icon.svg';
+import pointIcon from '../../assets/images/point_icon.svg';
 import { filterButtons, FilterButtonsObjType, filterType, markers, waste } from '../../constants/MapState';
 
 
 const customIcon = new L.Icon({
-    iconUrl: markerIcon,
+    iconUrl: pointIcon,
     iconSize: new L.Point(27, 32)
 });
 
+function MapSection() {
 
-const MapSection = () => {
     const [filterButtonsStatus, setFilterButtonsStatus] = useState<Array<FilterButtonsObjType>>(filterButtons);
 
     const changeButtonStatus = (wasteType: filterType) => {
         filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
         setFilterButtonsStatus({ ...filterButtonsStatus });
+
     };
 
     const filteredMarkers = markers;
+
     filteredMarkers.map(m => m.display = false);
 
     for (let i = 0; i < filterButtons.length; i++) {
@@ -36,10 +38,13 @@ const MapSection = () => {
     const token = 'xZpKoSPd2lxvjHa2OY9UT0kBT6StaY0c7pnbhNF1RPCPKAexPRuo2P8x8KKICtO3';
 
     return (
+
         <section className={s.map} id="map">
             <div className={s.mapWrapper}>
                 <h2>Куда сдать?</h2>
                 <div className={s.buttonsWrapper}>
+
+
                     {filterButtons.map((f, i) =>
                         <FilterButton
                             key={i}
@@ -48,12 +53,12 @@ const MapSection = () => {
                             isActive={f.isActive}
                         />
                     )}
+
                 </div>
                 {/*<div>*/}
                 {/*    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>*/}
                 <div>
-                    <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
-                        className={s.mapContainer}>
+                    <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true} className={s.mapContainer}>
                         <TileLayer
                             attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
                             url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
@@ -61,7 +66,7 @@ const MapSection = () => {
                         <MarkerClusterGroup chunkedLoading>
                             {filteredMarkers.map((m, i) =>
                                 m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
-                                    <Popup keepInView={false}>
+                                    <Popup className={s.popup} keepInView={false}>
                                         <div className={s.popupHeader}>{m.title}</div>
                                         <div className={s.popupAddressWrapper}>
                                             <ul>
@@ -81,7 +86,6 @@ const MapSection = () => {
                                         </div>
                                         <div className={s.popupFooter}>
                                             Перерабатываем:
-
                                             <ul className={s.wasteTypes}>
                                                 {m.wasteTypes.map((item, i) =>
                                                     <li key={i}>{item}</li>
@@ -95,8 +99,12 @@ const MapSection = () => {
                     </MapContainer>
                 </div>
             </div>
+
+
         </section>
+
+
     );
-};
+}
 
 export default MapSection;
