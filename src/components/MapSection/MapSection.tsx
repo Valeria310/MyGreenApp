@@ -57,7 +57,7 @@ function MapSection() {
                 </div>
                 {/*<div>*/}
                 {/*    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>*/}
-                <div className={s.mapBlock}>
+                <div>
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
                                   className={s.mapContainer}>
 
