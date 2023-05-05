@@ -43,7 +43,7 @@ interface RecycleInfoImage {
   url: string;
 }
 
-interface RecycleInfo {
+export interface RecycleInfo {
   id: number;
   name: string;
   images: RecycleInfoImage[];
@@ -387,7 +387,7 @@ export const PaperContent: RecycleContent = {
         },
         {
             id: 3,
-            name: 'Ламинирован-\nная бумага',
+            name: 'Ламинированная бумага',
             images: [
                 {
                     id: 1,

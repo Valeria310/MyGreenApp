@@ -1,4 +1,9 @@
-@import '../../index.scss';
+@import 'src/index.scss';
+
+.recycleCardContent {
+  background-color: $color-white;
+  overflow: hidden;
+}
 
 .recycleTable {
   border-collapse: collapse;
@@ -87,7 +92,6 @@
       padding: 9.5px 20px;
       width: 585px;
       ul {     
-          
           margin: 0;
           padding-inline-start: 25px;
           padding-inline-end: 10px;
@@ -121,10 +125,6 @@
       background: #FF9595;
   }
   &Green {
-      background: #94B9AB;
-  }
-  &SubGreen {
-      padding: 10.5px 20px;
       background: #94B9AB;
   }
 }

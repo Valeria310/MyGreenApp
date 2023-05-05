@@ -1,4 +1,4 @@
-export interface RecycleButtonProps {
+export interface RecycleCardButtonProps {
   onClick: () => void;
   icon: React.FunctionComponent
 }

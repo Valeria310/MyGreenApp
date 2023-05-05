@@ -1,20 +1,16 @@
-@import '../../index.scss';
+@import 'src/index.scss';
 
 .recycleCard {
     width: 100%;
     overflow: hidden;
     border-radius: 30px;
     transition: max-height .3s ease-in;
-    max-height: 235px;
+    max-height: 238px;
+    &Expanded {
+        max-height: 2100px;
+    }
     @media screen and (min-width: 768px) {
         max-height: 123px;
-    }
-    .recycleCardContent {
-        background-color: $color-white;
-        overflow: hidden;
-    }
-    &Expanded {
-        max-height: 1536px;
     }
 }
 
@@ -34,8 +30,8 @@
 }
 
 .recycleCardImage {
-    max-width: 280px;
-    height: 135px;
+    min-width: 270px;
+    height: 150px;
     @media screen and (min-width: 768px) {
         height: 123px;
         max-width: 300px;
@@ -48,8 +44,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
-    padding: 0 25px;
+    padding: 24px;
     @media screen and (min-width: 768px) {
         padding: 0;
         height: auto;
@@ -58,9 +53,8 @@
 }
 
 .recycleCardInfo {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+    display: inline-flex;
+    max-width: calc(188 / 320 * 100vw);
 }
 
 .recycleCardHeading {
@@ -69,22 +63,9 @@
     color: $color-black;
     margin: 0;
     font-size: 20px;
-    line-height: 28px;
+    line-height: 105%;
     @media screen and (min-width: 768px) {
         font-size: 30px;
         line-height: 33px;
     }
 }
-
-.recycleCardText {
-    display: none;
-    font-family: $font-primary;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 23px;
-    margin: 0;
-    @media screen and (min-width: 768px) {
-        display: block;
-    }
-}
-
