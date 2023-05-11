@@ -43,12 +43,12 @@ interface RecycleInfoImage {
   url: string;
 }
 
-interface RecycleInfo {
+export interface RecycleInfo {
   id: number;
   name: string;
   images: RecycleInfoImage[];
   description: RecycleInfoDescription[];
-  status: 'Подлежит переработке' | 'Не подлежит переработке';
+  status: 'Подлежит переработке' | 'Не\u00A0подлежит переработке';
 }
 
 export interface RecycleContent {
@@ -152,7 +152,7 @@ export const PlasticContent: RecycleContent = {
                     text: 'Искусственная кожа'
                 }
             ],
-            status: 'Не подлежит переработке'
+            status: 'Не\u00A0подлежит переработке'
         },
         {
             id: 4,
@@ -268,10 +268,10 @@ export const PlasticContent: RecycleContent = {
                 },
                 {
                     id: 8,
-                    text: 'Детские бутылочки и грушки'
+                    text: 'Детские бутылочки и игрушки'
                 }
             ],
-            status: 'Не подлежит переработке'
+            status: 'Не\u00A0подлежит переработке'
         }
     ]
 };
@@ -387,7 +387,7 @@ export const PaperContent: RecycleContent = {
         },
         {
             id: 3,
-            name: 'Ламинирован-\nная бумага',
+            name: 'Ламинированная бумага',
             images: [
                 {
                     id: 1,
@@ -424,7 +424,7 @@ export const PaperContent: RecycleContent = {
                     text: 'Подарочные блестящие пакеты'
                 }
             ],
-            status: 'Не подлежит переработке'
+            status: 'Не\u00A0подлежит переработке'
         },
         {
             id: 4,
@@ -449,7 +449,7 @@ export const PaperContent: RecycleContent = {
                     text: 'Грязная или мокрая бумага, картон'
                 }
             ],
-            status: 'Не подлежит переработке'
+            status: 'Не\u00A0подлежит переработке'
         },
         {
             id: 5,
@@ -470,7 +470,7 @@ export const PaperContent: RecycleContent = {
                     text: 'Одноразовая бумажная посуда'
                 }
             ],
-            status: 'Не подлежит переработке'
+            status: 'Не\u00A0подлежит переработке'
         },
         {
             id: 6,
@@ -495,7 +495,7 @@ export const PaperContent: RecycleContent = {
                     text: 'Пергаментная бумага'
                 }
             ],
-            status: 'Не подлежит переработке'
+            status: 'Не\u00A0подлежит переработке'
         }
     ]
 };
@@ -576,7 +576,7 @@ export const GlassContent: RecycleContent = {
                     text: 'Зеркала'
                 }
             ],
-            status: 'Не подлежит переработке'
+            status: 'Не\u00A0подлежит переработке'
         },
         {
             id: 4,
@@ -609,7 +609,7 @@ export const GlassContent: RecycleContent = {
                     text: 'Фарфор'
                 }
             ],
-            status: 'Не подлежит переработке'
+            status: 'Не\u00A0подлежит переработке'
         },
         {
             id: 5,
@@ -638,7 +638,7 @@ export const GlassContent: RecycleContent = {
                     text: 'Экраны планшетов'
                 }
             ],
-            status: 'Не подлежит переработке'
+            status: 'Не\u00A0подлежит переработке'
         }
     ]
 };

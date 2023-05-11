@@ -1,11 +1,9 @@
 import { FC } from 'react';
 
-import s from './RecycleButton.module.scss';
-import { RecycleButtonProps } from './RecycleButtonProps';
+import s from './RecycleCardButton.module.scss';
+import { RecycleCardButtonProps } from './RecycleCardButtonProps';
 
-
-
-export const RecycleButton: FC<RecycleButtonProps> = (props) => {
+export const RecycleCardButton: FC<RecycleCardButtonProps> = (props) => {
     return (
         <button
             type='button'
