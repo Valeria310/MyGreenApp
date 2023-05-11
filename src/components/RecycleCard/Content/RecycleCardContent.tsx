@@ -22,7 +22,7 @@ export const RecycleCardContent: FC<RecycleCardContentProps> = ({ content }) => 
             <table className={s.recycleTable}>
                 <tbody>
                     {content.columns.map(col => {
-                        const status = col.status === 'Не подлежит переработке' ? 'Red' : 'Green';
+                        const status = col.status === 'Не\u00A0подлежит переработке' ? 'Red' : 'Green';
 
                         return (
                             <tr key={col.id} className={`${s.recycleTableRow} ${s[`recycleTableRow${content.recycleType}`]}`}>

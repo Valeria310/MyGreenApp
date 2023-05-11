@@ -69,17 +69,17 @@ function MapSection() {
                                     <Popup className={s.popup} keepInView={false}>
                                         <div className={s.popupHeader}>{m.title}</div>
                                         <div className={s.popupAddressWrapper}>
-                                            <ul>
-                                                <li className={s.locationPoint}>
+                                            <ul className={s.popupContactsList}>
+                                                <li className={`${s.popupContactItem} ${s.locationPoint}`}>
                                                     <div className={s.popupAddressContent}>{m.address}</div>
                                                 </li>
-                                                <li className={s.phone}>
+                                                <li className={`${s.popupContactItem} ${s.phone}`}>
                                                     <div className={s.popupAddressContent}>{m.phone}</div>
                                                 </li>
-                                                <li className={s.schedule}>
+                                                <li className={`${s.popupContactItem} ${s.schedule}`}>
                                                     <div className={s.popupAddressContent}>{m.schedule}</div>
                                                 </li>
-                                                <li className={s.website}>
+                                                <li className={`${s.popupContactItem} ${s.website}`}>
                                                     <div className={s.popupAddressContent}><a href={m.website}>{m.website}</a></div>
                                                 </li>
                                             </ul>

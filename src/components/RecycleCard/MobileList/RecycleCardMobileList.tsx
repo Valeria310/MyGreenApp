@@ -8,7 +8,7 @@ export const RecycleCardMobileList: FC<RecycleCardMobileListProps> = ({ items })
     return (
         <ul className={s.recycleRowList}>
             {items.map(item => {
-                const status = item.status === 'Не подлежит переработке' ? 'Red' : 'Green';
+                const status = item.status === 'Не\u00A0подлежит переработке' ? 'Red' : 'Green';
                 const tinyGap = item.images.length > 2; 
 
                 return (

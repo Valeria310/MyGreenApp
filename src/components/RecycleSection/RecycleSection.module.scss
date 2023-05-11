@@ -8,6 +8,9 @@
 .recycleWrapper {
     padding: 32px 25px;
     background: #CAE3F9;
+    @media screen and (min-width: 768px) {
+        padding: 48px 39px;
+    }
     @media screen and (min-width: 1200px) {
         padding: 50px 135px;
     }
@@ -17,8 +20,11 @@
     display: none;
     @media screen and (min-width: 768px) {
         display: inline-flex;
+        margin: 0 0 32px;
     }
-    margin: 0 0 50px;
+    @media screen and (min-width: 1200px) {
+        margin: 0 0 50px;
+    }
     letter-spacing: 0.4px;
 }
 
@@ -27,6 +33,9 @@
     flex-direction: column;
     align-items: center;
     row-gap: 24px;
+    @media screen and (min-width: 768px) {
+        row-gap: 20px;
+    }
     @media screen and (min-width: 1200px) {
         row-gap: 30px;
     }

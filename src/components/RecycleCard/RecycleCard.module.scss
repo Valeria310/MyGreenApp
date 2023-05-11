@@ -9,7 +9,19 @@
     &Expanded {
         max-height: 2100px;
     }
+    @media screen and (min-width: 500px) {
+        max-height: 100px;
+        &Expanded {
+            max-height: 2100px;
+        }
+    }
     @media screen and (min-width: 768px) {
+        max-height: 124px;
+        &Expanded {
+            max-height: 2100px;
+        }
+    }
+    @media screen and (min-width: 1200px) {
         max-height: 123px;
         &Expanded {
             max-height: 2100px;
@@ -22,20 +34,35 @@
     flex-direction: column;
     justify-content: center;
     background-color: $color-white;
-    column-gap: 60px;
     width: 100%;
     overflow: hidden;
     transition: none;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 500px) {
         flex-direction: row;
         align-items: center;
+    }
+    @media screen and (min-width: 768px) {
+        column-gap: 30px;
+    }
+    @media screen and (min-width: 1200px) {
+        column-gap: 60px;
     }
 }
 
 .recycleCardImage {
     min-width: 270px;
     height: 150px;
+    @media screen and (min-width: 500px) {
+        min-width: auto;
+        height: 100px;
+        max-width: 180px;
+    }
     @media screen and (min-width: 768px) {
+        min-width: auto;
+        height: 124px;
+        max-width: 240px;
+    }
+    @media screen and (min-width: 1200px) {
         height: 123px;
         max-width: 300px;
     }
@@ -48,7 +75,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 24px;
+    @media screen and (min-width: 500px) {
+        padding: 0;
+        padding: 15px;
+    }
     @media screen and (min-width: 768px) {
+        padding: 0;
+        height: auto;
+        margin-right: 30px;
+    }
+    @media screen and (min-width: 1200px) {
         padding: 0;
         height: auto;
         margin-right: 32px;
@@ -58,6 +94,12 @@
 .recycleCardInfo {
     display: inline-flex;
     max-width: calc(188 / 320 * 100vw);
+    @media screen and (min-width: 768px) {
+        max-width: 300px;
+    }
+    @media screen and (min-width: 1200px) {
+        max-width: 581px;
+    }
 }
 
 .recycleCardHeading {
@@ -68,6 +110,12 @@
     font-size: 20px;
     line-height: 105%;
     @media screen and (min-width: 768px) {
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 105%;
+    }
+    @media screen and (min-width: 1200px) {
+        font-weight: 500;
         font-size: 30px;
         line-height: 33px;
     }
