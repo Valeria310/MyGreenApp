@@ -7,6 +7,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { FilterButton } from './FilterButton';
 import s from './MapSection.module.scss';
 import pointIcon from '../../assets/images/point_icon.svg';
+import locationPoint from '../../assets/images/u_location-point.svg';
 import { filterButtons, FilterButtonsObjType, filterType, markers, waste } from '../../constants/MapState';
 
 
@@ -58,6 +59,7 @@ function MapSection() {
                 {/*<div>*/}
                 {/*    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>*/}
                 <div>
+
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true} className={s.mapContainer}>
                         <TileLayer
                             attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
@@ -66,7 +68,7 @@ function MapSection() {
                         <MarkerClusterGroup chunkedLoading>
                             {filteredMarkers.map((m, i) =>
                                 m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
-                                    <Popup className={s.popup} keepInView={false}>
+                                    <Popup className={s.popup} keepInView={false} maxWidth={370}>
                                         <div className={s.popupHeader}>{m.title}</div>
                                         <div className={s.popupAddressWrapper}>
                                             <ul>
