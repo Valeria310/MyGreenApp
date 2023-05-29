@@ -7,15 +7,18 @@
 
 }
 
-.mapWrapper {
+.mapHeaderWrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 20px;
   background: $color-white;
-  @media screen and (min-width: 1200px) {
-    padding: 38px 135px 55px;
-  }
+  padding: 38px 135px 55px;
+}
+
+
+.mapWrapper {
+   background: $color-white;
+  padding: 20px 135px;
 }
 
 .mapHeading {
@@ -30,7 +33,7 @@
 .mapContainer {
   width: 100%;
   height: 543px;
-
+  padding: 38px 135px 55px;
 }
 
 input.searchField {
@@ -66,7 +69,7 @@ input.searchField:focus {
 
 .popupHeader {
   background: $color-primary;
-  padding: 10px;
+  padding: 27px 13px 10px 10px;
   font-family: 'Rising Sun';
   font-style: normal;
   font-weight: 400;
@@ -79,7 +82,7 @@ input.searchField:focus {
 
 .popupAddressWrapper {
   background: $color-white;
-  padding: 1px 1px 1px 0px;
+  padding: 1px 1px 1px 10px;
   margin: 0px;
   font-family: 'Rising Sun';
   font-style: normal;
@@ -87,40 +90,27 @@ input.searchField:focus {
   font-size: 14px;
   line-height: 22px;
   color: $color-black;
-
 }
 
-ul {
-
- padding: 0px 0px 0px 27px;
-
+ul.address {
+ padding: 0px 0px 0px 30px;
 }
 
-li {
-  margin: 0 0 3px 0;
-}
-
-
- .locationPoint {
-   list-style-image: url(../../assets/images/u_location-point.svg);
+.locationPoint {
+   list-style-image: url(../../assets/images/u_location-point_24.svg);
  }
  .phone {
-   list-style-image:url(../../assets/images/u_phone.svg);
-
+   list-style-image:url(../../assets/images/u_phone_24.svg);
 }
 .schedule {
-   list-style-image:url(../../assets/images/u_clock-three.svg);
-
+   list-style-image:url(../../assets/images/u_clock-three_24.svg);
 }
 .website {
-   list-style-image:url(../../assets/images/fi_link.svg);
-
+   list-style-image:url(../../assets/images/u_link_24.svg);
 }
-
 .popupAddressContent {
   position: relative;
-  top: -1px;
-
+  top: -7px;
 }
 
 .popupFooter {
@@ -137,7 +127,6 @@ li {
 
 
 ul.wasteTypes {
-
   list-style-type: none;
   font-family: 'Rising Sun';
   font-style: normal;
@@ -147,14 +136,82 @@ ul.wasteTypes {
   color: $color-black;
   padding: 0px;
   margin: 5px 0px;
-
 }
 
 ul.wasteTypes li::first-letter {
-
-
   text-transform: capitalize;
+}
+
+
+@media screen and (max-width: 504px) {
+
+
+  .mapHeaderWrapper {
+        padding: 38px 25px;
+  }
+
+
+  .buttonsWrapper {
+    width: 90%;
+    padding: 0px;
+  }
+
+
+  .mapWrapper {
+
+    padding: 20px 0px;
+  }
+
+
+  .popup {
+    width: 243px;
+  }
+
+  .popupHeader {
+    font-size: 10px;
+    line-height: 140%;
+    padding: 10px 15px;
+  }
+
+  .popupAddressWrapper {
+    font-size: 10px;
+    line-height: 140%;
+    padding: 2px 15px;
+  }
+
+  .popupFooter {
+    font-size: 10px;
+    line-height: 140%;
+    padding: 10px 15px;
+  }
+
+
+  ul.wasteTypes {
+    font-size: 10px;
+    line-height: 140%;
+  }
+
+
+  ul.address {
+    padding: 0px 10px 0px 15px;
+  }
+
+  .locationPoint {
+    list-style-image: url(../../assets/images/u_location-point_10.svg);
+  }
+  .phone {
+    list-style-image:url(../../assets/images/u_phone_10.svg);
+  }
+  .schedule {
+    list-style-image:url(../../assets/images/u_clock-three_10.svg);
+  }
+  .website {
+    list-style-image:url(../../assets/images/u_link_10.svg);
+  }
+  .popupAddressContent {
+    position: relative;
+    top: -1px;
+  }
 
 
 }
-

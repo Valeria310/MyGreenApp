@@ -7,7 +7,6 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { FilterButton } from './FilterButton';
 import s from './MapSection.module.scss';
 import pointIcon from '../../assets/images/point_icon.svg';
-import locationPoint from '../../assets/images/u_location-point.svg';
 import { filterButtons, FilterButtonsObjType, filterType, markers, waste } from '../../constants/MapState';
 
 
@@ -41,7 +40,7 @@ function MapSection() {
     return (
 
         <section className={s.map} id="map">
-            <div className={s.mapWrapper}>
+            <div className={s.mapHeaderWrapper}>
                 <h2>Куда сдать?</h2>
                 <div className={s.buttonsWrapper}>
 
@@ -58,7 +57,8 @@ function MapSection() {
                 </div>
                 {/*<div>*/}
                 {/*    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>*/}
-                <div>
+            </div>
+                <div className={s.mapWrapper}>
 
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true} className={s.mapContainer}>
                         <TileLayer
@@ -71,7 +71,7 @@ function MapSection() {
                                     <Popup className={s.popup} keepInView={false} maxWidth={370}>
                                         <div className={s.popupHeader}>{m.title}</div>
                                         <div className={s.popupAddressWrapper}>
-                                            <ul>
+                                            <ul className={s.address}>
                                                 <li className={s.locationPoint}>
                                                     <div className={s.popupAddressContent}>{m.address}</div>
                                                 </li>
@@ -100,7 +100,7 @@ function MapSection() {
                         </MarkerClusterGroup>
                     </MapContainer>
                 </div>
-            </div>
+
 
 
         </section>

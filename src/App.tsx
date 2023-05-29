@@ -11,12 +11,12 @@ import './App.scss';
 
 export const App = () => (
     <div className="App">
-        <Header/>
-        <ParallaxSection/>
-        <NavSection/>
-        <RecycleSection/>
+        {/*<Header/>*/}
+        {/*<ParallaxSection/>*/}
+        {/*<NavSection/>*/}
+        {/*<RecycleSection/>*/}
         <MapSection/>
-        <Ticker/>
-        <Footer/>
+        {/*<Ticker/>*/}
+        {/*<Footer/>*/}
     </div>
 );

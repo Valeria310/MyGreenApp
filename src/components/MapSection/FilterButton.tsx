@@ -8,19 +8,20 @@ type PropsType = {
     isActive:boolean,
 }
 
-export const FilterButton = (props:PropsType) => {
-    const wasteType:filterType = props.title;
+export const FilterButton = (props: PropsType) => {
+    const wasteType: filterType = props.title;
 
-    const onClickHandler=()=>{
+    const onClickHandler = () => {
         props.changeButtonStatus(wasteType);
     };
 
     return (
         <button
-            className={props.isActive ? s.filterButtonActive : s.filterButton}
+            className={props.isActive ? `${s.filterButton} ${s.active}` : s.filterButton}
             onClick={onClickHandler}
         >
             {props.title}
         </button>
+
     );
 };
