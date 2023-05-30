@@ -1,20 +1,31 @@
-@import '../../index.scss';
+@import 'src/index.scss';
 
 .recycleCard {
     width: 100%;
     overflow: hidden;
     border-radius: 30px;
     transition: max-height .3s ease-in;
-    max-height: 235px;
-    @media screen and (min-width: 768px) {
-        max-height: 123px;
-    }
-    .recycleCardContent {
-        background-color: $color-white;
-        overflow: hidden;
-    }
+    max-height: 238px;
     &Expanded {
-        max-height: 1536px;
+        max-height: 2100px;
+    }
+    @media screen and (min-width: 500px) {
+        max-height: 100px;
+        &Expanded {
+            max-height: 2100px;
+        }
+    }
+    @media screen and (min-width: 768px) {
+        max-height: 124px;
+        &Expanded {
+            max-height: 2100px;
+        }
+    }
+    @media screen and (min-width: 1200px) {
+        max-height: 123px;
+        &Expanded {
+            max-height: 2100px;
+        }
     }
 }
 
@@ -23,20 +34,35 @@
     flex-direction: column;
     justify-content: center;
     background-color: $color-white;
-    column-gap: 60px;
     width: 100%;
     overflow: hidden;
     transition: none;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 500px) {
         flex-direction: row;
         align-items: center;
+    }
+    @media screen and (min-width: 768px) {
+        column-gap: 30px;
+    }
+    @media screen and (min-width: 1200px) {
+        column-gap: 60px;
     }
 }
 
 .recycleCardImage {
-    max-width: 280px;
-    height: 135px;
+    min-width: 270px;
+    height: 150px;
+    @media screen and (min-width: 500px) {
+        min-width: auto;
+        height: 100px;
+        max-width: 180px;
+    }
     @media screen and (min-width: 768px) {
+        min-width: auto;
+        height: 124px;
+        max-width: 240px;
+    }
+    @media screen and (min-width: 1200px) {
         height: 123px;
         max-width: 300px;
     }
@@ -48,9 +74,17 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
-    padding: 0 25px;
+    padding: 24px;
+    @media screen and (min-width: 500px) {
+        padding: 0;
+        padding: 15px;
+    }
     @media screen and (min-width: 768px) {
+        padding: 0;
+        height: auto;
+        margin-right: 30px;
+    }
+    @media screen and (min-width: 1200px) {
         padding: 0;
         height: auto;
         margin-right: 32px;
@@ -58,9 +92,14 @@
 }
 
 .recycleCardInfo {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+    display: inline-flex;
+    max-width: calc(188 / 320 * 100vw);
+    @media screen and (min-width: 768px) {
+        max-width: 300px;
+    }
+    @media screen and (min-width: 1200px) {
+        max-width: 581px;
+    }
 }
 
 .recycleCardHeading {
@@ -69,150 +108,15 @@
     color: $color-black;
     margin: 0;
     font-size: 20px;
-    line-height: 28px;
+    line-height: 105%;
     @media screen and (min-width: 768px) {
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 105%;
+    }
+    @media screen and (min-width: 1200px) {
+        font-weight: 500;
         font-size: 30px;
         line-height: 33px;
-    }
-}
-
-.recycleCardText {
-    display: none;
-    font-family: $font-primary;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 23px;
-    margin: 0;
-    @media screen and (min-width: 768px) {
-        display: block;
-    }
-}
-
-.recycleTable {
-    border-collapse: collapse;
-    &Row {  
-        border-top: 1px solid $color-black;
-    }
-    &Rowplastic:last-child {
-        .recycleTableImages {
-            padding: 5px;
-        }
-    }
-    &Rowpaper {
-        &:last-child .recycleTableHeading {
-            padding: 16px 15px;
-        }
-    }
-    &Rowglass {
-        &:first-child .recycleTableHeading {
-            padding: 28px 15px;
-        }
-    }
-    
-    &Rowlarge {
-        min-height: 83px;
-    }
-    &Rowelectro {
-        .recycleTableHeading {
-            padding: 10px 13px;
-        }
-    }
-    &Rowdanger {
-        min-height: 83px;
-    }
-    &Rowmetal {
-        min-height: 83px;
-    }
-    &Heading {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 26px;
-        color: $color-black;
-        padding: 10px 15px;
-        white-space: pre-line;
-    }
-    &Heading, &Data {
-        min-width: 195px;
-        border-style: solid;
-        border-color: $color-black;
-        border-width: 0 1px;
-    }
-    &Row &Heading:first-child {
-        border-left: none;
-    }
-    &Row &Data:last-child {
-        border-right: none;
-    }
-    &Row:nth-child(5) {
-        .recycleTableHeading {
-            padding: 12.5px 15px;
-        }
-    }
-    &Rowplastic:nth-child(5) {
-        .recycleTableDescription {
-            padding: 20px;
-        }
-    }
-    &Rowplastic:last-child {
-        .recycleTableDescription {
-            padding: 9.5px 20px;
-        }
-    }
-    &Images {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        padding: 8px;
-        &:last-child {
-            column-gap: 5px;
-        }
-    }
-    &Description {
-        padding: 9.5px 20px;
-        width: 585px;
-        ul {     
-            
-            margin: 0;
-            padding-inline-start: 25px;
-            padding-inline-end: 10px;
-            li {
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 21px;
-                color: $color-black;
-                white-space: pre-line;
-            }
-            li::marker{
-                font-size: 10px;
-                line-height: 16px;
-                color: $color-black;
-            }
-        }
-    }
-    &Status {
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 23px;
-        color: $color-black;
-        padding: 15px 38px;
-        text-align: left;
-        white-space: pre-line;
-    }
-}
-
-.recycleStatus {
-    &Red {
-        background: #FF9595;
-    }
-    &Green {
-        background: #94B9AB;
-    }
-    &SubGreen {
-        padding: 10.5px 20px;
-        background: #94B9AB;
     }
 }

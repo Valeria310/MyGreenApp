@@ -1,0 +1,100 @@
+@import 'src/index.scss';
+
+.recycleRowList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recycleRowContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  row-gap: 20px;
+  padding: 20px 14px 16px;
+}
+
+.recycleRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-top: 2px solid $color-black;
+}
+
+.recycleRowHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  h4 {
+    max-width: 170px;
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 105%;
+    color: $color-black;
+    white-space: pre-line;
+  }
+}
+
+.recycleRowImages {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+  img {
+    height: 38px;
+  }
+  &Tiny {
+    column-gap: 5px;
+  }
+}
+
+.recycleRowMain {
+  display: flex;
+  align-self: flex-start;
+}
+
+.recycleRowMainList {
+  list-style-type: disc;
+  padding: 0;
+  margin: 0;
+  max-width: 281px;
+  padding-inline-start: 16px;
+  // padding-inline-end: 10px;
+  li {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: $color-black;
+    white-space: pre-line;
+  }
+  li::marker{
+    font-size: 10px;
+    line-height: 140%;
+    color: $color-black;
+  }
+}
+
+.recycleRowFooter {
+  display: flex;
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: $color-black;
+  padding: 12px 14px;
+  &Red {
+    background: #FF9595;
+  }
+  &Green {
+      background: #94B9AB;
+  }
+}

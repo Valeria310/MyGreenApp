@@ -78,7 +78,7 @@ function MapSection() {
                                     <Popup className={s.popup} keepInView={false} maxWidth={370}>
                                         <div className={s.popupHeader}>{m.title}</div>
                                         <div className={s.popupAddressWrapper}>
-                                            <ul className={s.address}>
+                                          <ul className={s.address}>
                                                 <li className={s.locationPoint}>
                                                     <div className={s.popupAddressContent}>{m.address}</div>
                                                 </li>
