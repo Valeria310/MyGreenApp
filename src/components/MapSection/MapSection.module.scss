@@ -12,13 +12,13 @@
   flex-direction: column;
   justify-content: flex-start;
   background: $color-white;
-  padding: 38px 135px 55px;
+  padding: 10px 135px;
 }
 
 
 .mapWrapper {
-   background: $color-white;
-  padding: 20px 135px;
+  background: $color-white;
+  padding: 50px 135px;
 }
 
 .mapHeading {
@@ -143,11 +143,11 @@ ul.wasteTypes li::first-letter {
 }
 
 
-@media screen and (max-width: 504px) {
+@media screen and (max-width: 767px) {
 
 
   .mapHeaderWrapper {
-        padding: 38px 25px;
+        padding: 5px 25px 0px 25px;
   }
 
 
@@ -159,7 +159,7 @@ ul.wasteTypes li::first-letter {
 
   .mapWrapper {
 
-    padding: 20px 0px;
+    padding: 0px;
   }
 
 
@@ -213,5 +213,21 @@ ul.wasteTypes li::first-letter {
     top: -1px;
   }
 
+
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+  .mapHeaderWrapper {
+    padding: 25px 39px 0px 39px;
+  }
+  .buttonsWrapper {
+    padding: 15px 0px;
+  }
+  .mapWrapper {
+    padding: 0px 39px 45px 39px;
+  }
 
 }

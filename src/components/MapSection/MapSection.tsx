@@ -7,7 +7,14 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { FilterButton } from './FilterButton';
 import s from './MapSection.module.scss';
 import pointIcon from '../../assets/images/point_icon.svg';
-import { filterButtons, FilterButtonsObjType, filterType, markers, waste } from '../../constants/MapState';
+import {
+    filterButtons,
+    FilterButtonsObjType,
+    filterType,
+    markers,
+    markersForTest,
+    waste
+} from '../../constants/MapState';
 
 
 const customIcon = new L.Icon({
@@ -25,7 +32,7 @@ function MapSection() {
 
     };
 
-    const filteredMarkers = markers;
+    const filteredMarkers = markersForTest;
 
     filteredMarkers.map(m => m.display = false);
 
