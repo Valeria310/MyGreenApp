@@ -405,3 +405,113 @@ export type FilterButtonsObjType = {
 }
 
 
+
+export const markersForTest = [
+    //заводской район
+
+    {
+        id: 1,
+        title: 'Пункт №29 ОАО "Белвторресурсы"',
+        website: 'https://belvtorresurs.by/',
+        address: 'г.Минск, ул.Челюскинцев, 30',
+        schedule: 'Время работы: Пн-Пт: с 09:00 до 18:00 (обед 14:00-15:00) вых: Суббота, Воскресенье',
+        phone: '',
+        latitude: 53.871875,
+        longitude: 27.647768,
+        info: 'Some info about point 1',
+        wasteTypes: [waste[0], waste[1], waste[2], waste[6]],
+        display: false
+    },
+
+
+
+    //Ленинский район
+    {
+        id: 8,
+        title: 'Пункт №56 ОАО "Белвторресурсы"',
+        website: 'https://belvtorresurs.by/',
+        address: 'г.Минск, 2-ой Велосипедный пер. 32а',
+        schedule: 'Время работы: Пн-Пт: с 08:00 до 17:00 (обед 12:00-14:00) Сб: с 09:00 до 14:00; вых: Воскресенье',
+        phone: '',
+        latitude: 53.870835347987665,
+        longitude: 27.59076809784901,
+        info: '',
+        wasteTypes: [waste[3], waste[4], waste[5], waste[6]],
+        display: false
+    },
+
+
+    //Московский район
+    {
+        id: 18,
+        title: 'Пункт №25 ОАО "Белвторресурсы"',
+        website: 'https://belvtorresurs.by/',
+        address: 'г.Минск, ул. Слободская, 137',
+        schedule: 'Время работы: Пн-Пт: с 09:00 до 17:00 (обед 13:00-14:35) вых: Суббота, Воскресенье',
+        phone: '',
+        latitude: 53.845445843462734,
+        longitude: 27.45891119784785,
+        info: '',
+        wasteTypes: [waste[0], waste[2], waste[3], waste[4]],
+        display: false
+    },
+
+
+
+    //Октябрьский район
+
+    {
+        id: 27,
+        title: 'Пункт №2 ОАО "Белвторресурсы"',
+        website: 'https://belvtorresurs.by/',
+        address: 'г.Минск, ул. Левкова, 35 к.1',
+        schedule: 'Время работы: Пн-Пт: с 09:00 до 18:00 (обед 13:00-14:00) вых: Суббота, Воскресенье',
+        phone: '',
+        latitude: 53.8752912331619,
+        longitude: 27.556236297849225,
+        info: '',
+        wasteTypes: [waste[0], waste[1], waste[4], waste[5]],
+        display: false
+    },
+
+
+
+    //Партизанский район
+
+    {
+        id: 34,
+        title: 'Пункт №4 ОАО "Белвторресурсы"',
+        website: 'https://belvtorresurs.by/',
+        address: 'г.Минск, ул. Филимонова¸11/2',
+        schedule: 'Время работы: Пн-Пт: с 09:00 до 17:00 (обед 13:00-13:45) Сб: с 09:00 до 12:45; вых: Воскресенье',
+        phone: '',
+        latitude: 53.9114040326628,
+        longitude: 27.632101155522825,
+        info: '',
+        wasteTypes: [waste[1], waste[2], waste[4], waste[5]],
+        display: false
+    },
+
+
+
+    //Первомайский район
+    {
+        id: 38,
+        title: 'Пункт №5 ОАО "Белвторресурсы"',
+        website: 'https://belvtorresurs.by/',
+        address: 'г.Минск, ул. Никифорова, 20',
+        schedule: 'Время работы: Пн-Пт: с 09:00 до 17:00 (обед 13:00-14:00) Сб: с 09:00 до 14:00; вых: Воскресенье',
+        phone: '',
+        latitude: 53.93981381838715,
+        longitude: 27.694878611344112,
+        info: '',
+        wasteTypes: [waste[0], waste[1], waste[3], waste[4]],
+        display: false
+    },
+
+
+
+
+];
+
+

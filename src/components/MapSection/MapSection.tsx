@@ -7,7 +7,14 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { FilterButton } from './FilterButton';
 import s from './MapSection.module.scss';
 import pointIcon from '../../assets/images/point_icon.svg';
-import { filterButtons, FilterButtonsObjType, filterType, markers, waste } from '../../constants/MapState';
+import {
+    filterButtons,
+    FilterButtonsObjType,
+    filterType,
+    markers,
+    markersForTest,
+    waste
+} from '../../constants/MapState';
 
 
 const customIcon = new L.Icon({
@@ -25,7 +32,7 @@ function MapSection() {
 
     };
 
-    const filteredMarkers = markers;
+    const filteredMarkers = markersForTest;
 
     filteredMarkers.map(m => m.display = false);
 
@@ -40,7 +47,7 @@ function MapSection() {
     return (
 
         <section className={s.map} id="map">
-            <div className={s.mapWrapper}>
+            <div className={s.mapHeaderWrapper}>
                 <h2>Куда сдать?</h2>
                 <div className={s.buttonsWrapper}>
 
@@ -57,7 +64,9 @@ function MapSection() {
                 </div>
                 {/*<div>*/}
                 {/*    <input placeholder={"Искать по адресу"} className={s.searchField}/></div>*/}
-                <div>
+            </div>
+                <div className={s.mapWrapper}>
+
                     <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true} className={s.mapContainer}>
                         <TileLayer
                             attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
@@ -66,20 +75,20 @@ function MapSection() {
                         <MarkerClusterGroup chunkedLoading>
                             {filteredMarkers.map((m, i) =>
                                 m.display ? <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
-                                    <Popup className={s.popup} keepInView={false}>
+                                    <Popup className={s.popup} keepInView={false} maxWidth={370}>
                                         <div className={s.popupHeader}>{m.title}</div>
                                         <div className={s.popupAddressWrapper}>
-                                            <ul className={s.popupContactsList}>
-                                                <li className={`${s.popupContactItem} ${s.locationPoint}`}>
+                                          <ul className={s.address}>
+                                                <li className={s.locationPoint}>
                                                     <div className={s.popupAddressContent}>{m.address}</div>
                                                 </li>
-                                                <li className={`${s.popupContactItem} ${s.phone}`}>
+                                                <li className={s.phone}>
                                                     <div className={s.popupAddressContent}>{m.phone}</div>
                                                 </li>
-                                                <li className={`${s.popupContactItem} ${s.schedule}`}>
+                                                <li className={s.schedule}>
                                                     <div className={s.popupAddressContent}>{m.schedule}</div>
                                                 </li>
-                                                <li className={`${s.popupContactItem} ${s.website}`}>
+                                                <li className={s.website}>
                                                     <div className={s.popupAddressContent}><a href={m.website}>{m.website}</a></div>
                                                 </li>
                                             </ul>
@@ -98,7 +107,7 @@ function MapSection() {
                         </MarkerClusterGroup>
                     </MapContainer>
                 </div>
-            </div>
+
 
 
         </section>
