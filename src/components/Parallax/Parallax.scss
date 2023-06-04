@@ -21,6 +21,7 @@ $duration: 3s;
         height: 1027px;
         background-image: url(../../assets/images/parallax-img.png);
         background-size: cover;
+        background-position: center;
         background-position-y: top;
         background-repeat: no-repeat;
         &.active {
@@ -72,7 +73,8 @@ $duration: 3s;
 }
 
 .about {
-    width: 830px;
+    max-width: 830px;
+    width: 80%;
     font-family: $font-primary;
     color: #FFFFFF;
     position: absolute;
@@ -93,12 +95,11 @@ $duration: 3s;
         height: 1152px;
         width: 100%;
         position: absolute;
-        top: 898px;
+        bottom: 0;
         z-index: 2;
         transition: all $duration;
         &.active {
             background-image: url(../../assets/images/text_bg-after.png);
-            top: 419px;
             height: 481px;
         }
     }
@@ -125,25 +126,44 @@ $duration: 3s;
 }
 
 .trees {
-    top: 369px;
+    top: 386px;
     width: 100%;
     height: 556px;
     left: 50%;
-    transform: translate(-50%);
-    background-image: url(../../assets/images/trees.png);
-    background-size: 112% auto;
-    background-position-x: 44%;
-    background-repeat: no-repeat;
+    transform: translate(-50%) scale(-1, 1);
     position: absolute;
     transition: all $duration;
-    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    &_l {
+        width: 50%;
+        height: 100%;
+        background-image: url(../../assets/images/trees_l-before.png);
+        background-size: 57% 100%;
+        background-position-x: -27%;
+        background-repeat: no-repeat;
+    }
+    &_r {
+        width: 50%;
+        height: 100%;
+        background-image: url(../../assets/images/trees_r-before.png);
+        background-size: 56% 100%;
+        background-position-x: 131%;
+        background-repeat: no-repeat;
+    }
     &.active {
-        top: 98px;
-        height: 378px;
-        width: 84%;
-        transform: translate(-48%);
-        background-image: url(../../assets/images/trees-after.png);
-        background-size: contain;
+        top: 78px;
+        height: 398px;
+        width: 74%;
+        transform: translate(-48%) scale(-1, 1);
+        & .trees_l {
+            background-image: url(../../assets/images/trees_l-after.png);
+            background-position-x: -20%;
+        }
+        & .trees_r {
+            background-image: url(../../assets/images/trees_r-after.png);
+            background-position-x: 124%;
+        }
     }
 }
 
@@ -166,18 +186,37 @@ $duration: 3s;
     top: 610px;
     width: 100%;
     height: 522px;
-    background-image: url(../../assets/images/big_trees.png);
-    background-size: cover;
-    background-position-x: center;
-    background-repeat: no-repeat;
     display: flex;
     justify-content: space-between;
     z-index: 3;
     transition: all $duration;
+    &_l {
+        width: 50%;
+        height: 100%;
+        background-image: url(../../assets/images/trees_l-before.png);
+        background-size: 62% 100%;
+        background-position-x: -47%;
+        background-repeat: no-repeat;
+    }
+    &_r {
+        width: 50%;
+        height: 100%;
+        background-image: url(../../assets/images/trees_r-before.png);
+        background-size: 56% 100%;
+        background-position-x: 133%;
+        background-repeat: no-repeat;
+    }
     &.active {
-        top: 58px;
+        top: 66px;
         height: 535px;
-        background-image: url(../../assets/images/big_trees-after.png);
+        & .big_trees_l{
+            background-image: url(../../assets/images/trees_l-after.png);
+            background-position-x: -43%;
+        }
+        & .big_trees_r {
+            background-image: url(../../assets/images/trees_r-after.png);
+            background-position-x: 137%;
+        }
     }
 }
 
@@ -252,5 +291,301 @@ $duration: 3s;
         width: 47.7%;
         height: 306px;
         transform: translateX(-55%);
+    }
+}
+
+@media (max-width: 1350px) {
+    .dark_hill.active {
+        top: 275px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .parallax {
+        height: 1024px;
+        &.active {
+            height: 1024px;
+        }
+    }
+    .parallax_img {
+        height: 800px;
+        &.active {
+            height: 800px;
+        }
+    }
+    .about_bg {
+        height: 240px;
+        &.active {
+            height: 571px;
+        }
+    }
+    .big_trees {
+        height: 400px;
+    }
+    .dark_hill{
+        top: 550px;
+    }
+    .garbage_l {
+        top: 580px;
+    }
+    .garbage_r {
+        top: 580px;
+    }
+    .dark_hill.active {
+        top: 424px;
+    }
+    .hill.active {
+        top: 250px;
+    }
+    .big_trees.active {
+        top: 90px;
+    }
+    .trees.active {
+        top: 160px;
+    }
+    .small_trees.active {
+        top: 327px;
+    }
+    .about_title {
+        font-size: 36px;
+    }
+    .about_text {
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 1120px) {
+    .info {
+        &_title {
+            font-size: 52px;
+            top: 173px;
+        }
+        &_text {
+            font-size: 24px;
+            top: 206px;
+        }
+    }
+    .about_bg {
+        height: 270px;
+    }
+    .big_trees_l {
+        background-size: 70% 100%;
+    }
+    .big_trees_r {
+        background-size: 62% 100%;
+    }
+    .trees_l {
+        background-size: 70% 100%;
+    }
+    .trees_r {
+        background-size: 62% 100%;
+    }
+    .garbage_l,
+    .garbage_r {
+        width: 250px;
+    }
+    .garbage_l {
+        left: 106px;
+    }
+    .garbage_r {
+        right: 170px;
+    }
+}
+
+@media (max-width: 950px) {
+    .about_bg {
+        height: 380px;
+    }
+    .big_trees {
+        top: 500px;
+    }
+    .parallax_img {
+        background-position-y: -132px;
+    }
+    .big_trees.active {
+        top: 260px;
+        height: 313px;
+        .big_trees_l {
+            background-position-x: 6%;
+        }
+        .big_trees_r {
+            background-position-x: 100%;
+        }
+    }
+    .trees.active {
+        top: 264px;
+        height: 238px;
+        .trees_l {
+            background-position-x: -20%;
+        }
+        .trees_r {
+            background-position-x: 71%;
+        }
+    }
+    .small_trees.active {
+        top: 327px;
+        height: 139px;
+        background-position-x: center;
+    }
+}
+
+@media (max-width: 800px) {
+    .info {
+        &_title {
+            font-size: 28px;
+            top: 173px;
+        }
+        &_text {
+            font-size: 15px;
+            line-height: 17px;
+            top: 206px;
+            white-space: nowrap;
+        }
+    }
+    .big_trees {
+        height: 313px;
+        top: 391px;
+    }
+    .trees {
+        height: 249px;
+        top: 396px;
+    }
+    .garbage_l,
+    .garbage_r {
+        width: 127px;
+        height: 77px;
+    }
+    .garbage_l {
+        left: 106px;
+        top: 601px;
+    }
+    .garbage_r {
+        right: 135px;
+        top: 596px;
+    }
+    .big_trees_l {
+        background-size: 68% 100%;
+    }
+    .big_trees_r {
+        background-size: 60% 100%;
+    }
+    .trees_l {
+        background-size: 62% 100%;
+    }
+    .trees_r {
+        background-size: 60% 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .dark_hill {
+        top: 570px;
+    }
+    .about_title {
+        font-size: 24px;
+    }
+    .about_text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .parallax {
+        height: 800px;
+        &.active {
+            height: 800px;
+        }
+    }
+    .about_bg {
+        height: 155px;
+        &.active {
+            height: 385px;
+        }
+    }
+    .big_trees_l {
+        background-size: 76% 100%;
+    }
+    .big_trees_r {
+        background-size: 68% 100%
+    }
+    .small_trees {
+        width: 58%;
+    }
+    .about_title {
+        font-size: 22px;
+    }
+    .about_text {
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 530px) {
+    .garbage_l {
+        left: 55px;
+        top: 610px;
+    }    
+    .garbage_r {
+        right: 53px;
+        top: 571px;
+    }
+    .small_trees {
+        height: 116px;
+        top: 510px;
+    }
+    .dark_hill {
+        top: 580px;
+    }
+    .about_bg.active {
+        height: 490px;
+    }
+    .big_trees.active {
+        height: 263px;
+        top: 189px;
+    }
+    .trees.active {
+        height: 191px;
+        top: 157px;
+        width: 100%;
+        transform: translate(-50%) scale(-1, 1);
+        & .trees_l {
+            background-position-x: -44%;
+            transform: translateY(25%);
+        }
+        & .trees_r {
+            background-position-x: 120%;
+        }
+    }
+    .dark_hill.active {
+        height: 124px;
+        top: 326px;
+    }
+    .small_trees.active {
+        height: 116px;
+        top: 290px;
+    }
+}
+
+@media (max-width: 450px) {
+    .big_trees_l {
+        background-size: 82% 100%;
+    }
+    .big_trees_r {
+        background-size: 76% 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .big_trees_l {
+        background-size: 92% 100%;
+        background-position-x: -375%;
+    }
+    .big_trees_r {
+        background-size: 88% 100%;
+        background-position-x: 375%;
+    }
+    .dark_hill {
+        height: 250px;
+        background-size: 101% 60%;
     }
 }
