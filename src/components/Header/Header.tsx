@@ -89,7 +89,7 @@ export const Header = () => {
     });
     return (<header className='header visible' id='header'>
         <div className="container">
-            <a href='#' className="logo" onClick={handleClick}></a>
+            <a className="logo" onClick={handleClick}></a>
             <Navigation />
             <div className="header-mobile-burger" id='burger'>
                 <div className="burger-line"></div>

@@ -12,13 +12,13 @@ export type filterType =
 
 
 export const filterButtons:Array<FilterButtonsObjType> = [
-    { id: 1, wasteTitle: waste[0], isActive: true },
-    { id: 2, wasteTitle: waste[1], isActive: true },
-    { id: 3, wasteTitle:  waste[2], isActive: true },
-    { id: 4, wasteTitle:  waste[3], isActive: true },
-    { id: 5, wasteTitle:  waste[4], isActive: true },
-    { id: 6, wasteTitle:  waste[5], isActive: true },
-    { id: 7, wasteTitle:  waste[6], isActive: true }
+    { id: 1, wasteTitle: waste[0], isActive: false },
+    { id: 2, wasteTitle: waste[1], isActive: false },
+    { id: 3, wasteTitle:  waste[2], isActive: false },
+    { id: 4, wasteTitle:  waste[3], isActive: false },
+    { id: 5, wasteTitle:  waste[4], isActive: false },
+    { id: 6, wasteTitle:  waste[5], isActive: false },
+    { id: 7, wasteTitle:  waste[6], isActive: false }
 ];
 
 export const markers = [
