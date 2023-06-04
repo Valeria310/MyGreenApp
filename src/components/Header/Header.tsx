@@ -50,6 +50,37 @@ export const Header = () => {
         mousePosition = 'out';
     };
 
+    const clickHandler = () => {
+        const burger = document.getElementById('burger');
+        const menu = document.getElementById('menu');
+        const header = document.getElementById('header');
+        burger?.classList.remove('cross');
+        menu?.classList.remove('opened');
+        header?.classList.remove('fixed');
+    };
+
+    document.addEventListener('click', (e)=> {  
+        const burger = document.getElementById('burger');
+        if(e.target == burger) {
+            const menu = document.getElementById('menu');
+            const header = document.getElementById('header');
+            menu?.classList.add('opened');
+            burger?.classList.add('cross');
+            header?.classList.add('fixed');
+            burger?.addEventListener('click', clickHandler, false);
+            return () => burger?.removeEventListener('click', clickHandler, false);
+        }
+    });
+    
+    window.addEventListener('hashchange', ()=> {
+        const menu = document.getElementById('menu');
+        const burger = document.getElementById('burger');
+        const header = document.getElementById('header');
+        menu?.classList.remove('opened');
+        burger?.classList.remove('cross');
+        header?.classList.remove('fixed');
+    });
+
     useEffect(() => {
         setTimeout(() => {
             window.addEventListener('scroll', scrollHandler, false);
@@ -60,6 +91,15 @@ export const Header = () => {
         <div className="container">
             <a href='#' className="logo" onClick={handleClick}></a>
             <Navigation />
+            <div className="header-mobile-burger" id='burger'>
+                <div className="burger-line"></div>
+                <div className="burger-line"></div>
+                <div className="burger-line"></div>
+            </div>
+            <div className="header-mobile-menu" id='menu'>
+                <Navigation />
+                <span className='headrer-menu-text'>info@ecohub.by</span>
+            </div>
         </div>
     </header>);
 };
