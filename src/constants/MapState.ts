@@ -507,7 +507,7 @@ export const markersForTest = [
         info: '',
         wasteTypes: [waste[0], waste[1], waste[3], waste[4]],
         display: false
-    },
+    }
 
 
 
