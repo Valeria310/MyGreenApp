@@ -1,13 +1,18 @@
 @import '../../index.scss';
 
 .navCard {
-    max-width: 280px;
+    max-width: 310px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 30px;
+    row-gap: 24px;
     &:nth-child(odd) {
         flex-direction: row-reverse;
+    }
+    @media screen and (min-width: 768px) {
+        row-gap: 32px;
+        max-width: 570px;
     }
     @media screen and (min-width: 1200px) {
         max-width: 1170px;
@@ -15,12 +20,14 @@
 }
 
 .navCardImage {
+    max-width: 310px;
+    height: 196px;
     img {
         width: 100%;
         height: 100%;
         border-radius: 30px;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 768px) {
         max-width: 570px;
         height: 360px;
     }
@@ -30,8 +37,12 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    row-gap: 22px;
+    row-gap: 24px;
+    @media screen and (min-width: 768px) {
+        row-gap: 20px;
+    }
     @media screen and (min-width: 1200px) {
+        row-gap: 22px;
         max-width: 570px;
     }
 }
@@ -44,30 +55,73 @@
 .navCardText {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
-    font-size: 20px;
+    row-gap: 14px;
+    font-size: 16px;
     line-height: 140%;
-    color: #000;
+    color: $color-black;
+    @media screen and (min-width: 768px) {
+        row-gap: 16px;
+        font-size: 20px;
+        letter-spacing: 0.1px;
+    }
+    @media screen and (min-width: 1200px) {
+        row-gap: 20px;
+        font-size: 20px;
+    }
     p {
         margin: 0;
     }
 }
 
+.navCard:nth-child(2) .navCardText {
+    row-gap: 12px;
+    @media screen and (min-width: 768px) {
+        row-gap: 16px;
+    }
+    @media screen and (min-width: 1200px) {
+        row-gap: 20px;
+    }
+}
+
 .navCardButton {
-    height: 25.2px;
+    height: 24px;
+    @media screen and (min-width: 768px) {
+        height: 40px;
+    }
+    @media screen and (min-width: 1200px) {
+        height: 25.2px;
+    }
     a {
         display: flex;
-        font-size: 24px;
-        line-height: 105%;
-        letter-spacing: 0.2px;
-        color: #1B7A59;
+        align-items: center;
         text-decoration: none;
     }
     span {
-        margin-right: 20px;
+        letter-spacing: 0.2px;
+        color: #1B7A59;
+        line-height: 105%;
+        font-weight: 500;
+        font-size: 20px;
+        margin-right: 10px;
+        @media screen and (min-width: 768px) {
+            font-weight: 400;
+            font-size: 24px;
+            margin-right: 8px;
+        }
+        @media screen and (min-width: 1200px) {
+            margin-right: 20px;
+        }
     }
     img {
-        width: 12.72px;
-        height: 25.03px;
+        width: 24px;
+        height: 24px;
+        @media screen and (min-width: 768px) {
+            width: 40px;
+            height: 40px;
+        }
+        @media screen and (min-width: 1200px) {
+            width: 12.72px;
+            height: 25.03px;
+        }
     }
 }
