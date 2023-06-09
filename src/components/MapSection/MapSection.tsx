@@ -12,7 +12,6 @@ import {
     FilterButtonsObjType,
     filterType,
     markers,
-    markersForTest,
     waste
 } from '../../constants/MapState';
 
@@ -32,7 +31,7 @@ function MapSection() {
 
     };
 
-    const filteredMarkers = markersForTest;
+    const filteredMarkers = markers;
 
     filteredMarkers.map(m => m.display = false);
 
@@ -86,7 +85,7 @@ function MapSection() {
                                                     <div className={s.popupAddressContent}>{m.phone}</div>
                                                 </li>
                                                 <li className={s.schedule}>
-                                                    <div className={s.popupAddressContent}>{m.schedule}</div>
+                                                     <div className={s.popupAddressContent}>{m.schedule}</div>
                                                 </li>
                                                 <li className={s.website}>
                                                     <div className={s.popupAddressContent}><a href={m.website}>{m.website}</a></div>
