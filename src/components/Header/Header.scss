@@ -8,10 +8,11 @@
     max-width: 1440px;
     height: 106px;
     background: $color-white;
+    display: flex;
 
     & .container {
         margin: 0 auto;
-        max-width: 1194px;
+        width: 1194px;
         display: flex;
         align-items: center;
         padding: 12px;
@@ -20,6 +21,43 @@
 
     &.visible {
         top: 0;
+    }
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    &-mobile-burger {
+        display: none;
+        width: 20px;
+        height: 20px;
+        flex-direction: column;
+        gap: 3px;
+        align-items: flex-end;
+        &.cross {
+                display: block;
+            }
+    }
+    
+    &-mobile-menu {
+        position: absolute;
+        left: 0;
+        top: -100vh;
+        max-width: 680px;
+        width: 100%;
+        height: 100vh;
+        background: #F6FCEA;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: -1;
+        transition: all .5s;
+        &.opened {
+            top: 0;
+        }
     }
 }
 
@@ -31,4 +69,100 @@
     background-image: url(../../assets/images/Logo.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.burger-line {
+    width: 20px;
+    height: 2px;
+    background-color: #070707;
+    border-radius: 1px;
+}
+
+.burger-line:last-child{
+    width: 10px;
+}
+
+.cross {
+    padding-top: 8px;
+
+    & .burger-line {
+        width: 28px;
+        margin-left: -5px;
+    }
+
+    & .burger-line:nth-child(1) {
+        transform: rotate(45deg);
+        margin-bottom: -1px;
+    }
+
+    & .burger-line:nth-child(2) {
+        transform: rotate(-45deg);
+    }
+    
+    & .burger-line:last-child {
+        display: none;
+    }
+}
+
+.headrer-menu-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 105%;
+    color: #070707;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 1200px) {
+    .header {
+        & .container {
+            padding: 15px 39px;
+        }
+    }
+}
+
+@media (max-width: 880px) {
+    .header {
+        height: 80px;
+        top: -80px;
+        & .container {
+            gap: 80px;
+        }
+    }
+
+    .logo {
+        width: 48px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 680px) {
+    .header {
+        & .container {
+            gap: 0;
+            justify-content: space-between;
+        }
+
+        &-mobile-burger {
+            display: flex;
+        }
+
+        & .header-mobile-menu {
+            position: fixed;
+            & .navigation {
+                display: flex;
+                flex-direction: column;
+                margin-top: 177px;
+                gap: 50px;
+            }
+        }
+
+        & .navigation {
+            display: none;
+        }
+    }
+
+    .logo {
+        width: 43px;
+        height: 50px;
+    }
 }

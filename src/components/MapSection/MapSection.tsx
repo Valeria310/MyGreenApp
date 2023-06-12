@@ -94,20 +94,18 @@ function MapSection() {
                                         </div>
                                         <div className={s.popupFooter}>
                                             Перерабатываем:
-                                            <ul className={s.wasteTypes}>
-                                                {m.wasteTypes.map((item, i) =>
-                                                    <li key={i}>{item}</li>
-                                                )}
-                                            </ul>
-                                        </div>
-                                    </Popup>
-                                </Marker> : ''
-                            )}
-                        </MarkerClusterGroup>
-                    </MapContainer>
-                </div>
-
-
+                                        <ul className={s.wasteTypes}>
+                                            {m.wasteTypes.map((item, i) =>
+                                                <li key={i}>{item}</li>
+                                            )}
+                                        </ul>
+                                    </div>
+                                </Popup>
+                            </Marker> : ''
+                        )}
+                    </MarkerClusterGroup>
+                </MapContainer>
+            </div>
 
         </section>
 

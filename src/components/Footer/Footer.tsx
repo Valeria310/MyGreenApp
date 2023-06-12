@@ -13,7 +13,10 @@ export const Footer = () => {
         <div className="footer_hill"></div>
         <div className="footer_small_trees"></div>
         <div className="footer_dark_hill"></div>
-        <div className="footer_big_trees"></div>
+        <div className="footer_big_trees">
+            <div className="footer_big_trees_l"></div>
+            <div className="footer_big_trees_r"></div>
+        </div>
         <div className="container footer-container">
             <a href='#' className="footer-logo" onClick={handleClick}></a>
             <Navigation />

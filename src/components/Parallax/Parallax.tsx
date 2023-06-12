@@ -46,12 +46,18 @@ export const ParallaxSection = () => {
             <div className="dark_hill"></div>
             <div className="garbage_l"></div>
             <div className="garbage_r"></div>
-            <div className="trees"></div>
-            <div className="big_trees"></div>
+            <div className="trees">
+                <div className="trees_l"></div>
+                <div className="trees_r"></div>
+            </div>
+            <div className="big_trees">
+                <div className="big_trees_l"></div>
+                <div className="big_trees_r"></div>
+            </div>
             <div className="about_bg">
                 <div className="about">
-                    <h3 className="about_title">Забота о чистоте &nbsp;планеты начинается с каждого из нас!</h3>
-                    <p className="about_text">Здесь мы научим вас сортировать бытовые отходы в Беларуси и&nbsp;покажем на карте пункты приема для их последующей переработки. Вы поймете, что внедрить в свою жизнь эко-привычки — это проще, чем&nbsp;кажется.</p>
+                    <h3 className="about_title">Забота о&nbsp;чистоте планеты начинается с&nbsp;каждого из нас!</h3>
+                    <p className="about_text">Здесь мы научим вас сортировать бытовые отходы в&nbsp;Беларуси и&nbsp;покажем на карте пункты приема для их последующей переработки. Вы поймете, что внедрить в&nbsp;свою жизнь эко-привычки — это проще, чем кажется.</p>
                 </div>
             </div>
         </section>
