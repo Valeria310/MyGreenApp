@@ -220,7 +220,7 @@ ul.wasteTypes li::first-letter {
 
 
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
 
   .mapHeaderWrapper {
     padding: 25px 39px 0px 39px;
