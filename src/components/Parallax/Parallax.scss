@@ -341,7 +341,7 @@ $duration: 3s;
         top: 90px;
     }
     .trees.active {
-        top: 160px;
+        top: 180px;
     }
     .small_trees.active {
         top: 327px;
@@ -511,8 +511,11 @@ $duration: 3s;
     .small_trees {
         width: 58%;
     }
+    .about {
+        width: 86.15%;
+    }
     .about_title {
-        font-size: 22px;
+        font-size: 20px;
     }
     .about_text {
         font-size: 16px;

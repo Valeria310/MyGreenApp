@@ -4,11 +4,13 @@ import { Navigation } from './../Navigation/Navigation';
 
 import './Header.scss';
 
+
 export const Header = () => {
     let prevPos = 0;
     let changeVisible: NodeJS.Timeout;
     let isStarted = false;
     let mousePosition = 'out';
+    let isMenuOpen = false;
     const firtsBlockHeight = 902;
 
     const scrollHandler = () => {
@@ -51,24 +53,32 @@ export const Header = () => {
     };
 
     const clickHandler = () => {
-        const burger = document.getElementById('burger');
-        const menu = document.getElementById('menu');
-        const header = document.getElementById('header');
-        burger?.classList.remove('cross');
-        menu?.classList.remove('opened');
-        header?.classList.remove('fixed');
+        if(isMenuOpen === true ) {
+            const burger = document.getElementById('burger');
+            const menu = document.getElementById('menu');
+            const header = document.getElementById('header');
+            burger?.classList.remove('cross');
+            menu?.classList.remove('opened');
+            header?.classList.remove('fixed');
+            setTimeout(() => {
+                isMenuOpen = false;
+            }, 500);
+        }
     };
 
-    document.addEventListener('click', (e)=> {  
+    document.addEventListener('click', (e)=> {
+        const plug = document.getElementsByClassName('plug')[0];
         const burger = document.getElementById('burger');
-        if(e.target == burger) {
+        if(e.target == plug && isMenuOpen === false) {
             const menu = document.getElementById('menu');
             const header = document.getElementById('header');
             menu?.classList.add('opened');
             burger?.classList.add('cross');
             header?.classList.add('fixed');
-            burger?.addEventListener('click', clickHandler, false);
-            return () => burger?.removeEventListener('click', clickHandler, false);
+            setTimeout(() => {
+                isMenuOpen = true;
+            }, 500);
+            plug?.addEventListener('click', clickHandler, { once: true });
         }
     });
     
@@ -96,6 +106,7 @@ export const Header = () => {
                 <div className="burger-line"></div>
                 <div className="burger-line"></div>
             </div>
+            <div className="plug"></div>
             <div className="header-mobile-menu" id='menu'>
                 <Navigation />
                 <span className='headrer-menu-text'>info@ecohub.by</span>
