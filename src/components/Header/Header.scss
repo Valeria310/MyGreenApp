@@ -17,6 +17,7 @@
         align-items: center;
         padding: 12px;
         gap: 251px;
+        position: relative;
     }
 
     &.visible {
@@ -110,6 +111,14 @@
     line-height: 105%;
     color: #070707;
     margin-bottom: 40px;
+}
+
+.plug {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    position: absolute;
+    right: 39px;
 }
 
 @media (max-width: 1200px) {
