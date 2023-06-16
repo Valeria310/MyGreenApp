@@ -36,31 +36,31 @@
   padding: 38px 135px 55px;
 }
 
-input.searchField {
-  font-size: 24px;
-  width: 100%;
-  height: 40px;
-  margin-bottom: 20px;
-  background-image: url('../../assets/images/search.svg');
-  background-repeat:no-repeat;
-  background-position:left center;
-  padding-left:40px;
-  background-color: $color-white;
-  border: 1px solid $color-black;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-
-}
-
-input.searchField:focus {
-  outline: none;
-}
-
-::placeholder {
-  color: #A9A9A9;
-  opacity: 1;
-}
+//input.searchField {
+//  font-size: 24px;
+//  width: 100%;
+//  height: 40px;
+//  margin-bottom: 20px;
+//  background-image: url('../../assets/images/search.svg');
+//  background-repeat:no-repeat;
+//  background-position:left center;
+//  padding-left:40px;
+//  background-color: $color-white;
+//  border: 1px solid $color-black;
+//  border-top-style: hidden;
+//  border-right-style: hidden;
+//  border-left-style: hidden;
+//
+//}
+//
+//input.searchField:focus {
+//  outline: none;
+//}
+//
+//::placeholder {
+//  color: #A9A9A9;
+//  opacity: 1;
+//}
 
 
 .popup {
@@ -220,7 +220,7 @@ ul.wasteTypes li::first-letter {
 
 
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
 
   .mapHeaderWrapper {
     padding: 25px 39px 0px 39px;
