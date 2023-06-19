@@ -224,7 +224,7 @@ export const markers: Array<markerType> = [
         wasteTypes: [waste[0], waste[1], waste[2], waste[3], waste[6]],
         display: false
     },
- {
+    {
         id: 15,
         title: 'Пункт №48 ОАО "Белвторресурсы"',
         website: 'https://belvtorresurs.by/',
