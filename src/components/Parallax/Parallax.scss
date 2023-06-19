@@ -16,6 +16,7 @@ $duration: 3s;
         top: -106px;
         margin-bottom: -106px;
     }
+
     &_img {
         width: 100%;
         height: 1027px;
@@ -44,14 +45,16 @@ $duration: 3s;
         color: #1B7A59;
         margin: 0;
         transition: all $duration;
+
         &.active {
             top: -230px;
         }
+
         & span {
             color: #2073E3;
         }
     }
-    
+
     &_text {
         position: absolute;
         left: 50%;
@@ -83,6 +86,7 @@ $duration: 3s;
     top: 170px;
     transform: translate(-50%, 0);
     transition: all $duration;
+
     &.active {
         opacity: 1;
     }
@@ -135,6 +139,7 @@ $duration: 3s;
     transition: all $duration;
     display: flex;
     justify-content: space-between;
+
     &_l {
         width: 50%;
         height: 100%;
@@ -143,6 +148,7 @@ $duration: 3s;
         background-position-x: -27%;
         background-repeat: no-repeat;
     }
+
     &_r {
         width: 50%;
         height: 100%;
@@ -151,15 +157,16 @@ $duration: 3s;
         background-position-x: 131%;
         background-repeat: no-repeat;
     }
+
     &.active {
         top: 78px;
         height: 398px;
         width: 74%;
-        transform: translate(-48%) scale(-1, 1);
         & .trees_l {
             background-image: url(../../assets/images/trees_l-after.png);
             background-position-x: -20%;
         }
+
         & .trees_r {
             background-image: url(../../assets/images/trees_r-after.png);
             background-position-x: 124%;
@@ -174,6 +181,7 @@ $duration: 3s;
     height: 560px;
     background-image: url(../../assets/images/hill.png);
     transition: all $duration;
+
     &.active {
         top: 158px;
         height: 356px;
@@ -190,6 +198,7 @@ $duration: 3s;
     justify-content: space-between;
     z-index: 3;
     transition: all $duration;
+
     &_l {
         width: 50%;
         height: 100%;
@@ -198,6 +207,7 @@ $duration: 3s;
         background-position-x: -47%;
         background-repeat: no-repeat;
     }
+
     &_r {
         width: 50%;
         height: 100%;
@@ -206,13 +216,16 @@ $duration: 3s;
         background-position-x: 133%;
         background-repeat: no-repeat;
     }
+
     &.active {
         top: 66px;
         height: 535px;
-        & .big_trees_l{
+
+        & .big_trees_l {
             background-image: url(../../assets/images/trees_l-after.png);
             background-position-x: -43%;
         }
+
         & .big_trees_r {
             background-image: url(../../assets/images/trees_r-after.png);
             background-position-x: 137%;
@@ -230,6 +243,7 @@ $duration: 3s;
     background-size: 101% auto;
     background-repeat: no-repeat;
     transition: all $duration;
+
     &.active {
         top: 226px;
         height: 302px;
@@ -248,6 +262,7 @@ $duration: 3s;
         background-repeat: no-repeat;
         background-size: contain;
         transition: all $duration;
+
         &.active {
             top: 588px;
             right: 0;
@@ -255,6 +270,7 @@ $duration: 3s;
             height: 228px;
         }
     }
+
     &_l {
         position: absolute;
         width: 370px;
@@ -265,6 +281,7 @@ $duration: 3s;
         background-repeat: no-repeat;
         background-size: contain;
         transition: all $duration;
+
         &.active {
             width: 154px;
             height: 228px;
@@ -285,12 +302,12 @@ $duration: 3s;
     background-repeat: no-repeat;
     background-size: contain;
     transition: all $duration;
+
     &.active {
         background-image: url(../../assets/images/small_trees-after.png);
         top: 145px;
         width: 47.7%;
         height: 306px;
-        transform: translateX(-55%);
     }
 }
 
@@ -298,57 +315,76 @@ $duration: 3s;
     .dark_hill.active {
         top: 275px;
     }
+    .small_trees.active {
+        top: 170px;
+    }
 }
 
 @media (max-width: 1200px) {
     .parallax {
         height: 1024px;
+
         &.active {
             height: 1024px;
         }
     }
+
     .parallax_img {
         height: 800px;
+
         &.active {
             height: 800px;
         }
     }
+
     .about_bg {
         height: 240px;
+
         &.active {
             height: 571px;
         }
     }
+
     .big_trees {
         height: 400px;
     }
-    .dark_hill{
+
+    .dark_hill {
         top: 550px;
     }
+
     .garbage_l {
         top: 580px;
     }
+
     .garbage_r {
         top: 580px;
     }
+
     .dark_hill.active {
         top: 424px;
     }
+
     .hill.active {
         top: 250px;
     }
+
     .big_trees.active {
         top: 90px;
     }
+
     .trees.active {
         top: 180px;
     }
+
     .small_trees.active {
         top: 327px;
     }
+
     .about_title {
         font-size: 36px;
     }
+
     .about_text {
         font-weight: 500;
     }
@@ -360,33 +396,42 @@ $duration: 3s;
             font-size: 52px;
             top: 173px;
         }
+
         &_text {
             font-size: 24px;
             top: 206px;
         }
     }
+
     .about_bg {
         height: 270px;
     }
+
     .big_trees_l {
         background-size: 70% 100%;
     }
+
     .big_trees_r {
         background-size: 62% 100%;
     }
+
     .trees_l {
         background-size: 70% 100%;
     }
+
     .trees_r {
         background-size: 62% 100%;
     }
+
     .garbage_l,
     .garbage_r {
         width: 250px;
     }
+
     .garbage_l {
         left: 106px;
     }
+
     .garbage_r {
         right: 170px;
     }
@@ -396,32 +441,41 @@ $duration: 3s;
     .about_bg {
         height: 380px;
     }
+
     .big_trees {
         top: 500px;
     }
+
     .parallax_img {
         background-position-y: -132px;
     }
+
     .big_trees.active {
         top: 260px;
         height: 313px;
+
         .big_trees_l {
             background-position-x: 6%;
         }
+
         .big_trees_r {
             background-position-x: 100%;
         }
     }
+
     .trees.active {
         top: 264px;
         height: 238px;
+
         .trees_l {
             background-position-x: -20%;
         }
+
         .trees_r {
             background-position-x: 71%;
         }
     }
+
     .small_trees.active {
         top: 327px;
         height: 139px;
@@ -435,6 +489,7 @@ $duration: 3s;
             font-size: 28px;
             top: 173px;
         }
+
         &_text {
             font-size: 15px;
             line-height: 17px;
@@ -442,36 +497,45 @@ $duration: 3s;
             white-space: nowrap;
         }
     }
+
     .big_trees {
         height: 313px;
         top: 391px;
     }
+
     .trees {
         height: 249px;
         top: 396px;
     }
+
     .garbage_l,
     .garbage_r {
         width: 127px;
         height: 77px;
     }
+
     .garbage_l {
         left: 106px;
         top: 601px;
     }
+
     .garbage_r {
         right: 135px;
         top: 596px;
     }
+
     .big_trees_l {
         background-size: 68% 100%;
     }
+
     .big_trees_r {
         background-size: 60% 100%;
     }
+
     .trees_l {
         background-size: 62% 100%;
     }
+
     .trees_r {
         background-size: 60% 100%;
     }
@@ -481,9 +545,11 @@ $duration: 3s;
     .dark_hill {
         top: 570px;
     }
+
     .about_title {
         font-size: 24px;
     }
+
     .about_text {
         font-size: 20px;
     }
@@ -492,31 +558,40 @@ $duration: 3s;
 @media (max-width: 600px) {
     .parallax {
         height: 800px;
+
         &.active {
             height: 800px;
         }
     }
+
     .about_bg {
         height: 155px;
+
         &.active {
             height: 385px;
         }
     }
+
     .big_trees_l {
         background-size: 76% 100%;
     }
+
     .big_trees_r {
         background-size: 68% 100%
     }
+
     .small_trees {
         width: 58%;
     }
+
     .about {
         width: 86.15%;
     }
+
     .about_title {
         font-size: 20px;
     }
+
     .about_text {
         font-size: 16px;
         font-weight: 400;
@@ -527,42 +602,52 @@ $duration: 3s;
     .garbage_l {
         left: 55px;
         top: 610px;
-    }    
+    }
+
     .garbage_r {
         right: 53px;
         top: 571px;
     }
+
     .small_trees {
         height: 116px;
         top: 510px;
     }
+
     .dark_hill {
         top: 580px;
     }
+
     .about_bg.active {
         height: 490px;
     }
+
     .big_trees.active {
         height: 263px;
         top: 189px;
     }
+
     .trees.active {
         height: 191px;
         top: 157px;
         width: 100%;
         transform: translate(-50%) scale(-1, 1);
+
         & .trees_l {
             background-position-x: -44%;
             transform: translateY(25%);
         }
+
         & .trees_r {
             background-position-x: 120%;
         }
     }
+
     .dark_hill.active {
         height: 124px;
         top: 326px;
     }
+
     .small_trees.active {
         height: 116px;
         top: 290px;
@@ -573,6 +658,7 @@ $duration: 3s;
     .big_trees_l {
         background-size: 82% 100%;
     }
+
     .big_trees_r {
         background-size: 76% 100%;
     }
@@ -583,10 +669,12 @@ $duration: 3s;
         background-size: 92% 100%;
         background-position-x: -375%;
     }
+
     .big_trees_r {
         background-size: 88% 100%;
         background-position-x: 375%;
     }
+
     .dark_hill {
         height: 250px;
         background-size: 101% 60%;
