@@ -1,893 +1,900 @@
-import accumulator from '../assets/icons/danger/1_accumulator.svg';
-import pills from '../assets/icons/danger/2_pills.svg';
-import tires from '../assets/icons/danger/3_tires.svg';
-import lamp from '../assets/icons/danger/4_lamp.svg';
-import thermometer from '../assets/icons/danger/5_thermometer.svg';
-import appliance from '../assets/icons/electro/1_appliance.svg';
-import glBottles from '../assets/icons/glass/1_bottles.svg';
-import jar from '../assets/icons/glass/2_jar.svg';
-import mirror from '../assets/icons/glass/3_mirror.svg';
-import utensil from '../assets/icons/glass/4_utensil.svg';
-import display from '../assets/icons/glass/5_display.svg';
-import sofa from '../assets/icons/large/1_sofa.svg';
-import garbage from '../assets/icons/large/2_garbage.svg';
-import metal from '../assets/icons/metal/1_metal.svg';
-import box from '../assets/icons/paper/1_box.svg';
-import pack from '../assets/icons/paper/1_pack.svg';
-import notepad from '../assets/icons/paper/2_notepad.svg';
-import laminated from '../assets/icons/paper/3_laminated.svg';
-import used from '../assets/icons/paper/4_used.svg';
-import cup from '../assets/icons/paper/5_cup.svg';
-import check from '../assets/icons/paper/6_check.svg';
-import plBottles from '../assets/icons/plastic/1_bottles.svg';
-import PETE from '../assets/icons/plastic/1_PETE.svg';
-import HDPE from '../assets/icons/plastic/2_HDPE.svg';
-import shampoo from '../assets/icons/plastic/2_shampoo.svg';
-import hose from '../assets/icons/plastic/3_hose.svg';
-import PVC from '../assets/icons/plastic/3_PVC.svg';
-import canister from '../assets/icons/plastic/4_canister.svg';
-import LDPE from '../assets/icons/plastic/4_LDPE.svg';
-import PP from '../assets/icons/plastic/5_PP.svg';
-import yogurt from '../assets/icons/plastic/5_yogurt.svg';
-import babyBottle from '../assets/icons/plastic/6_baby-bottle.svg';
-import PS from '../assets/icons/plastic/6_PS.svg';
-import OTHER from '../assets/icons/plastic/7_OTHER.svg';
+import accumulator from "../assets/icons/danger/1_accumulator.svg";
+import pills from "../assets/icons/danger/2_pills.svg";
+import tires from "../assets/icons/danger/3_tires.svg";
+import lamp from "../assets/icons/danger/4_lamp.svg";
+import thermometer from "../assets/icons/danger/5_thermometer.svg";
+import appliance from "../assets/icons/electro/1_appliance.svg";
+import glBottles from "../assets/icons/glass/1_bottles.svg";
+import jar from "../assets/icons/glass/2_jar.svg";
+import mirror from "../assets/icons/glass/3_mirror.svg";
+import utensil from "../assets/icons/glass/4_utensil.svg";
+import display from "../assets/icons/glass/5_display.svg";
+import sofa from "../assets/icons/large/1_sofa.svg";
+import garbage from "../assets/icons/large/2_garbage.svg";
+import metal from "../assets/icons/metal/1_metal.svg";
+import box from "../assets/icons/paper/1_box.svg";
+import pack from "../assets/icons/paper/1_pack.svg";
+import notepad from "../assets/icons/paper/2_notepad.svg";
+import laminated from "../assets/icons/paper/3_laminated.svg";
+import used from "../assets/icons/paper/4_used.svg";
+import cup from "../assets/icons/paper/5_cup.svg";
+import check from "../assets/icons/paper/6_check.svg";
+import plBottles from "../assets/icons/plastic/1_bottles.svg";
+import PETE from "../assets/icons/plastic/1_PETE.svg";
+import HDPE from "../assets/icons/plastic/2_HDPE.svg";
+import shampoo from "../assets/icons/plastic/2_shampoo.svg";
+import hose from "../assets/icons/plastic/3_hose.svg";
+import PVC from "../assets/icons/plastic/3_PVC.svg";
+import canister from "../assets/icons/plastic/4_canister.svg";
+import LDPE from "../assets/icons/plastic/4_LDPE.svg";
+import PP from "../assets/icons/plastic/5_PP.svg";
+import yogurt from "../assets/icons/plastic/5_yogurt.svg";
+import babyBottle from "../assets/icons/plastic/6_baby-bottle.svg";
+import PS from "../assets/icons/plastic/6_PS.svg";
+import OTHER from "../assets/icons/plastic/7_OTHER.svg";
 
 interface RecycleInfoDescription {
-  id: number;
-  text: string;
+    id: number;
+    text: string;
 }
 
 interface RecycleInfoImage {
-  id: number;
-  url: string;
+    id: number;
+    url: string;
 }
 
 export interface RecycleInfo {
-  id: number;
-  name: string;
-  images: RecycleInfoImage[];
-  description: RecycleInfoDescription[];
-  status: 'Подлежит переработке' | 'Не\u00A0подлежит переработке';
+    id: number;
+    name: string;
+    images: RecycleInfoImage[];
+    description: RecycleInfoDescription[];
+    status: "Подлежит переработке" | "Не\u00A0подлежит переработке";
 }
 
 export interface RecycleContent {
-  recycleType: 'plastic' | 'paper' | 'glass' | 'large' | 'electro' | 'danger' | 'metal';
-  columns: RecycleInfo[];
+    recycleType:
+        | "plastic"
+        | "paper"
+        | "glass"
+        | "large"
+        | "electro"
+        | "danger"
+        | "metal";
+    columns: RecycleInfo[];
 }
 
 export const PlasticContent: RecycleContent = {
-    recycleType: 'plastic',
+    recycleType: "plastic",
     columns: [
         {
             id: 1,
-            name: 'Полиэтилен-терефталат',
+            name: "Полиэтилен-терефталат",
             images: [
                 {
                     id: 1,
-                    url: PETE
+                    url: PETE,
                 },
                 {
                     id: 2,
-                    url: plBottles
-                }
+                    url: plBottles,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Большинство пластиковых бутылок для напитков и упаковки для пищевых продуктов'
+                    text: "Большинство пластиковых бутылок для напитков и упаковки для пищевых продуктов",
                 },
                 {
                     id: 2,
-                    text: 'Упаковка косметической продукции'
-                }
+                    text: "Упаковка косметической продукции",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 2,
-            name: 'Полиэтилен высокой плотности',
+            name: "Полиэтилен высокой плотности",
             images: [
                 {
                     id: 1,
-                    url: HDPE
+                    url: HDPE,
                 },
                 {
                     id: 2,
-                    url: shampoo
-                }
+                    url: shampoo,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Многоразовая тара'
+                    text: "Многоразовая тара",
                 },
                 {
                     id: 2,
-                    text: 'Бутылки для шампуней и бытовой химии'
+                    text: "Бутылки для шампуней и бытовой химии",
                 },
                 {
                     id: 3,
-                    text: 'Тара для пищевых продуктов и напитков'
+                    text: "Тара для пищевых продуктов и напитков",
                 },
                 {
                     id: 4,
-                    text: 'Детские игрушки'
-                }
+                    text: "Детские игрушки",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 3,
-            name: 'Поливинил-хлорид',
+            name: "Поливинил-хлорид",
             images: [
                 {
                     id: 1,
-                    url: PVC
+                    url: PVC,
                 },
                 {
                     id: 2,
-                    url: hose
-                }
+                    url: hose,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Строительные материалы (окна, трубы, шланги, натяжные потолки и т.д.)'
+                    text: "Строительные материалы (окна, трубы, шланги, натяжные потолки и т.д.)",
                 },
                 {
                     id: 2,
-                    text: 'Детские игрушки'
+                    text: "Детские игрушки",
                 },
                 {
                     id: 3,
-                    text: 'Автомобильные запчасти'
+                    text: "Автомобильные запчасти",
                 },
                 {
                     id: 4,
-                    text: 'Пищевая пленка'
+                    text: "Пищевая пленка",
                 },
                 {
                     id: 5,
-                    text: 'Искусственная кожа'
-                }
+                    text: "Искусственная кожа",
+                },
             ],
-            status: 'Не\u00A0подлежит переработке'
+            status: "Не\u00A0подлежит переработке",
         },
         {
             id: 4,
-            name: 'Полиэтилен низкой плотности',
+            name: "Полиэтилен низкой плотности",
             images: [
                 {
                     id: 1,
-                    url: LDPE
+                    url: LDPE,
                 },
                 {
                     id: 2,
-                    url: canister
-                }
+                    url: canister,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Твердые пластмассовые изделия'
+                    text: "Твердые пластмассовые изделия",
                 },
                 {
                     id: 2,
-                    text: 'Канистры, ведра'
+                    text: "Канистры, ведра",
                 },
                 {
                     id: 3,
-                    text: 'Пластиковые пакеты'
+                    text: "Пластиковые пакеты",
                 },
                 {
                     id: 4,
-                    text: 'Мусорные мешки'
+                    text: "Мусорные мешки",
                 },
                 {
                     id: 5,
-                    text: 'Пленки'
-                }
+                    text: "Пленки",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 5,
-            name: 'Полипропилен',
+            name: "Полипропилен",
             images: [
                 {
                     id: 1,
-                    url: PP
+                    url: PP,
                 },
                 {
                     id: 2,
-                    url: yogurt
-                }
+                    url: yogurt,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Упаковки для йогуртов, молочных продуктов'
+                    text: "Упаковки для йогуртов, молочных продуктов",
                 },
                 {
                     id: 2,
-                    text: 'Пленки'
+                    text: "Пленки",
                 },
                 {
                     id: 3,
-                    text: 'Корпуса техники'
-                }
+                    text: "Корпуса техники",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 6,
-            name: 'Полистирол\nи прочие пластики\n(PC, O, OTHER)',
+            name: "Полистирол\nи прочие пластики\n(PC, O, OTHER)",
             images: [
                 {
                     id: 1,
-                    url: PS
+                    url: PS,
                 },
                 {
                     id: 2,
-                    url: OTHER
+                    url: OTHER,
                 },
                 {
                     id: 3,
-                    url: babyBottle
-                }
+                    url: babyBottle,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Одноразовая посуда'
+                    text: "Одноразовая посуда",
                 },
                 {
                     id: 2,
-                    text: 'Стаканчики и контейнеры для быстрого питания'
+                    text: "Стаканчики и контейнеры для быстрого питания",
                 },
                 {
                     id: 3,
-                    text: 'Термопосуда'
+                    text: "Термопосуда",
                 },
                 {
                     id: 4,
-                    text: 'Пищевая упаковка'
+                    text: "Пищевая упаковка",
                 },
                 {
                     id: 5,
-                    text: 'Пенопласт'
+                    text: "Пенопласт",
                 },
                 {
                     id: 6,
-                    text: 'Смеси пластиков'
+                    text: "Смеси пластиков",
                 },
                 {
                     id: 7,
-                    text: 'Поликарбонат'
+                    text: "Поликарбонат",
                 },
                 {
                     id: 8,
-                    text: 'Детские бутылочки и игрушки'
-                }
+                    text: "Детские бутылочки и игрушки",
+                },
             ],
-            status: 'Не\u00A0подлежит переработке'
-        }
-    ]
+            status: "Не\u00A0подлежит переработке",
+        },
+    ],
 };
 
 export const PaperContent: RecycleContent = {
-    recycleType: 'paper',
+    recycleType: "paper",
     columns: [
         {
             id: 1,
-            name: 'Бумажная упаковка\nи Тетра-пак',
+            name: "Бумажная упаковка\nи Тетра-пак",
             images: [
                 {
                     id: 1,
-                    url: box
+                    url: box,
                 },
                 {
                     id: 2,
-                    url: pack
-                }
+                    url: pack,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Картон, в т.ч. цветной'
+                    text: "Картон, в т.ч. цветной",
                 },
                 {
                     id: 2,
-                    text: 'Упаковка без блестящих включений, липкой ленты, пленки'
+                    text: "Упаковка без блестящих включений, липкой ленты, пленки",
                 },
                 {
                     id: 3,
-                    text: 'Чистая бумажная упаковка'
+                    text: "Чистая бумажная упаковка",
                 },
                 {
                     id: 4,
-                    text: 'Бумажные пакеты (от муки и сахара)'
+                    text: "Бумажные пакеты (от муки и сахара)",
                 },
                 {
                     id: 5,
-                    text: 'Коробки от косметики'
+                    text: "Коробки от косметики",
                 },
                 {
                     id: 6,
-                    text: 'Бумажные конфетти, из шредера'
+                    text: "Бумажные конфетти, из шредера",
                 },
                 {
                     id: 7,
-                    text: 'Втулки от туалетной бумаги и бумажных полотенец'
+                    text: "Втулки от туалетной бумаги и бумажных полотенец",
                 },
                 {
                     id: 8,
-                    text: 'Упаковка от соков и молока'
-                }
+                    text: "Упаковка от соков и молока",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 2,
-            name: 'Блокноты, тетради, книги, печатная\nи офисная продукция',
+            name: "Блокноты, тетради, книги, печатная\nи офисная продукция",
             images: [
                 {
                     id: 1,
-                    url: notepad
-                }
+                    url: notepad,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Блокноты'
+                    text: "Блокноты",
                 },
                 {
                     id: 2,
-                    text: 'Тетради'
+                    text: "Тетради",
                 },
                 {
                     id: 3,
-                    text: 'Ежедневники'
+                    text: "Ежедневники",
                 },
                 {
                     id: 4,
-                    text: 'Книги'
+                    text: "Книги",
                 },
                 {
                     id: 5,
-                    text: 'Газеты'
+                    text: "Газеты",
                 },
                 {
                     id: 6,
-                    text: 'Рекламные буклеты и брошюры'
+                    text: "Рекламные буклеты и брошюры",
                 },
                 {
                     id: 7,
-                    text: 'Глянцевые журналы'
+                    text: "Глянцевые журналы",
                 },
                 {
                     id: 8,
-                    text: 'Инструкции'
+                    text: "Инструкции",
                 },
                 {
                     id: 9,
-                    text: 'Писчая бумага'
+                    text: "Писчая бумага",
                 },
                 {
                     id: 10,
-                    text: 'Календари'
+                    text: "Календари",
                 },
                 {
                     id: 11,
-                    text: 'Конверты без пластиковых окошек'
-                }
+                    text: "Конверты без пластиковых окошек",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 3,
-            name: 'Ламинированная бумага',
+            name: "Ламинированная бумага",
             images: [
                 {
                     id: 1,
-                    url: laminated
-                }
+                    url: laminated,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Фотографии'
+                    text: "Фотографии",
                 },
                 {
                     id: 2,
-                    text: 'Обои'
+                    text: "Обои",
                 },
                 {
                     id: 3,
-                    text: 'Упаковка пищевых товаров (от сливочного масла, творога, конфет)'
+                    text: "Упаковка пищевых товаров (от сливочного масла, творога, конфет)",
                 },
                 {
                     id: 4,
-                    text: 'Бумажный скотч'
+                    text: "Бумажный скотч",
                 },
                 {
                     id: 5,
-                    text: 'Стикеры для заметок'
+                    text: "Стикеры для заметок",
                 },
                 {
                     id: 6,
-                    text: 'Твердые переплеты книг'
+                    text: "Твердые переплеты книг",
                 },
                 {
                     id: 7,
-                    text: 'Подарочные блестящие пакеты'
-                }
+                    text: "Подарочные блестящие пакеты",
+                },
             ],
-            status: 'Не\u00A0подлежит переработке'
+            status: "Не\u00A0подлежит переработке",
         },
         {
             id: 4,
-            name: 'Использованная или грязная бумага',
+            name: "Использованная или грязная бумага",
             images: [
                 {
                     id: 1,
-                    url: used
-                }
+                    url: used,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Использованные салфетки'
+                    text: "Использованные салфетки",
                 },
                 {
                     id: 2,
-                    text: 'Туалетная бумага, бумажные полотенца'
+                    text: "Туалетная бумага, бумажные полотенца",
                 },
                 {
                     id: 3,
-                    text: 'Грязная или мокрая бумага, картон'
-                }
+                    text: "Грязная или мокрая бумага, картон",
+                },
             ],
-            status: 'Не\u00A0подлежит переработке'
+            status: "Не\u00A0подлежит переработке",
         },
         {
             id: 5,
-            name: 'Бумажные стаканы\nи посуда',
+            name: "Бумажные стаканы\nи посуда",
             images: [
                 {
                     id: 1,
-                    url: cup
-                }
+                    url: cup,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Одноразовые бумажные стаканчики'
+                    text: "Одноразовые бумажные стаканчики",
                 },
                 {
                     id: 2,
-                    text: 'Одноразовая бумажная посуда'
-                }
+                    text: "Одноразовая бумажная посуда",
+                },
             ],
-            status: 'Не\u00A0подлежит переработке'
+            status: "Не\u00A0подлежит переработке",
         },
         {
             id: 6,
-            name: 'Чеки, факсовая, пергаментная бумага',
+            name: "Чеки, факсовая, пергаментная бумага",
             images: [
                 {
                     id: 1,
-                    url: check
-                }
+                    url: check,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Чеки'
+                    text: "Чеки",
                 },
                 {
                     id: 2,
-                    text: 'Факсовая бумага'
+                    text: "Факсовая бумага",
                 },
                 {
                     id: 3,
-                    text: 'Пергаментная бумага'
-                }
+                    text: "Пергаментная бумага",
+                },
             ],
-            status: 'Не\u00A0подлежит переработке'
-        }
-    ]
+            status: "Не\u00A0подлежит переработке",
+        },
+    ],
 };
 
 export const GlassContent: RecycleContent = {
-    recycleType: 'glass',
+    recycleType: "glass",
     columns: [
         {
             id: 1,
-            name: 'Бутылки',
+            name: "Бутылки",
             images: [
                 {
                     id: 1,
-                    url: glBottles
-                }
+                    url: glBottles,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Бутылки от напитков, пива, вина, шампанского, крепкого алкоголя'
-                }
+                    text: "Бутылки от напитков, пива, вина, шампанского, крепкого алкоголя",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 2,
-            name: 'Стекло',
+            name: "Стекло",
             images: [
                 {
                     id: 1,
-                    url: jar
-                }
+                    url: jar,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Стеклянные банки от консервов (закаток и соков)'
+                    text: "Стеклянные банки от консервов (закаток и соков)",
                 },
                 {
                     id: 2,
-                    text: 'Баночки от детского питания'
+                    text: "Баночки от детского питания",
                 },
                 {
                     id: 3,
-                    text: 'Баночки от лекарств'
-                }
+                    text: "Баночки от лекарств",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 3,
-            name: 'Промышленное стекло и зеркала',
+            name: "Промышленное стекло и зеркала",
             images: [
                 {
                     id: 1,
-                    url: mirror
-                }
+                    url: mirror,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Оконные стекла'
+                    text: "Оконные стекла",
                 },
                 {
                     id: 2,
-                    text: 'Мебельные стекла'
+                    text: "Мебельные стекла",
                 },
                 {
                     id: 3,
-                    text: 'Автомобильные стекла'
+                    text: "Автомобильные стекла",
                 },
                 {
                     id: 4,
-                    text: 'Армированные стекла'
+                    text: "Армированные стекла",
                 },
                 {
                     id: 5,
-                    text: 'Зеркала'
-                }
+                    text: "Зеркала",
+                },
             ],
-            status: 'Не\u00A0подлежит переработке'
+            status: "Не\u00A0подлежит переработке",
         },
         {
             id: 4,
-            name: 'Посуда',
+            name: "Посуда",
             images: [
                 {
                     id: 1,
-                    url: utensil
-                }
+                    url: utensil,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Стеклянная посуда'
+                    text: "Стеклянная посуда",
                 },
                 {
                     id: 2,
-                    text: 'Жаропрочная посуда'
+                    text: "Жаропрочная посуда",
                 },
                 {
                     id: 3,
-                    text: 'Хрусталь'
+                    text: "Хрусталь",
                 },
                 {
                     id: 4,
-                    text: 'Керамика'
+                    text: "Керамика",
                 },
                 {
                     id: 5,
-                    text: 'Фарфор'
-                }
+                    text: "Фарфор",
+                },
             ],
-            status: 'Не\u00A0подлежит переработке'
+            status: "Не\u00A0подлежит переработке",
         },
         {
             id: 5,
-            name: 'Экраны',
+            name: "Экраны",
             images: [
                 {
                     id: 1,
-                    url: display
-                }
+                    url: display,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Экраны мониторов'
+                    text: "Экраны мониторов",
                 },
                 {
                     id: 2,
-                    text: 'Экраны телевизоров'
+                    text: "Экраны телевизоров",
                 },
                 {
                     id: 3,
-                    text: 'Экраны телефонов'
+                    text: "Экраны телефонов",
                 },
                 {
                     id: 4,
-                    text: 'Экраны планшетов'
-                }
+                    text: "Экраны планшетов",
+                },
             ],
-            status: 'Не\u00A0подлежит переработке'
-        }
-    ]
+            status: "Не\u00A0подлежит переработке",
+        },
+    ],
 };
 
 export const LargeContent: RecycleContent = {
-    recycleType: 'large',
+    recycleType: "large",
     columns: [
         {
             id: 1,
-            name: 'Крупно-габаритные отходы',
+            name: "Крупно-габаритные отходы",
             images: [
                 {
                     id: 1,
-                    url: sofa
-                }
+                    url: sofa,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Диваны'
+                    text: "Диваны",
                 },
                 {
                     id: 2,
-                    text: 'Шкафы'
+                    text: "Шкафы",
                 },
                 {
                     id: 3,
-                    text: 'Другие габаритные предметы'
-                }
+                    text: "Другие габаритные предметы",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 2,
-            name: 'Строительный мусор',
+            name: "Строительный мусор",
             images: [
                 {
                     id: 1,
-                    url: garbage
-                }
+                    url: garbage,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Строительный мусор'
-                }
+                    text: "Строительный мусор",
+                },
             ],
-            status: 'Подлежит переработке'
-        }
-    ]
+            status: "Подлежит переработке",
+        },
+    ],
 };
 
 export const DangerContent: RecycleContent = {
-    recycleType: 'danger',
+    recycleType: "danger",
     columns: [
         {
             id: 1,
-            name: 'Батарейки и аккумуляторы',
+            name: "Батарейки и аккумуляторы",
             images: [
                 {
                     id: 1,
-                    url: accumulator
-                }
+                    url: accumulator,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Пальчиковые батарейки'
+                    text: "Пальчиковые батарейки",
                 },
                 {
                     id: 2,
-                    text: 'Многоразовые аккумуляторы'
+                    text: "Многоразовые аккумуляторы",
                 },
                 {
                     id: 3,
-                    text: 'Литий-ионные батареи'
-                }
+                    text: "Литий-ионные батареи",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 2,
-            name: 'Лекарства',
+            name: "Лекарства",
             images: [
                 {
                     id: 1,
-                    url: pills
-                }
+                    url: pills,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Блистеры с лекарствами'
+                    text: "Блистеры с лекарствами",
                 },
                 {
                     id: 2,
-                    text: 'Ампулы с лекарствами'
+                    text: "Ампулы с лекарствами",
                 },
                 {
                     id: 3,
-                    text: 'Химические и лекарственные отходы'
-                }
+                    text: "Химические и лекарственные отходы",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 3,
-            name: 'Автомобильные отходы',
+            name: "Автомобильные отходы",
             images: [
                 {
                     id: 1,
-                    url: tires
-                }
+                    url: tires,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Шины'
+                    text: "Шины",
                 },
                 {
                     id: 2,
-                    text: 'Масла'
+                    text: "Масла",
                 },
                 {
                     id: 3,
-                    text: 'Аккумуляторы'
+                    text: "Аккумуляторы",
                 },
                 {
                     id: 4,
-                    text: 'Катализаторы'
-                }
+                    text: "Катализаторы",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 4,
-            name: 'Лампы',
+            name: "Лампы",
             images: [
                 {
                     id: 1,
-                    url: lamp
-                }
+                    url: lamp,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Люминесцентные лампы'
+                    text: "Люминесцентные лампы",
                 },
                 {
                     id: 2,
-                    text: 'Светодиодные лампы'
-                }
+                    text: "Светодиодные лампы",
+                },
             ],
-            status: 'Подлежит переработке'
+            status: "Подлежит переработке",
         },
         {
             id: 5,
-            name: 'Ртуть-содержащие',
+            name: "Ртуть-содержащие",
             images: [
                 {
                     id: 1,
-                    url: thermometer
-                }
+                    url: thermometer,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Градусники'
-                }
+                    text: "Градусники",
+                },
             ],
-            status: 'Подлежит переработке'
-        }
-    ]
+            status: "Подлежит переработке",
+        },
+    ],
 };
 
 export const ElectroContent: RecycleContent = {
-    recycleType: 'electro',
+    recycleType: "electro",
     columns: [
         {
             id: 1,
-            name: 'Электронная и бытовая техника',
+            name: "Электронная и бытовая техника",
             images: [
                 {
                     id: 1,
-                    url: appliance
-                }
+                    url: appliance,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Стиральная машина'
+                    text: "Стиральная машина",
                 },
                 {
                     id: 2,
-                    text: 'Телевизор и компьютер'
+                    text: "Телевизор и компьютер",
                 },
                 {
                     id: 3,
-                    text: 'Холодильник, плита и другая кухонная техника'
+                    text: "Холодильник, плита и другая кухонная техника",
                 },
                 {
                     id: 4,
-                    text: 'Музыкальная техника'
+                    text: "Музыкальная техника",
                 },
                 {
                     id: 5,
-                    text: 'Другая техника'
-                }
+                    text: "Другая техника",
+                },
             ],
-            status: 'Подлежит переработке'
-        }
-    ]
+            status: "Подлежит переработке",
+        },
+    ],
 };
 
 export const MetalContent: RecycleContent = {
-    recycleType: 'metal',
+    recycleType: "metal",
     columns: [
         {
             id: 1,
-            name: 'Металл',
+            name: "Металл",
             images: [
                 {
                     id: 1,
-                    url: metal
-                }
+                    url: metal,
+                },
             ],
             description: [
                 {
                     id: 1,
-                    text: 'Цветной металл (медь, алюминий, цинк, серебро, золото)'
+                    text: "Цветной металл (медь, алюминий, цинк, серебро, золото)",
                 },
                 {
                     id: 2,
-                    text: 'Лом и отходы черных металлов (чугунные изделия и ванны)'
+                    text: "Лом и отходы черных металлов (чугунные изделия и ванны)",
                 },
                 {
                     id: 3,
-                    text: 'Инструмент'
+                    text: "Инструмент",
                 },
                 {
                     id: 4,
-                    text: 'Аллюминивые банки'
+                    text: "Алюминивые банки",
                 },
                 {
                     id: 5,
-                    text: 'Различное оборудование и его корпуса'
-                }
+                    text: "Различное оборудование и его корпуса",
+                },
             ],
-            status: 'Подлежит переработке'
-        }
-    ]
+            status: "Подлежит переработке",
+        },
+    ],
 };
