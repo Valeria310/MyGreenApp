@@ -22,21 +22,27 @@ const customIcon = new L.Icon({
 });
 
 function MapSection() {
-
+    // debugger;
     const [filterButtonsStatus, setFilterButtonsStatus] = useState<Array<FilterButtonsObjType>>(filterButtons);
 
-    const changeButtonStatus = (wasteType: filterType) => {
-        filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
-        setFilterButtonsStatus({ ...filterButtonsStatus });
+    const changeButtonStatus = (id: string) => {
+        // filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
+        // setFilterButtonsStatus({ ...filterButtonsStatus });
+        // const buttonToChange = filterButtons.find(f=>f.id == id);
 
+        const updatedFilterButtons = filterButtonsStatus.map(b => b.id === id ?
+            { id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive } : b);
+        setFilterButtonsStatus(updatedFilterButtons);
+
+        console.log(updatedFilterButtons);
     };
 
     const filteredMarkers = markers;
 
     filteredMarkers.map(m => m.display = false);
 
-    for (let i = 0; i < filterButtons.length; i++) {
-        if (filterButtons[i].isActive) {
+    for (let i = 0; i < filterButtonsStatus.length; i++) {
+        if (filterButtonsStatus[i].isActive) {
             filteredMarkers.map(m => m.wasteTypes.includes(waste[i]) ? m.display = true : m);
         }
     }
@@ -51,9 +57,10 @@ function MapSection() {
                 <div className={s.buttonsWrapper}>
 
 
-                    {filterButtons.map((f, i) =>
+                    {filterButtonsStatus.map((f, i) =>
                         <FilterButton
                             key={i}
+                            id={f.id}
                             title={f.wasteTitle}
                             changeButtonStatus={changeButtonStatus}
                             isActive={f.isActive}
