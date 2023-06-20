@@ -45,10 +45,6 @@ export const Header = () => {
         prevPos=currentPos;
     };
 
-    const handleClick = () => {
-        window.location.reload();
-    };
-
     const handleMouseover = () => {
         mousePosition = 'over';
     };
@@ -74,6 +70,7 @@ export const Header = () => {
     document.addEventListener('click', (e)=> {
         const plug = document.getElementsByClassName('plug')[0];
         const burger = document.getElementById('burger');
+        const links = document.getElementsByClassName('navigation_link');
         if(e.target == plug && isMenuOpen === false) {
             const menu = document.getElementById('menu');
             const header = document.getElementById('header');
@@ -84,9 +81,15 @@ export const Header = () => {
                 isMenuOpen = true;
             }, 500);
             plug?.addEventListener('click', clickHandler, { once: true });
+        } else if(e.target == links[3] || e.target == links[4] || e.target == links[5] ) {
+            const menu = document.getElementById('menu');
+            const header = document.getElementById('header');
+            menu?.classList.remove('opened');
+            burger?.classList.remove('cross');
+            header?.classList.remove('fixed');
         }
     });
-    
+
     window.addEventListener('hashchange', ()=> {
         const menu = document.getElementById('menu');
         const burger = document.getElementById('burger');
@@ -104,7 +107,7 @@ export const Header = () => {
     });
     return (<header className='header visible' id='header'>
         <div className="container">
-            <a className="logo" onClick={handleClick}></a>
+            <a className="logo" href='/'></a>
             <Navigation />
             <div className="header-mobile-burger" id='burger'>
                 <div className="burger-line"></div>
