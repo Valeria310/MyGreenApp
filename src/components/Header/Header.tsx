@@ -12,6 +12,11 @@ export const Header = () => {
     let mousePosition = 'out';
     let isMenuOpen = false;
     const firtsBlockHeight = 902;
+    
+    window.addEventListener('resize', () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
 
     const scrollHandler = () => {
         const elem = document.getElementById('header');
