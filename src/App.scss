@@ -102,3 +102,13 @@ h2 {
 .leaflet-attribution-flag {
     display: none !important;
 }
+
+.marquee-container {
+  height: 70px;
+}
+
+@media (max-width: 600px) {
+  .marquee-container {
+    height: 50px;
+  }
+}
