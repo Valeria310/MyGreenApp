@@ -9,7 +9,7 @@ import s from './MapSection.module.scss';
 import pointIcon from '../../assets/images/point_icon.svg';
 import {
     FilterButtonsObjType, filterButtonsState,
-    markers,
+    markersState,
     waste
 } from '../../constants/MapState';
 
@@ -35,7 +35,7 @@ const MapSection = ()=> {
         // console.log(updatedFilterButtons);
     };
 
-    const filteredMarkers = markers;
+    const filteredMarkers = markersState;
 
     filteredMarkers.map(m => m.display = false);
 
