@@ -68,7 +68,7 @@ export const PlasticContent: RecycleContent = {
     columns: [
         {
             id: 1,
-            name: 'Полиэтилентерефталат',
+            name: 'Полиэтилен\u00ADтерефталат',
             images: [
                 {
                     id: 1,
@@ -126,7 +126,7 @@ export const PlasticContent: RecycleContent = {
         },
         {
             id: 3,
-            name: 'Поливинилхлорид',
+            name: 'Поливинил\u00ADхлорид',
             images: [
                 {
                     id: 1,
@@ -394,7 +394,7 @@ export const PaperContent: RecycleContent = {
         },
         {
             id: 3,
-            name: 'Ламинированная бумага',
+            name: 'Ламини\u00ADрованная бумага',
             images: [
                 {
                     id: 1,
@@ -655,7 +655,7 @@ export const LargeContent: RecycleContent = {
     columns: [
         {
             id: 1,
-            name: 'Крупногабаритные отходы',
+            name: 'Крупно\u00ADгабаритные отходы',
             images: [
                 {
                     id: 1,
@@ -803,7 +803,7 @@ export const DangerContent: RecycleContent = {
         },
         {
             id: 5,
-            name: 'Ртутьсодержащие',
+            name: 'Ртуть\u00ADсодержащие',
             images: [
                 {
                     id: 1,
