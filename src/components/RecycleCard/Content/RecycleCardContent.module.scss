@@ -70,6 +70,7 @@
   }
   &Row &Heading:first-child {
       border-left: none;
+      word-wrap:normal;
   }
   &Row &Data:last-child {
       border-right: none;
