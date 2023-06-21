@@ -28,7 +28,7 @@ export const filterButtonsState:Array<FilterButtonsObjType> = [
 ];
 
 
-type markerType = {
+export type MarkerType = {
     id: number,
     title: string,
     website: string,
@@ -42,7 +42,7 @@ type markerType = {
     display: boolean
 }
 
-export const markers: Array<markerType> = [
+export const markersState: Array<MarkerType> = [
     //заводской район
 
     {
@@ -206,7 +206,7 @@ export const markers: Array<markerType> = [
     },
     {
         id: 13,
-        title: 'Пункт №47 ОАО "Белвторресурсы"',
+        title: 'Пункт №26 ОАО "Белвторресурсы"',
         website: 'https://belvtorresurs.by/',
         address: 'г.Минск, ул. Горовца, 7А',
         schedule: 'Время работы: Пн-Пт: с 09:00 до 17:30 (обед 12:00-12:30) вых: Суббота, Воскресенье\n',
