@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
@@ -8,9 +8,7 @@ import { FilterButton } from './FilterButton';
 import s from './MapSection.module.scss';
 import pointIcon from '../../assets/images/point_icon.svg';
 import {
-    filterButtons,
-    FilterButtonsObjType,
-    filterType,
+    FilterButtonsObjType, filterButtonsState,
     markers,
     waste
 } from '../../constants/MapState';
@@ -21,28 +19,28 @@ const customIcon = new L.Icon({
     iconSize: new L.Point(27, 32)
 });
 
-function MapSection() {
-    // debugger;
-    const [filterButtonsStatus, setFilterButtonsStatus] = useState<Array<FilterButtonsObjType>>(filterButtons);
+const MapSection = ()=> {
+
+    const [filterButtons, setFilterButtons] = useState<Array<FilterButtonsObjType>>(filterButtonsState);
 
     const changeButtonStatus = (id: string) => {
         // filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
         // setFilterButtonsStatus({ ...filterButtonsStatus });
         // const buttonToChange = filterButtons.find(f=>f.id == id);
 
-        const updatedFilterButtons = filterButtonsStatus.map(b => b.id === id ?
+        const updatedFilterButtons = filterButtons.map(b => b.id === id ?
             { id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive } : b);
-        setFilterButtonsStatus(updatedFilterButtons);
+        setFilterButtons(updatedFilterButtons);
 
-        console.log(updatedFilterButtons);
+        // console.log(updatedFilterButtons);
     };
 
     const filteredMarkers = markers;
 
     filteredMarkers.map(m => m.display = false);
 
-    for (let i = 0; i < filterButtonsStatus.length; i++) {
-        if (filterButtonsStatus[i].isActive) {
+    for (let i = 0; i < filterButtons.length; i++) {
+        if (filterButtons[i].isActive) {
             filteredMarkers.map(m => m.wasteTypes.includes(waste[i]) ? m.display = true : m);
         }
     }
@@ -57,7 +55,7 @@ function MapSection() {
                 <div className={s.buttonsWrapper}>
 
 
-                    {filterButtonsStatus.map((f, i) =>
+                    {filterButtons.map((f, i) =>
                         <FilterButton
                             key={i}
                             id={f.id}
@@ -118,6 +116,6 @@ function MapSection() {
 
 
     );
-}
+};
 
 export default MapSection;

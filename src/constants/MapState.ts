@@ -17,7 +17,7 @@ export type FilterButtonsObjType = {
     isActive: boolean
 }
 
-export const filterButtons:Array<FilterButtonsObjType> = [
+export const filterButtonsState:Array<FilterButtonsObjType> = [
     { id:'plastic', wasteTitle: waste[0], isActive: true },
     { id:'paper', wasteTitle: waste[1], isActive: true },
     { id:'glass', wasteTitle:  waste[2], isActive: true },
