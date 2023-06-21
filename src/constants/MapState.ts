@@ -11,14 +11,20 @@ export type filterType =
     | 'металл'
 
 
-export const filterButtons:Array<FilterButtonsObjType> = [
-    { id: 1, wasteTitle: waste[0], isActive: true },
-    { id: 2, wasteTitle: waste[1], isActive: true },
-    { id: 3, wasteTitle:  waste[2], isActive: true },
-    { id: 4, wasteTitle:  waste[3], isActive: true },
-    { id: 5, wasteTitle:  waste[4], isActive: true },
-    { id: 6, wasteTitle:  waste[5], isActive: true },
-    { id: 7, wasteTitle:  waste[6], isActive: true }
+export type FilterButtonsObjType = {
+    id: string,
+    wasteTitle: filterType,
+    isActive: boolean
+}
+
+export const filterButtonsState:Array<FilterButtonsObjType> = [
+    { id:'plastic', wasteTitle: waste[0], isActive: true },
+    { id:'paper', wasteTitle: waste[1], isActive: true },
+    { id:'glass', wasteTitle:  waste[2], isActive: true },
+    { id:'electronics', wasteTitle:  waste[3], isActive: true },
+    { id:'largeSize', wasteTitle:  waste[4], isActive: true },
+    { id:'dangerous', wasteTitle:  waste[5], isActive: true },
+    { id:'metal', wasteTitle:  waste[6], isActive: true }
 ];
 
 
@@ -202,11 +208,11 @@ export const markers: Array<markerType> = [
         id: 13,
         title: 'Пункт №47 ОАО "Белвторресурсы"',
         website: 'https://belvtorresurs.by/',
-        address: 'г.Минск, пер.Чижевских,1в',
-        schedule: 'Время работы: Пн-Пт: с 09:00 до 17:00 (обед 13:00-13:45) Сб: с 09:00 до 12:45; вых: Воскресенье',
+        address: 'г.Минск, ул. Горовца, 7А',
+        schedule: 'Время работы: Пн-Пт: с 09:00 до 17:30 (обед 12:00-12:30) вых: Суббота, Воскресенье\n',
         phone: '',
-        latitude: 53.8488364628712,
-        longitude: 27.57563092668395,
+        latitude: 53.87203864398408,
+        longitude: 27.608102240177065,
         info: '',
         wasteTypes: [waste[0], waste[1], waste[2], waste[3], waste[6]],
         display: false
@@ -428,7 +434,7 @@ export const markers: Array<markerType> = [
         id: 30,
         title: 'Пункт №39 ОАО "Белвторресурсы"',
         website: 'https://belvtorresurs.by/',
-        address: 'г.Минск, ул. Кижеватова,42а',
+        address: 'г.Минск, ул. Корженевского, 20Б',
         schedule: 'Время работы: Пн-Пт: с 09:00 до 18:00 (обед 12:00-14:00) Сб: с 09:00 до 14:00; вых: Воскресенье',
         phone: '',
         latitude: 53.8388617930306,
@@ -936,8 +942,8 @@ export const markers: Array<markerType> = [
         address: 'г.Минск, ул.Нововиленская, 38',
         schedule: 'Пн-Пт: с 09:00 до 17:00 (обед 13:00-14:00) Сб: с 09:00 до 14:00; вых: Воскресенье',
         phone: '',
-        latitude: 53.959294,
-        longitude: 27.537586,
+        latitude: 53.938061,
+        longitude: 27.532338,
         info: '',
         wasteTypes: [waste[0], waste[1], waste[2], waste[3], waste[6]],
         display: false
@@ -947,10 +953,5 @@ export const markers: Array<markerType> = [
 ];
 
 
-export type FilterButtonsObjType = {
-    id: number,
-    wasteTitle: filterType,
-    isActive: boolean
-}
 
 

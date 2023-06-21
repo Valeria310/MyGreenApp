@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
@@ -8,9 +8,7 @@ import { FilterButton } from './FilterButton';
 import s from './MapSection.module.scss';
 import pointIcon from '../../assets/images/point_icon.svg';
 import {
-    filterButtons,
-    FilterButtonsObjType,
-    filterType,
+    FilterButtonsObjType, filterButtonsState,
     markers,
     waste
 } from '../../constants/MapState';
@@ -21,14 +19,20 @@ const customIcon = new L.Icon({
     iconSize: new L.Point(27, 32)
 });
 
-function MapSection() {
+const MapSection = ()=> {
 
-    const [filterButtonsStatus, setFilterButtonsStatus] = useState<Array<FilterButtonsObjType>>(filterButtons);
+    const [filterButtons, setFilterButtons] = useState<Array<FilterButtonsObjType>>(filterButtonsState);
 
-    const changeButtonStatus = (wasteType: filterType) => {
-        filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
-        setFilterButtonsStatus({ ...filterButtonsStatus });
+    const changeButtonStatus = (id: string) => {
+        // filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
+        // setFilterButtonsStatus({ ...filterButtonsStatus });
+        // const buttonToChange = filterButtons.find(f=>f.id == id);
 
+        const updatedFilterButtons = filterButtons.map(b => b.id === id ?
+            { id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive } : b);
+        setFilterButtons(updatedFilterButtons);
+
+        // console.log(updatedFilterButtons);
     };
 
     const filteredMarkers = markers;
@@ -54,6 +58,7 @@ function MapSection() {
                     {filterButtons.map((f, i) =>
                         <FilterButton
                             key={i}
+                            id={f.id}
                             title={f.wasteTitle}
                             changeButtonStatus={changeButtonStatus}
                             isActive={f.isActive}
@@ -111,6 +116,6 @@ function MapSection() {
 
 
     );
-}
+};
 
 export default MapSection;
