@@ -23,7 +23,7 @@ export const Header = () => {
         elem?.addEventListener('mouseover', handleMouseover, false);
         elem?.addEventListener('mouseout', handleMouseout, false);
         const currentPos:number = window.pageYOffset;
-        if((currentPos>=firtsBlockHeight) && (currentPos < prevPos) && !isStarted){
+        if((currentPos>=firtsBlockHeight) && (currentPos < prevPos) && !isStarted && !isMenuOpen){
             elem?.classList.add('visible');
             isStarted = true;
             changeVisible = setTimeout(() => {
@@ -61,6 +61,7 @@ export const Header = () => {
             burger?.classList.remove('cross');
             menu?.classList.remove('opened');
             header?.classList.remove('fixed');
+            document.body.style.overflowY = 'auto';
             setTimeout(() => {
                 isMenuOpen = false;
             }, 500);
@@ -77,6 +78,7 @@ export const Header = () => {
             menu?.classList.add('opened');
             burger?.classList.add('cross');
             header?.classList.add('fixed');
+            document.body.style.overflowY = 'hidden';
             setTimeout(() => {
                 isMenuOpen = true;
             }, 500);
@@ -87,6 +89,7 @@ export const Header = () => {
             menu?.classList.remove('opened');
             burger?.classList.remove('cross');
             header?.classList.remove('fixed');
+            document.body.style.overflowY = 'auto';
         }
     });
 
@@ -97,6 +100,7 @@ export const Header = () => {
         menu?.classList.remove('opened');
         burger?.classList.remove('cross');
         header?.classList.remove('fixed');
+        document.body.style.overflowY = 'auto';
     });
 
     useEffect(() => {

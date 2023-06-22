@@ -45,10 +45,10 @@
     &-mobile-menu {
         position: absolute;
         left: 0;
-        top: calc(-100vh - 90px);
+        top:100vh;
         max-width: 680px;
         width: 100%;
-        height: calc(var(--vh, 1vh) * 100 + 90px);
+        height: calc(var(--vh, 1vh) * 100);
         background: #F6FCEA;
         display: flex;
         align-items: center;
