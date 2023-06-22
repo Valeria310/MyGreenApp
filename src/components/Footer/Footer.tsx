@@ -3,12 +3,6 @@ import { Navigation } from '../Navigation/Navigation';
 import './Footer.scss';
 
 export const Footer = () => {
-    const handleClick = () => {
-        setTimeout(() => {
-            window.location.reload();
-        }, 500);
-    };
-
     return (<footer className="footer">
         <div className="footer_hill"></div>
         <div className="footer_small_trees"></div>
@@ -18,7 +12,7 @@ export const Footer = () => {
             <div className="footer_big_trees_r"></div>
         </div>
         <div className="container footer-container">
-            <a href='#' className="footer-logo" onClick={handleClick}></a>
+            <a href='/' className="footer-logo"></a>
             <Navigation />
             <span className="socials">info@ecohub.by</span>
         </div>
