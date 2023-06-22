@@ -23,7 +23,7 @@ export const Header = () => {
         elem?.addEventListener('mouseover', handleMouseover, false);
         elem?.addEventListener('mouseout', handleMouseout, false);
         const currentPos:number = window.pageYOffset;
-        if((currentPos>=firtsBlockHeight) && (currentPos < prevPos) && !isStarted && !isMenuOpen){
+        if((currentPos>=firtsBlockHeight) && (currentPos < prevPos) && !isStarted){
             elem?.classList.add('visible');
             isStarted = true;
             changeVisible = setTimeout(() => {
@@ -61,10 +61,13 @@ export const Header = () => {
             burger?.classList.remove('cross');
             menu?.classList.remove('opened');
             header?.classList.remove('fixed');
-            document.body.style.overflowY = 'auto';
+            header?.classList.remove('visible');
+            isStarted = false;
             setTimeout(() => {
                 isMenuOpen = false;
             }, 500);
+            document.body.style.overflowY = 'auto';
+            mousePosition = 'out';
         }
     };
 
@@ -78,10 +81,10 @@ export const Header = () => {
             menu?.classList.add('opened');
             burger?.classList.add('cross');
             header?.classList.add('fixed');
-            document.body.style.overflowY = 'hidden';
             setTimeout(() => {
                 isMenuOpen = true;
             }, 500);
+            document.body.style.overflowY = 'hidden';
             plug?.addEventListener('click', clickHandler, { once: true });
         } else if(e.target == links[3] || e.target == links[4] || e.target == links[5] ) {
             const menu = document.getElementById('menu');
@@ -89,7 +92,11 @@ export const Header = () => {
             menu?.classList.remove('opened');
             burger?.classList.remove('cross');
             header?.classList.remove('fixed');
+            header?.classList.remove('visible');
+            isStarted = false;
+            isMenuOpen = false;
             document.body.style.overflowY = 'auto';
+            mousePosition = 'out';
         }
     });
 
@@ -100,7 +107,11 @@ export const Header = () => {
         menu?.classList.remove('opened');
         burger?.classList.remove('cross');
         header?.classList.remove('fixed');
+        header?.classList.remove('visible');
+        isStarted = false;
+        isMenuOpen = false;
         document.body.style.overflowY = 'auto';
+        mousePosition = 'out';
     });
 
     useEffect(() => {
