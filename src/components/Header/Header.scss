@@ -45,7 +45,7 @@
     &-mobile-menu {
         position: absolute;
         left: 0;
-        top: -100vh;
+        top: calc(-100vh - 90px);
         max-width: 680px;
         width: 100%;
         height: calc(var(--vh, 1vh) * 100 + 90px);
