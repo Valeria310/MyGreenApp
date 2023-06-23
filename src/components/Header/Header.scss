@@ -54,7 +54,7 @@
         flex-direction: column;
         justify-content: space-between;
         z-index: -1;
-        transition: all .5s;
+        transition: top .5s;
         &.opened {
             top: 0;
         }
@@ -109,7 +109,7 @@
     font-size: 16px;
     line-height: 105%;
     color: #070707;
-    margin-bottom: 200px;
+    margin-bottom: 150px;
 }
 
 .plug {
