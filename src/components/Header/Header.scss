@@ -18,6 +18,11 @@
         padding: 12px;
         gap: 251px;
         position: relative;
+
+        &.opened-menu {
+            width: 100vw;
+            position: absolute;
+        }
     }
 
     &.visible {
