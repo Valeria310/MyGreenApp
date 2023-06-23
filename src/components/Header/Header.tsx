@@ -68,6 +68,8 @@ export const Header = () => {
             }, 500);
             document.body.style.overflowY = 'auto';
             document.body.style.position = 'static';
+            const container = header?.getElementsByClassName('container')[0];
+            container?.classList.remove('opened-menu');
             mousePosition = 'out';
         }
     };
@@ -86,7 +88,11 @@ export const Header = () => {
                 isMenuOpen = true;
             }, 500);
             document.body.style.overflowY = 'hidden';
-            document.body.style.position = 'fixed';
+            const container = header?.getElementsByClassName('container')[0];
+            container?.classList.add('opened-menu');
+            setTimeout(() => {
+                document.body.style.position = 'fixed';
+            }, 500);
             plug?.addEventListener('click', clickHandler, { once: true });
         } else if(e.target == links[3] || e.target == links[4] || e.target == links[5] ) {
             const menu = document.getElementById('menu');
@@ -99,6 +105,8 @@ export const Header = () => {
             isMenuOpen = false;
             document.body.style.overflowY = 'auto';
             document.body.style.position = 'static';
+            const container = header?.getElementsByClassName('container')[0];
+            container?.classList.remove('opened-menu');
             mousePosition = 'out';
         }
     });
@@ -115,6 +123,8 @@ export const Header = () => {
         isMenuOpen = false;
         document.body.style.overflowY = 'auto';
         document.body.style.position = 'static';
+        const container = header?.getElementsByClassName('container')[0];
+        container?.classList.remove('opened-menu');
         mousePosition = 'out';
     });
 
