@@ -56,23 +56,23 @@ export const Header = () => {
 
     const clickHandler = () => {
         if(isMenuOpen === true ) {
-            window.scrollTo({ top: position, behavior: 'auto' });
+            window.scrollTo(0, position);
+            const burger = document.getElementById('burger');
+            const menu = document.getElementById('menu');
+            const header = document.getElementById('header');
+            const container = header?.getElementsByClassName('container')[0];
             setTimeout(() => {
-                const burger = document.getElementById('burger');
-                const menu = document.getElementById('menu');
-                const header = document.getElementById('header');
                 burger?.classList.remove('cross');
                 menu?.classList.remove('opened');
                 header?.classList.remove('fixed');
                 header?.classList.remove('visible');
                 isStarted = false;
                 isMenuOpen = false;
-                document.body.style.overflowY = 'auto';
-                document.body.style.position = 'static';
-                const container = header?.getElementsByClassName('container')[0];
                 container?.classList.remove('opened-menu');
-                mousePosition = 'out';
             }, 100);
+            document.body.style.overflowY = 'auto';
+            document.body.style.position = 'static';
+            mousePosition = 'out';
         }
     };
 
