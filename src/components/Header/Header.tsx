@@ -12,6 +12,7 @@ export const Header = () => {
     let mousePosition = 'out';
     let isMenuOpen = false;
     const firtsBlockHeight = 902;
+    let position=0;
     
     window.addEventListener('resize', () => {
         const vh = window.innerHeight * 0.01;
@@ -55,22 +56,23 @@ export const Header = () => {
 
     const clickHandler = () => {
         if(isMenuOpen === true ) {
-            const burger = document.getElementById('burger');
-            const menu = document.getElementById('menu');
-            const header = document.getElementById('header');
-            burger?.classList.remove('cross');
-            menu?.classList.remove('opened');
-            header?.classList.remove('fixed');
-            header?.classList.remove('visible');
-            isStarted = false;
+            window.scrollTo({ top: position, behavior: 'auto' });
             setTimeout(() => {
+                const burger = document.getElementById('burger');
+                const menu = document.getElementById('menu');
+                const header = document.getElementById('header');
+                burger?.classList.remove('cross');
+                menu?.classList.remove('opened');
+                header?.classList.remove('fixed');
+                header?.classList.remove('visible');
+                isStarted = false;
                 isMenuOpen = false;
-            }, 500);
-            document.body.style.overflowY = 'auto';
-            document.body.style.position = 'static';
-            const container = header?.getElementsByClassName('container')[0];
-            container?.classList.remove('opened-menu');
-            mousePosition = 'out';
+                document.body.style.overflowY = 'auto';
+                document.body.style.position = 'static';
+                const container = header?.getElementsByClassName('container')[0];
+                container?.classList.remove('opened-menu');
+                mousePosition = 'out';
+            }, 100);
         }
     };
 
@@ -79,6 +81,7 @@ export const Header = () => {
         const burger = document.getElementById('burger');
         const links = document.getElementsByClassName('navigation_link');
         if(e.target == plug && isMenuOpen === false) {
+            position=window.pageYOffset;
             const menu = document.getElementById('menu');
             const header = document.getElementById('header');
             menu?.classList.add('opened');
