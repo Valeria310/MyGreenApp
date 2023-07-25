@@ -13,6 +13,8 @@ type PropsType = {
 }
 
 export const FilterButton = (props: PropsType) => {
+
+    // debugger;
     // const wasteType: filterType = props.title;
 
     // const onClickHandler = useCallback(() => {
@@ -27,7 +29,7 @@ export const FilterButton = (props: PropsType) => {
 
     };
 
-    // console.log('FilterButton called');
+    // console.log('FilterButton called' + props.id);
 
     return (
         <button
