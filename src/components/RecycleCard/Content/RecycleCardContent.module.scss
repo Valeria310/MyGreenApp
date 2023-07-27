@@ -1,8 +1,41 @@
 @import 'src/index.scss';
 
 .recycleCardContent {
-  background-color: $color-white;
   overflow: hidden;
+  margin-top: 10px;
+  @media screen and (min-width: 768px) {
+    height: auto;
+    margin-top: 0;;
+    background-color: $color-white;
+  }
+}
+
+.plasticCardContent {
+    height: 351px;
+}
+
+.paperCardContent {
+    height: 400px;
+}
+
+.glassCardContent {
+    height: 351px;
+}
+
+.largeCardContent {
+    height: 351px;
+}
+
+.electroCardContent {
+    height: 351px;
+}
+
+.dangerCardContent {
+    height: 351px;
+}
+
+.metalCardContent {
+    height: 351px;
 }
 
 .recycleTable {

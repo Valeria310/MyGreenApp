@@ -8,6 +8,8 @@
     max-height: 238px;
     &Expanded {
         max-height: 2100px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
     @media screen and (min-width: 500px) {
         max-height: 100px;
@@ -19,6 +21,7 @@
         max-height: 124px;
         &Expanded {
             max-height: 2100px;
+            border-radius: 30px;
         }
     }
     @media screen and (min-width: 1200px) {
