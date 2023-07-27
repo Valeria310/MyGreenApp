@@ -5,16 +5,24 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     column-gap: 30px;
     row-gap: 24px;
     &:nth-child(odd) {
         flex-direction: row-reverse;
     }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 400px) {
+        max-width: fit-content;
+    }
+    @media screen and (min-width: 600px) {
         row-gap: 32px;
-        max-width: 570px;
+        column-gap: calc(40 / 600 * 100vw);
     }
     @media screen and (min-width: 1200px) {
+        align-items: flex-start;
+    }
+    @media screen and (min-width: 1440px) {
+        column-gap: 30px;
         max-width: 1170px;
     }
 }
@@ -27,7 +35,15 @@
         height: 100%;
         border-radius: 30px;
     }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 400px) {
+        max-width: fit-content;
+        height: auto;
+    }
+    @media screen and (min-width: 600px) {
+        max-width: calc(570 / 1440 * 100vw);
+        height: calc(360 / 1440 * 100vw);
+    }
+    @media screen and (min-width: 1440px) {
         max-width: 570px;
         height: 360px;
     }
@@ -38,11 +54,16 @@
     width: 100%;
     flex-direction: column;
     row-gap: 24px;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 600px) {
         row-gap: 20px;
+        width: calc(50vw - 50 / 768 * 100vw - 10px);
+        // padding-left: calc(50 / 768 * 100vw);
     }
     @media screen and (min-width: 1200px) {
         row-gap: 22px;
+        max-width: calc(570 / 1440 * 100vw);
+    }
+    @media screen and (min-width: 1440px) {
         max-width: 570px;
     }
 }
@@ -50,6 +71,16 @@
 .navCardHeading {
     margin: 0;
     letter-spacing: 0.4px;
+    @media screen and (min-width: 600px) {
+        font-size: calc(32 / 1200 * 100vw);
+    }
+    @media screen and (min-width: 1200px) {
+        line-height: 110%;
+        font-size: calc(48 / 1440 * 100vw);
+    }
+    @media screen and (min-width: 1440px) {
+        font-size: 48px;
+    }
 }
 
 .navCardText {
@@ -59,10 +90,10 @@
     font-size: 16px;
     line-height: 140%;
     color: $color-black;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 600px) {
         row-gap: 16px;
-        font-size: 20px;
-        letter-spacing: 0.1px;
+        // letter-spacing: 0.1px;
+        font-size: calc(20 / 1200 * 100vw);
     }
     @media screen and (min-width: 1200px) {
         row-gap: 20px;
@@ -75,7 +106,7 @@
 
 .navCard:nth-child(2) .navCardText {
     row-gap: 12px;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 600px) {
         row-gap: 16px;
     }
     @media screen and (min-width: 1200px) {
@@ -85,9 +116,9 @@
 
 .navCardButton {
     height: 24px;
-    @media screen and (min-width: 768px) {
-        height: 40px;
-    }
+    // @media screen and (min-width: 600px) {
+    //     height: 40px;
+    // }
     @media screen and (min-width: 1200px) {
         height: 25.2px;
     }
@@ -103,22 +134,23 @@
         font-weight: 500;
         font-size: 20px;
         margin-right: 10px;
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: 600px) {
             font-weight: 400;
-            font-size: 24px;
             margin-right: 8px;
+            font-size: calc(28 / 1440 * 100vw);
         }
         @media screen and (min-width: 1200px) {
+            font-size: 28px;
             margin-right: 20px;
         }
     }
     img {
         width: 24px;
         height: 24px;
-        @media screen and (min-width: 768px) {
-            width: 40px;
-            height: 40px;
-        }
+        // @media screen and (min-width: 600px) {
+        //     width: 40px;
+        //     height: 40px;
+        // }
         @media screen and (min-width: 1200px) {
             width: 12.72px;
             height: 25.03px;

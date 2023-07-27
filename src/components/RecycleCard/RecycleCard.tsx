@@ -16,14 +16,16 @@ export const RecycleCard: FC<RecycleCardProps> = ({ card }) => {
         <div className={`${s.recycleCard} ${card.type}Card ${isExpanded ? s.recycleCardExpanded : ''}`}>
             <div className={s.recycleCardHeader}>
                 <img src={card.image} alt={card.type} className={s.recycleCardImage} />
-                <div className={s.recycleCardDescription}>
-                    <div className={s.recycleCardInfo}>
-                        <h3 className={s.recycleCardHeading}>{card.heading}</h3>
+                <div className={s.recycleCardDescriptionWrapper}>
+                    <div className={s.recycleCardDescription} onClick={() => setExpanded(!isExpanded)}>
+                        <div className={s.recycleCardInfo}>
+                            <h3 className={s.recycleCardHeading}>{card.heading}</h3>
+                        </div>
+                        <RecycleCardButton
+                            onClick={() => setExpanded(!isExpanded)}
+                            icon={content && isExpanded ? IconCross : IconArrow}
+                        />
                     </div>
-                    <RecycleCardButton
-                        onClick={() => setExpanded(!isExpanded)}
-                        icon={content && isExpanded ? IconCross : IconArrow}
-                    />
                 </div>
             </div>
             {content &&
