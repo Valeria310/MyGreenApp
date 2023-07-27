@@ -1,18 +1,23 @@
 import { FC } from 'react';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
 import s from './RecycleCardMobileList.module.scss';
 import { RecycleCardMobileListProps } from './RecycleCardMobileListProps';
 
 export const RecycleCardMobileList: FC<RecycleCardMobileListProps> = ({ items }) => {
 
     return (
-        <ul className={s.recycleRowList}>
+        <Swiper
+            className={s.recycleRowList}
+        >
             {items.map(item => {
                 const status = item.status === 'Не\u00A0подлежит переработке' ? 'Red' : 'Green';
                 const tinyGap = item.images.length > 2; 
 
                 return (
-                    <li key={item.id} className={s.recycleRow}>
+                    <SwiperSlide key={item.id} className={s.recycleRow}>
                         <div className={s.recycleRowContentWrapper}>
                             <div className={s.recycleRowHeader}>
                                 <h4>{item.name}</h4>
@@ -33,10 +38,10 @@ export const RecycleCardMobileList: FC<RecycleCardMobileListProps> = ({ items })
                         <div className={`${s.recycleRowFooter} ${s[`recycleRowFooter${status}`]}`}>
                             <div>{item.status}</div>
                         </div>
-                    </li>
+                    </SwiperSlide>
                 );    
             })}
-        </ul>
+        </Swiper>
     );
 };
 

@@ -11,7 +11,7 @@ export const RecycleCardContent: FC<RecycleCardContentProps> = ({ content }) => 
 
     if (width < 768) {
         return (
-            <div className={s.recycleCardContent}>
+            <div className={`${s.recycleCardContent} ${s[`${content.recycleType}CardContent`]}`}>
                 <RecycleCardMobileList items={content.columns} />
             </div>
         );
