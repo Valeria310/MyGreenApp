@@ -101,4 +101,24 @@
     src: local('Rising Sun Black Italic'), url('../assets/fonts/RisingSun-BlackItalic.woff') format('woff');
 }
 
+// font-family: 'Roboto', sans-serif;
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Regular'), url('../assets/fonts/Roboto-Regular.woff') format('woff');
+}
 
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Roboto Medium'), url('../assets/fonts/Roboto-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Bold'), url('../assets/fonts/Roboto-Bold.woff') format('woff');
+}
