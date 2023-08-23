@@ -1,0 +1,35 @@
+.adminHeader {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.adminHeader__container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.adminHeader__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.adminHeader__image {
+  width: 40px;
+  height: 40px;
+}
+
+.adminHeader__selectLabel {
+  margin: 0;
+}
+
+
+.adminHeader__select {
+  margin-top: 0 !important;
+
+  &:before {
+    border-bottom: none !important;
+  }
+}
+
