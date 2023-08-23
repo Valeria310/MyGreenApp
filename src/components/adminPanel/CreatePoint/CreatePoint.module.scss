@@ -1,0 +1,80 @@
+@import '../../../index.scss';
+
+.createPoint {
+  padding: 80px 0;
+}
+
+.createPoint__container {
+  max-width: 1255px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.createPoint__title {
+  margin: 0;
+  margin-bottom: 40px;
+  font-family: Roboto;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  color: $color-black;
+}
+
+.createPoint__textareaBox {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.createPoint__textareaLabel {
+  padding: 0 5px;
+  color: rgba($color-black, 0.6);
+  position: absolute;
+  background-color: #ffffff;
+  top: -8px;
+  left: 15px;
+}
+
+.createPoint__textarea {
+  box-sizing: border-box;
+  padding: 12px;
+  width: 600px;
+  min-height: 153px;
+  border-radius: 4px;
+  border: 1px solid rgba($color-black, 0.23);
+  resize: none;
+}
+
+.createPoint__textareaCount {
+  color: rgba($color-black, 0.6);
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 166%;
+  letter-spacing: 0.4px; 
+  margin: 3px 0 0 14px;
+}
+
+.createPoint__subtitle {
+  margin: 0;
+  margin-bottom: 17px;
+  color: rgba($color-black, 0.87);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  letter-spacing: 0.15px;
+}
+
+.createPoint__checkboxes {
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.createPoint__buttons {
+  margin-top: 48px;
+}
