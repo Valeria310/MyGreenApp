@@ -1,12 +1,22 @@
+@import '../../../index.scss';
+
 .adminHeader {
   padding: 12px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba($color-black, 0.12);
 }
 
 .adminHeader__container {
-  max-width: 1255px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 108px;
+
+  @media (max-width: 1439px){
+    padding: 0 40px;
+  }
+
+  @media (max-width: 767px){
+    padding: 0 10px;
+  }
 }
 
 .adminHeader__inner {
@@ -18,6 +28,8 @@
 .adminHeader__image {
   width: 40px;
   height: 40px;
+  display: block;
+  vertical-align: bottom;
 }
 
 .adminHeader__selectLabel {

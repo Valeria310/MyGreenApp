@@ -5,9 +5,17 @@
 }
 
 .createPoint__container {
-  max-width: 1255px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 108px;
+
+  @media (max-width: 1439px){
+    padding: 0 40px;
+  }
+
+  @media (max-width: 767px){
+    padding: 0 10px;
+  }
 }
 
 .createPoint__title {

@@ -18,7 +18,9 @@ const AdminHeader = () => {
         <div className={classes.adminHeader}>
             <div className={classes.adminHeader__container}>
                 <div className={classes.adminHeader__inner}>
-                    <img className={classes.adminHeader__image} src={logo} alt="EcoHub" />
+                    <a href="#">
+                        <img className={classes.adminHeader__image} src={logo} alt="EcoHub" />
+                    </a>
                     <FormControl  variant="standard" sx={{ minWidth: 70 }}>
                         <InputLabel id="demo-simple-select-standard-label"></InputLabel>
                         <Select className={classes.adminHeader__select}
