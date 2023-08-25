@@ -52,8 +52,8 @@ const EditPoint = () => {
                         <label className={classes.editPoint__textareaLabel} htmlFor="work-hours">Время работы</label>
                         <TextareaAutosize id="work-hours" className={classes.editPoint__textarea}
                             aria-label="Время работы"
-                            value={`Пн-Пт: с 09:00 до 17:00 (обед 14:00-15:00) 
-Сб: с 09:00 до 14:00; 
+                            value={`Пн-Пт: с 09:00 до 17:00 (обед 14:00-15:00)
+Сб: с 09:00 до 14:00;
 вых: Воскресенье`}
                         />
                         <FormHelperText sx={{ ml: '15px' }}>0/100</FormHelperText>
@@ -95,7 +95,7 @@ const EditPoint = () => {
                         <Button variant="contained" sx={{ mr: '16px' }}>Сохранить</Button>
                         <Button variant="text">Отменить</Button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
