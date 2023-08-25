@@ -119,4 +119,14 @@
 
 .editPoint__buttons {
   margin-top: 48px;
+  margin-bottom: 64px;
+}
+
+.editPoint__mapContainer {
+  width: 100%;
+  height: 543px;
+
+  @media (max-width: 767px){
+    height: 350px;
+  }
 }
