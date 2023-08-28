@@ -1,0 +1,133 @@
+@import '../../../index.scss';
+
+.point {
+  padding: 80px 0 115px;
+
+  @media (max-width: 1439px){
+    padding: 50px 0 80px
+  }
+
+  @media (max-width: 767px){
+    padding: 40px 0 50px;
+  }
+}
+
+.point__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: $color-black;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.46px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.point__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 108px;
+
+  @media (max-width: 1439px){
+    padding: 0 40px;
+  }
+
+  @media (max-width: 767px){
+    padding: 0 10px;
+  }
+}
+
+.point__titleBox {
+  display: flex;
+  align-items: flex-start;
+}
+
+.point__title {
+  margin: 0;
+  margin-bottom: 64px;
+  margin-right: 24px;
+  font-family: Roboto;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  color: $color-black;
+
+  @media (max-width: 1439px) {
+    font-size: 36px;
+    line-height: 110%;
+  }
+
+  @media (max-width: 767px){
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+}
+
+.point__titleLink {
+  color: $color-grey;
+}
+
+.point__table {
+  width: auto;
+}
+
+.point__tableRow {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 36px;
+
+  @media (max-width: 767px){
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  &_withChip {
+    margin-bottom: 30px;
+
+    @media (max-width: 767px){
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.point__tableRow_withChip {
+  .point__tableCol:last-child {
+    width: 100%;
+  }
+}
+
+.point__tableCol {
+  width: 305px;
+
+  @media (max-width: 767px){
+    width: 100%;
+
+    &:first-child {
+      margin-bottom: 5px;
+    }
+  }
+
+  &:first-child {
+    // width: 305px;
+    flex-shrink: 0;
+    color: rgba($color-black, 0.6)
+  }
+}
+
+.point__typeChip {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.point__mapContainer {
+  width: 100%;
+  height: 543px;
+
+  @media (max-width: 767px){
+    height: 350px;
+  }
+}
