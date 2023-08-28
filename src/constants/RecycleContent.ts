@@ -32,6 +32,10 @@ import yogurt from '../assets/icons/plastic/5_yogurt.svg';
 import babyBottle from '../assets/icons/plastic/6_baby-bottle.svg';
 import PS from '../assets/icons/plastic/6_PS.svg';
 import OTHER from '../assets/icons/plastic/7_OTHER.svg';
+import clothes from '../assets/icons/rag/1_clothes.svg';
+import boots from '../assets/icons/rag/2_boots.svg';
+import textile from '../assets/icons/rag/3_textile.svg';
+
 
 interface RecycleInfoDescription {
     id: number;
@@ -48,6 +52,7 @@ export interface RecycleInfo {
     name: string;
     images: RecycleInfoImage[];
     description: RecycleInfoDescription[];
+    secondLife?: boolean;
     status: 'Подлежит переработке' | 'Не\u00A0подлежит переработке';
 }
 
@@ -59,7 +64,8 @@ export interface RecycleContent {
         | 'large'
         | 'electro'
         | 'danger'
-        | 'metal';
+        | 'metal'
+        | 'rag';
     columns: RecycleInfo[];
 }
 
@@ -894,6 +900,82 @@ export const MetalContent: RecycleContent = {
                     text: 'Различное оборудование и его корпуса'
                 }
             ],
+            status: 'Подлежит переработке'
+        }
+    ]
+};
+
+export const RagContent: RecycleContent = {
+    recycleType: 'rag',
+    columns: [
+        {
+            id: 1,
+            name: 'Одежда',
+            images: [
+                {
+                    id: 1,
+                    url: clothes
+                }
+            ],
+            description: [
+                {
+                    id: 1,
+                    text: 'Одежда в чистом виде'
+                }
+            ],
+            secondLife: true,
+            status: 'Подлежит переработке'
+        },
+        {
+            id: 2,
+            name: 'Обувь',
+            images: [
+                {
+                    id: 1,
+                    url: boots
+                }
+            ],
+            description: [
+                {
+                    id: 1,
+                    text: 'Обувь в чистом виде'
+                }
+            ],
+            secondLife: true,
+            status: 'Подлежит переработке'
+        },
+        {
+            id: 3,
+            name: 'Текстиль',
+            images: [
+                {
+                    id: 1,
+                    url: textile
+                }
+            ],
+            description: [
+                {
+                    id: 1,
+                    text: 'Скатерти'
+                },
+                {
+                    id: 2,
+                    text: 'Постельное белье'
+                },
+                {
+                    id: 3,
+                    text: 'Подушки'
+                },
+                {
+                    id: 4,
+                    text: 'Полотенца'
+                },
+                {
+                    id: 5,
+                    text: 'Отходы волокон,нити, обрезки тканей от 20х20 (чистые, без примесей масел и прочих веществ)'
+                }
+            ],
+            secondLife: true,
             status: 'Подлежит переработке'
         }
     ]
