@@ -1,0 +1,28 @@
+.pointsMap {
+
+}
+
+.pointsMap__mapContainer {
+  width: 100%;
+  height: 480px;
+
+  @media (max-width: 767px){
+    height: 300px;
+  }
+}
+
+.pointsMap__filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+.pointsMap__chip {
+  margin-right: 8px;
+  margin-top: 8px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
