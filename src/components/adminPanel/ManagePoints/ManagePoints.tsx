@@ -8,6 +8,7 @@ import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 
 import classes from './ManagePoints.module.scss';
+import AdminHeader from '../AdminHeader';
 import PointsList from '../PointsList';
 import PointsMap from '../PointsMap';
 
@@ -52,26 +53,31 @@ const ManagePoints = () => {
     };
 
     return (
-        <div className={classes.managePoints}>
-            <div className={classes.managePoints__container}>
-                <h1 className={classes.managePoints__title}>Пункты приема</h1>
-                <div className={classes.managePoints__tabsBox}>
-                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="Таблица" {...a11yProps(0)}/>
-                        <Tab label="Карта" {...a11yProps(1)}/>
-                    </Tabs>
-                    <Button variant="contained" startIcon={<AddIcon />}>
-                        Добавить
-                    </Button>
+        <>
+            <AdminHeader />
+
+            <div className={classes.managePoints}>
+                <div className={classes.managePoints__container}>
+                    <h1 className={classes.managePoints__title}>Пункты приема</h1>
+                    <div className={classes.managePoints__tabsBox}>
+                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                            <Tab label="Таблица" {...a11yProps(0)} />
+                            <Tab label="Карта" {...a11yProps(1)} />
+                        </Tabs>
+                        <Button variant="contained" startIcon={<AddIcon />}>
+                            Добавить
+                        </Button>
+                    </div>
+                    <CustomTabPanel value={value} index={0}>
+                        <PointsList />
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={1}>
+                        <PointsMap />
+                    </CustomTabPanel>
+                    AdminHeader
                 </div>
-                <CustomTabPanel value={value} index={0}>
-                    <PointsList />
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={1}>
-                    <PointsMap />
-                </CustomTabPanel>
             </div>
-        </div>
+        </>
     );
 };
 
