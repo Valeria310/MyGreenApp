@@ -1,0 +1,17 @@
+@import '../../../index.scss';
+
+.dx-datagrid-text-content {
+  pointer-events:none;
+}
+
+.cell {
+  box-sizing: border-box;
+  max-width: 150px;
+  padding: 16px;
+  white-space: nowrap;
+  overflow: scroll;
+}
+
+.noPhone {
+  color: rgba($color-black, 0.38);
+}
