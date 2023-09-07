@@ -74,7 +74,6 @@ const ManagePoints = () => {
                     <CustomTabPanel value={value} index={1}>
                         <PointsMap />
                     </CustomTabPanel>
-                    AdminHeader
                 </div>
             </div>
         </>
