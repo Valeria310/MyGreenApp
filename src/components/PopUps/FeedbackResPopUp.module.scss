@@ -1,0 +1,9 @@
+.popUp {
+    position: absolute;
+    z-index: 1002;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: aqua;
+}

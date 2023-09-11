@@ -14,9 +14,9 @@
         margin: 0 auto;
         width: 1194px;
         display: flex;
+        justify-content: space-between;
         align-items: center;
         padding: 12px;
-        gap: 251px;
         position: relative;
 
         &.opened-menu {
@@ -70,7 +70,7 @@
     display: block;
     left: 0;
     width: 66px;
-    height: 76px;
+    height: 70px;
     background-image: url(../../assets/images/Logo.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -118,12 +118,92 @@
 }
 
 .plug {
-    width: 30px;
-    height: 30px;
+    width: 0px;
+    height: 0px;
     background-color: transparent;
     position: absolute;
     right: 34px;
     top: 25px;
+}
+
+.navigation-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+}
+
+.search-form {
+    position: absolute;
+    right: -25px;
+    height: 60px;
+    width: 90px;
+    padding: 10px 25px;
+    border-radius: 35px;
+    border: 0.5px solid #070707;
+    background: #F6FCEA;
+    opacity: 0;
+    transition: all 0.25s;
+    transition-timing-function: ease-in;
+    display: flex;
+    align-items: center;
+
+    & .search-input {
+        width: 0;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        transition: all 0.5s;
+        font-family: $font-primary;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 110%;
+        color: $color-black;
+
+        &::placeholder {
+            color: rgba(7, 7, 7, 0.40)
+        }
+    }
+
+    &.opened {
+        transition: all 0.5s;
+        width: 107.3%;
+        opacity: 1;
+        & .search-input {
+            width: 90%;
+        }
+    }
+}
+
+.search-btn {
+    width: 40px;
+    height: 40px;
+    background-image: url(../../assets/icons/search.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 2;
+
+    &.opened {
+        background-image: url(../../assets/icons/cross.svg);
+    }
+}
+
+.feedback-btn {
+    height: 60px;
+    text-wrap: nowrap;
+    padding: 15px 30px;
+    border-radius: 35px;
+    border: 1px solid #000;
+    font-style: normal;
+    font-weight: 400;
+    font-family: $font-primary;
+    font-size: 24px;
+    line-height: 140%;
+    color: $color-black;
 }
 
 @media (max-width: 1200px) {
@@ -150,6 +230,10 @@
 }
 
 @media (max-width: 680px) {
+    .plug {
+        width: 30px;
+        height: 30px;
+    }
     .header {
         & .container {
             gap: 0;

@@ -13,6 +13,7 @@ export const Header = () => {
     let isMenuOpen = false;
     const firtsBlockHeight = 902;
     let position=0;
+    let isSearchFormOpened = false;
     
     window.addEventListener('resize', () => {
         const vh = window.innerHeight * 0.01;
@@ -56,6 +57,8 @@ export const Header = () => {
 
     const clickHandler = () => {
         if(isMenuOpen === true ) {
+            document.body.style.overflowY = 'auto';
+            document.body.style.position = 'static';
             window.scrollTo(0, position);
             const burger = document.getElementById('burger');
             const menu = document.getElementById('menu');
@@ -70,8 +73,6 @@ export const Header = () => {
                 isMenuOpen = false;
                 container?.classList.remove('opened-menu');
             }, 100);
-            document.body.style.overflowY = 'auto';
-            document.body.style.position = 'static';
             mousePosition = 'out';
         }
     };
@@ -80,6 +81,9 @@ export const Header = () => {
         const plug = document.getElementsByClassName('plug')[0];
         const burger = document.getElementById('burger');
         const links = document.getElementsByClassName('navigation_link');
+        const searchForm = document.getElementById('searchForm');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput'); 
         if(e.target == plug && isMenuOpen === false) {
             position=window.pageYOffset;
             const menu = document.getElementById('menu');
@@ -111,6 +115,16 @@ export const Header = () => {
             const container = header?.getElementsByClassName('container')[0];
             container?.classList.remove('opened-menu');
             mousePosition = 'out';
+        } else if (e.target == searchBtn && !isSearchFormOpened) {
+            searchForm?.classList.add('opened');
+            searchBtn?.classList.add('opened');
+            searchInput?.focus();
+            isSearchFormOpened = true;
+        } else if (e.target == searchBtn && isSearchFormOpened) {
+            searchForm?.classList.remove('opened');
+            searchBtn?.classList.remove('opened');
+            isSearchFormOpened = false;
+            searchInput?.blur();
         }
     });
 
@@ -124,6 +138,7 @@ export const Header = () => {
         header?.classList.remove('visible');
         isStarted = false;
         isMenuOpen = false;
+        isSearchFormOpened = false;
         document.body.style.overflowY = 'auto';
         document.body.style.position = 'static';
         const container = header?.getElementsByClassName('container')[0];
@@ -140,12 +155,19 @@ export const Header = () => {
     return (<header className='header visible' id='header'>
         <div className="container">
             <a className="logo" href='/'></a>
-            <Navigation />
+            <div className="navigation-wrapper">
+                <Navigation />
+                <form className="search-form" id='searchForm'>
+                    <input className="search-input" id='searchInput' type="text" placeholder="Поиск по сайту" />
+                </form>
+                <div className="search-btn" id='searchBtn'></div>
+            </div>
             <div className="header-mobile-burger" id='burger'>
                 <div className="burger-line"></div>
                 <div className="burger-line"></div>
                 <div className="burger-line"></div>
             </div>
+            <div className="feedback-btn secondary-btn">Связаться с нами</div>
             <div className="plug"></div>
             <div className="header-mobile-menu" id='menu'>
                 <Navigation />

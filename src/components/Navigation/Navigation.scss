@@ -2,7 +2,7 @@
 
 .navigation {
     display: flex;
-    gap: 51px;
+    gap: 50px;
 }
 
 .navigation_link {
@@ -14,6 +14,8 @@
     font-family: $font-primary;
     font-size: 24px;
     line-height: 105%;
+    text-wrap: nowrap;
+    letter-spacing: 0.3px;
 }
 
 .navigation_link:hover {
