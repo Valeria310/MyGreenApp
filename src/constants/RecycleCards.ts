@@ -43,7 +43,7 @@ export const RecycleCards: RecycleCard[] = [
         content: LargeContent
     },
     {
-        heading: 'Электронная, бытовая техника',
+        heading: 'Электронная и бытовая техника',
         image: electroImg,
         type: 'electro',
         content: ElectroContent
@@ -61,7 +61,7 @@ export const RecycleCards: RecycleCard[] = [
         content: MetalContent
     },
     {
-        heading: 'Ветошь/обувь',
+        heading: 'Одежда/Обувь/Ветошь',
         image: ragImg,
         type: 'rag',
         content: RagContent
