@@ -9,7 +9,8 @@ import Typography from '@mui/material/Typography';
 
 import classes from './ManagePoints.module.scss';
 import AdminHeader from '../AdminHeader';
-import PointsList from '../PointsList';
+// import PointsList from '../PointsList';
+import PointsListPag from '../PointsListPag';
 import PointsMap from '../PointsMap';
 
 function a11yProps(index: number) {
@@ -69,7 +70,8 @@ const ManagePoints = () => {
                         </Button>
                     </div>
                     <CustomTabPanel value={value} index={0}>
-                        <PointsList />
+                        {/* <PointsList /> */}
+                        <PointsListPag />
                     </CustomTabPanel>
                     <CustomTabPanel value={value} index={1}>
                         <PointsMap />

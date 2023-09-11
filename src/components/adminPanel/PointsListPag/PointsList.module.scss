@@ -1,0 +1,35 @@
+@import '../../../index.scss';
+
+.dx-datagrid-text-content {
+  pointer-events:none;
+}
+
+.cell {
+  box-sizing: border-box;
+  max-width: 150px;
+  padding: 16px;
+  white-space: nowrap;
+  overflow: scroll;
+}
+
+.noPhone {
+  color: rgba($color-black, 0.38);
+}
+
+.pagination {
+  // width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+  & div{
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  p {
+    white-space: nowrap;
+    width: auto;
+    margin: 0 10px;
+  }
+}
