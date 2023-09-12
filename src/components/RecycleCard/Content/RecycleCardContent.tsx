@@ -23,6 +23,10 @@ export const RecycleCardContent: FC<RecycleCardContentProps> = ({ content }) => 
                 <tbody>
                     {content.columns.map(col => {
                         const status = col.status === 'Не\u00A0подлежит переработке' ? 'Red' : 'Green';
+                        const lifeData = col.secondLife ? (
+                            <td className={`${s.recycleTableData} ${s.recycleTableSecondLife}`}>Вторая жизнь</td>
+                        )
+                            : null;
 
                         return (
                             <tr key={col.id} className={`${s.recycleTableRow} ${s[`recycleTableRow${content.recycleType}`]}`}>
@@ -41,6 +45,7 @@ export const RecycleCardContent: FC<RecycleCardContentProps> = ({ content }) => 
                                         )}
                                     </ul>
                                 </td>
+                                { lifeData }
                                 <td className={`${s.recycleTableData} ${s.recycleTableStatus} ${s[`recycleStatus${status}`]}`}>
                                     {col.status}
                                 </td>     
