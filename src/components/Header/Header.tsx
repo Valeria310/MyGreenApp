@@ -6,13 +6,14 @@ import './Header.scss';
 
 
 export const Header = () => {
+    let searchRes: string[] = [];
     let prevPos = 0;
     let changeVisible: NodeJS.Timeout;
     let isStarted = false;
     let mousePosition = 'out';
     let isMenuOpen = false;
     const firtsBlockHeight = 902;
-    let position=0;
+    let position = 0;
     let isSearchFormOpened = false;
     
     window.addEventListener('resize', () => {
@@ -152,13 +153,15 @@ export const Header = () => {
         }, 1000);
         return () => window.removeEventListener('scroll', scrollHandler, false);
     });
+
     return (<header className='header visible' id='header'>
         <div className="container">
             <a className="logo" href='/'></a>
             <div className="navigation-wrapper">
                 <Navigation />
                 <form className="search-form" id='searchForm'>
-                    <input className="search-input" id='searchInput' type="text" placeholder="Поиск по сайту" />
+                    <input className="search-input" id='searchInput' type="text" placeholder="Поиск по сайту" maxLength={28} />
+                    {res}
                 </form>
                 <div className="search-btn" id='searchBtn'></div>
             </div>
@@ -167,7 +170,7 @@ export const Header = () => {
                 <div className="burger-line"></div>
                 <div className="burger-line"></div>
             </div>
-            <div className="feedback-btn secondary-btn">Связаться с нами</div>
+            <div className="logUp-btn">Войти</div>
             <div className="plug"></div>
             <div className="header-mobile-menu" id='menu'>
                 <Navigation />

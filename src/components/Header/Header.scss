@@ -130,24 +130,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 50px;
+    gap: 70px;
     position: relative;
+    margin-right: 25px;
 }
 
 .search-form {
     position: absolute;
     right: -25px;
+    top: -10px;
     height: 60px;
     width: 90px;
     padding: 10px 25px;
     border-radius: 35px;
     border: 0.5px solid #070707;
     background: #F6FCEA;
+    font-family: $font-primary;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    color: $color-black;
     opacity: 0;
     transition: all 0.25s;
     transition-timing-function: ease-in;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 12px;
 
     & .search-input {
         width: 0;
@@ -156,12 +165,6 @@
         outline: none;
         background: transparent;
         transition: all 0.5s;
-        font-family: $font-primary;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 110%;
-        color: $color-black;
 
         &::placeholder {
             color: rgba(7, 7, 7, 0.40)
@@ -170,12 +173,33 @@
 
     &.opened {
         transition: all 0.5s;
-        width: 107.3%;
+        width: 104%;
         opacity: 1;
         & .search-input {
-            width: 90%;
+            width: 100%;
+        }
+
+        &.showes {
+            height: auto;
+            border-width: 0;
+            border-radius: 35px;
+            background-color: $color-white;
+            box-shadow: 0px 8px 20px 0px rgba(156, 202, 193, 0.20), 2px -2px 10px 0px rgba(206, 239, 209, 0.20), 0px 2px 4px 0px rgba(255, 255, 254, 0.50) inset;
+            padding: 15px 25px;
+            padding-bottom: 30px;
+
+            & .search-input {
+                border-bottom: 1px solid rgba(7, 7, 7, 0.60);
+                padding-bottom: 15px;
+                margin-bottom: 20px;
+            }
         }
     }
+}
+
+.res-item {
+    height: 26px;
+    margin: 0;
 }
 
 .search-btn {
@@ -192,18 +216,19 @@
     }
 }
 
-.feedback-btn {
-    height: 60px;
-    text-wrap: nowrap;
-    padding: 15px 30px;
-    border-radius: 35px;
-    border: 1px solid #000;
-    font-style: normal;
-    font-weight: 400;
+.logUp-btn {
+    color: #070707;
     font-family: $font-primary;
     font-size: 24px;
-    line-height: 140%;
-    color: $color-black;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+        border-color: #000000;
+    }
 }
 
 @media (max-width: 1200px) {
