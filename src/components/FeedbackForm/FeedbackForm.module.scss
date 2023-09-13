@@ -1,0 +1,98 @@
+@import '../../index.scss';
+
+.feedbackForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 570px;
+}
+
+.feedbackFormHeading {
+  margin: 0;
+  line-height: 110%;
+  margin-bottom: 10px;
+  color: $color-black;
+}
+
+.feedbackFormDescription {
+  font-family: $font-primary;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 140%;
+  margin: 0;
+  margin-bottom: 20px;
+  color: $color-black;
+}
+
+.feedbackFormField {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 20px;
+  font-family: $font-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  & input, & textarea {
+    background-color: inherit;
+    padding: 19px 10px;
+    border: 1px solid $color-black;
+    border-radius: 10px;
+    min-height: 60px;
+  }
+  & textarea {
+    height: 168px;
+  }
+}
+
+.feedbackFormPolytics {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  & span, & label {
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    color: $color-black;
+  }
+  & label {
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  & a {
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    color: #2073E5;
+  }
+}
+
+.feedbackFormCheckbox {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid $color-black;
+  margin-right: 10px;
+}
+
+.feedbackFormSubmitBtn {
+  display: inline-flex;
+  justify-content: center;
+  align-self: flex-end;
+  border-radius: 35px;
+  border: none;
+  background-color: #1B7A59;
+  padding: 11px 30px;
+  min-width: 210px;
+  color: #fff;
+  font-family: $font-primary;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 140%;
+  cursor: pointer;
+}

@@ -17,7 +17,7 @@ const TestPage = () => {
             <button type='button' onClick={() => setShowPopUp(true)} style={{ position: 'absolute', top: 106, left: 0, zIndex: 100 }}>Open</button>
             <Footer />
             {showPopUp &&
-                <PopUp closeFunction={() => setShowPopUp(false)} closeOnClickOutside={true} showCloseCrossButton={true}>
+                <PopUp closeFunction={() => setShowPopUp(false)} closeOnClickOutside={false} showCloseCrossButton={true}>
                     <FeedbackForm />
                 </PopUp>
             }
