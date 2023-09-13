@@ -1,0 +1,50 @@
+.backScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002;
+  background-color: rgba(7, 7, 7, 0.60);
+}
+
+.popUpWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 35px;
+  border-radius: 30px;
+  background-color: #F6FCEA;
+  color: #070707;
+  min-width: 640px;
+  height: 797px;
+}
+
+.closeBlock {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}
+
+.closeButton {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.closeButton img {
+  width: 100%;
+  height: 100%;
+}
