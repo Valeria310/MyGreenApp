@@ -11,25 +11,31 @@
   background-color: rgba(7, 7, 7, 0.60);
 }
 
+.popUp {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  background-color: #F6FCEA;
+  // width: 640px;
+  // height: 797px;
+}
+
 .popUpWrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
   padding: 35px;
-  border-radius: 30px;
-  background-color: #F6FCEA;
-  color: #070707;
-  min-width: 640px;
-  height: 797px;
+  &.noPaddingTop {
+    padding-top: 0;
+  }
 }
 
 .closeBlock {
   display: flex;
   flex-direction: row;
-  height: 40px;
   width: 100%;
   justify-content: flex-end;
+  padding: 35px;
+  padding-bottom: 0;
   margin-bottom: 5px;
 }
 
