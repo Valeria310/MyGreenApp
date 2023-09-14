@@ -19,10 +19,11 @@
 }
 
 .pointsMap__chip {
-  margin-right: 8px;
-  margin-top: 8px;
+  border: 1px solid #1565c0 !important;
+  margin-right: 8px !important;
+  margin-top: 8px !important;
 
   &:last-child {
-    margin-right: 0;
+    margin-right: 0 !important;
   }
 }
