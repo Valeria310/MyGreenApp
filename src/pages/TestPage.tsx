@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
-import FeedbackForm from 'src/components/FeedbackForm';
+import { FeedbackPopUp } from 'src/components/FeedbackPopUp/FeedbackPopUp';
 import { Footer } from 'src/components/Footer/Footer';
 import { Header } from 'src/components/Header/Header';
 import { ParallaxSection } from 'src/components/Parallax/Parallax';
-import PopUp from 'src/components/PopUp';
 
 
 const TestPage = () => {
@@ -16,11 +15,7 @@ const TestPage = () => {
             <ParallaxSection />
             <button type='button' onClick={() => setShowPopUp(true)} style={{ position: 'absolute', top: 106, left: 0, zIndex: 100 }}>Open</button>
             <Footer />
-            {showPopUp &&
-                <PopUp closeFunction={() => setShowPopUp(false)} closeOnClickOutside={false} showCloseCrossButton={true}>
-                    <FeedbackForm />
-                </PopUp>
-            }
+            <FeedbackPopUp show={showPopUp} onClose={() => setShowPopUp(false)} />
         </>
     );
 };

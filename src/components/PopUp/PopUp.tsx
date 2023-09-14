@@ -7,20 +7,27 @@ import s from './PopUp.module.scss';
 import { PopUpProps } from './PopUpProps';
 
 export const PopUp:FC<PopUpProps> = (props) => {
-    const { children, closeFunction, showCloseCrossButton } = props;
-    const popUpRef = props.closeOnClickOutside ? useClickOutside(closeFunction) : useRef(null);
+    const { children, closeHandler, showCloseCrossButton } = props;
+    const popUpRef = props.closeOnClickOutside ? useClickOutside(closeHandler) : useRef(null);
+
+    if (!props.show) {
+        document.body.style.removeProperty('overflow-y');
+        return null;
+    }
+
+    document.body.style.overflowY = 'hidden';
 
     return (
-        <div className={s.backScreen}>
+        <div className={s.backScreen} onScroll={(e) => e.preventDefault()}>
             <div className={s.popUp} ref={popUpRef}>
-                { showCloseCrossButton &&
-                    <div className={s.closeBlock}>
-                        <button type='button' className={s.closeButton} onClick={closeFunction}>
-                            <img src={crossIcon} alt='x' />
-                        </button>
-                    </div>
-                }
-                <div className={`${s.popUpWrapper}${showCloseCrossButton ? ' ' + s.noPaddingTop : ''}`}>
+                <div className={s.popUpWrapper}>
+                    { showCloseCrossButton &&
+                        <div className={s.closeBlock}>
+                            <button type='button' className={s.closeButton} onClick={closeHandler}> 
+                                <img src={crossIcon} alt='x' />
+                            </button>
+                        </div>
+                    }
                     { children }
                 </div>
             </div>

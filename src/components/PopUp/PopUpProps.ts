@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
 
 export interface PopUpProps {
+  show: boolean;
   children: ReactNode;
-  closeFunction: () => void;
+  closeHandler: () => void;
   closeOnClickOutside: boolean;
   showCloseCrossButton: boolean;
 }

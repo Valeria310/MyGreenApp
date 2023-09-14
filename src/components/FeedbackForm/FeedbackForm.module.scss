@@ -7,10 +7,14 @@
 }
 
 .feedbackFormHeading {
-  margin: 0;
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: 48px;
   line-height: 110%;
-  margin-bottom: 10px;
+  font-weight: 600;
   color: $color-black;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 .feedbackFormDescription {
@@ -42,6 +46,7 @@
   }
   & textarea {
     height: 168px;
+    resize: none;
   }
 }
 
