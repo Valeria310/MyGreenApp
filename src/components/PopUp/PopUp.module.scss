@@ -14,16 +14,24 @@
 .popUp {
   display: flex;
   flex-direction: column;
-  border-radius: 30px;
   background-color: #F6FCEA;
-  // width: 640px;
-  // height: 797px;
+  border-radius: none;
+  width: 100%;
+  @media screen and (min-width: 500px) {
+    width: auto;
+    border-radius: 30px;
+  }
 }
 
 .popUpWrapper {
   display: flex;
   flex-direction: column;
-  padding: 35px;
+  padding: 25px;
+  height: 100%;
+  @media screen and (min-width: 500px) {
+    height: auto;
+    padding: 35px;
+  }
 }
 
 .closeBlock {
@@ -40,10 +48,14 @@
   border: none;
   outline: none;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
   margin: 0;
   padding: 0;
+  width: 24px;
+  height: 24px;
+  @media screen and (min-width: 500px) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .closeButton img {

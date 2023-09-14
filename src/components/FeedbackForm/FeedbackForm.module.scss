@@ -3,50 +3,69 @@
 .feedbackForm {
   display: flex;
   flex-direction: column;
-  max-width: 570px;
+  width: 100%;
+  @media screen and (min-width: 500px) {
+    width: auto;
+    max-width: 570px;
+  }
 }
 
 .feedbackFormHeading {
   display: inline-block;
   font-family: $font-primary;
-  font-size: 48px;
   line-height: 110%;
   font-weight: 600;
   color: $color-black;
   margin: 0;
   margin-bottom: 10px;
+  font-size: 28px;
+  @media screen and (min-width: 500px) {
+    font-size: 48px;
+  }
 }
 
 .feedbackFormDescription {
   font-family: $font-primary;
-  font-size: 20px;
   font-weight: 400;
   line-height: 140%;
   margin: 0;
   margin-bottom: 20px;
   color: $color-black;
+  font-size: 16px;
+  @media screen and (min-width: 500px) {
+    font-size: 20px;
+  }
 }
 
 .feedbackFormField {
   display: flex;
   width: 100%;
   flex-direction: column;
-  row-gap: 10px;
   margin-bottom: 20px;
   font-family: $font-primary;
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
+  & label {
+    margin-bottom: 10px;
+  }
   & input, & textarea {
     background-color: inherit;
-    padding: 19px 10px;
     border: 1px solid $color-black;
     border-radius: 10px;
-    min-height: 60px;
+    padding: 10px;
+    min-height: 50px;
+    @media screen and (min-width: 500px) {
+      min-height: 60px;
+      padding: 19px 10px;
+    }
   }
   & textarea {
-    height: 168px;
     resize: none;
+    height: 141px;
+    @media screen and (min-width: 500px) {
+      height: 168px;
+    }
   }
 }
 
@@ -55,6 +74,12 @@
   flex-direction: row;
   align-items: flex-start;
   margin-bottom: 25px;
+  & > span {
+    max-width: 272px;
+    @media screen and (min-width: 400px) {
+      max-width: none;
+    }
+  }
   & span, & label {
     font-family: $font-primary;
     font-size: 14px;
@@ -63,6 +88,7 @@
     color: $color-black;
   }
   & label {
+    display: inline-flex;
     cursor: pointer;
     -webkit-user-select: none;
     user-select: none;
@@ -73,6 +99,15 @@
     font-weight: 400;
     line-height: 140%;
     color: #2073E5;
+  }
+}
+
+.messageCounter {
+  display: inline-flex;
+  align-self: flex-end;
+  margin-top: 5px;
+  @media screen and (min-width: 500px) {
+    display: none;
   }
 }
 
@@ -88,7 +123,6 @@
 .feedbackFormSubmitBtn {
   display: inline-flex;
   justify-content: center;
-  align-self: flex-end;
   border-radius: 35px;
   border: none;
   background-color: #1B7A59;
@@ -96,8 +130,14 @@
   min-width: 210px;
   color: #fff;
   font-family: $font-primary;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 140%;
+  line-height: 110%;
   cursor: pointer;
+  @media screen and (min-width: 500px) {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 140%;
+    align-self: flex-end;
+  }
 }
