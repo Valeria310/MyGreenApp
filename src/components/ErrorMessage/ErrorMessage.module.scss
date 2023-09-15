@@ -5,7 +5,10 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
-  row-gap: 25px;
+  row-gap: 20px;
+  @media screen and (min-width: 600px) {
+    row-gap: 25px;
+  }
   @media screen and (min-width: 1200px) {
     row-gap: 30px;
   }
@@ -15,8 +18,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 20px;
-  max-width: 380px;
+  max-width: 260px;
+  row-gap: 10px;
+  @media screen and (min-width: 600px) {
+    max-width: 380px;
+    row-gap: 20px;
+  }
   @media screen and (min-width: 1200px) {
     max-width: 600px;
   }
@@ -35,9 +42,13 @@
   margin: 0;
   padding: 0;
   font-family: $font-primary;
-  font-size: 30px;
+  font-size: 28px;
+  font-weight: 600;
   line-height: 110%;
-  font-weight: 500;
+  @media screen and (min-width: 600px) {
+    font-size: 30px;
+    font-weight: 500;
+  }
   color: $color-black;
   @media screen and (min-width: 1200px) {
     font-size: 36px;
@@ -80,15 +91,22 @@
   outline: none;
   border-radius: 35px;
   font-family: $font-primary;
-  font-weight: 600;
   background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 11px 30px;
-  min-width: 254px;
-  font-size: 20px;
-  line-height: 140%;
-  max-height: 50px;
+  max-height: 40px;
+  min-width: 215px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 110%;
+  @media screen and (min-width: 600px) {
+    max-height: 50px;
+    min-width: 254px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 140%;
+  }
   @media screen and (min-width: 1200px) {
     padding: 17px 30px;
     min-width: 293px;
@@ -101,10 +119,10 @@
 .primaryButton {
   color: #fff;
   background-color: #1B7A59;
+  border: 2px solid #1B7A59;
 }
 
 .secondaryButton {
   color: #2073E5;
   border: 2px solid #2073E5;
-
 }
