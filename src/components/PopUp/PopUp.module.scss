@@ -33,7 +33,9 @@
     padding: 35px;
   }
   &.largePadding {
-    padding: 50px;
+    @media screen and (min-width: 1200px) {
+      padding: 50px;
+    }
   }
 }
 

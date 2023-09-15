@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import s from './ErrorMessage.module.scss';
 import sadSmile from '../../assets/icons/sad-smile.svg';
 
-const ErrorMessage = () => {
+export const ErrorMessage = () => {
     const navigate = useNavigate();
 
     return (
@@ -14,7 +14,7 @@ const ErrorMessage = () => {
                 </div>
                 <h2 className={s.messageHeading}>Ошибка</h2>
                 <p className={s.messageText}>
-                    К сожалению, мы не можем обработать ваш запрос в настоящее время. Мы уже работаем над устранением технических проблем. Пожалуйста, свяжитесь с нами по e-mail <span className={s.email}>info@ecohub.by</span>
+                    К сожалению, мы не можем обработать ваш запрос в настоящее время. Мы уже работаем над устранением технических проблем. Пожалуйста, свяжитесь с нами по{window.innerWidth < 1200 ? <br /> : ' '}e-mail <span className={s.email}>info@ecohub.by</span>
                 </p>
             </div>
             <div className={s.actionButtons}>
@@ -36,5 +36,3 @@ const ErrorMessage = () => {
         </div>
     );
 };
-
-export default ErrorMessage;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { ErrorPopUp } from 'src/components/ErrorPopUp/ErrorPopUp';
-import { FeedbackPopUp } from 'src/components/FeedbackPopUp/FeedbackPopUp';
+import ErrorPopUp from 'src/components/ErrorPopUp';
+import FeedbackPopUp from 'src/components/FeedbackPopUp';
 import { Footer } from 'src/components/Footer/Footer';
 import { Header } from 'src/components/Header/Header';
 import NavSection from 'src/components/NavSection';
