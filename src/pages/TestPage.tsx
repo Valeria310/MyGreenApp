@@ -6,6 +6,7 @@ import { Footer } from 'src/components/Footer/Footer';
 import { Header } from 'src/components/Header/Header';
 import NavSection from 'src/components/NavSection';
 import { ParallaxSection } from 'src/components/Parallax/Parallax';
+import SuccessPopUp from 'src/components/SuccessPopUp';
 
 
 const TestPage = () => {
@@ -18,7 +19,7 @@ const TestPage = () => {
             <button type='button' onClick={() => setShowPopUp(true)} style={{ position: 'fixed', top: 106, left: 0, zIndex: 100 }}>Open</button>
             <NavSection />
             <Footer />
-            <ErrorPopUp show={showPopUp} onClose={() => setShowPopUp(false)} />
+            <SuccessPopUp show={showPopUp} onClose={() => setShowPopUp(false)} />
         </>
     );
 };

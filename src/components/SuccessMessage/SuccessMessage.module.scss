@@ -25,7 +25,7 @@
     row-gap: 20px;
   }
   @media screen and (min-width: 1200px) {
-    max-width: 600px;
+    max-width: 450px;
   }
 }
 
@@ -132,26 +132,6 @@
   &:disabled {
     cursor: default;
     background-color: #EAEBEA;
-    color: #7C7C7C;
-  }
-}
-
-.secondaryButton {
-  color: #2073E5;
-  border: 2px solid #2073E5;
-  &:hover {
-    background-color: #E8F1FC;
-  }
-  &:focus {
-    border: 3px solid #2073E5;
-  }
-  &:focus:active {
-    background-color: #D2E3FA;
-    border: 2px solid #2073E5;
-  }
-  &:disabled {
-    cursor: default;
-    border: 2px solid #7C7C7C;
     color: #7C7C7C;
   }
 }
