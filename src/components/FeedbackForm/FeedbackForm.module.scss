@@ -172,6 +172,7 @@
     background-color: #3BBC8F;
   }
   &:disabled {
+    cursor: default;
     background-color: #EAEBEA;
     color: #7C7C7C;
   }

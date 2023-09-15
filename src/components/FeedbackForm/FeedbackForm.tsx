@@ -62,7 +62,7 @@ export const FeedbackForm = () => {
             </div>
             <div className={s.feedbackFormPolytics}>
                 <div className={`${s.feedbackFormCheckbox}${agreed ? ' ' + s.selected : ''}`} onClick={() => setAgreed(!agreed)}/>
-                <input type='checkbox' id="agree" checked={agreed} />
+                <input type='checkbox' id="agree" checked={agreed} onChange={() => setAgreed(!agreed)} />
                 <span>
                     <label onClick={() => setAgreed(!agreed)}>отправляя сообщение, вы соглашаетесь&nbsp;</label>
                     <span>c <a href='#'>политикой конфиденциальности</a></span>
