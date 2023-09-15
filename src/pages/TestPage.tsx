@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { ErrorPopUp } from 'src/components/ErrorPopUp/ErrorPopUp';
 import { FeedbackPopUp } from 'src/components/FeedbackPopUp/FeedbackPopUp';
 import { Footer } from 'src/components/Footer/Footer';
 import { Header } from 'src/components/Header/Header';
@@ -17,7 +18,7 @@ const TestPage = () => {
             <button type='button' onClick={() => setShowPopUp(true)} style={{ position: 'fixed', top: 106, left: 0, zIndex: 100 }}>Open</button>
             <NavSection />
             <Footer />
-            <FeedbackPopUp show={showPopUp} onClose={() => setShowPopUp(false)} />
+            <ErrorPopUp show={showPopUp} onClose={() => setShowPopUp(false)} />
         </>
     );
 };

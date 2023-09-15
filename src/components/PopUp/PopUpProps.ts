@@ -6,4 +6,5 @@ export interface PopUpProps {
   closeHandler: () => void;
   closeOnClickOutside: boolean;
   showCloseCrossButton: boolean;
+  largePadding?: boolean;
 }
