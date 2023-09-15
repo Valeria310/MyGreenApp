@@ -19,7 +19,7 @@ export const PopUp:FC<PopUpProps> = (props) => {
 
     return (
         <div className={s.backScreen} onScroll={(e) => e.preventDefault()}>
-            <div className={s.popUp} ref={popUpRef}>
+            <div className={`${s.popUp}${props.noBorderRadiusMobile ? ' ' + s.noBorderRadiusMobile : ''}`} ref={popUpRef}>
                 <div className={`${s.popUpWrapper}${props.largePadding ? ' ' + s.largePadding : ''}`}>
                     { showCloseCrossButton &&
                         <div className={s.closeBlock}>

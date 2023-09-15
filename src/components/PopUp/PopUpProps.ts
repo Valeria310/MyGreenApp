@@ -7,4 +7,5 @@ export interface PopUpProps {
   closeOnClickOutside: boolean;
   showCloseCrossButton: boolean;
   largePadding?: boolean;
+  noBorderRadiusMobile?: boolean;
 }

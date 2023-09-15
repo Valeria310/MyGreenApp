@@ -11,6 +11,7 @@ export const FeedbackPopUp:FC<FeedbackPopUpProps> = ({ show, onClose }) => {
             closeHandler={onClose}
             closeOnClickOutside={false}
             showCloseCrossButton={true}
+            noBorderRadiusMobile={true}
         >
             <FeedbackForm />
         </PopUp>
