@@ -46,6 +46,9 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
+  &.disabled {
+    opacity: 0.5;
+  }
   & label {
     margin-bottom: 10px;
   }
@@ -55,9 +58,17 @@
     border-radius: 10px;
     padding: 10px;
     min-height: 50px;
+    outline: none;
+    caret-color: #1865F2;
     @media screen and (min-width: 500px) {
       min-height: 60px;
       padding: 19px 10px;
+    }
+    &:hover {
+      border: 1.5px solid $color-black;
+    }
+    &:focus {
+      border: 2px solid $color-black;
     }
   }
   & textarea {
@@ -100,6 +111,9 @@
     line-height: 140%;
     color: #2073E5;
   }
+  & input[type="checkbox"] {
+    display: none;
+  }
 }
 
 .messageCounter {
@@ -118,6 +132,14 @@
   border-radius: 5px;
   border: 1px solid $color-black;
   margin-right: 10px;
+  transition: none;
+  cursor: pointer;
+  &.selected {
+    border-color: #1B7A59;
+    background-image: url('../../assets/icons/form-check.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 }
 
 .feedbackFormSubmitBtn {
@@ -139,5 +161,18 @@
     font-weight: 600;
     line-height: 140%;
     align-self: flex-end;
+  }
+  &:hover {
+    background-color: #2FA37A;
+  }
+  &:focus {
+    background-color: #2FA37A;
+  }
+  &:active {
+    background-color: #3BBC8F;
+  }
+  &:disabled {
+    background-color: #EAEBEA;
+    color: #7C7C7C;
   }
 }

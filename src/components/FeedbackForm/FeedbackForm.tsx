@@ -11,6 +11,8 @@ export const FeedbackForm = () => {
     });
     // Message symbols count
     const [count, setCount] = useState(0);
+    // Checkbox control
+    const [agreed, setAgreed] = useState(false);
 
     useEffect(() => {
         setCount(formData.message.length);
@@ -59,13 +61,14 @@ export const FeedbackForm = () => {
                 <div className={s.messageCounter}>{count}/300</div>
             </div>
             <div className={s.feedbackFormPolytics}>
-                <input type='checkbox' id="agree" className={s.feedbackFormCheckbox}></input>
+                <div className={`${s.feedbackFormCheckbox}${agreed ? ' ' + s.selected : ''}`} onClick={() => setAgreed(!agreed)}/>
+                <input type='checkbox' id="agree" checked={agreed} />
                 <span>
-                    <label htmlFor='agree'>отправляя сообщение, вы соглашаетесь&nbsp;</label>
+                    <label onClick={() => setAgreed(!agreed)}>отправляя сообщение, вы соглашаетесь&nbsp;</label>
                     <span>c <a href='#'>политикой конфиденциальности</a></span>
                 </span>
             </div>
-            <button type='submit' className={s.feedbackFormSubmitBtn}>Отправить</button>
+            <button type='submit' className={s.feedbackFormSubmitBtn} disabled={!agreed}>Отправить</button>
         </form>
     );
 };
