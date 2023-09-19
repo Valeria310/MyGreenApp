@@ -25,43 +25,13 @@ const MapSection = ()=> {
 
     const changeButtonStatus = (id: string) => {
 
-        let updatedFilterButtonState
+        if (id === "all") {
+            filterButtons[0].isActive = !filterButtons[0].isActive
+        } else {
+            filterButtons[0].isActive = false
+        }
 
-        console.log(id)
-
-
-        // if (id === "all") {
-        //     filterButtons[0].isActive = !filterButtons[0].isActive
-        // } else {
-        //     filterButtons[0].isActive = false
-        // }
-        // filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
-        // setFilterButtonsStatus({ ...filterButtonsStatus });
-        // const buttonToChange = filterButtons.find(f=>f.id == id);
-
-        // const updatedFilterButtons = filterButtons.map(b => b.id === id ?
-        //     { id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive } : b);
-//
-// if(id !== "all") {
-//
-//     filterButtons[0].isActive = false
-//
-// }
-//
-        // любая кнопка при нажатии меняет свой статус а кнопка все гаснет
-        console.log(filterButtons)
-        filterButtons[0].isActive = false
-        console.log(filterButtons)
-
-            updatedFilterButtonState = filterButtons.map(b => b.id == id ?
-                {id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive} : b);
-            console.log(updatedFilterButtonState)
-
-
-
-
-
-      //  если нажимаем на кнопку все, то все остальные кнопки загораются/гаснут
+        filterButtons.map(b => b.id === id ? b.isActive = !b.isActive : b)
 
         if (id === "all" && filterButtons[0].isActive) {
 
@@ -73,8 +43,6 @@ const MapSection = ()=> {
 
         }
 
-        //если все кнопки кроме "все" нажаты то и сама кнопка все становится активной
-
         else if (id !== "all") {
 
             let buttonsStatusArray: Array<boolean> = []
@@ -84,12 +52,77 @@ const MapSection = ()=> {
                 filterButtons[0].isActive = true
             }
 
-            console.log(buttonsStatusArray)
-
         }
 
+        // setButtonsStatus({...buttonsStatus})
 
-        setFilterButtons([...updatedFilterButtonState]);
+        setFilterButtons([...filterButtons])
+
+//         let updatedFilterButtonState
+//
+//         console.log(id)
+//
+//
+//         // if (id === "all") {
+//         //     filterButtons[0].isActive = !filterButtons[0].isActive
+//         // } else {
+//         //     filterButtons[0].isActive = false
+//         // }
+//         // filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
+//         // setFilterButtonsStatus({ ...filterButtonsStatus });
+//         // const buttonToChange = filterButtons.find(f=>f.id == id);
+//
+//         // const updatedFilterButtons = filterButtons.map(b => b.id === id ?
+//         //     { id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive } : b);
+// //
+// // if(id !== "all") {
+// //
+// //     filterButtons[0].isActive = false
+// //
+// // }
+// //
+//         // любая кнопка при нажатии меняет свой статус а кнопка все гаснет
+//         console.log(filterButtons)
+//         filterButtons[0].isActive = false
+//         console.log(filterButtons)
+//
+//             updatedFilterButtonState = filterButtons.map(b => b.id == id ?
+//                 {id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive} : b);
+//             console.log(updatedFilterButtonState)
+//
+//
+//
+//
+//
+//       //  если нажимаем на кнопку все, то все остальные кнопки загораются/гаснут
+//
+//         if (id === "all" && filterButtons[0].isActive) {
+//
+//             filterButtons.map(b => b.isActive = false)
+//
+//         } else if (id === "all" && filterButtons[0].isActive === false) {
+//
+//             filterButtons.map(b => b.isActive = true)
+//
+//         }
+//
+//         //если все кнопки кроме "все" нажаты то и сама кнопка все становится активной
+//
+//         else if (id !== "all") {
+//
+//             let buttonsStatusArray: Array<boolean> = []
+//             filterButtons.map(b => buttonsStatusArray.push(b.isActive))
+//             buttonsStatusArray.shift()
+//             if(!buttonsStatusArray.includes(false)) {
+//                 filterButtons[0].isActive = true
+//             }
+//
+//             console.log(buttonsStatusArray)
+//
+//         }
+//
+//
+//         setFilterButtons([...updatedFilterButtonState]);
 
         // console.log(updatedFilterButtons);
     };
