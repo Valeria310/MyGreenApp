@@ -1,7 +1,8 @@
-export const waste:Array<filterType> = ['пластик', 'бумага', 'стекло', 'электронная и бытовая техника', 'крупногабаритные отходы', 'опасные отходы', 'металл'];
+export const waste:Array<filterType> = [ 'пластик', 'бумага', 'стекло', 'электронная и бытовая техника', 'крупногабаритные отходы', 'опасные отходы', 'металл', 'все', 'ветошь', 'вторая жизнь', 'одежда', 'обувь'];
 
 export type filterType =
     'все'
+    | 'ветошь'
     | 'пластик'
     | 'бумага'
     | 'стекло'
@@ -9,6 +10,9 @@ export type filterType =
     | 'крупногабаритные отходы'
     | 'опасные отходы'
     | 'металл'
+    | 'вторая жизнь'
+    | 'одежда'
+    | 'обувь'
 
 
 export type FilterButtonsObjType = {
@@ -18,13 +22,18 @@ export type FilterButtonsObjType = {
 }
 
 export const filterButtonsState:Array<FilterButtonsObjType> = [
-    { id:'plastic', wasteTitle: waste[0], isActive: true },
+    { id:'all', wasteTitle: waste[7], isActive: true },
     { id:'paper', wasteTitle: waste[1], isActive: true },
+    { id:'rag', wasteTitle:  waste[8], isActive: true },
+    { id:'secondLife', wasteTitle:  waste[9], isActive: true },
+    { id:'metal', wasteTitle:  waste[6], isActive: true },
+    { id:'plastic', wasteTitle: waste[0], isActive: true },
     { id:'glass', wasteTitle:  waste[2], isActive: true },
+    { id:'clothes', wasteTitle:  waste[10], isActive: true },
+    { id:'shoes', wasteTitle:  waste[11], isActive: true },
     { id:'electronics', wasteTitle:  waste[3], isActive: true },
     { id:'largeSize', wasteTitle:  waste[4], isActive: true },
-    { id:'dangerous', wasteTitle:  waste[5], isActive: true },
-    { id:'metal', wasteTitle:  waste[6], isActive: true }
+    { id:'dangerous', wasteTitle:  waste[5], isActive: true }
 ];
 
 
@@ -55,7 +64,7 @@ export const markersState: Array<MarkerType> = [
         latitude: 53.871875,
         longitude: 27.647768,
         info: '',
-        wasteTypes: [waste[0], waste[1], waste[2], waste[3], waste[6]],
+        wasteTypes: [waste[0], waste[1], waste[2], waste[3], waste[6], waste[9]],
         display: false
     },
     {
@@ -68,7 +77,7 @@ export const markersState: Array<MarkerType> = [
         latitude: 53.83348436563007,
         longitude: 27.68773289599531,
         info: '',
-        wasteTypes: [waste[0], waste[1], waste[2], waste[3], waste[6]],
+        wasteTypes: [waste[0], waste[1], waste[2], waste[3], waste[6], waste[8]],
         display: false
     },
     {

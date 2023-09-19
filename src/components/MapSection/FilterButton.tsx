@@ -1,35 +1,23 @@
 import React from 'react';
 
 import s from './FilterButton.module.scss';
-import { filterType } from '../../constants/MapState';
-
+import {filterType} from '../../constants/MapState';
 
 
 type PropsType = {
     id: string,
     title: filterType,
-    changeButtonStatus: (id:string)=>void,
-    isActive:boolean,
+    changeButtonStatus: (id: string) => void,
+    isActive: boolean,
 }
 
 export const FilterButton = (props: PropsType) => {
 
-    // debugger;
-    // const wasteType: filterType = props.title;
-
-    // const onClickHandler = useCallback(() => {
-    //     // props.changeButtonStatus(wasteType);
-    //     props.changeButtonStatus(props.id);
-    //
-    // },[props.isActive]);
 
     const onClickHandler = () => {
-        // props.changeButtonStatus(wasteType);
+
         props.changeButtonStatus(props.id);
-
-    };
-
-    // console.log('FilterButton called' + props.id);
+    }
 
     return (
         <button
