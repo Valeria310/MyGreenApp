@@ -101,13 +101,18 @@
   font-weight: 500;
   line-height: 160%;
   letter-spacing: 0.15px;
+
+  &_error {
+    color: $color-error;
+  }
 }
 
 .createPoint__checkboxes {
   max-width: 600px;
   display: flex;
+  flex-direction: row !important;
   justify-content: space-between;
-  margin-bottom: 30px;
+  // margin-bottom: 30px !important;
 
   & label {
     @media (max-width: 767px) {
