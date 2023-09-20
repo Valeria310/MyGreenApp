@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import L from 'leaflet';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 
-import { FilterButton } from './FilterButton';
+import {FilterButton} from './FilterButton';
 import s from './MapSection.module.scss';
 import pointIcon from '../../assets/images/point_icon.svg';
 import {
@@ -19,7 +19,7 @@ const customIcon = new L.Icon({
     iconSize: new L.Point(27, 32)
 });
 
-const MapSection = ()=> {
+const MapSection = () => {
 
     const [filterButtons, setFilterButtons] = useState<Array<FilterButtonsObjType>>(filterButtonsState);
 
@@ -37,101 +37,32 @@ const MapSection = ()=> {
 
             filterButtons.map(b => b.isActive = false)
 
-        } else if (id === "all" && filterButtons[0].isActive === false) {
+        } else if (id === "all" && !filterButtons[0].isActive) {
 
             filterButtons.map(b => b.isActive = true)
 
-        }
-
-        else if (id !== "all") {
-
+        } else if (id !== "all") {
             let buttonsStatusArray: Array<boolean> = []
             filterButtons.map(b => buttonsStatusArray.push(b.isActive))
             buttonsStatusArray.shift()
-            if(!buttonsStatusArray.includes(false)) {
+            if (!buttonsStatusArray.includes(false)) {
                 filterButtons[0].isActive = true
             }
-
         }
 
-        // setButtonsStatus({...buttonsStatus})
 
         setFilterButtons([...filterButtons])
 
-//         let updatedFilterButtonState
-//
-//         console.log(id)
-//
-//
-//         // if (id === "all") {
-//         //     filterButtons[0].isActive = !filterButtons[0].isActive
-//         // } else {
-//         //     filterButtons[0].isActive = false
-//         // }
-//         // filterButtons.map(b => b.wasteTitle === wasteType ? b.isActive = !b.isActive : b);
-//         // setFilterButtonsStatus({ ...filterButtonsStatus });
-//         // const buttonToChange = filterButtons.find(f=>f.id == id);
-//
-//         // const updatedFilterButtons = filterButtons.map(b => b.id === id ?
-//         //     { id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive } : b);
-// //
-// // if(id !== "all") {
-// //
-// //     filterButtons[0].isActive = false
-// //
-// // }
-// //
-//         // любая кнопка при нажатии меняет свой статус а кнопка все гаснет
-//         console.log(filterButtons)
-//         filterButtons[0].isActive = false
-//         console.log(filterButtons)
-//
-//             updatedFilterButtonState = filterButtons.map(b => b.id == id ?
-//                 {id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive} : b);
-//             console.log(updatedFilterButtonState)
-//
-//
-//
-//
-//
-//       //  если нажимаем на кнопку все, то все остальные кнопки загораются/гаснут
-//
-//         if (id === "all" && filterButtons[0].isActive) {
-//
-//             filterButtons.map(b => b.isActive = false)
-//
-//         } else if (id === "all" && filterButtons[0].isActive === false) {
-//
-//             filterButtons.map(b => b.isActive = true)
-//
-//         }
-//
-//         //если все кнопки кроме "все" нажаты то и сама кнопка все становится активной
-//
-//         else if (id !== "all") {
-//
-//             let buttonsStatusArray: Array<boolean> = []
-//             filterButtons.map(b => buttonsStatusArray.push(b.isActive))
-//             buttonsStatusArray.shift()
-//             if(!buttonsStatusArray.includes(false)) {
-//                 filterButtons[0].isActive = true
-//             }
-//
-//             console.log(buttonsStatusArray)
-//
-//         }
-//
-//
-//         setFilterButtons([...updatedFilterButtonState]);
 
-        // console.log(updatedFilterButtons);
     };
 
     const filteredMarkers = markersState;
 
+    console.log(filterButtons)
+
     filteredMarkers.map(m => m.display = false);
 
-    for (let i = 0; i < filterButtons.length; i++) {
+    for (let i = 1; i < filterButtons.length; i++) {
         if (filterButtons[i].isActive) {
             filteredMarkers.map(m => m.wasteTypes.includes(waste[i]) ? m.display = true : m);
         }
@@ -162,7 +93,8 @@ const MapSection = ()=> {
             </div>
             <div className={s.mapWrapper}>
 
-                <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true} className={s.mapContainer}>
+                <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
+                              className={s.mapContainer}>
                     <TileLayer
                         attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
                         url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
@@ -184,12 +116,13 @@ const MapSection = ()=> {
                                                 <div className={s.popupAddressContent}>{m.schedule}</div>
                                             </li>
                                             <li className={s.website}>
-                                                <div className={s.popupAddressContent}><a href={m.website}>{m.website}</a></div>
+                                                <div className={s.popupAddressContent}><a
+                                                    href={m.website}>{m.website}</a></div>
                                             </li>
                                         </ul>
                                     </div>
                                     <div className={s.popupFooter}>
-                                            Перерабатываем:
+                                        Перерабатываем:
                                         <ul className={s.wasteTypes}>
                                             {m.wasteTypes.map((item, i) =>
                                                 <li key={i}>{item}</li>
