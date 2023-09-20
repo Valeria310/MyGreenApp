@@ -1,16 +1,19 @@
-import { Footer } from '../../components/Footer/Footer';
-import { Header } from '../../components/Header/Header';
-import MapSection from '../../components/MapSection/MapSection';
-import NavSection from '../../components/NavSection';
-import { ParallaxSection } from '../../components/Parallax/Parallax';
-import RecycleSection from '../../components/RecycleSection';
-import { Ticker } from '../../components/Ticker/Ticker';
+import React from 'react';
+
+import ContactButton from 'src/components/ContactButton';
+import { Footer } from 'src/components/Footer/Footer';
+import { Header } from 'src/components/Header/Header';
+import MapSection from 'src/components/MapSection/MapSection';
+import NavSection from 'src/components/NavSection';
+import { ParallaxSection } from 'src/components/Parallax/Parallax';
+import RecycleSection from 'src/components/RecycleSection';
+import { Ticker } from 'src/components/Ticker/Ticker';
 
 import './Homepage.scss';
 
 export const Homepage = () => {
     return (
-        <div className="App">
+        <React.Fragment>
             <Header />
             <ParallaxSection />
             <NavSection />
@@ -18,6 +21,7 @@ export const Homepage = () => {
             <MapSection />
             <Ticker />
             <Footer />
-        </div>
+            <ContactButton />
+        </React.Fragment>
     );
 };

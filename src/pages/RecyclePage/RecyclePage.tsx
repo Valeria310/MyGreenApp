@@ -1,15 +1,19 @@
-import { Footer } from '../../components/Footer/Footer';
-import { Header } from '../../components/Header/Header';
-import RecycleSection from '../../components/RecycleSection';
+import React from 'react';
+
+import ContactButton from 'src/components/ContactButton';
+import { Footer } from 'src/components/Footer/Footer';
+import { Header } from 'src/components/Header/Header';
+import RecycleSection from 'src/components/RecycleSection';
 
 import './RecyclePage.scss';
 
 export const RecyclePage = () => {
     return (
-        <div className="App">
+        <React.Fragment>
             <Header />
             <RecycleSection expandable={true} />
             <Footer />
-        </div>
+            <ContactButton />
+        </React.Fragment>
     );
 };

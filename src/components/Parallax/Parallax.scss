@@ -83,7 +83,19 @@ $duration: 3s;
     position: absolute;
     opacity: 0;
     left: 50%;
-    top: 170px;
+    top: 248px;
+    @media screen and (min-width: 530px) {
+        top: 194px;
+    }
+    @media screen and (min-width: 1200px) {
+        top: 158px;
+    }
+    // @media screen and (max-width: 1200px) {
+    //     top: 193px;
+    // }
+    // @media screen and (max-width: 530px) {
+    //     top: 245px;
+    // }
     transform: translate(-50%, 0);
     transition: all $duration;
 
@@ -112,11 +124,14 @@ $duration: 3s;
         font-style: normal;
         font-weight: 600;
         font-size: 56px;
-        line-height: 105%;
+        line-height: 110%;
         margin: 0;
         margin-block-end: 0;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         letter-spacing: 0.6px;
+        @media screen and (min-width: 1200px) {
+            margin-bottom: 30px;
+        }
     }
 
     &_text {
@@ -325,7 +340,7 @@ $duration: 3s;
         height: 1024px;
 
         &.active {
-            height: 1024px;
+            height: 1050px;
         }
     }
 
@@ -341,7 +356,7 @@ $duration: 3s;
         height: 240px;
 
         &.active {
-            height: 571px;
+            height: 598px;
         }
     }
 
@@ -386,7 +401,7 @@ $duration: 3s;
     }
 
     .about_text {
-        font-weight: 500;
+        font-weight: 400;
     }
 }
 
@@ -560,7 +575,7 @@ $duration: 3s;
         height: 800px;
 
         &.active {
-            height: 800px;
+            height: 826px;
         }
     }
 
@@ -619,7 +634,7 @@ $duration: 3s;
     }
 
     .about_bg.active {
-        height: 490px;
+        height: 521px;
     }
 
     .big_trees.active {
