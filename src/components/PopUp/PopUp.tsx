@@ -11,7 +11,8 @@ export const PopUp:FC<PopUpProps> = (props) => {
     const popUpRef = props.closeOnClickOutside ? useClickOutside(closeHandler) : useRef(null);
 
     if (!props.show) {
-        document.body.style.removeProperty('overflow-y');
+        // document.body.style.removeProperty('overflow-y');
+        document.body.removeAttribute('style');
         return null;
     }
 
