@@ -77,7 +77,7 @@ export const markersState: Array<MarkerType> = [
         latitude: 53.871875,
         longitude: 27.647768,
         info: '',
-        wasteTypes: [waste[5], waste[1], waste[6], waste[9], waste[4], waste[2]],
+        wasteTypes: [waste[5], waste[1], waste[6], waste[9], waste[4]],
         display: false
     },
     {
