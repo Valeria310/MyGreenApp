@@ -16,7 +16,6 @@
   flex-direction: column;
   background-color: #F6FCEA;
   border-radius: 30px;
-  // width: 100%;
   @media screen and (min-width: 640px) {
     width: auto;
     border-radius: 30px;
@@ -32,11 +31,11 @@
 .popUpWrapper {
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 15px 25px 28px;
   height: 100%;
   @media screen and (min-width: 500px) {
     height: auto;
-    padding: 35px;
+    padding: 25px;
   }
   @media screen and (min-width: 1200px) {
     padding: 20px 35px;

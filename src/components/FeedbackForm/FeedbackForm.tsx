@@ -44,7 +44,7 @@ export const FeedbackForm = () => {
     return (
         <form className={s.feedbackForm}>
             <h2 className={s.feedbackFormHeading}>Связаться с нами</h2>
-            <p className={s.feedbackFormDescription}>Если у вас есть вопросы или предложения — заполните форму ниже</p>
+            <p className={s.feedbackFormDescription}>Если у вас есть вопросы или предложения, пожалуйста, заполните  форму ниже</p>
             <div className={s.feedbackFields}>
                 <div className={s.feedbackFormField}>
                     <label htmlFor='name'>Имя</label>
@@ -66,7 +66,7 @@ export const FeedbackForm = () => {
                         onChange={(e) => setFormField(e.target.name, e.target.value)}
                     />
                 </div>
-                <div className={s.feedbackFormField}>
+                <div className={`${s.feedbackFormField} ${s.paddingTop}`}>
                     <label>Тип сообщения</label>
                     <div ref={dropdownRef}>
                         <button type='button' className={s.customSelect} onClick={() => setOpenDropdown(!openDropdown)}>

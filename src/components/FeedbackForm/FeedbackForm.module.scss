@@ -13,16 +13,18 @@
 .feedbackFormHeading {
   display: inline-block;
   font-family: $font-primary;
-  line-height: 110%;
+  // line-height: 110%;
+  line-height: 31px;
   font-weight: 600;
   color: $color-black;
   margin: 0;
-  margin-bottom: 10px;
   font-size: 28px;
+  margin-bottom: 5px;
   @media screen and (min-width: 500px) {
     font-size: 48px;
   }
   @media screen and (min-width: 1200px) {
+    margin-bottom: 10px;
     font-size: 36px;
     line-height: 40px;
   }
@@ -31,11 +33,12 @@
 .feedbackFormDescription {
   font-family: $font-primary;
   font-weight: 400;
-  line-height: 140%;
+  // line-height: 140%;
+  line-height: 22px;
   margin: 0;
-  margin-bottom: 20px;
   color: $color-black;
   font-size: 16px;
+  margin-bottom: 15px;
   @media screen and (min-width: 500px) {
     font-size: 20px;
   }
@@ -60,11 +63,17 @@
   font-weight: 400;
   line-height: 22px;
   position: relative;
+  &.paddingTop {
+    padding-top: 5px;
+  }
   &.disabled {
     opacity: 0.5;
   }
   & input {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 20px;
+    }
   }
   & input, & textarea {
     transition: none;
@@ -89,7 +98,7 @@
   }
   & textarea {
     resize: none;
-    height: 141px;    
+    height: 141px;
     &:focus {
       padding: 9px;
     }
@@ -100,20 +109,6 @@
       height: 141px;
     }
   }
-}
-
-.feedbackFormField select {
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: inherit;
-  line-height: inherit;
-  padding: 19px 10px;
 }
 
 .customSelect {
@@ -127,7 +122,6 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
-  padding: 17px 10px;
   cursor: pointer;
   border-radius: 10px;
   border: 1px solid $color-black;
@@ -136,16 +130,23 @@
   min-height: 50px;
   outline: none;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  padding: 12px 10px;
   @media screen and (min-width: 500px) {
     min-height: 60px;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 20px;
   }
   &:hover {
     border: 1.5px solid $color-black;
   }
   &:focus {
-    padding: 16px 9px;
     border: 2px solid $color-black;
+    padding: 10px 9px;
+    @media screen and (min-width: 1200px) {
+      padding: 16px 9px;
+    }
   }
   & img {
     width: 24px;
@@ -165,9 +166,12 @@
   width: 100%;
   position: absolute;
   left: 0;
-  top: 104px;
   padding: 10px 0;
   z-index: 2;
+  top: 97px;
+  @media screen and (min-width: 1200px) {
+    top: 104px;
+  }
 }
 
 .selectItem {
@@ -175,7 +179,8 @@
   font-family: $font-primary;
   font-size: 16px;
   font-weight: 400;
-  line-height: 140%;
+  // line-height: 140%;
+  line-height: 22px;
   padding: 10px;
   cursor: pointer;
   &:hover {
@@ -186,10 +191,13 @@
 .feedbackFormPolytics {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 20px;
+  @media screen and (min-width: 1200px) {
+    align-items: center;
+  }
   & > span {
-    max-width: 272px;
+    max-width: 275px;
     @media screen and (min-width: 400px) {
       max-width: none;
     }
@@ -198,7 +206,8 @@
     font-family: $font-primary;
     font-size: 14px;
     font-weight: 400;
-    line-height: 140%;
+    // line-height: 140%;
+    line-height: 20px;
     color: $color-black;
   }
   & label {
@@ -260,6 +269,7 @@
   background-color: #1B7A59;
   padding: 11px 30px;
   min-width: 210px;
+  min-height: 40px;
   color: #fff;
   font-family: $font-primary;
   font-size: 16px;
