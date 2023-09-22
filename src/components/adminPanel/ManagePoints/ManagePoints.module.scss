@@ -1,14 +1,14 @@
 @import '../../../index.scss';
 
 .managePoints {
-  padding: 40px 0 115px;
+  padding: 115px 0 115px;
 
   @media (max-width: 1439px){
-    padding: 50px 0 80px
+    padding: 115px 0 80px
   }
 
   @media (max-width: 767px){
-    padding: 40px 0 50px;
+    padding: 105px 0 50px;
   }
 }
 

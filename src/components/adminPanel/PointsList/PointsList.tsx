@@ -1,8 +1,8 @@
-// with Pagination
 import React from 'react';
 
 import { TablePagination } from '@mui/base/TablePagination';
 import {
+    Chip,
     TableContainer,
     Table,
     TableHead,
@@ -11,7 +11,6 @@ import {
     TableCell,
     Paper
 } from '@mui/material';
-import Chip from '@mui/material/Chip';
 
 import { markersState } from 'src/constants/MapState';
 
@@ -36,7 +35,6 @@ const PointsList = () => {
     };
 
     const tableData = markersState;
-    console.log('tableData: ', tableData);
 
     const chipDisplayed = <Chip label={'Отображается'} variant="outlined" color="success" />;
     const chipHidden = <Chip label={'Не отображается'} variant="outlined" color="error" />;
@@ -105,10 +103,8 @@ const PointsList = () => {
                 labelDisplayedRows={function defaultLabelDisplayedRows({ from, to, count }) {
                     return `${from}–${to} из ${count !== -1 ? count : `more than ${to}`}`;
                 }}
-                // slots={{ root: 'div', toolbar: 'div' }}
                 className={classes.pagination}
                 rowsPerPageOptions={[5, 10, 15, { label: 'Все', value: -1 }]}
-                // colSpan={3}
                 count={tableData.length}
                 rowsPerPage={rowsPerPage}
                 page={page}

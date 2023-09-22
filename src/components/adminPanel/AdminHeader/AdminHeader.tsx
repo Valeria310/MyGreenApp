@@ -1,8 +1,6 @@
 import React from 'react';
 
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
+import { Box, FormControl, InputLabel, MenuItem } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 import classes from './AdminHeader.module.scss';
@@ -15,15 +13,16 @@ const AdminHeader = () => {
         setRole(event.target.value);
     };
     return (
-        <div className={classes.adminHeader}>
-            <div className={classes.adminHeader__container}>
-                <div className={classes.adminHeader__inner}>
+        <Box className={classes.adminHeader}>
+            <Box className={classes.adminHeader__container}>
+                <Box className={classes.adminHeader__inner}>
                     <a href="#">
                         <img className={classes.adminHeader__image} src={logo} alt="EcoHub" />
                     </a>
-                    <FormControl  variant="standard" sx={{ minWidth: 70 }}>
+                    <FormControl variant="standard" sx={{ minWidth: 70 }}>
                         <InputLabel id="demo-simple-select-standard-label"></InputLabel>
-                        <Select className={classes.adminHeader__select}
+                        <Select
+                            className={classes.adminHeader__select}
                             labelId="demo-simple-select-standard-label"
                             id="demo-simple-select-standard"
                             value={role}
@@ -33,9 +32,9 @@ const AdminHeader = () => {
                             <MenuItem value="user">user</MenuItem>
                         </Select>
                     </FormControl>
-                </div>   
-            </div>
-        </div>
+                </Box>
+            </Box>
+        </Box>
     );
 };
 

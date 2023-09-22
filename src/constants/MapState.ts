@@ -5,7 +5,8 @@ export const waste: Array<filterType> = [
     'электронная и бытовая техника',
     'крупногабаритные отходы',
     'опасные отходы',
-    'металл'
+    'металл',
+    'ветошь'
 ];
 
 export type filterType =
@@ -16,7 +17,8 @@ export type filterType =
     | 'электронная и бытовая техника'
     | 'крупногабаритные отходы'
     | 'опасные отходы'
-    | 'металл';
+    | 'металл'
+    | 'ветошь';
 
 export type FilterButtonsObjType = {
     id: string;
@@ -31,7 +33,8 @@ export const filterButtonsState: Array<FilterButtonsObjType> = [
     { id: 'electronics', wasteTitle: waste[3], isActive: true },
     { id: 'largeSize', wasteTitle: waste[4], isActive: true },
     { id: 'dangerous', wasteTitle: waste[5], isActive: true },
-    { id: 'metal', wasteTitle: waste[6], isActive: true }
+    { id: 'metal', wasteTitle: waste[6], isActive: true },
+    { id: 'rags', wasteTitle: waste[7], isActive: true }
 ];
 
 export type MarkerType = {

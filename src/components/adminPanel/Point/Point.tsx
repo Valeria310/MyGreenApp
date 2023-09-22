@@ -1,8 +1,6 @@
-import React from 'react';
-
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import EditIcon from '@mui/icons-material/Edit';
-import Chip from '@mui/material/Chip';
+import { Box, Chip } from '@mui/material';
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
@@ -27,29 +25,24 @@ const Point = () => {
     return (
         <>
             <AdminHeader />
-
-            <div className={classes.point}>
-                <div className={classes.point__container}>
+            <Box className={classes.point}>
+                <Box className={classes.point__container}>
                     <a className={classes.point__link} href="#">
                         <ChevronLeft />
                         Назад
                     </a>
-                    <div className={classes.point__titleBox}>
-                        <h1 className={classes.point__title}>
-                            {pointData.title[0] === 'П'
-                                ? pointData.title.slice(10)
-                                : pointData.title}
-                        </h1>
+                    <Box className={classes.point__titleBox}>
+                        <h1 className={classes.point__title}>{pointData.title}</h1>
                         <a className={classes.point__titleLink} href="#">
                             <EditIcon sx={{ fontSize: 48 }} />
                         </a>
-                    </div>
-                    <div className={classes.point__table}>
-                        <div className={classes.point__tableRow}>
-                            <div className={classes.point__tableCol}>
+                    </Box>
+                    <Box className={classes.point__table}>
+                        <Box className={classes.point__tableRow}>
+                            <Box className={classes.point__tableCol}>
                                 Ссылка на сайт организации
-                            </div>
-                            <div className={classes.point__tableCol}>
+                            </Box>
+                            <Box className={classes.point__tableCol}>
                                 <a
                                     target="/blank"
                                     className={classes.point__websiteLink}
@@ -57,27 +50,27 @@ const Point = () => {
                                 >
                                     {pointData.website}
                                 </a>
-                            </div>
-                        </div>
-                        <div className={classes.point__tableRow}>
-                            <div className={classes.point__tableCol}>Адрес</div>
-                            <div className={classes.point__tableCol}>{pointData.address}</div>
-                        </div>
-                        <div className={classes.point__tableRow}>
-                            <div className={classes.point__tableCol}>Время работы</div>
-                            <div className={classes.point__tableCol}>
+                            </Box>
+                        </Box>
+                        <Box className={classes.point__tableRow}>
+                            <Box className={classes.point__tableCol}>Адрес</Box>
+                            <Box className={classes.point__tableCol}>{pointData.address}</Box>
+                        </Box>
+                        <Box className={classes.point__tableRow}>
+                            <Box className={classes.point__tableCol}>Время работы</Box>
+                            <Box className={classes.point__tableCol}>
                                 {pointData.schedule[0] === 'В'
                                     ? pointData.schedule.slice(14)
                                     : pointData.schedule}
-                            </div>
-                        </div>
-                        <div
+                            </Box>
+                        </Box>
+                        <Box
                             className={
                                 classes.point__tableRow + ' ' + classes.point__tableRow_withChip
                             }
                         >
-                            <div className={classes.point__tableCol}>Виды вторсырья</div>
-                            <div className={classes.point__tableCol}>
+                            <Box className={classes.point__tableCol}>Виды вторсырья</Box>
+                            <Box className={classes.point__tableCol}>
                                 {pointData.wasteTypes.map((item) => {
                                     return (
                                         <Chip
@@ -89,15 +82,15 @@ const Point = () => {
                                         />
                                     );
                                 })}
-                            </div>
-                        </div>
-                        <div
+                            </Box>
+                        </Box>
+                        <Box
                             className={
                                 classes.point__tableRow + ' ' + classes.point__tableRow_withChip
                             }
                         >
-                            <div className={classes.point__tableCol}>Статус</div>
-                            <div className={classes.point__tableCol}>
+                            <Box className={classes.point__tableCol}>Статус</Box>
+                            <Box className={classes.point__tableCol}>
                                 <Chip
                                     className={classes.point__typeChip}
                                     label={
@@ -108,9 +101,9 @@ const Point = () => {
                                     variant="outlined"
                                     color={pointData.display ? 'success' : 'error'}
                                 />
-                            </div>
-                        </div>
-                    </div>
+                            </Box>
+                        </Box>
+                    </Box>
                     <MapContainer
                         className={classes.point__mapContainer}
                         center={[53.9024716, 27.5618225]}
@@ -172,8 +165,8 @@ const Point = () => {
                             )}
                         </MarkerClusterGroup>
                     </MapContainer>
-                </div>
-            </div>
+                </Box>
+            </Box>
         </>
     );
 };

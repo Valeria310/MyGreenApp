@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Chip } from '@mui/material';
+import { Box, Chip } from '@mui/material';
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
@@ -44,8 +44,8 @@ const PointsMap = () => {
 
     return (
         <>
-            <div className={classes.pointsMap__filters}>
-                {filterButtons.map((f, i) => (
+            <Box className={classes.pointsMap__filters}>
+                {filterButtons.map((f) => (
                     <Chip
                         className={classes.pointsMap__chip}
                         key={f.id}
@@ -57,7 +57,7 @@ const PointsMap = () => {
                         onClick={() => changeButtonStatus(f.id)}
                     />
                 ))}
-            </div>
+            </Box>
 
             <MapContainer
                 center={[53.9024716, 27.5618225]}

@@ -1,7 +1,7 @@
-// import { DevTool } from '@hookform/devtools';
-import Button from '@mui/material/Button';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
+import { Box, Button, InputAdornment, TextField } from '@mui/material';
+// import Button from '@mui/material/Button';
+// import InputAdornment from '@mui/material/InputAdornment';
+// import TextField from '@mui/material/TextField';
 import { useForm } from 'react-hook-form';
 
 import classes from './Login.module.scss';
@@ -16,7 +16,7 @@ const LogIn = () => {
     const form = useForm<FormValues>({
         mode: 'onBlur'
     });
-    const { register, control, handleSubmit, formState } = form;
+    const { register, handleSubmit, formState } = form;
     const { errors } = formState;
 
     const onSubmit = (data: FormValues) => {
@@ -24,11 +24,11 @@ const LogIn = () => {
     };
 
     return (
-        <div className={classes.logIn}>
+        <Box className={classes.logIn}>
             <img className="LogIn__logo" src={logo} alt="" />
             <form className={classes.logIn__form} onSubmit={handleSubmit(onSubmit)} noValidate>
                 <h1 className={classes.logIn__title}>Войти в панель администрирования</h1>
-                <div>
+                <Box>
                     <TextField
                         label="Имя"
                         id="username"
@@ -57,8 +57,8 @@ const LogIn = () => {
                         error={errors.username?.message ? true : false}
                         helperText={errors.username?.message ? errors.username?.message : null}
                     />
-                </div>
-                <div>
+                </Box>
+                <Box>
                     <TextField
                         label="Пароль"
                         id="password"
@@ -89,7 +89,7 @@ const LogIn = () => {
                         error={errors.password?.message ? true : false}
                         helperText={errors.password?.message ? errors.password?.message : null}
                     />
-                </div>
+                </Box>
                 <p className={classes.logIn__text}>
                     <a className={classes.logIn__link} href="#">
                         Забыли пароль?
@@ -106,8 +106,7 @@ const LogIn = () => {
                     Войти
                 </Button>
             </form>
-            {/* <DevTool control={control} /> */}
-        </div>
+        </Box>
     );
 };
 

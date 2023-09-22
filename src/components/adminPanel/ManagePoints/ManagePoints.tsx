@@ -1,11 +1,11 @@
 import React from 'react';
 
 import AddIcon from '@mui/icons-material/Add';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
-import Typography from '@mui/material/Typography';
+import { Box, Button, Tab, Tabs, Typography } from '@mui/material';
+// import Button from '@mui/material/Button';
+// import Tab from '@mui/material/Tab';
+// import Tabs from '@mui/material/Tabs';
+// import Typography from '@mui/material/Typography';
 
 import classes from './ManagePoints.module.scss';
 import AdminHeader from '../AdminHeader';
@@ -29,7 +29,7 @@ function CustomTabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
 
     return (
-        <div
+        <Box
             role="tabpanel"
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
@@ -41,7 +41,7 @@ function CustomTabPanel(props: TabPanelProps) {
                     <Typography>{children}</Typography>
                 </Box>
             )}
-        </div>
+        </Box>
     );
 }
 
@@ -56,10 +56,10 @@ const ManagePoints = () => {
         <>
             <AdminHeader />
 
-            <div className={classes.managePoints}>
-                <div className={classes.managePoints__container}>
+            <Box className={classes.managePoints}>
+                <Box className={classes.managePoints__container}>
                     <h1 className={classes.managePoints__title}>Пункты приема</h1>
-                    <div className={classes.managePoints__tabsBox}>
+                    <Box className={classes.managePoints__tabsBox}>
                         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                             <Tab label="Таблица" {...a11yProps(0)} />
                             <Tab label="Карта" {...a11yProps(1)} />
@@ -67,15 +67,15 @@ const ManagePoints = () => {
                         <Button variant="contained" startIcon={<AddIcon />}>
                             Добавить
                         </Button>
-                    </div>
+                    </Box>
                     <CustomTabPanel value={value} index={0}>
                         <PointsList />
                     </CustomTabPanel>
                     <CustomTabPanel value={value} index={1}>
                         <PointsMap />
                     </CustomTabPanel>
-                </div>
-            </div>
+                </Box>
+            </Box>
         </>
     );
 };
