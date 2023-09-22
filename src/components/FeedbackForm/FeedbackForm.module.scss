@@ -75,6 +75,9 @@
     @media screen and (min-width: 500px) {
       margin-bottom: 20px;
     }
+    &:focus {
+      padding: 10px 9px;
+    }
   }
   & input, & textarea {
     transition: none;
@@ -87,13 +90,13 @@
     outline: none;
     caret-color: #1865F2;
     @media screen and (min-width: 500px) {
+      padding: 18px 10px;
       min-height: 60px;
     }
     &:hover {
       border: 1.5px solid $color-black;
     }
     &:focus {
-      padding: 10px 9px;
       border: 2px solid $color-black;
     }
   }
@@ -102,6 +105,9 @@
     height: 141px;
     &:focus {
       padding: 9px;
+      @media screen and (min-width: 500px) {
+        padding: 17px 9px;
+      }
     }
   }
 }
@@ -163,8 +169,8 @@
   padding: 10px 0;
   z-index: 2;
   top: 97px;
-  @media screen and (min-width: 1200px) {
-    top: 104px;
+  @media screen and (min-width: 500px) {
+    top: 102px;
   }
 }
 
