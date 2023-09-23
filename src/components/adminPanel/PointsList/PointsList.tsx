@@ -9,7 +9,8 @@ import {
     TableBody,
     TableRow,
     TableCell,
-    Paper
+    Paper,
+    Pagination
 } from '@mui/material';
 
 import { markersState } from 'src/constants/MapState';
@@ -41,7 +42,7 @@ const PointsList = () => {
 
     return (
         <>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} sx={{ maxHeight: '450px' }}>
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>

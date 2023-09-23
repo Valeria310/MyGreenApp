@@ -8,10 +8,10 @@ const AdminPanel = () => {
     return (
         <>
             {/* <LogIn /> */}
-            <CreatePoint />
+            {/* <CreatePoint /> */}
             {/* <EditPoint /> */}
             {/* <Point /> */}
-            {/* <ManagePoints /> */}
+            <ManagePoints />
         </>
     );
 };
