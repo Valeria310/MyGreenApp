@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AddIcon from '@mui/icons-material/Add';
-import { Box, Button, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Button, Tab, Tabs } from '@mui/material';
 
 import classes from './ManagePoints.module.scss';
 import AdminHeader from '../AdminHeader';
