@@ -7,26 +7,30 @@
 }
 
 .navCardsWrapper {
-    padding: 32px 25px;
+    padding: 30px 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 48px;
+    row-gap: 50px;
     @media screen and (min-width: 400px) {
         padding-left: calc(60 / 768 * 100vw);
         padding-right: calc(60 / 768 * 100vw);
         padding-top: calc(60 / 768 * 100vw);
     }
     @media screen and (min-width: 600px) {
-        padding: 40px 30px;
-        // row-gap: 48px;
+        padding: 45px 99px;
+        padding-left: calc(99 / 768 * 100vw);
+        padding-right: calc(99 / 768 * 100vw);
+        padding-top: calc(45 / 768 * 100vw);
+        padding-bottom: calc(45 / 768 * 100vw);
+        row-gap: 45px;
     }
     @media screen and (min-width: 1200px) {
-        padding: calc(50 / 1440 * 100vw) calc(100 / 1440 * 100vw);
-        row-gap: calc(50 / 1440 * 100vw);
+        padding: calc(40 / 1440 * 100vw) calc(135 / 1440 * 100vw) calc(55 / 1440 * 100vw);
+        row-gap: calc(70 / 1440 * 100vw);
     }
     @media screen and (min-width: 1440px) {
-        padding: 55px 135px;
+        padding: 40px 135px 55px;
         row-gap: 70px;
     }
 }
