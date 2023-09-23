@@ -49,7 +49,7 @@ const MapSection = ()=> {
 
     return (
 
-        <section className={s.map} id="map">
+        <section id="map">
             <div className={s.mapHeaderWrapper}>
                 <h2>Куда сдать?</h2>
                 <div className={s.buttonsWrapper}>

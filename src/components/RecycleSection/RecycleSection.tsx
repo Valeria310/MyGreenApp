@@ -8,7 +8,7 @@ import RecycleCard from '../RecycleCard';
 
 export const RecycleSection:FC<RecycleSectionProps> = ({ expandable }) => {
     return (
-        <section className={s.recycle} id="recycle">
+        <section id="recycle">
             <div className={s.recycleWrapper}>
                 <h2 className={s.recycleHeading}>Что перерабатываем?</h2>
                 <div className={s.recycleInfo}>

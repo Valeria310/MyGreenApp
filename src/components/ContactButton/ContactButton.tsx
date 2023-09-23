@@ -9,13 +9,13 @@ export const ContactButton = () => {
     const [showtForm, setShowForm] = useState(false);
 
     return (
-        <React.Fragment>
+        <div id='contact-us' className={s.stickyContainer}>
             {!showtForm &&
-                <div id='contact-btn' className={s.contactButton} onClick={() => setShowForm(true)}>
+                <div className={s.contactButton} onClick={() => setShowForm(true)}>
                     <img src={contactIcon} alt='contact-us' />
                 </div>
             }
             <FeedbackPopUp show={showtForm} onClose={() => setShowForm(false)} />
-        </React.Fragment>
+        </div>
     );
 };
