@@ -44,14 +44,18 @@
   font-family: $font-primary;
   font-size: 28px;
   font-weight: 600;
-  line-height: 110%;
-  @media screen and (min-width: 600px) {
-    font-size: 30px;
-    font-weight: 500;
-  }
+  // line-height: 110%;
+  line-height: 31px;
   color: $color-black;
+  @media screen and (min-width: 600px) {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 33px;
+  }
   @media screen and (min-width: 1200px) {
+    font-weight: 600;
     font-size: 36px;
+    line-height: 40px;
   }
 }
 
@@ -65,9 +69,9 @@
   text-align: center;
   margin: 0;
   @media screen and (min-width: 1200px) {
-    font-size: 24px;
+    font-size: 20px;
     // line-height: 140%;
-    line-height: 34px;
+    line-height: 28px;
   }
 }
 
@@ -96,20 +100,20 @@
   cursor: pointer;
   padding: 11px 30px;
   max-height: 40px;
-  min-width: 215px;
+  min-width: 210px;
   font-size: 16px;
   font-weight: 600;
   line-height: 110%;
   @media screen and (min-width: 600px) {
     max-height: 50px;
-    min-width: 254px;
+    min-width: 270px;
     font-size: 20px;
     font-weight: 600;
     line-height: 140%;
   }
   @media screen and (min-width: 1200px) {
     padding: 17px 30px;
-    min-width: 293px;
+    min-width: 270px;
     font-size: 24px;
     line-height: 110%;
     max-height: 60px;

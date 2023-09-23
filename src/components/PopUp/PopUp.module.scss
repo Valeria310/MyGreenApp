@@ -40,13 +40,13 @@
   padding: 15px 25px 28px;
   height: 100%;
   @media screen and (min-width: 500px) {
-    height: auto;
-    padding: 20px 35px;
-  }
-  @media screen and (min-width: 1200px) {
     padding: 20px 35px;
   }
   &.largePadding {
+    padding: 25px;
+    @media screen and (min-width: 500px) {
+      padding: 35px;
+    }
     @media screen and (min-width: 1200px) {
       padding: 50px;
     }

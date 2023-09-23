@@ -28,7 +28,7 @@ export const ErrorMessage = () => {
                 <button
                     type='button'
                     className={`${s.actionButton} ${s.secondaryButton}`}
-                    onClick={() => navigate('/')}
+                    onClick={() => navigate(0)}
                 >
                     На главную
                 </button>
