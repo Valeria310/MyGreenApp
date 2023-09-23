@@ -28,7 +28,7 @@ type FormValues = {
     schedule: string;
     coordinates?: string | undefined;
     wasteTypes: Array<filterType>;
-    display: boolean;
+    display: boolean | string | undefined;
     id: number | undefined;
     info: string | undefined;
     longitude: number;
@@ -87,12 +87,19 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
             resultData.latitude = Number(latLong[1]);
             delete resultData.coordinates;
         }
-        // resultData.display = resultData.display;
+        console.log(typeof data.display);
+        // console.log('### resultData.display:', resultData.display, typeof resultData.display);
+        resultData.display = toBoolean(resultData.display);
         resultData.id = data.id ? data.id : markersState[markersState.length - 1].id + 1;
         resultData.info = data.info ? data.info : '';
         console.log('=== result data to database:', resultData);
 
         setState({ ...state, open: true });
+    };
+
+    const toBoolean = (value: boolean | string | undefined) => {
+        if (value === 'true') return true;
+        if (value === 'false') return false;
     };
 
     const renderStringLength = (value: string, number: number) => {
