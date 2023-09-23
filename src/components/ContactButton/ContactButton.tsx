@@ -11,7 +11,7 @@ export const ContactButton = () => {
     return (
         <React.Fragment>
             {!showtForm &&
-                <div className={s.contactButton} onClick={() => setShowForm(true)}>
+                <div id='contact-btn' className={s.contactButton} onClick={() => setShowForm(true)}>
                     <img src={contactIcon} alt='contact-us' />
                 </div>
             }

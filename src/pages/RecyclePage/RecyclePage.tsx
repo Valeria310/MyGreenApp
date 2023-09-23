@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ContactButton from 'src/components/ContactButton';
+// import ContactButton from 'src/components/ContactButton';
 import { Footer } from 'src/components/Footer/Footer';
 import { Header } from 'src/components/Header/Header';
 import RecycleSection from 'src/components/RecycleSection';
@@ -13,7 +13,7 @@ export const RecyclePage = () => {
             <Header />
             <RecycleSection expandable={true} />
             <Footer />
-            <ContactButton />
+            {/* <ContactButton /> */}
         </React.Fragment>
     );
 };
