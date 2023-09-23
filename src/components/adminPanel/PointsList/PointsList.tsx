@@ -9,8 +9,7 @@ import {
     TableBody,
     TableRow,
     TableCell,
-    Paper,
-    Pagination
+    Paper
 } from '@mui/material';
 
 import { markersState } from 'src/constants/MapState';
@@ -100,6 +99,10 @@ const PointsList = () => {
                 </Table>
             </TableContainer>
             <TablePagination
+                slots={{
+                    root: 'div',
+                    toolbar: 'div'
+                }}
                 labelRowsPerPage={'Строк на странице'}
                 labelDisplayedRows={function defaultLabelDisplayedRows({ from, to, count }) {
                     return `${from}–${to} из ${count !== -1 ? count : `more than ${to}`}`;
@@ -110,8 +113,6 @@ const PointsList = () => {
                 rowsPerPage={rowsPerPage}
                 page={page}
                 slotProps={{
-                    root: 'div',
-                    toolbar: 'div',
                     select: {
                         'aria-label': 'rows per page'
                     },

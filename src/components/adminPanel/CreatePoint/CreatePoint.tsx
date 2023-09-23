@@ -4,17 +4,6 @@ import classes from './CreatePoint.module.scss';
 import AdminHeader from '../AdminHeader';
 import PointForm from '../PointForm';
 
-type FormValues = {
-    title: string;
-    website: string;
-    address: string;
-    phone: string;
-    shedule: string;
-    coordinates: string;
-    wasteTitle: string[];
-    display: boolean;
-};
-
 const CreatePoint = () => {
     return (
         <>

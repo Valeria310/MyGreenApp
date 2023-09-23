@@ -78,7 +78,6 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
     const { errors } = formState;
 
     const onSubmit = (data: FormValues) => {
-        console.log('data: ', data);
         const resultData: FormValues = { ...data };
 
         if (data.coordinates) {
@@ -87,12 +86,10 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
             resultData.latitude = Number(latLong[1]);
             delete resultData.coordinates;
         }
-        console.log(typeof data.display);
-        // console.log('### resultData.display:', resultData.display, typeof resultData.display);
         resultData.display = toBoolean(resultData.display);
         resultData.id = data.id ? data.id : markersState[markersState.length - 1].id + 1;
         resultData.info = data.info ? data.info : '';
-        console.log('=== result data to database:', resultData);
+        console.log('=== Result data to database:', resultData);
 
         setState({ ...state, open: true });
     };

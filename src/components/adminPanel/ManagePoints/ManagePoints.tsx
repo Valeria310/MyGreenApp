@@ -2,10 +2,6 @@ import React from 'react';
 
 import AddIcon from '@mui/icons-material/Add';
 import { Box, Button, Tab, Tabs, Typography } from '@mui/material';
-// import Button from '@mui/material/Button';
-// import Tab from '@mui/material/Tab';
-// import Tabs from '@mui/material/Tabs';
-// import Typography from '@mui/material/Typography';
 
 import classes from './ManagePoints.module.scss';
 import AdminHeader from '../AdminHeader';
@@ -38,7 +34,7 @@ function CustomTabPanel(props: TabPanelProps) {
         >
             {value === index && (
                 <Box sx={{ pt: 3 }}>
-                    <Typography>{children}</Typography>
+                    <Box>{children}</Box>
                 </Box>
             )}
         </Box>
