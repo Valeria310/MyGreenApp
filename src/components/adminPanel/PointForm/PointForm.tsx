@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import {
@@ -75,7 +75,12 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
     });
 
     const { register, handleSubmit, formState, watch } = form;
-    const { errors } = formState;
+    const { errors, dirtyFields, isValid } = formState;
+    let { isDirty } = formState;
+
+    if (props.id) {
+        isDirty = true;
+    }
 
     const onSubmit = (data: FormValues) => {
         const resultData: FormValues = { ...data };
@@ -210,7 +215,6 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                         {errors.website.message}
                                     </FormHelperText>
                                 ) : null}
-                                {/* <FormHelperText sx={{ ml: '15px' }}>0/100</FormHelperText> */}
                             </div>
                             <div className={classes.pointForm__textareaBox}>
                                 <label
@@ -551,7 +555,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                             message: 'Обязательное поле'
                                         },
                                         pattern: {
-                                            value: /^(0|[1-9]+)(?:[.]\d*|)\s?(0|[1-9]+)(?:[.]\d*|)$/,
+                                            value: /^(?!.*\.$)(0|[1-9]+)(?:[.]\d*|)\s?(0|[1-9]+)(?:[.]\d*|)$/,
                                             message: 'Некорректное значение'
                                         },
                                         maxLength: {
@@ -590,7 +594,12 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                 />
                             </RadioGroup>
                             <Box className={classes.pointForm__buttons}>
-                                <Button type="submit" variant="contained" sx={{ mr: '16px' }}>
+                                <Button
+                                    type="submit"
+                                    variant="contained"
+                                    sx={{ mr: '16px' }}
+                                    disabled={!isDirty || !isValid}
+                                >
                                     Сохранить
                                 </Button>
                                 <Button type="button" variant="text">
