@@ -2,6 +2,7 @@ import React from 'react';
 
 import AddIcon from '@mui/icons-material/Add';
 import { Box, Button, Tab, Tabs } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 import classes from './ManagePoints.module.scss';
 import AdminHeader from '../AdminHeader';
@@ -60,9 +61,11 @@ const ManagePoints = () => {
                             <Tab label="Таблица" {...a11yProps(0)} />
                             <Tab label="Карта" {...a11yProps(1)} />
                         </Tabs>
-                        <Button variant="contained" startIcon={<AddIcon />}>
-                            Добавить
-                        </Button>
+                        <Link to="create-new-point">
+                            <Button variant="contained" startIcon={<AddIcon />}>
+                                Добавить
+                            </Button>
+                        </Link>
                     </Box>
                     <CustomTabPanel value={value} index={0}>
                         <PointsList />

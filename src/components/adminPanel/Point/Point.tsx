@@ -1,9 +1,12 @@
+import * as React from 'react';
+
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box, Chip } from '@mui/material';
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import classes from './Point.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
@@ -11,7 +14,13 @@ import { markersState } from '../../../constants/MapState';
 import s from '../../MapSection/MapSection.module.scss';
 import AdminHeader from '../AdminHeader';
 
-const Point = () => {
+type PointId = {
+    id: string;
+};
+
+const Point: React.FC = () => {
+    const { id } = useParams<PointId>();
+
     const customIcon = new L.Icon({
         iconUrl: pointIcon,
         iconSize: new L.Point(27, 32)
@@ -19,7 +28,7 @@ const Point = () => {
 
     const token = 'xZpKoSPd2lxvjHa2OY9UT0kBT6StaY0c7pnbhNF1RPCPKAexPRuo2P8x8KKICtO3';
 
-    const pointData = markersState[60];
+    const pointData = markersState[Number(id) - 1];
     pointData.display = true;
 
     return (
@@ -27,15 +36,15 @@ const Point = () => {
             <AdminHeader />
             <Box className={classes.point}>
                 <Box className={classes.point__container}>
-                    <a className={classes.point__link} href="#">
+                    <Link className={classes.point__link} to="/admin">
                         <ChevronLeft />
                         Назад
-                    </a>
+                    </Link>
                     <Box className={classes.point__titleBox}>
                         <h1 className={classes.point__title}>{pointData.title}</h1>
-                        <a className={classes.point__titleLink} href="#">
+                        <Link className={classes.point__titleLink} to="edit">
                             <EditIcon sx={{ fontSize: 48 }} />
-                        </a>
+                        </Link>
                     </Box>
                     <Box className={classes.point__table}>
                         <Box className={classes.point__tableRow}>

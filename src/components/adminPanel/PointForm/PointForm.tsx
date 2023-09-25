@@ -575,7 +575,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                             <RadioGroup
                                 sx={{ mb: '48px', alignItems: 'flex-start' }}
                                 aria-labelledby="Статус"
-                                defaultValue={props.display ? props.display : null}
+                                defaultValue={props.display ? props.display : true}
                                 name="status-radio-buttons-group"
                             >
                                 <FormControlLabel

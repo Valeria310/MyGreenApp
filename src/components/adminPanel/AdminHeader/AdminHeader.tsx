@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Box, FormControl, InputLabel, MenuItem } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Link } from 'react-router-dom';
 
 import classes from './AdminHeader.module.scss';
 import logo from '../../../assets/images/logo-admin.png';
@@ -16,9 +17,9 @@ const AdminHeader = () => {
         <Box className={classes.adminHeader}>
             <Box className={classes.adminHeader__container}>
                 <Box className={classes.adminHeader__inner}>
-                    <a href="#">
+                    <Link to="/">
                         <img className={classes.adminHeader__image} src={logo} alt="EcoHub" />
-                    </a>
+                    </Link>
                     <FormControl variant="standard" sx={{ minWidth: 70 }}>
                         <InputLabel id="demo-simple-select-standard-label"></InputLabel>
                         <Select

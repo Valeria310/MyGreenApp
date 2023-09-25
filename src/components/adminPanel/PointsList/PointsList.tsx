@@ -11,6 +11,7 @@ import {
     TableCell,
     Paper
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 import { markersState } from 'src/constants/MapState';
 
@@ -61,11 +62,12 @@ const PointsList = () => {
                             : tableData
                         ).map((row) => (
                             <TableRow
+                                component={Link}
+                                to={`point/${row.id}`}
+                                key={row.id}
                                 sx={{
                                     '&:hover': { background: 'lightblue', cursor: 'pointer' }
                                 }}
-                                key={row.id}
-                                onClick={() => console.log('Clicked', row.title)}
                             >
                                 <TableCell className={classes.cell}>{row.title}</TableCell>
                                 <TableCell className={classes.cell}>{row.website}</TableCell>

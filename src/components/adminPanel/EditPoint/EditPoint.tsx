@@ -1,7 +1,10 @@
+import * as React from 'react';
+
 import { Box } from '@mui/material';
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import classes from './EditPoint.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
@@ -10,7 +13,13 @@ import s from '../../MapSection/MapSection.module.scss';
 import AdminHeader from '../AdminHeader';
 import PointForm from '../PointForm';
 
-const EditPoint = () => {
+type PointId = {
+    id: string;
+};
+
+const EditPoint: React.FC = ({ ...props }) => {
+    const { id } = useParams<PointId>();
+
     const customIcon = new L.Icon({
         iconUrl: pointIcon,
         iconSize: new L.Point(27, 32)
@@ -18,7 +27,7 @@ const EditPoint = () => {
 
     const token = 'xZpKoSPd2lxvjHa2OY9UT0kBT6StaY0c7pnbhNF1RPCPKAexPRuo2P8x8KKICtO3';
 
-    const pointData = markersState[50];
+    const pointData = markersState[Number(id) - 1];
     pointData.display = true;
 
     return (
@@ -40,7 +49,6 @@ const EditPoint = () => {
                                 url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
                             />
                             <MarkerClusterGroup chunkedLoading>
-                                {/* {filteredMarkers.map((m, i) => */}
                                 {pointData.display ? (
                                     <Marker
                                         key={pointData.id}
