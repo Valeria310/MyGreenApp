@@ -15,6 +15,7 @@ import {
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { MarkerType, markersState, filterType } from 'src/constants/MapState';
 
@@ -40,6 +41,8 @@ interface State extends SnackbarOrigin {
 }
 
 const PointForm: React.FC<Partial<MarkerType>> = (props) => {
+    const navigate = useNavigate();
+
     const [state, setState] = React.useState<State>({
         open: false,
         vertical: 'bottom',
@@ -602,7 +605,11 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                 >
                                     Сохранить
                                 </Button>
-                                <Button type="button" variant="text">
+                                <Button
+                                    onClick={props.id ? () => navigate(-2) : () => navigate(-1)}
+                                    type="button"
+                                    variant="text"
+                                >
                                     Отменить
                                 </Button>
                             </Box>
