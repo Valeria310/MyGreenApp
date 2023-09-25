@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import {
@@ -15,9 +15,9 @@ import {
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import { MarkerType, markersState, filterType } from 'src/constants/MapState';
+import { MarkerType, markersState, filterType, waste } from 'src/constants/MapState';
 
 import classes from './PointForm.module.scss';
 
@@ -78,7 +78,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
     });
 
     const { register, handleSubmit, formState, watch } = form;
-    const { errors, dirtyFields, isValid } = formState;
+    const { errors, isValid } = formState;
     let { isDirty } = formState;
 
     if (props.id) {
@@ -90,8 +90,8 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
 
         if (data.coordinates) {
             const latLong = data.coordinates.split(' ');
-            resultData.longitude = Number(latLong[0]);
-            resultData.latitude = Number(latLong[1]);
+            resultData.latitude = Number(latLong[0]);
+            resultData.longitude = Number(latLong[1]);
             delete resultData.coordinates;
         }
         resultData.display = toBoolean(resultData.display);
@@ -99,7 +99,32 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
         resultData.info = data.info ? data.info : '';
         console.log('=== Result data to database:', resultData);
 
+        const newPoint: MarkerType = {
+            id: resultData.id,
+            title: resultData.title,
+            website: resultData.website,
+            address: resultData.address,
+            schedule: resultData.schedule,
+            phone: resultData.phone,
+            latitude: resultData.latitude,
+            longitude: resultData.longitude,
+            info: resultData.info,
+            wasteTypes: resultData.wasteTypes,
+            display: Boolean(resultData.display)
+        };
+
+        const isPointExists = markersState.some((point) => point.id === newPoint.id);
+
+        if (isPointExists) {
+            const idx = markersState.findIndex((el) => el.id === newPoint.id);
+            markersState[idx] = newPoint;
+        } else {
+            markersState.push(newPoint);
+        }
+        console.log('=== markersState from onSubmit: ', markersState);
+
         setState({ ...state, open: true });
+        setTimeout(() => navigate(-1), 1500);
     };
 
     const toBoolean = (value: boolean | string | undefined) => {
@@ -356,7 +381,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                             ? true
                                                             : false
                                                     }
-                                                    value="пластик"
+                                                    value={waste[0]}
                                                     {...register('wasteTypes', {
                                                         required: {
                                                             value: true,
@@ -377,7 +402,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                             ? true
                                                             : false
                                                     }
-                                                    value="бумага"
+                                                    value={waste[1]}
                                                     {...register('wasteTypes', {
                                                         required: {
                                                             value: true,
@@ -398,7 +423,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                             ? true
                                                             : false
                                                     }
-                                                    value="стекло"
+                                                    value={waste[2]}
                                                     {...register('wasteTypes', {
                                                         required: {
                                                             value: true,
@@ -421,7 +446,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                             ? true
                                                             : false
                                                     }
-                                                    value="электронная и бытовая техника"
+                                                    value={waste[3]}
                                                     {...register('wasteTypes', {
                                                         required: {
                                                             value: true,
@@ -446,7 +471,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                             ? true
                                                             : false
                                                     }
-                                                    value="крупногабаритные отходы"
+                                                    value={waste[4]}
                                                     {...register('wasteTypes', {
                                                         required: {
                                                             value: true,
@@ -467,7 +492,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                             ? true
                                                             : false
                                                     }
-                                                    value="опасные отходы"
+                                                    value={waste[5]}
                                                     {...register('wasteTypes', {
                                                         required: {
                                                             value: true,
@@ -488,7 +513,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                             ? true
                                                             : false
                                                     }
-                                                    value="металл"
+                                                    value={waste[6]}
                                                     {...register('wasteTypes', {
                                                         required: {
                                                             value: true,
@@ -509,7 +534,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                             ? true
                                                             : false
                                                     }
-                                                    value="ветошь"
+                                                    value={waste[7]}
                                                     {...register('wasteTypes', {
                                                         required: {
                                                             value: true,
