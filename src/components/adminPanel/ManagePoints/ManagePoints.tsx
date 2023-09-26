@@ -52,7 +52,6 @@ const ManagePoints = () => {
     return (
         <>
             <AdminHeader />
-
             <Box className={classes.managePoints}>
                 <Box className={classes.managePoints__container}>
                     <h1 className={classes.managePoints__title}>Пункты приема</h1>

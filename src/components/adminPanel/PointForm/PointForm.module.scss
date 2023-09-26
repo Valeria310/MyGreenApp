@@ -2,51 +2,7 @@
 
 .pointForm {
   margin-bottom: 30px;
-  // padding: 145px 0 115px;
-
-  // @media (max-width: 1439px){
-  //   padding: 115px 0 80px
-  // }
-
-  // @media (max-width: 767px){
-  //   padding: 105px 0 50px;
-  // }
 }
-
-// .pointForm__container {
-//   max-width: 1440px;
-//   margin: 0 auto;
-//   padding: 0 108px;
-
-//   @media (max-width: 1439px){
-//     padding: 0 40px;
-//   }
-
-//   @media (max-width: 767px){
-//     padding: 0 10px;
-//   }
-// }
-
-// .pointForm__title {
-//   margin: 0;
-//   margin-bottom: 40px;
-//   font-family: Roboto;
-//   font-size: 48px;
-//   font-style: normal;
-//   font-weight: 600;
-//   line-height: 120%;
-//   color: $color-black;
-
-//   @media (max-width: 1439px) {
-//     font-size: 36px;
-//     line-height: 110%;
-//   }
-
-//   @media (max-width: 767px){
-//     font-size: 28px;
-//     margin-bottom: 30px;
-//   }
-// }
 
 .pointForm__textareaBox {
   position: relative;
@@ -58,7 +14,7 @@
   padding: 0 5px;
   color: rgba($color-black, 0.6);
   position: absolute;
-  background-color: #ffffff;
+  background-color: $color-global-white;
   top: -8px;
   left: 15px;
 

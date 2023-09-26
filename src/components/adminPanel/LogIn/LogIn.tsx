@@ -1,7 +1,4 @@
 import { Box, Button, InputAdornment, TextField } from '@mui/material';
-// import Button from '@mui/material/Button';
-// import InputAdornment from '@mui/material/InputAdornment';
-// import TextField from '@mui/material/TextField';
 import { useForm } from 'react-hook-form';
 
 import classes from './Login.module.scss';

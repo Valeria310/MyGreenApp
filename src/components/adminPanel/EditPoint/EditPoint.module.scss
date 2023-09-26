@@ -13,8 +13,6 @@
 }
 
 .editPoint__container {
-  // max-width: 1255px;
-  // padding: 0 15px;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 108px;
@@ -59,7 +57,7 @@
   padding: 0 5px;
   color: rgba($color-black, 0.6);
   position: absolute;
-  background-color: #ffffff;
+  background-color: $color-global-white;
   top: -8px;
   left: 15px;
 }

@@ -6,7 +6,7 @@ import { Box, Chip } from '@mui/material';
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import classes from './Point.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
@@ -124,7 +124,6 @@ const Point: React.FC = () => {
                             url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
                         />
                         <MarkerClusterGroup chunkedLoading>
-                            {/* {filteredMarkers.map((m, i) => */}
                             {pointData.display ? (
                                 <Marker
                                     key={pointData.id}

@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import classes from './EditPoint.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
@@ -17,7 +17,7 @@ type PointId = {
     id: string;
 };
 
-const EditPoint: React.FC = ({ ...props }) => {
+const EditPoint: React.FC = () => {
     const { id } = useParams<PointId>();
 
     const customIcon = new L.Icon({

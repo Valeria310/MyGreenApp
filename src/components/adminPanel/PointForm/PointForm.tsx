@@ -43,6 +43,7 @@ interface State extends SnackbarOrigin {
 const PointForm: React.FC<Partial<MarkerType>> = (props) => {
     const navigate = useNavigate();
 
+    // Popup
     const [state, setState] = React.useState<State>({
         open: false,
         vertical: 'bottom',
@@ -58,6 +59,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
         setState({ ...state, open: false });
     };
 
+    // Form validation
     const form = useForm<FormValues>({
         mode: 'onBlur',
         defaultValues: {
