@@ -1,4 +1,4 @@
-import ManagePoints from '../../components/adminPanel/ManagePoints';
+import ManagePoints from '../../../components/adminPanel/ManagePoints';
 
 const AdminPanel = () => {
     return (

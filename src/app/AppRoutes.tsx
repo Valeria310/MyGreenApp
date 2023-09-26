@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 
-import AdminPanel from 'src/pages/AdminPanel';
-import CreatePointPage from 'src/pages/CreatePointPage';
-import EditPointPage from 'src/pages/EditPointPage';
+import CreatePointPage from 'src/pages/adminPanel/CreatePointPage';
+import EditPointPage from 'src/pages/adminPanel/EditPointPage';
+import LogInPage from 'src/pages/adminPanel/LogInPage';
+import ManagePoints from 'src/pages/adminPanel/ManagePoints';
+import PointPage from 'src/pages/adminPanel/PointPage';
 import { Homepage } from 'src/pages/Homepage/Homepage';
-import LogInPage from 'src/pages/LogInPage';
-import PointPage from 'src/pages/PointPage';
 import { RecyclePage } from 'src/pages/RecyclePage/RecyclePage';
 
 export const AppRoutes = () => {
@@ -14,7 +14,7 @@ export const AppRoutes = () => {
             <Route path="/" element={<Homepage />} />
             <Route path="/recycle" element={<RecyclePage />} />
             <Route path="/login" element={<LogInPage />} />
-            <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/admin" element={<ManagePoints />} />
             <Route path="/admin/create-new-point" element={<CreatePointPage />} />
             <Route path="/admin/point/:id" element={<PointPage />} />
             <Route path="/admin/point/:id/edit" element={<EditPointPage />} />
