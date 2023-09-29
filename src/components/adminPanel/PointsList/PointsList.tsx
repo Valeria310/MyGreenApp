@@ -66,7 +66,10 @@ const PointsList = () => {
                                 to={`point/${row.id}`}
                                 key={row.id}
                                 sx={{
-                                    '&:hover': { background: 'lightblue', cursor: 'pointer' }
+                                    '&:hover': {
+                                        background: '#EDF7FD',
+                                        cursor: 'pointer'
+                                    }
                                 }}
                             >
                                 <TableCell className={classes.cell}>{row.title}</TableCell>

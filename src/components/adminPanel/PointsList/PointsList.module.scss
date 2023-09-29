@@ -8,9 +8,15 @@
   box-sizing: border-box;
   max-width: 150px;
   padding: 16px;
+  padding-bottom: 0;
   white-space: nowrap;
   overflow: scroll;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
+
 
 .noPhone {
   color: rgba($color-black, 0.38);
@@ -38,7 +44,7 @@
   }
 
   button {
-    background-color: $color-button ;
+    background-color: $color-primary-form ;
     color: $color-global-white;
     width: 40px;
     height: 40px;
@@ -60,8 +66,16 @@
       background-position: center;
     }
 
+    &:hover {
+      background-color: $color-primary-form-hover ;
+    }
+
+    &:active {
+      background-color: $color-primary-form-active ;
+    }
+
     &:disabled {
-      background-color: rgba($color-button, 0.3);
+      background-color: rgba($color-primary-form, 0.3);
 
       &::before {
         opacity: 0.3;

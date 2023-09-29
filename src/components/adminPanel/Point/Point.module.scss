@@ -68,12 +68,30 @@
 }
 
 .point__titleLink {
-  color: $color-grey;
+  color: $color-primary-form;
+  transition: none;
+
+  &:hover{
+    color: $color-primary-form-hover;
+  }
+
+  &:active {
+    color: $color-primary-form-active;
+  }
 }
 
 .point__websiteLink {
   text-decoration: none;
-  color: $color-black;
+  color: $color-primary-form;
+
+  &:hover{
+    text-decoration: underline;
+    color: $color-primary-form-hover;
+  }
+
+  &:active {
+    color: $color-primary-form-active;
+  }
 }
 
 .point__table {
