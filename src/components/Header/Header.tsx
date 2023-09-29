@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 
 import { Navigation } from './../Navigation/Navigation';
-
 import './Header.scss';
+import { SearchForm } from './SearchForm';
 
 
 export const Header = () => {
-    let searchRes: string[] = [];
     let prevPos = 0;
     let changeVisible: NodeJS.Timeout;
     let isStarted = false;
@@ -15,7 +14,6 @@ export const Header = () => {
     const firtsBlockHeight = 902;
     let position = 0;
     let isSearchFormOpened = false;
-    
     window.addEventListener('resize', () => {
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -78,31 +76,50 @@ export const Header = () => {
         }
     };
 
-    document.addEventListener('click', (e)=> {
-        const plug = document.getElementsByClassName('plug')[0];
+    const handlePlugClick = () => {
         const burger = document.getElementById('burger');
-        const links = document.getElementsByClassName('navigation_link');
+        const plug = document.getElementsByClassName('plug')[0];
+
+        position=window.pageYOffset;
+        const menu = document.getElementById('menu');
+        const header = document.getElementById('header');
+        menu?.classList.add('opened');
+        burger?.classList.add('cross');
+        header?.classList.add('fixed');
+        setTimeout(() => {
+            isMenuOpen = true;
+        }, 500);
+        document.body.style.overflowY = 'hidden';
+        const container = header?.getElementsByClassName('container')[0];
+        container?.classList.add('opened-menu');
+        setTimeout(() => {
+            document.body.style.position = 'fixed';
+        }, 500);
+        plug?.addEventListener('click', clickHandler, { once: true });
+    };
+
+    const handleSearchClick = () => {
         const searchForm = document.getElementById('searchForm');
         const searchBtn = document.getElementById('searchBtn');
         const searchInput = document.getElementById('searchInput'); 
-        if(e.target == plug && isMenuOpen === false) {
-            position=window.pageYOffset;
-            const menu = document.getElementById('menu');
-            const header = document.getElementById('header');
-            menu?.classList.add('opened');
-            burger?.classList.add('cross');
-            header?.classList.add('fixed');
-            setTimeout(() => {
-                isMenuOpen = true;
-            }, 500);
-            document.body.style.overflowY = 'hidden';
-            const container = header?.getElementsByClassName('container')[0];
-            container?.classList.add('opened-menu');
-            setTimeout(() => {
-                document.body.style.position = 'fixed';
-            }, 500);
-            plug?.addEventListener('click', clickHandler, { once: true });
-        } else if(e.target == links[3] || e.target == links[4] || e.target == links[5] ) {
+
+        if (isSearchFormOpened) {
+            searchForm?.classList.remove('opened');
+            searchBtn?.classList.remove('opened');
+            isSearchFormOpened = false;
+            searchInput?.blur();
+        } else {
+            searchForm?.classList.add('opened');
+            searchBtn?.classList.add('opened');
+            searchInput?.focus();
+            isSearchFormOpened = true;
+        }
+    };
+
+    document.addEventListener('click', (e)=> {
+        const links = document.getElementsByClassName('navigation_link');
+        const burger = document.getElementById('burger');
+        if(e.target == links[3] || e.target == links[4] || e.target == links[5] ) {
             const menu = document.getElementById('menu');
             const header = document.getElementById('header');
             menu?.classList.remove('opened');
@@ -116,16 +133,6 @@ export const Header = () => {
             const container = header?.getElementsByClassName('container')[0];
             container?.classList.remove('opened-menu');
             mousePosition = 'out';
-        } else if (e.target == searchBtn && !isSearchFormOpened) {
-            searchForm?.classList.add('opened');
-            searchBtn?.classList.add('opened');
-            searchInput?.focus();
-            isSearchFormOpened = true;
-        } else if (e.target == searchBtn && isSearchFormOpened) {
-            searchForm?.classList.remove('opened');
-            searchBtn?.classList.remove('opened');
-            isSearchFormOpened = false;
-            searchInput?.blur();
         }
     });
 
@@ -151,6 +158,7 @@ export const Header = () => {
         setTimeout(() => {
             window.addEventListener('scroll', scrollHandler, false);
         }, 1000);
+        
         return () => window.removeEventListener('scroll', scrollHandler, false);
     });
 
@@ -159,11 +167,8 @@ export const Header = () => {
             <a className="logo" href='/'></a>
             <div className="navigation-wrapper">
                 <Navigation />
-                <form className="search-form" id='searchForm'>
-                    <input className="search-input" id='searchInput' type="text" placeholder="Поиск по сайту" maxLength={28} />
-                    {res}
-                </form>
-                <div className="search-btn" id='searchBtn'></div>
+                <SearchForm />
+                <div className="search-btn" id='searchBtn' onClick={handleSearchClick}></div>
             </div>
             <div className="header-mobile-burger" id='burger'>
                 <div className="burger-line"></div>
@@ -171,10 +176,10 @@ export const Header = () => {
                 <div className="burger-line"></div>
             </div>
             <div className="logUp-btn">Войти</div>
-            <div className="plug"></div>
+            <div className="plug" onClick={handlePlugClick}></div>
             <div className="header-mobile-menu" id='menu'>
                 <Navigation />
-                <span className='headrer-menu-text'>info@ecohub.by</span>
+                <span className='headrer-menu-text'>info@ecohub.by</span> 
             </div>
         </div>
     </header>);

@@ -143,37 +143,45 @@
     width: 90px;
     padding: 10px 25px;
     border-radius: 35px;
-    border: 0.5px solid #070707;
+    border: 1px solid #070707;
     background: #F6FCEA;
     font-family: $font-primary;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: 110%;
+    letter-spacing: 0.3px;
     color: $color-black;
     opacity: 0;
-    transition: all 0.25s;
+    transition: all 0s;
     transition-timing-function: ease-in;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    justify-content: center;
 
     & .search-input {
         width: 0;
-        height: 100%;
         border: none;
         outline: none;
         background: transparent;
         transition: all 0.5s;
+        height: 26px;
 
         &::placeholder {
             color: rgba(7, 7, 7, 0.40)
         }
     }
 
+    & .underline {
+        width: 92%;
+        height: 0;
+        margin: 0 auto;
+        background-color: rgba(7, 7, 7, 0.60);
+    }
+
     &.opened {
         transition: all 0.5s;
-        width: 104%;
+        width: 105%;
         opacity: 1;
         & .search-input {
             width: 100%;
@@ -181,25 +189,49 @@
 
         &.showes {
             height: auto;
-            border-width: 0;
+            padding: 16px 0;
+            padding-bottom: 0;
+            border-color: #F6FCEA;
             border-radius: 35px;
             background-color: $color-white;
-            box-shadow: 0px 8px 20px 0px rgba(156, 202, 193, 0.20), 2px -2px 10px 0px rgba(206, 239, 209, 0.20), 0px 2px 4px 0px rgba(255, 255, 254, 0.50) inset;
-            padding: 15px 25px;
-            padding-bottom: 30px;
+            box-shadow: 0px 25px 35px 0px rgba(0, 0, 0, 0.06), 0px 0px 5px 0px rgba(0, 0, 0, 0.10);
 
             & .search-input {
-                border-bottom: 1px solid rgba(7, 7, 7, 0.60);
-                padding-bottom: 15px;
-                margin-bottom: 20px;
+                padding: 0 24px;
+            }
+            
+            & .underline {
+                height: 1px;
+                margin-top: 16px;
+            }
+
+            & .res-list {
+                margin-top: 25px;
+                margin-bottom: 30px;
             }
         }
     }
 }
 
-.res-item {
-    height: 26px;
+.res-list {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
+}
+
+.res-item {
+    height: 36px;
+    margin: 0;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        cursor: pointer;
+        background: #E3EFDD;
+    }
 }
 
 .search-btn {
@@ -228,6 +260,13 @@
 
     &:hover {
         border-color: #000000;
+    }
+}
+
+@media (max-width: 1250px) {
+    .logUp-btn {
+        font-size: 20px;
+        line-height: 140%;
     }
 }
 
