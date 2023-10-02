@@ -1,7 +1,7 @@
 import React from 'react';
 
 import s from './FilterButton.module.scss';
-import {filterType} from '../../constants/MapState';
+import { filterType } from '../../constants/MapState';
 
 
 type PropsType = {
@@ -17,7 +17,7 @@ export const FilterButton = (props: PropsType) => {
     const onClickHandler = () => {
 
         props.changeButtonStatus(props.id);
-    }
+    };
 
     return (
         <button

@@ -9,8 +9,27 @@
   white-space: nowrap;
 }
 
+.filterButton:hover {
+  background-color: #B1CDBE;
+  border-color: transparent;
+}
+//.filterButton:focus {
+//  border-color: transparent;
+//  outline-color: transparent;
+//  outline-style:solid;
+//  box-shadow: 0 0 0 2px #94B9AB;
+//  background-color: #F6FCEA;
+ // border: 2px #94B9AB solid;
+//}
+
+.filterButton:active {
+  background-color: $color-primary;
+
+}
+
 .active {
   background-color: $color-primary;
+  border-color: transparent;
 }
 
 
@@ -41,7 +60,7 @@
 
   .filterButton {
     padding: 13px 27px;
-    margin: 0px 30px 30px 0px;
+    margin: 0px 25px 25px 0px;
     font-size: 24px;
 
   }

@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import L from 'leaflet';
-import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 
-import {FilterButton} from './FilterButton';
+import { FilterButton } from './FilterButton';
 import s from './MapSection.module.scss';
 import pointIcon from '../../assets/images/point_icon.svg';
 import {
@@ -25,40 +25,38 @@ const MapSection = () => {
 
     const changeButtonStatus = (id: string) => {
 
-        if (id === "all") {
-            filterButtons[0].isActive = !filterButtons[0].isActive
+        if (id === 'all') {
+            filterButtons[0].isActive = !filterButtons[0].isActive;
         } else {
-            filterButtons[0].isActive = false
+            filterButtons[0].isActive = false;
         }
 
-        filterButtons.map(b => b.id === id ? b.isActive = !b.isActive : b)
+        filterButtons.map(b => b.id === id ? b.isActive = !b.isActive : b);
 
-        if (id === "all" && filterButtons[0].isActive) {
+        if (id === 'all' && filterButtons[0].isActive) {
 
-            filterButtons.map(b => b.isActive = false)
+            filterButtons.map(b => b.isActive = false);
 
-        } else if (id === "all" && !filterButtons[0].isActive) {
+        } else if (id === 'all' && !filterButtons[0].isActive) {
 
-            filterButtons.map(b => b.isActive = true)
+            filterButtons.map(b => b.isActive = true);
 
-        } else if (id !== "all") {
-            let buttonsStatusArray: Array<boolean> = []
-            filterButtons.map(b => buttonsStatusArray.push(b.isActive))
-            buttonsStatusArray.shift()
+        } else if (id !== 'all') {
+            const buttonsStatusArray: Array<boolean> = [];
+            filterButtons.map(b => buttonsStatusArray.push(b.isActive));
+            buttonsStatusArray.shift();
             if (!buttonsStatusArray.includes(false)) {
-                filterButtons[0].isActive = true
+                filterButtons[0].isActive = true;
             }
         }
 
 
-        setFilterButtons([...filterButtons])
+        setFilterButtons([...filterButtons]);
 
 
     };
 
     const filteredMarkers = markersState;
-
-    console.log(filterButtons)
 
     filteredMarkers.map(m => m.display = false);
 
@@ -94,7 +92,7 @@ const MapSection = () => {
             <div className={s.mapWrapper}>
 
                 <MapContainer center={[53.9024716, 27.5618225]} zoom={11.5} scrollWheelZoom={true}
-                              className={s.mapContainer}>
+                    className={s.mapContainer}>
                     <TileLayer
                         attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
                         url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}

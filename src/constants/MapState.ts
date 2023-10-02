@@ -1141,7 +1141,7 @@ export const markersState: Array<MarkerType> = [
         wasteTypes: [waste[9]],
         display: false
     },
- {
+    {
         id: 85,
         title: 'Центр поддержки семьи и материнства Матуля',
         website: '',
@@ -1169,10 +1169,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 88,
-        title: 'Поликлиника №1',
+        title: 'Поликлиника №1 (контейнер)',
         website: '',
         address: 'Минск, ул. Сухая 6',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.90365771444158,
         longitude: 27.537873010545866,
@@ -1182,10 +1182,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 89,
-        title: 'Поликлиника №3',
+        title: 'Поликлиника №3 (контейнер)',
         website: '',
         address: 'Минск, ул. Воронянского, 13/2',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.90365771444158,
         longitude: 27.537873010545866,
@@ -1193,12 +1193,12 @@ export const markersState: Array<MarkerType> = [
         wasteTypes: [waste[11]],
         display: false
     },
-{
+    {
         id: 90,
-        title: 'Поликлиника №4',
+        title: 'Поликлиника №4 (контейнер)',
         website: '',
         address: 'Минск, пр-т Победителей, 93',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.93358713136268,
         longitude: 27.50108805287594,
@@ -1206,12 +1206,12 @@ export const markersState: Array<MarkerType> = [
         wasteTypes: [waste[11]],
         display: false
     },
-{
+    {
         id: 91,
-        title: 'Поликлиника №5',
+        title: 'Поликлиника №5 (контейнер)',
         website: '',
         address: 'Минск, ул. Есенина, 21',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.8498495070768,
         longitude: 27.457682568214125,
@@ -1221,10 +1221,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 92,
-        title: 'Поликлиника №7',
+        title: 'Поликлиника №7 (контейнер)',
         website: '',
         address: 'Минск, ул.Станиславского,32',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.88716576253266,
         longitude: 27.591821568216762,
@@ -1234,10 +1234,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 93,
-        title: 'Поликлиника №8',
+        title: 'Поликлиника №8 (контейнер)',
         website: '',
         address: 'Минск, ул. Никифирова, 3',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.88261945678313,
         longitude: 27.608561539380435,
@@ -1245,12 +1245,12 @@ export const markersState: Array<MarkerType> = [
         wasteTypes: [waste[11]],
         display: false
     },
-  {
+    {
         id: 94,
-        title: 'Поликлиника №9',
+        title: 'Поликлиника №9 (контейнер)',
         website: '',
         address: 'Минск, ул. Щербакова, 1',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.88264475285694,
         longitude: 27.608561539380435,
@@ -1258,12 +1258,12 @@ export const markersState: Array<MarkerType> = [
         wasteTypes: [waste[11]],
         display: false
     },
-{
+    {
         id: 95,
-        title: 'Поликлиника №10',
+        title: 'Поликлиника №10 (контейнер)',
         website: '',
         address: 'Минск, ул. Сухаревская, 19',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.88611624235541,
         longitude: 27.434805968216672,
@@ -1273,10 +1273,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 96,
-        title: 'Поликлиника №12',
+        title: 'Поликлиника №12 (контейнер)',
         website: '',
         address: 'Минск, ул. Ольшевского, 61',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.92276876738205,
         longitude: 27.48963493938325,
@@ -1286,10 +1286,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 96,
-        title: 'Поликлиника №13',
+        title: 'Поликлиника №13 (контейнер)',
         website: '',
         address: 'Минск, ул. Ломоносова, 3',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.931016389771585,
         longitude: 27.59762615472799,
@@ -1299,10 +1299,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 97,
-        title: 'Поликлиника №14',
+        title: 'Поликлиника №14 (контейнер)',
         website: '',
         address: 'Минск, ул. Фроликова, 2',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.904391887062644,
         longitude: 27.610386097054022,
@@ -1312,10 +1312,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 98,
-        title: 'Поликлиника №15',
+        title: 'Поликлиника №15 (контейнер)',
         website: '',
         address: 'Минск, ул. Р.Люксембург, 112',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.89141037104772,
         longitude: 27.515144713890265,
@@ -1325,10 +1325,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 99,
-        title: 'Поликлиника №17',
+        title: 'Поликлиника №17 (контейнер)',
         website: '',
         address: 'Минск, ул. Герасименко, 49',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.884610723171996,
         longitude: 27.68034283938058,
@@ -1338,10 +1338,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 100,
-        title: 'Поликлиника №19',
+        title: 'Поликлиника №19 (контейнер)',
         website: '',
         address: 'Минск, пр-т Независимости, 119',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.93450032832208,
         longitude: 27.635788568220185,
@@ -1351,10 +1351,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 101,
-        title: 'Поликлиника №20',
+        title: 'Поликлиника №20 (контейнер)',
         website: '',
         address: 'Минск, пр-т Пушкина, 16',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.9002736995233,
         longitude: 27.498124739381677,
@@ -1364,10 +1364,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 102,
-        title: 'Поликлиника №22',
+        title: 'Поликлиника №22 (контейнер)',
         website: '',
         address: 'Минск, ул. Ташкентская, 5',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.83609144902855,
         longitude: 27.629798139377097,
@@ -1377,10 +1377,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 103,
-        title: 'Поликлиника №23',
+        title: 'Поликлиника №23 (контейнер)',
         website: '',
         address: 'Минск, пр-т Рокоссовского, 134',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.8545060096706,
         longitude: 27.60432995472259,
@@ -1390,10 +1390,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 104,
-        title: 'Поликлиника №25',
+        title: 'Поликлиника №25 (контейнер)',
         website: '',
         address: 'Минск, ул. Рафиева, 60',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.86321809254135,
         longitude: 27.443969383559253,
@@ -1403,10 +1403,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 105,
-        title: 'Поликлиника №30',
+        title: 'Поликлиника №30 (контейнер)',
         website: '',
         address: 'Минск, ул. Кольцова, 53/2',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.95154128518595,
         longitude: 27.60211763938522,
@@ -1416,10 +1416,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 106,
-        title: 'Поликлиника №31',
+        title: 'Поликлиника №31 (контейнер)',
         website: '',
         address: 'Минск, ул. Бурдейного, 4',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.90457602435662,
         longitude: 27.458670683562236,
@@ -1429,10 +1429,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 107,
-        title: 'Поликлиника №33',
+        title: 'Поликлиника №33 (контейнер)',
         website: '',
         address: 'Минск, ул. Сурганова, 45/4',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.926045639002126,
         longitude: 27.58669813938345,
@@ -1442,10 +1442,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 108,
-        title: 'Поликлиника №34',
+        title: 'Поликлиника №34 (контейнер)',
         website: '',
         address: 'Минск, ул. Кульман, 22',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.92413948057831,
         longitude: 27.57746995287522,
@@ -1455,10 +1455,10 @@ export const markersState: Array<MarkerType> = [
     },
     {
         id: 109,
-        title: 'Поликлиника №35',
+        title: 'Поликлиника №35 (контейнер)',
         website: '',
         address: 'Минск, ул. Серова, 15',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.84800345762384,
         longitude: 27.54933136821407,
@@ -1466,12 +1466,12 @@ export const markersState: Array<MarkerType> = [
         wasteTypes: [waste[11]],
         display: false
     },
-{
+    {
         id: 110,
-        title: 'Поликлиника №37',
+        title: 'Поликлиника №37 (контейнер)',
         website: '',
         address: 'Минск, ул. Янки Лучины, 28',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.839066215271835,
         longitude: 27.57728158355763,
@@ -1479,22 +1479,19 @@ export const markersState: Array<MarkerType> = [
         wasteTypes: [waste[11]],
         display: false
     },
-{
+    {
         id: 111,
-        title: 'Поликлиника №40',
+        title: 'Поликлиника №40 (контейнер)',
         website: '',
         address: 'Минск, ул. Люцинская, 3',
-        schedule: 'контейнер',
+        schedule: '',
         phone: '',
         latitude: 53.93210930317946,
         longitude: 27.440373370072386,
         info: '',
         wasteTypes: [waste[11]],
         display: false
-    },
-
-
-
+    }
 ];
 
 
