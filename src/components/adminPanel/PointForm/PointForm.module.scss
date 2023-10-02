@@ -25,12 +25,21 @@
 
 .pointForm__textarea {
   box-sizing: border-box;
+  display: block;
   padding: 16px 12px;
   width: 100%;
   min-height: 153px;
   border-radius: 4px;
   border: 1px solid rgba($color-black, 0.23);
   resize: none;
+  outline: none;
+  transition: none;
+
+  &:focus {
+    min-height: 151px;
+    padding: 15px 11px;
+    border: 2px solid $color-primary-form;
+  }
 
   &_error {
     border: 1px solid $color-error;

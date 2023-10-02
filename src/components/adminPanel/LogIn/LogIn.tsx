@@ -88,9 +88,9 @@ const LogIn = () => {
                     />
                 </Box>
                 <p className={classes.logIn__text}>
-                    <a className={classes.logIn__link} href="#">
-                        Забыли пароль?
-                    </a>{' '}
+                    {/* <a className={classes.logIn__link} href="#"> */}
+                    Забыли пароль?&nbsp;
+                    {/* </a>{' '} */}
                     Обратитесь к суперадмину
                 </p>
                 <Button
