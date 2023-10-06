@@ -3,9 +3,7 @@
 $duration: 3s;
 
 .parallax {
-    // max-width: 1440px;
     height: 2048px;
-    // margin: 0 auto;
     overflow: hidden;
     position: relative;
     margin-top: -106px;
@@ -83,19 +81,7 @@ $duration: 3s;
     position: absolute;
     opacity: 0;
     left: 50%;
-    top: 248px;
-    @media screen and (min-width: 530px) {
-        top: 194px;
-    }
-    @media screen and (min-width: 1200px) {
-        top: 158px;
-    }
-    // @media screen and (max-width: 1200px) {
-    //     top: 193px;
-    // }
-    // @media screen and (max-width: 530px) {
-    //     top: 245px;
-    // }
+    top: 170px;
     transform: translate(-50%, 0);
     transition: all $duration;
 
@@ -124,14 +110,11 @@ $duration: 3s;
         font-style: normal;
         font-weight: 600;
         font-size: 56px;
-        line-height: 110%;
+        line-height: 105%;
         margin: 0;
         margin-block-end: 0;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
         letter-spacing: 0.6px;
-        @media screen and (min-width: 1200px) {
-            margin-bottom: 30px;
-        }
     }
 
     &_text {
@@ -340,7 +323,7 @@ $duration: 3s;
         height: 1024px;
 
         &.active {
-            height: 1050px;
+            height: 1024px;
         }
     }
 
@@ -356,7 +339,7 @@ $duration: 3s;
         height: 240px;
 
         &.active {
-            height: 598px;
+            height: 571px;
         }
     }
 
@@ -401,7 +384,7 @@ $duration: 3s;
     }
 
     .about_text {
-        font-weight: 400;
+        font-weight: 500;
     }
 }
 
@@ -575,7 +558,7 @@ $duration: 3s;
         height: 800px;
 
         &.active {
-            height: 826px;
+            height: 800px;
         }
     }
 
@@ -634,7 +617,7 @@ $duration: 3s;
     }
 
     .about_bg.active {
-        height: 521px;
+        height: 490px;
     }
 
     .big_trees.active {
