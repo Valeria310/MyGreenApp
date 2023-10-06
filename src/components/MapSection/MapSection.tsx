@@ -111,10 +111,7 @@ const MapSection = ()=> {
                     </MarkerClusterGroup>
                 </MapContainer>
             </div>
-
         </section>
-
-
     );
 };
 

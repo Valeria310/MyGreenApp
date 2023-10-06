@@ -3,7 +3,6 @@
 .mapContainer {
   width: 100%;
   height: 543px;
-
 }
 
   .mapHeaderWrapper {
@@ -12,10 +11,10 @@
     justify-content: flex-start;
     background: $color-white;
     padding: 25px 25px 0px 25px;
-
   }
 
   .mapWrapper {
+    position: relative;
     background: $color-white;
     padding: 0px;
   }

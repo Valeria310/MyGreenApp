@@ -1,13 +1,13 @@
 import { useInView } from 'react-intersection-observer';
 
-export const useHideContactButton = () => useInView({
+export const useFixedContactButton = () => useInView({
     threshold: 0,
-    rootMargin: '0px',
+    rootMargin: '90px',
     onChange: (inView) => {
         const button = document.getElementById('contact-us');
         if (!button) return;
         if(inView) {
-            button.style.display = 'none';
+            button.style.position = 'absolute';
         } else {
             button.removeAttribute('style');
         }
