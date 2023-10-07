@@ -4,7 +4,7 @@ import { FeedbackPopUpProps } from './FeedbackPopUpProps';
 import FeedbackForm from '../FeedbackForm';
 import PopUp from '../PopUp';
 
-export const FeedbackPopUp:FC<FeedbackPopUpProps> = ({ show, onClose }) => {
+export const FeedbackPopUp:FC<FeedbackPopUpProps> = ({ show, onClose, data }) => {
     return (
         <PopUp
             show={show}
@@ -13,7 +13,7 @@ export const FeedbackPopUp:FC<FeedbackPopUpProps> = ({ show, onClose }) => {
             showCloseCrossButton={true}
             noBorderRadiusMobile={true}
         >
-            <FeedbackForm />
+            <FeedbackForm data={data} />
         </PopUp>
     );
 };

@@ -1,20 +1,17 @@
-import { useState, useEffect, MouseEvent } from 'react';
+import { useState, useEffect, MouseEvent, FC } from 'react';
 
 import selectDownArrowIcon from 'src/assets/icons/select-down-arrow.svg';
 import selectUpArrowIcon from 'src/assets/icons/select-up-arrow.svg';
 import { useClickOutside } from 'src/hooks/useClickOutside';
 
 import s from  './FeedbackForm.module.scss';
+import { FeedbackFormProps } from './FeedbackFormProps';
 
-export const FeedbackForm = () => {
+export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
     const dropdownRef = useClickOutside(() => setOpenDropdown(false));
     // Form state control
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        messageType: 'Отзыв',
-        message: ''
-    });
+    const [formData, setFormData] = [data.formData, data.setFormData];
+    
     // Message symbols count
     const [count, setCount] = useState(0);
     // Checkbox control
