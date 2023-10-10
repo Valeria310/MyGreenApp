@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AddIcon from '@mui/icons-material/Add';
-import { Box, Button, Tab, Tabs } from '@mui/material';
+import { Box, Button, Paper, Tab, Tabs } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import classes from './ManagePoints.module.scss';
@@ -55,23 +55,29 @@ const ManagePoints = () => {
             <Box className={classes.managePoints}>
                 <Box className={classes.managePoints__container}>
                     <h1 className={classes.managePoints__title}>Пункты приема</h1>
-                    <Box className={classes.managePoints__tabsBox}>
-                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                            <Tab label="Таблица" {...a11yProps(0)} />
-                            <Tab label="Карта" {...a11yProps(1)} />
-                        </Tabs>
-                        <Link to="create-new-point">
-                            <Button variant="contained" startIcon={<AddIcon />}>
-                                Добавить
-                            </Button>
-                        </Link>
-                    </Box>
-                    <CustomTabPanel value={value} index={0}>
-                        <PointsList />
-                    </CustomTabPanel>
-                    <CustomTabPanel value={value} index={1}>
-                        <PointsMap />
-                    </CustomTabPanel>
+                    <Paper sx={{ padding: 2 }}>
+                        <Box className={classes.managePoints__tabsBox}>
+                            <Tabs
+                                value={value}
+                                onChange={handleChange}
+                                aria-label="basic tabs example"
+                            >
+                                <Tab label="Таблица" {...a11yProps(0)} />
+                                <Tab label="Карта" {...a11yProps(1)} />
+                            </Tabs>
+                            <Link to="create-new-point">
+                                <Button variant="contained" startIcon={<AddIcon />}>
+                                    Добавить
+                                </Button>
+                            </Link>
+                        </Box>
+                        <CustomTabPanel value={value} index={0}>
+                            <PointsList />
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={1}>
+                            <PointsMap />
+                        </CustomTabPanel>
+                    </Paper>
                 </Box>
             </Box>
         </>

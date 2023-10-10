@@ -2,22 +2,24 @@ import React from 'react';
 
 import { TablePagination } from '@mui/base/TablePagination';
 import {
+    Box,
     Chip,
     TableContainer,
     Table,
     TableHead,
     TableBody,
     TableRow,
-    TableCell,
-    Paper
+    TableCell
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { markersState } from 'src/constants/MapState';
 
 import classes from './PointsList.module.scss';
 
 const PointsList = () => {
+    const navigate = useNavigate();
+
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -40,12 +42,16 @@ const PointsList = () => {
     const chipDisplayed = <Chip label={'Отображается'} variant="outlined" color="success" />;
     const chipHidden = <Chip label={'Не отображается'} variant="outlined" color="error" />;
 
+    const rowHandler = (ref: number) => {
+        navigate(`point/${ref}`);
+    };
+
     return (
         <>
-            <TableContainer component={Paper} sx={{ maxHeight: '450px' }}>
+            <TableContainer component={Box} sx={{ maxHeight: '450px' }}>
                 <Table stickyHeader>
                     <TableHead>
-                        <TableRow>
+                        <TableRow className={classes.row}>
                             <TableCell className={classes.cell}>Организация</TableCell>
                             <TableCell className={classes.cell}>Сайт</TableCell>
                             <TableCell className={classes.cell}>Адрес</TableCell>
@@ -62,8 +68,8 @@ const PointsList = () => {
                             : tableData
                         ).map((row) => (
                             <TableRow
-                                component={Link}
-                                to={`point/${row.id}`}
+                                className={classes.row}
+                                onClick={() => rowHandler(row.id)}
                                 key={row.id}
                                 sx={{
                                     '&:hover': {

@@ -45,16 +45,27 @@ const PointsMap = () => {
     return (
         <>
             <Box className={classes.pointsMap__filters}>
+                <Chip
+                    className={classes.pointsMap__chip}
+                    key={'all'}
+                    label="Все"
+                    variant="outlined"
+                    color="primary"
+                    clickable
+                    component="button"
+                    // onClick={() => changeButtonStatus(f.id)}
+                />
                 {filterButtons.map((f) => (
                     <Chip
                         className={classes.pointsMap__chip}
                         key={f.id}
-                        label={f.wasteTitle}
+                        label={f.wasteTitle[0].toUpperCase() + f.wasteTitle.slice(1)}
                         variant={f.isActive ? 'filled' : 'outlined'}
                         color="primary"
                         clickable
                         component="button"
                         onClick={() => changeButtonStatus(f.id)}
+                        sx={{ lineHeight: '18px', letterSpacing: '0.16px' }}
                     />
                 ))}
             </Box>

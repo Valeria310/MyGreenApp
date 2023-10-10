@@ -85,7 +85,7 @@ const Point: React.FC = () => {
                                         <Chip
                                             key={item}
                                             className={classes.point__typeChip}
-                                            label={item}
+                                            label={item[0].toUpperCase() + item.slice(1)}
                                             variant="outlined"
                                             color="primary"
                                         />

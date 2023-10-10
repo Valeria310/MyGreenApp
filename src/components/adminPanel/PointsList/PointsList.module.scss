@@ -4,28 +4,45 @@
   pointer-events:none;
 }
 
+.row {
+  display: flex !important;
+  align-items: center !important;
+  width: 100%;
+  overflow: auto;
+  max-width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+
+}
+
 .cell {
   box-sizing: border-box;
-  max-width: 150px;
+  display: flex !important;
+  align-items: center !important;
+  width: 150px;
+  height: 65px;
   padding: 16px;
   padding-bottom: 0;
   white-space: nowrap;
-  overflow: scroll;
-  
+  overflow: auto;
+  scrollbar-width: none;
+
   &::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
 }
 
-
 .noPhone {
-  color: rgba($color-black, 0.38);
+  color: rgba($color-black, 0.38) !important;
 }
 
 .pagination {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
+  padding-right: 16px;
 
   & [class*="MuiTablePagination-toolbar"]{
     display: flex;
