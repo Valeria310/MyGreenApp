@@ -51,6 +51,7 @@ const PointsMap = () => {
                     label="Все"
                     variant="outlined"
                     color="primary"
+                    size="small"
                     clickable
                     component="button"
                     // onClick={() => changeButtonStatus(f.id)}
@@ -62,6 +63,7 @@ const PointsMap = () => {
                         label={f.wasteTitle[0].toUpperCase() + f.wasteTitle.slice(1)}
                         variant={f.isActive ? 'filled' : 'outlined'}
                         color="primary"
+                        size="small"
                         clickable
                         component="button"
                         onClick={() => changeButtonStatus(f.id)}

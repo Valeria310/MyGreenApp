@@ -632,11 +632,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                 >
                                     Сохранить
                                 </Button>
-                                <Button
-                                    onClick={props.id ? () => navigate(-2) : () => navigate(-1)}
-                                    type="button"
-                                    variant="text"
-                                >
+                                <Button onClick={() => navigate(-1)} type="button" variant="text">
                                     Отменить
                                 </Button>
                             </Box>
