@@ -151,6 +151,8 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
 
     const watchForm = watch();
 
+    const wasteWithoutAll = waste.slice(1);
+
     return (
         <>
             <div className={classes.pointForm}>
@@ -374,180 +376,60 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                             <Box sx={{ mb: '30px' }}>
                                 <FormControl className={classes.pointForm__checkboxes}>
                                     <FormGroup>
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    defaultChecked={
-                                                        props.wasteTypes &&
-                                                        props.wasteTypes.includes('пластик')
-                                                            ? true
-                                                            : false
+                                        {wasteWithoutAll
+                                            .slice(0, Math.ceil(wasteWithoutAll.length / 2))
+                                            .map((item) => (
+                                                <FormControlLabel
+                                                    key={item}
+                                                    control={
+                                                        <Checkbox
+                                                            defaultChecked={
+                                                                props.wasteTypes &&
+                                                                props.wasteTypes.includes(item)
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                            value={item}
+                                                            {...register('wasteTypes', {
+                                                                required: {
+                                                                    value: true,
+                                                                    message:
+                                                                        'Указание вида вторсырья обязательно'
+                                                                }
+                                                            })}
+                                                        />
                                                     }
-                                                    value={waste[0]}
-                                                    {...register('wasteTypes', {
-                                                        required: {
-                                                            value: true,
-                                                            message:
-                                                                'Указание вида вторсырья обязательно'
-                                                        }
-                                                    })}
+                                                    label={item[0].toUpperCase() + item.slice(1)}
                                                 />
-                                            }
-                                            label="Пластик"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    defaultChecked={
-                                                        props.wasteTypes &&
-                                                        props.wasteTypes.includes('бумага')
-                                                            ? true
-                                                            : false
-                                                    }
-                                                    value={waste[1]}
-                                                    {...register('wasteTypes', {
-                                                        required: {
-                                                            value: true,
-                                                            message:
-                                                                'Указание вида вторсырья обязательно'
-                                                        }
-                                                    })}
-                                                />
-                                            }
-                                            label="Бумага"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    defaultChecked={
-                                                        props.wasteTypes &&
-                                                        props.wasteTypes.includes('стекло')
-                                                            ? true
-                                                            : false
-                                                    }
-                                                    value={waste[2]}
-                                                    {...register('wasteTypes', {
-                                                        required: {
-                                                            value: true,
-                                                            message:
-                                                                'Указание вида вторсырья обязательно'
-                                                        }
-                                                    })}
-                                                />
-                                            }
-                                            label="Стекло"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    defaultChecked={
-                                                        props.wasteTypes &&
-                                                        props.wasteTypes.includes(
-                                                            'электронная и бытовая техника'
-                                                        )
-                                                            ? true
-                                                            : false
-                                                    }
-                                                    value={waste[3]}
-                                                    {...register('wasteTypes', {
-                                                        required: {
-                                                            value: true,
-                                                            message:
-                                                                'Указание вида вторсырья обязательно'
-                                                        }
-                                                    })}
-                                                />
-                                            }
-                                            label="Электронная и бытовая техника"
-                                        />
+                                            ))}
                                     </FormGroup>
                                     <FormGroup>
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    defaultChecked={
-                                                        props.wasteTypes &&
-                                                        props.wasteTypes.includes(
-                                                            'крупногабаритные отходы'
-                                                        )
-                                                            ? true
-                                                            : false
+                                        {wasteWithoutAll
+                                            .slice(Math.ceil(wasteWithoutAll.length / 2))
+                                            .map((item) => (
+                                                <FormControlLabel
+                                                    key={item}
+                                                    control={
+                                                        <Checkbox
+                                                            defaultChecked={
+                                                                props.wasteTypes &&
+                                                                props.wasteTypes.includes(item)
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                            value={item}
+                                                            {...register('wasteTypes', {
+                                                                required: {
+                                                                    value: true,
+                                                                    message:
+                                                                        'Указание вида вторсырья обязательно'
+                                                                }
+                                                            })}
+                                                        />
                                                     }
-                                                    value={waste[4]}
-                                                    {...register('wasteTypes', {
-                                                        required: {
-                                                            value: true,
-                                                            message:
-                                                                'Указание вида вторсырья обязательно'
-                                                        }
-                                                    })}
+                                                    label={item[0].toUpperCase() + item.slice(1)}
                                                 />
-                                            }
-                                            label="Крупногабаритные отходы"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    defaultChecked={
-                                                        props.wasteTypes &&
-                                                        props.wasteTypes.includes('опасные отходы')
-                                                            ? true
-                                                            : false
-                                                    }
-                                                    value={waste[5]}
-                                                    {...register('wasteTypes', {
-                                                        required: {
-                                                            value: true,
-                                                            message:
-                                                                'Указание вида вторсырья обязательно'
-                                                        }
-                                                    })}
-                                                />
-                                            }
-                                            label="Опасные отходы"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    defaultChecked={
-                                                        props.wasteTypes &&
-                                                        props.wasteTypes.includes('металл')
-                                                            ? true
-                                                            : false
-                                                    }
-                                                    value={waste[6]}
-                                                    {...register('wasteTypes', {
-                                                        required: {
-                                                            value: true,
-                                                            message:
-                                                                'Указание вида вторсырья обязательно'
-                                                        }
-                                                    })}
-                                                />
-                                            }
-                                            label="Металл"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    defaultChecked={
-                                                        props.wasteTypes &&
-                                                        props.wasteTypes.includes('ветошь')
-                                                            ? true
-                                                            : false
-                                                    }
-                                                    value={waste[7]}
-                                                    {...register('wasteTypes', {
-                                                        required: {
-                                                            value: true,
-                                                            message:
-                                                                'Указание вида вторсырья обязательно'
-                                                        }
-                                                    })}
-                                                />
-                                            }
-                                            label="Ветошь"
-                                        />
+                                            ))}
                                     </FormGroup>
                                 </FormControl>
                                 {errors.wasteTypes?.message ? (
