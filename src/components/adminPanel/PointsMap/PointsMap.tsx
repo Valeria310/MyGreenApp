@@ -25,16 +25,38 @@ const PointsMap = () => {
         useState<Array<FilterButtonsObjType>>(filterButtonsState);
 
     const changeButtonStatus = (id: string) => {
-        const updatedFilterButtons = filterButtons.map((b) =>
-            b.id === id ? { id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive } : b
-        );
-        setFilterButtons(updatedFilterButtons);
+        // const updatedFilterButtons = filterButtons.map((b) =>
+        //     b.id === id ? { id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive } : b
+        // );
+        // setFilterButtons(updatedFilterButtons);
+        if (id === 'all') {
+            filterButtons[0].isActive = !filterButtons[0].isActive;
+        } else {
+            filterButtons[0].isActive = false;
+        }
+
+        filterButtons.map((b) => (b.id === id ? (b.isActive = !b.isActive) : b));
+
+        if (id === 'all' && filterButtons[0].isActive) {
+            filterButtons.map((b) => (b.isActive = false));
+        } else if (id === 'all' && !filterButtons[0].isActive) {
+            filterButtons.map((b) => (b.isActive = true));
+        } else if (id !== 'all') {
+            const buttonsStatusArray: Array<boolean> = [];
+            filterButtons.map((b) => buttonsStatusArray.push(b.isActive));
+            buttonsStatusArray.shift();
+            if (!buttonsStatusArray.includes(false)) {
+                filterButtons[0].isActive = true;
+            }
+        }
+
+        setFilterButtons([...filterButtons]);
     };
 
     const filteredMarkers = markersState;
     filteredMarkers.map((m) => (m.display = false));
 
-    for (let i = 0; i < filterButtons.length; i++) {
+    for (let i = 1; i < filterButtons.length; i++) {
         if (filterButtons[i].isActive) {
             filteredMarkers.map((m) => (m.wasteTypes.includes(waste[i]) ? (m.display = true) : m));
         }
@@ -45,17 +67,6 @@ const PointsMap = () => {
     return (
         <>
             <Box className={classes.pointsMap__filters}>
-                <Chip
-                    className={classes.pointsMap__chip}
-                    key={'all'}
-                    label="Все"
-                    variant="outlined"
-                    color="primary"
-                    size="small"
-                    clickable
-                    component="button"
-                    // onClick={() => changeButtonStatus(f.id)}
-                />
                 {filterButtons.map((f) => (
                     <Chip
                         className={classes.pointsMap__chip}
