@@ -192,7 +192,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                             message: 'Обязательное поле'
                                         },
                                         pattern: {
-                                            value: /^[A-Za-zА-ЯЁа-яё0-9-/:,".№ ]+$/,
+                                            value: /^[A-Za-zА-ЯЁа-яё0-9-/:,"().№ ]+$/,
                                             message: 'Некорректное значение'
                                         },
                                         maxLength: {
