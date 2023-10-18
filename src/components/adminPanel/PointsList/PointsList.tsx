@@ -46,6 +46,10 @@ const PointsList = () => {
         navigate(`point/${ref}`);
     };
 
+    const trimSchedule = (str: string) => {
+        return str[0] === 'В' ? str.slice(14) : str;
+    };
+
     return (
         <>
             <TableContainer component={Box} sx={{ maxHeight: '450px' }}>
@@ -79,21 +83,33 @@ const PointsList = () => {
                                 }}
                             >
                                 <TableCell className={classes.cell}>{row.title}</TableCell>
-                                <TableCell className={classes.cell}>{row.website}</TableCell>
+                                <TableCell
+                                    className={
+                                        row.website
+                                            ? classes.cell
+                                            : classes.cell + ' ' + classes.noData
+                                    }
+                                >
+                                    {row.website ? row.website : 'Нет данных'}
+                                </TableCell>
                                 <TableCell className={classes.cell}>{row.address}</TableCell>
                                 <TableCell
                                     className={
                                         row.phone
                                             ? classes.cell
-                                            : classes.cell + ' ' + classes.noPhone
+                                            : classes.cell + ' ' + classes.noData
                                     }
                                 >
                                     {row.phone ? row.phone : 'Нет данных'}
                                 </TableCell>
-                                <TableCell className={classes.cell}>
-                                    {row.schedule[0] === 'В'
-                                        ? row.schedule.slice(14)
-                                        : row.schedule}
+                                <TableCell
+                                    className={
+                                        row.schedule
+                                            ? classes.cell
+                                            : classes.cell + ' ' + classes.noData
+                                    }
+                                >
+                                    {row.schedule ? trimSchedule(row.schedule) : 'Нет данных'}
                                 </TableCell>
                                 <TableCell className={classes.cell}>
                                     {row.wasteTypes.slice().join(', ')}
