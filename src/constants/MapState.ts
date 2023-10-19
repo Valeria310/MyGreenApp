@@ -1347,7 +1347,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 96,
+        id: 97,
         title: 'Поликлиника №13 (контейнер)',
         website: '',
         address: 'Минск, ул. Ломоносова, 3',
@@ -1360,7 +1360,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 97,
+        id: 98,
         title: 'Поликлиника №14 (контейнер)',
         website: '',
         address: 'Минск, ул. Фроликова, 2',
@@ -1373,7 +1373,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 98,
+        id: 99,
         title: 'Поликлиника №15 (контейнер)',
         website: '',
         address: 'Минск, ул. Р.Люксембург, 112',
@@ -1386,7 +1386,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 99,
+        id: 100,
         title: 'Поликлиника №17 (контейнер)',
         website: '',
         address: 'Минск, ул. Герасименко, 49',
@@ -1399,7 +1399,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 100,
+        id: 101,
         title: 'Поликлиника №19 (контейнер)',
         website: '',
         address: 'Минск, пр-т Независимости, 119',
@@ -1412,7 +1412,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 101,
+        id: 102,
         title: 'Поликлиника №20 (контейнер)',
         website: '',
         address: 'Минск, пр-т Пушкина, 16',
@@ -1425,7 +1425,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 102,
+        id: 103,
         title: 'Поликлиника №22 (контейнер)',
         website: '',
         address: 'Минск, ул. Ташкентская, 5',
@@ -1438,7 +1438,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 103,
+        id: 104,
         title: 'Поликлиника №23 (контейнер)',
         website: '',
         address: 'Минск, пр-т Рокоссовского, 134',
@@ -1451,7 +1451,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 104,
+        id: 105,
         title: 'Поликлиника №25 (контейнер)',
         website: '',
         address: 'Минск, ул. Рафиева, 60',
@@ -1464,7 +1464,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 105,
+        id: 106,
         title: 'Поликлиника №30 (контейнер)',
         website: '',
         address: 'Минск, ул. Кольцова, 53/2',
@@ -1477,7 +1477,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 106,
+        id: 107,
         title: 'Поликлиника №31 (контейнер)',
         website: '',
         address: 'Минск, ул. Бурдейного, 4',
@@ -1490,7 +1490,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 107,
+        id: 108,
         title: 'Поликлиника №33 (контейнер)',
         website: '',
         address: 'Минск, ул. Сурганова, 45/4',
@@ -1503,7 +1503,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 108,
+        id: 109,
         title: 'Поликлиника №34 (контейнер)',
         website: '',
         address: 'Минск, ул. Кульман, 22',
@@ -1516,7 +1516,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 109,
+        id: 110,
         title: 'Поликлиника №35 (контейнер)',
         website: '',
         address: 'Минск, ул. Серова, 15',
@@ -1529,7 +1529,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 110,
+        id: 111,
         title: 'Поликлиника №37 (контейнер)',
         website: '',
         address: 'Минск, ул. Янки Лучины, 28',
@@ -1542,7 +1542,7 @@ export const markersState: Array<MarkerType> = [
         display: false
     },
     {
-        id: 111,
+        id: 112,
         title: 'Поликлиника №40 (контейнер)',
         website: '',
         address: 'Минск, ул. Люцинская, 3',
