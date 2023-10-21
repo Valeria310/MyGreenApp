@@ -1,0 +1,60 @@
+@import '../../../index.scss';
+
+.managePoints {
+  padding: 115px 0 115px;
+
+  @media (max-width: 1439px){
+    padding: 115px 0 80px
+  }
+
+  @media (max-width: 767px){
+    padding: 105px 0 50px;
+  }
+}
+
+.managePoints__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 108px;
+
+  @media (max-width: 1439px){
+    padding: 0 40px;
+  }
+
+  @media (max-width: 767px){
+    padding: 0 10px;
+  }
+}
+
+.managePoints__title {
+  margin: 0;
+  margin-bottom: 48px;
+  font-family: Roboto;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 123%;
+  letter-spacing: 0.085px;
+  color: $color-black;
+
+  @media (max-width: 1439px) {
+    font-size: 36px;
+    line-height: 110%;
+  }
+
+  @media (max-width: 767px){
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+}
+
+.managePoints__content {
+  padding: 16px;
+}
+
+.managePoints__tabsBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
