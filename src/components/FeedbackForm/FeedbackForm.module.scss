@@ -1,0 +1,293 @@
+@import '../../index.scss';
+
+.feedbackForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media screen and (min-width: 500px) {
+    width: auto;
+    max-width: 570px;
+  }
+}
+
+.feedbackFormHeading {
+  display: inline-block;
+  font-family: $font-primary;
+  // line-height: 110%;
+  line-height: 31px;
+  font-weight: 600;
+  color: $color-black;
+  margin: 0;
+  font-size: 28px;
+  margin-bottom: 5px;
+  @media screen and (min-width: 500px) {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 10px;
+  }
+}
+
+.feedbackFormDescription {
+  font-family: $font-primary;
+  font-weight: 400;
+  // line-height: 140%;
+  line-height: 22px;
+  margin: 0;
+  color: $color-black;
+  font-size: 16px;
+  margin-bottom: 15px;
+  @media screen and (min-width: 500px) {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 15px;
+  }
+}
+
+.feedbackFields {
+  display: flex;
+  flex-direction: column;
+  // row-gap: 20px;
+  margin-bottom: 15px;
+}
+
+.feedbackFormField {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-family: $font-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  position: relative;
+  &.paddingTop {
+    padding-top: 5px;
+    @media screen and (min-width: 500px) {
+      padding-top: 0;
+    }
+  }
+  &.disabled {
+    opacity: 0.5;
+  }
+  & input {
+    margin-bottom: 15px;
+    @media screen and (min-width: 500px) {
+      margin-bottom: 20px;
+    }
+    &:focus {
+      padding: 10px 9px;
+    }
+  }
+  & input, & textarea {
+    transition: none;
+    background-color: inherit;
+    border: 1px solid $color-black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    min-height: 50px;
+    outline: none;
+    caret-color: #1865F2;
+    @media screen and (min-width: 500px) {
+      padding: 18px 10px;
+      min-height: 60px;
+    }
+    &:hover {
+      border: 1.5px solid $color-black;
+    }
+    &:focus {
+      border: 2px solid $color-black;
+    }
+  }
+  & textarea {
+    resize: none;
+    height: 141px;
+    &:focus {
+      padding: 9px;
+      @media screen and (min-width: 500px) {
+        padding: 17px 9px;
+      }
+    }
+  }
+}
+
+.customSelect {
+  transition: none;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: $font-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid $color-black;
+  background-color: #F6FCEA;
+  cursor: pointer;
+  min-height: 50px;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 12px 10px;
+  @media screen and (min-width: 500px) {
+    min-height: 60px;
+    padding: 17px 10px;
+    margin-bottom: 20px;
+  }
+  &:hover {
+    border: 1.5px solid $color-black;
+  }
+  &:focus {
+    border: 2px solid $color-black;
+    padding: 10px 9px;
+    @media screen and (min-width: 1200px) {
+      padding: 16px 9px;
+    }
+  }
+  & img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.selectDropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  list-style-type: none;
+  border-radius: 10px;
+  background-color: #F6FCEA;
+  box-shadow: 0px 2px 8px 2px rgba(12, 54, 38, 0.15), 0px 1px 6px 0px rgba(12, 54, 38, 0.30);
+  width: 100%;
+  position: absolute;
+  left: 0;
+  padding: 10px 0;
+  z-index: 2;
+  top: 97px;
+  @media screen and (min-width: 500px) {
+    top: 102px;
+  }
+}
+
+.selectItem {
+  width: 100%;
+  font-family: $font-primary;
+  font-size: 16px;
+  font-weight: 400;
+  // line-height: 140%;
+  line-height: 22px;
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: #E3EFDD;
+  }
+}
+
+.feedbackFormPolytics {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  @media screen and (min-width: 500px) {
+    align-items: center;
+  }
+  & > span {
+    max-width: 275px;
+    @media screen and (min-width: 400px) {
+      max-width: none;
+    }
+  }
+  & span, & label {
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 400;
+    // line-height: 140%;
+    line-height: 20px;
+    color: $color-black;
+  }
+  & label {
+    display: inline-flex;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  & a {
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    color: #2073E5;
+  }
+  & input[type="checkbox"] {
+    display: none;
+  }
+}
+
+.messageCounter {
+  display: inline-flex;
+  align-self: flex-end;
+  margin-top: 5px;
+}
+
+.feedbackFormCheckbox {
+  background-color: inherit;
+  min-width: 24px;
+  height: 24px;
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid $color-black;
+  margin-right: 10px;
+  transition: none;
+  cursor: pointer;
+  &.selected {
+    border-color: #1B7A59;
+    background-image: url('../../assets/icons/form-check.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.feedbackFormSubmitBtn {
+  display: inline-flex;
+  justify-content: center;
+  border-radius: 35px;
+  border: none;
+  background-color: #1B7A59;
+  padding: 11px 30px;
+  min-width: 210px;
+  min-height: 40px;
+  color: #fff;
+  font-family: $font-primary;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 110%;
+  cursor: pointer;
+  @media screen and (min-width: 500px) {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 140%;
+    align-self: flex-end;
+  }
+  &:hover {
+    background-color: #2FA37A;
+  }
+  &:focus {
+    background-color: #2FA37A;
+  }
+  &:active {
+    background-color: #3BBC8F;
+  }
+  &:disabled {
+    cursor: default;
+    background-color: #EAEBEA;
+    color: #7C7C7C;
+  }
+}
