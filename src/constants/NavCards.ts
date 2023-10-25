@@ -11,7 +11,8 @@ export interface NavCard {
     image: string;
     content: NavCardContent[];
     buttonValue: string;
-    href: string;
+    href: string | undefined;
+    isDisabled?: boolean;
 }
 
 export const NavCards: NavCard[] = [
