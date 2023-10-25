@@ -22,7 +22,7 @@ export const FilterButton = (props: PropsType) => {
     return (
         <button
             id={props.id}
-            className={props.isActive ? `${s.filterButton} ${s.active}` : s.filterButton}
+            className={props.isActive ? `${s.filterButton} ${s.enabled}` : `${s.filterButton} ${s.disabled}`}
             onClick={onClickHandler}
         >
             {props.title}

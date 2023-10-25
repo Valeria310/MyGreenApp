@@ -1,0 +1,50 @@
+@import '../../../index.scss';
+
+.adminHeader {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba($color-black, 0.12);
+  background-color: $color-global-white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+}
+
+.adminHeader__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 108px;
+
+  @media (max-width: 1439px){
+    padding: 0 40px;
+  }
+
+  @media (max-width: 767px){
+    padding: 0 10px;
+  }
+}
+
+.adminHeader__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.adminHeader__image {
+  width: 40px;
+  height: 40px;
+  vertical-align: bottom;
+}
+
+.adminHeader__selectLabel {
+  margin: 0;
+}
+
+.adminHeader__select {
+  margin-top: 0 !important;
+
+  &:before {
+    border-bottom: none !important;
+  }
+}

@@ -1,6 +1,7 @@
 @import '../../index.scss';
 
-.filterButton {
+
+.disabled {
   background-color: $color-white;
   color: $color-black;
   border: 0.5px solid $color-black;
@@ -9,35 +10,55 @@
   white-space: nowrap;
 }
 
-.filterButton:hover {
+
+.disabled:hover {
+  border: 0.5px solid $color-primary;
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 2px $color-primary;
+}
+
+.enabled {
+  background-color: $color-primary;
+  color: $color-black;
+  border: 0.5px solid $color-primary;
+  border-radius: 30px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: box-shadow 0.3s;
+}
+
+.enabled:hover {
+  border: 0.5px solid #B1CDBE;
   background-color: #B1CDBE;
-  border-color: transparent;
-}
-//.filterButton:focus {
-//  border-color: transparent;
-//  outline-color: transparent;
-//  outline-style:solid;
-//  box-shadow: 0 0 0 2px #94B9AB;
-//  background-color: #F6FCEA;
- // border: 2px #94B9AB solid;
-//}
-
-.filterButton:active {
-  background-color: $color-primary;
-
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 2px #B1CDBE;
 }
 
-.active {
-  background-color: $color-primary;
-  border-color: transparent;
+
+@media screen and (min-width: 350px) {
+
+  button:nth-child(3) {
+    margin-right: 0px;
+  }
 }
 
+@media screen and (min-width: 498px) {
+
+  button:nth-child(3) {
+    margin-right: 15px;
+  }
+}
 
 @media screen and (max-width: 767px) {
 
+
+
   .filterButton {
+    min-width: 90px;
     font-size: 16px;
-    padding: 7px 25px;
+    padding: 7px 15px;
     margin: 0px 15px 20px 0px;
   }
 
@@ -46,8 +67,8 @@
 
 @media only screen and (min-width: 768px) {
 
-
   .filterButton {
+    min-width: 115px;
     font-size: 20px;
     padding: 10px 20px;
     margin: 0px 15px 20px 0px;
@@ -56,12 +77,27 @@
 }
 
 
+@media only screen and (min-width: 1435px) {
+
+  button:nth-child(7) {
+    margin-right: 0px;
+  }
+
+  button:nth-child(10) {
+     margin-right: 100px;
+   }
+}
+
+
 @media only screen and (min-width: 1200px) {
 
-  .filterButton {
-    padding: 13px 27px;
-    margin: 0px 25px 25px 0px;
-    font-size: 24px;
 
+
+  .filterButton {
+    min-width: 140px;
+    padding: 13px 25px;
+    margin: 0px 20px 25px 0px;
+    font-size: 24px;
   }
+
 }

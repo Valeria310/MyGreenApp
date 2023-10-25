@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     align-items: center;
     column-gap: 30px;
-    row-gap: 24px;
+    row-gap: 25px;
     &:nth-child(odd) {
         flex-direction: row-reverse;
     }
@@ -15,11 +15,21 @@
         max-width: fit-content;
     }
     @media screen and (min-width: 600px) {
-        row-gap: 32px;
+        flex-direction: column;
+        max-width: auto;
+        row-gap: 30px;
         column-gap: calc(40 / 600 * 100vw);
+        &:nth-child(odd) {
+            flex-direction: column;
+        }
     }
     @media screen and (min-width: 1200px) {
+        flex-direction: row;
         align-items: flex-start;
+        &:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        column-gap: calc(30 / 1440 * 100vw);
     }
     @media screen and (min-width: 1440px) {
         column-gap: 30px;
@@ -40,11 +50,15 @@
         height: auto;
     }
     @media screen and (min-width: 600px) {
-        max-width: calc(570 / 1440 * 100vw);
+        min-width: calc(570 / 768 * 100vw);
+        height: calc(360 / 768 * 100vw);
+    }
+    @media screen and (min-width: 1200px) {
+        min-width: calc(570 / 1440 * 100vw);
         height: calc(360 / 1440 * 100vw);
     }
     @media screen and (min-width: 1440px) {
-        max-width: 570px;
+        min-width: 570px;
         height: 360px;
     }
 }
@@ -53,14 +67,15 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    row-gap: 24px;
+    row-gap: 25px;
     @media screen and (min-width: 600px) {
         row-gap: 20px;
-        width: calc(50vw - 50 / 768 * 100vw - 10px);
+        min-width: calc(570 / 768 * 100vw);
         // padding-left: calc(50 / 768 * 100vw);
     }
     @media screen and (min-width: 1200px) {
         row-gap: 22px;
+        min-width: auto;
         max-width: calc(570 / 1440 * 100vw);
     }
     @media screen and (min-width: 1440px) {
@@ -72,7 +87,10 @@
     margin: 0;
     letter-spacing: 0.4px;
     @media screen and (min-width: 600px) {
-        font-size: calc(32 / 1200 * 100vw);
+        font-weight: 600;
+        font-size: 36px;
+        color: $color-black;
+        line-height: 40px;
     }
     @media screen and (min-width: 1200px) {
         line-height: 110%;
@@ -86,18 +104,26 @@
 .navCardText {
     display: flex;
     flex-direction: column;
-    row-gap: 14px;
+    row-gap: 13.6px;
+    font-weight: 400;
     font-size: 16px;
     line-height: 140%;
     color: $color-black;
+    letter-spacing: 0.1px;
     @media screen and (min-width: 600px) {
         row-gap: 16px;
         // letter-spacing: 0.1px;
-        font-size: calc(20 / 1200 * 100vw);
+        font-size: 20px;
+        line-height: 28px;
     }
     @media screen and (min-width: 1200px) {
         row-gap: 20px;
+        font-size: calc(20 / 1440 * 100vw);
+        line-height: calc(28 / 1440 * 100vw);
+    }
+    @media screen and (min-width: 1440px) {
         font-size: 20px;
+        line-height: 28px;
     }
     p {
         margin: 0;
@@ -105,7 +131,7 @@
 }
 
 .navCard:nth-child(2) .navCardText {
-    row-gap: 12px;
+    row-gap: 11.2px;
     @media screen and (min-width: 600px) {
         row-gap: 16px;
     }
@@ -115,29 +141,34 @@
 }
 
 .navCardButton {
-    height: 24px;
+    // height: 24px;
     // @media screen and (min-width: 600px) {
     //     height: 40px;
     // }
-    @media screen and (min-width: 1200px) {
-        height: 25.2px;
-    }
+    // @media screen and (min-width: 1200px) {
+    //     height: 25.2px;
+    // }
     a {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         text-decoration: none;
+        padding: 8px 15px 8px 0;
+        @media screen and (min-width: 600px) {
+            padding: 11px 15px 11px 0;
+        }
     }
     span {
         letter-spacing: 0.2px;
         color: #1B7A59;
-        line-height: 105%;
-        font-weight: 500;
-        font-size: 20px;
-        margin-right: 10px;
+        line-height: 110%;
+        font-weight: 600;
+        font-size: 16px;
+        margin-right: 5px;
         @media screen and (min-width: 600px) {
-            font-weight: 400;
-            margin-right: 8px;
-            font-size: calc(28 / 1440 * 100vw);
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 28px;
+            margin-right: 5px;
         }
         @media screen and (min-width: 1200px) {
             font-size: 28px;
