@@ -54,10 +54,9 @@ export const Header = () => {
         mousePosition = 'out';
     };
 
-    const clickHandler = () => {
-        if(isMenuOpen === true ) {
+    const handlePlugClick = () => {
+        if(isMenuOpen === true) {
             document.body.style.overflowY = 'auto';
-            document.body.style.position = 'static';
             window.scrollTo(0, position);
             const burger = document.getElementById('burger');
             const menu = document.getElementById('menu');
@@ -73,29 +72,21 @@ export const Header = () => {
                 container?.classList.remove('opened-menu');
             }, 100);
             mousePosition = 'out';
+        } else {
+            const burger = document.getElementById('burger');    
+            position=window.pageYOffset;
+            const menu = document.getElementById('menu');
+            const header = document.getElementById('header');
+            menu?.classList.add('opened');
+            burger?.classList.add('cross');
+            header?.classList.add('fixed');
+            setTimeout(() => {
+                isMenuOpen = true;
+            }, 500);
+            document.body.style.overflowY = 'hidden';
+            const container = header?.getElementsByClassName('container')[0];
+            container?.classList.add('opened-menu');
         }
-    };
-
-    const handlePlugClick = () => {
-        const burger = document.getElementById('burger');
-        const plug = document.getElementsByClassName('plug')[0];
-
-        position=window.pageYOffset;
-        const menu = document.getElementById('menu');
-        const header = document.getElementById('header');
-        menu?.classList.add('opened');
-        burger?.classList.add('cross');
-        header?.classList.add('fixed');
-        setTimeout(() => {
-            isMenuOpen = true;
-        }, 500);
-        document.body.style.overflowY = 'hidden';
-        const container = header?.getElementsByClassName('container')[0];
-        container?.classList.add('opened-menu');
-        setTimeout(() => {
-            document.body.style.position = 'fixed';
-        }, 500);
-        plug?.addEventListener('click', clickHandler, { once: true });
     };
 
     const handleSearchClick = () => {
@@ -129,7 +120,6 @@ export const Header = () => {
             isStarted = false;
             isMenuOpen = false;
             document.body.style.overflowY = 'auto';
-            document.body.style.position = 'static';
             const container = header?.getElementsByClassName('container')[0];
             container?.classList.remove('opened-menu');
             mousePosition = 'out';
@@ -148,7 +138,6 @@ export const Header = () => {
         isMenuOpen = false;
         isSearchFormOpened = false;
         document.body.style.overflowY = 'auto';
-        document.body.style.position = 'static';
         const container = header?.getElementsByClassName('container')[0];
         container?.classList.remove('opened-menu');
         mousePosition = 'out';
@@ -175,10 +164,11 @@ export const Header = () => {
                 <div className="burger-line"></div>
                 <div className="burger-line"></div>
             </div>
-            <div className="logUp-btn">Войти</div>
             <div className="plug" onClick={handlePlugClick}></div>
+            <div className="logUp-btn desk">Войти</div>
             <div className="header-mobile-menu" id='menu'>
                 <Navigation />
+                <div className="logUp-btn mob">Войти</div>
                 <span className='headrer-menu-text'>info@ecohub.by</span> 
             </div>
         </div>
