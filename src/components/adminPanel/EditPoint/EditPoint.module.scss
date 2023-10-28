@@ -1,0 +1,130 @@
+@import '../../../index.scss';
+
+.editPoint {
+  padding: 145px 0 115px;
+
+  @media (max-width: 1439px){
+    padding: 115px 0 80px
+  }
+
+  @media (max-width: 767px){
+    padding: 105px 0 50px;
+  }
+}
+
+.editPoint__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 108px;
+
+  @media (max-width: 1439px){
+    padding: 0 40px;
+  }
+
+  @media (max-width: 767px){
+    padding: 0 10px;
+  }
+}
+
+.editPoint__title {
+  margin: 0;
+  margin-bottom: 40px;
+  font-family: Roboto;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  color: $color-black;
+
+  @media (max-width: 1439px) {
+    font-size: 36px;
+    line-height: 110%;
+  }
+
+  @media (max-width: 767px){
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+}
+
+.editPoint__textareaBox {
+  position: relative;
+  margin-bottom: 24px;
+  max-width: 600px;
+}
+
+.editPoint__textareaLabel {
+  padding: 0 5px;
+  color: rgba($color-black, 0.6);
+  position: absolute;
+  background-color: $color-global-white;
+  top: -8px;
+  left: 15px;
+}
+
+.editPoint__textarea {
+  box-sizing: border-box;
+  padding: 16px 12px;
+  width: 100%;
+  min-height: 153px;
+  border-radius: 4px;
+  border: 1px solid rgba($color-black, 0.23);
+  resize: none;
+}
+
+.editPoint__textareaCount {
+  color: rgba($color-black, 0.6);
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 166%;
+  letter-spacing: 0.4px;
+  margin: 3px 0 0 14px;
+}
+
+.editPoint__subtitle {
+  margin: 0;
+  margin-bottom: 17px;
+  color: rgba($color-black, 0.87);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  letter-spacing: 0.15px;
+}
+
+.editPoint__checkboxes {
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+  & label {
+    @media (max-width: 767px) {
+      align-items: flex-start;
+    }
+
+    & span {
+      @media (max-width: 767px) {
+        padding-top: 0;
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+.editPoint__buttons {
+  margin-top: 48px;
+  margin-bottom: 64px;
+}
+
+.editPoint__mapContainer {
+  width: 100%;
+  height: 543px;
+
+  @media (max-width: 767px){
+    height: 350px;
+  }
+}

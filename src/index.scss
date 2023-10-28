@@ -1,3 +1,62 @@
 @import './scss/fonts';
 @import './scss/normalize';
 @import './scss/variables';
+
+* {
+  transition: all .3s;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-primary;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: $color-black;
+}
+
+h2 {
+  display: inline-block;
+  font-family: $font-primary;
+  font-weight: 600;
+  color: $color-black;
+  font-size: 28px;
+  line-height: 110%;
+  @media screen and (min-width: 768px) {
+      font-size: 36px;
+  }
+  @media screen and (min-width: 1200px) {
+      font-size: 48px;
+  }
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  border-radius: $button-radius;
+  text-align: center;
+  font-family: $font-secondary;
+  font-size: 30px;
+  line-height: 33px;
+  background-color: $color-primary;
+  color: $color-black;
+  transition: all .3s ease-out;
+  transition-delay: 0.3s;
+  &:hover {
+      background-color: $color-light;
+      color: $color-black;
+      transition-delay: 0ms;
+  }
+  &:active {
+      background-color: $color-dark;
+      color: $color-white;
+      transition-delay: 0ms;
+  }
+}

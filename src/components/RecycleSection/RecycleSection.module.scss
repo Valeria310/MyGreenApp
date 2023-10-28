@@ -1,15 +1,10 @@
 @import '../../index.scss';
 
-.recycle {
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
 .recycleWrapper {
-    padding: 32px 25px;
+    padding: 30px 25px;
     background: #CAE3F9;
     @media screen and (min-width: 768px) {
-        padding: 48px 39px;
+        padding: 45px 39px;
     }
     @media screen and (min-width: 1200px) {
         padding: 50px 135px;
@@ -17,10 +12,12 @@
 }
 
 .recycleHeading {
-    display: none;
+    display: inline-flex;
+    margin: 0 0 25px;
+    line-height: 31px;
     @media screen and (min-width: 768px) {
-        display: inline-flex;
-        margin: 0 0 32px;
+        margin: 0 0 30px;
+        line-height: 40px;
     }
     @media screen and (min-width: 1200px) {
         margin: 0 0 50px;
@@ -32,7 +29,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 24px;
+    row-gap: 25px;
     @media screen and (min-width: 768px) {
         row-gap: 20px;
     }

@@ -1,12 +1,50 @@
 @import 'src/index.scss';
 
 .recycleCardContent {
-  background-color: $color-white;
   overflow: hidden;
+  margin-top: 10px;
+  @media screen and (min-width: 768px) {
+    height: auto;
+    margin-top: 0;;
+    background-color: $color-white;
+  }
+}
+
+.plasticCardContent {
+    height: 351px;
+}
+
+.paperCardContent {
+    height: 420px;
+}
+
+.glassCardContent {
+    height: 351px;
+}
+
+.largeCardContent {
+    height: 351px;
+}
+
+.electroCardContent {
+    height: 351px;
+}
+
+.dangerCardContent {
+    height: 351px;
+}
+
+.metalCardContent {
+    height: 351px;
+}
+
+.ragCardContent {
+    height: 351px;
 }
 
 .recycleTable {
   border-collapse: collapse;
+  width: 100%;
   &Row {  
       border-top: 1px solid $color-black;
   }
@@ -148,6 +186,35 @@
             color: $color-black;
         }
     }
+  }
+  &SecondLife {
+    text-align: center;
+    color: $color-black;
+    background-color: #CAE3F9;
+    white-space: pre-line;
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+      @media screen and (min-width: 1000px) {
+        display: table-cell;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 140%;
+        padding: 20px;
+        min-width: 148px;
+      }
+      @media screen and (min-width: 1200px) {
+        display: none;
+      }
+      @media screen and (min-width: 1250px) {
+        display: table-cell;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        padding: 21px;
+        text-align: left;
+        max-width: 148px;
+      }
   }
   &Status {
     text-align: center;
