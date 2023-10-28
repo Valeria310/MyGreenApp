@@ -60,11 +60,13 @@ export const Header = () => {
             window.scrollTo(0, position);
             const burger = document.getElementById('burger');
             const menu = document.getElementById('menu');
+            const bodyPlug = document.getElementById('body-plug');
             const header = document.getElementById('header');
             const container = header?.getElementsByClassName('container')[0];
             setTimeout(() => {
                 burger?.classList.remove('cross');
                 menu?.classList.remove('opened');
+                bodyPlug?.classList.remove('opened');
                 header?.classList.remove('fixed');
                 header?.classList.remove('visible');
                 isStarted = false;
@@ -76,13 +78,15 @@ export const Header = () => {
             const burger = document.getElementById('burger');    
             position=window.pageYOffset;
             const menu = document.getElementById('menu');
+            const bodyPlug = document.getElementById('body-plug');
             const header = document.getElementById('header');
             menu?.classList.add('opened');
+            bodyPlug?.classList.add('opened');
             burger?.classList.add('cross');
             header?.classList.add('fixed');
             setTimeout(() => {
                 isMenuOpen = true;
-            }, 500);
+            }, 300);
             document.body.style.overflowY = 'hidden';
             const container = header?.getElementsByClassName('container')[0];
             container?.classList.add('opened-menu');
@@ -107,13 +111,33 @@ export const Header = () => {
         }
     };
 
+    const handleBodyPlugClick = () => {
+        const burger = document.getElementById('burger');
+        const menu = document.getElementById('menu');
+        const bodyPlug = document.getElementById('body-plug');
+        const header = document.getElementById('header');
+        const container = header?.getElementsByClassName('container')[0];
+
+        burger?.classList.remove('cross');
+        menu?.classList.remove('opened');
+        bodyPlug?.classList.remove('opened');
+        header?.classList.remove('fixed');
+        header?.classList.remove('visible');
+        isStarted = false;
+        isMenuOpen = false;
+        container?.classList.remove('opened-menu');
+        document.body.style.overflowY = 'auto';
+    };
+
     document.addEventListener('click', (e)=> {
         const links = document.getElementsByClassName('navigation_link');
         const burger = document.getElementById('burger');
         if(e.target == links[3] || e.target == links[4] || e.target == links[5] ) {
             const menu = document.getElementById('menu');
+            const bodyPlug = document.getElementById('body-plug');
             const header = document.getElementById('header');
             menu?.classList.remove('opened');
+            bodyPlug?.classList.remove('opened');
             burger?.classList.remove('cross');
             header?.classList.remove('fixed');
             header?.classList.remove('visible');
@@ -128,9 +152,11 @@ export const Header = () => {
 
     window.addEventListener('hashchange', ()=> {
         const menu = document.getElementById('menu');
+        const bodyPlug = document.getElementById('body-plug');
         const burger = document.getElementById('burger');
         const header = document.getElementById('header');
         menu?.classList.remove('opened');
+        bodyPlug?.classList.remove('opened');
         burger?.classList.remove('cross');
         header?.classList.remove('fixed');
         header?.classList.remove('visible');
@@ -172,5 +198,6 @@ export const Header = () => {
                 <span className='headrer-menu-text'>info@ecohub.by</span> 
             </div>
         </div>
+        <div className="body-plug" id='body-plug' onClick={handleBodyPlugClick}></div>
     </header>);
 };
