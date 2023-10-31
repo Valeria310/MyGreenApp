@@ -6,8 +6,17 @@ import { useClickOutside } from 'src/hooks/useClickOutside';
 
 import s from  './FeedbackForm.module.scss';
 import { FeedbackFormProps } from './FeedbackFormProps';
+import {Input} from "./Input";
+import {FormProvider, useForm} from "react-hook-form";
 
 export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
+
+    const methods = useForm()
+
+    const onSubmit = methods.handleSubmit(data => {
+        console.log(data)
+    })
+
     const dropdownRef = useClickOutside(() => setOpenDropdown(false));
     // Form state control
     const [formData, setFormData] = [data.formData, data.setFormData];
@@ -39,10 +48,24 @@ export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
     };
 
     return (
-        <form className={s.feedbackForm}>
+        <FormProvider {...methods}>
+        <form  onSubmit={e => e.preventDefault()}
+               noValidate
+               className={s.feedbackForm}>
             <h2 className={s.feedbackFormHeading}>Связаться с нами</h2>
             <p className={s.feedbackFormDescription}>Если у вас есть вопросы или предложения, пожалуйста, заполните  форму ниже</p>
             <div className={s.feedbackFields}>
+
+
+                <div className={s.feedbackFormField}>
+                    <Input
+                        label="name"
+                        type="text"
+                        id="name"
+                        placeholder="type your name..."
+                    />
+                </div>
+
                 <div className={s.feedbackFormField}>
                     <label htmlFor='name'>Имя</label>
                     <input
@@ -100,7 +123,8 @@ export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
                     <span>c <a href='#'>политикой конфиденциальности</a></span>
                 </span>
             </div>
-            <button type='submit' className={s.feedbackFormSubmitBtn} disabled={!agreed}>Отправить</button>
+            <button type='submit' className={s.feedbackFormSubmitBtn} disabled={!agreed} onClick={onSubmit}>Отправить</button>
         </form>
+        </FormProvider>
     );
 };
