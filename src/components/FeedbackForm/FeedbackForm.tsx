@@ -59,10 +59,37 @@ export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
 
                 <div className={s.feedbackFormField}>
                     <Input
-                        label="name"
+                        label="name1"
+                        name="name1"
                         type="text"
-                        id="name"
+                        id="name1"
                         placeholder="type your name..."
+                        validation={{
+                            required: {
+                                value: true,
+                                message: 'required',
+                            },
+                        }}
+                    />
+                </div>
+
+                <div className={s.feedbackFormField}>
+                    <Input
+                        label="lastname"
+                        name="lastname"
+                        type="text"
+                        id="lastname"
+                        placeholder="type your lastname..."
+                        validation={{
+                            required: {
+                                value: true,
+                                message: 'required',
+                            },
+                            minLength: {
+                                value: 6,
+                                message: 'min 6 characters',
+                            },
+                        }}
                     />
                 </div>
 

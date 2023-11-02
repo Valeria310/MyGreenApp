@@ -5,11 +5,13 @@ type PropsType = {
     type: string,
     id: string,
     placeholder: string
+    validation: any
+    name: string
 }
 
-export const Input = ({ label, type, id, placeholder }: PropsType) => {
+export const Input = ({ label, type, id, placeholder, validation, name }: PropsType) => {
 
-    function findInputError(errors:any, name:any) {
+    function findInputError(errors:any, name:any):any {
         const filtered = Object.keys(errors)
             .filter(key => key.includes(name))
             .reduce((cur, key) => {
@@ -31,6 +33,8 @@ export const Input = ({ label, type, id, placeholder }: PropsType) => {
     const inputError = findInputError(errors, label)
     const isInvalid = isFormInvalid(inputError)
 
+
+
     return (
         <div>
             <div>
@@ -38,39 +42,34 @@ export const Input = ({ label, type, id, placeholder }: PropsType) => {
                     {label}
                 </label>
             </div>
-            {isInvalid && (
+
+
+
+            {isInvalid &&
+                (
                 <InputError
                     message={inputError.error.message}
                     key={inputError.error.message}
+
                 />
-            )}
+            )
+            }
             <input
                 id={id}
                 type={type}
                 className=""
                 placeholder={placeholder}
-                {...register(label, {
-                    required: {
-                        value: true,
-                        message: 'required',
-                    },
-                })}
+                {...register(name, validation)}
             />
         </div>
     )
 }
 
-type MessageType = {
-    message: string,
 
-}
 
-const InputError = ({ message }: MessageType) => {
-    return (
+const InputError = ( message: any) => {
+    return <div> {message.message}</div>
 
-            {message}
-
-    )
 }
 
 const framer_error = {
