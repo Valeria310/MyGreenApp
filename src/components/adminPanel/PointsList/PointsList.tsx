@@ -11,6 +11,7 @@ import {
     TableRow,
     TableCell
 } from '@mui/material';
+import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // import { markersState } from "src/constants/MapState";
@@ -65,7 +66,6 @@ type dataAPI = {
 
 const PointsList = () => {
     const navigate = useNavigate();
-
     const [tableData, setTableData] = React.useState<dataAPI[]>([]);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -86,10 +86,24 @@ const PointsList = () => {
 
     // const tableData = markersState;
 
+    // useEffect(() => {
+    //     fetch('https://31.184.254.112:8081/recycling-points/')
+    //         .then((res) => res.json())
+    //         .then((data) => setTableData(data));
+    // }, []);
+
+    async function getData() {
+        try {
+            const response = await axios.get('https://31.184.254.112:8081/recycling-points/');
+            console.log(response.data);
+            setTableData(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     useEffect(() => {
-        fetch('https://31.184.254.112:8081/recycling-points/')
-            .then((res) => res.json())
-            .then((data) => setTableData(data));
+        getData();
     }, []);
 
     useEffect(() => {
@@ -109,107 +123,122 @@ const PointsList = () => {
 
     return (
         <>
-            <TableContainer component={Box} sx={{ maxHeight: '450px' }}>
-                <Table stickyHeader>
-                    <TableHead>
-                        <TableRow className={classes.row}>
-                            <TableCell className={classes.cell}>Организация</TableCell>
-                            <TableCell className={classes.cell}>Сайт</TableCell>
-                            <TableCell className={classes.cell}>Адрес</TableCell>
-                            <TableCell className={classes.cell}>Телефон</TableCell>
-                            <TableCell className={classes.cell}>Часы работы</TableCell>
-                            <TableCell className={classes.cell}>Виды вторсырья</TableCell>
-                            <TableCell className={classes.cell}>Координаты </TableCell>
-                            <TableCell className={classes.cell}>Статус</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {(rowsPerPage > 0
-                            ? tableData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : tableData
-                        ).map((row) => (
-                            <TableRow
-                                className={classes.row}
-                                onClick={() => rowHandler(row.id)}
-                                key={row.id}
-                                sx={{
-                                    '&:hover': {
-                                        background: '#EDF7FD',
-                                        cursor: 'pointer'
-                                    }
-                                }}
-                            >
-                                <TableCell className={classes.cell}>{row.name}</TableCell>
-                                <TableCell
-                                    className={
-                                        row.website
-                                            ? classes.cell
-                                            : classes.cell + ' ' + classes.noData
-                                    }
-                                >
-                                    {row.website ? row.website : 'Нет данных'}
-                                </TableCell>
-                                <TableCell className={classes.cell}>{row.address}</TableCell>
-                                <TableCell
-                                    className={
-                                        row.phoneNumber
-                                            ? classes.cell
-                                            : classes.cell + ' ' + classes.noData
-                                    }
-                                >
-                                    {row.phoneNumber ? row.phoneNumber : 'Нет данных'}
-                                </TableCell>
-                                <TableCell
-                                    className={
-                                        classes.cell + ' ' + classes.noData
-                                        // row.schedule
-                                        // 	? classes.cell
-                                        // : classes.cell + " " + classes.noData
-                                    }
-                                >
-                                    {'Нет данных'}
-                                    {/* {row.schedule ? trimSchedule(row.schedule) : "Нет данных"} */}
-                                </TableCell>
-                                <TableCell className={classes.cell}>
-                                    {row.recyclableTypes.slice().join(', ')}
-                                </TableCell>
-                                <TableCell className={classes.cell}>
-                                    {row.location.latitude} - {row.location.longitude}
-                                </TableCell>
-                                <TableCell className={classes.cell}>
-                                    {row.displayed ? chipDisplayed : chipHidden}
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                slots={{
-                    root: 'div',
-                    toolbar: 'div'
-                }}
-                labelRowsPerPage={'Строк на странице'}
-                labelDisplayedRows={function defaultLabelDisplayedRows({ from, to, count }) {
-                    return `${from}–${to} из ${count !== -1 ? count : `more than ${to}`}`;
-                }}
-                className={classes.pagination}
-                rowsPerPageOptions={[5, 10, 15, { label: 'Все', value: -1 }]}
-                count={tableData.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                slotProps={{
-                    select: {
-                        'aria-label': 'rows per page'
-                    },
-                    actions: {
-                        showFirstButton: true,
-                        showLastButton: true
-                    }
-                }}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
+            {tableData.length === 0 ? (
+                'Loading...'
+            ) : (
+                <>
+                    <TableContainer component={Box} sx={{ maxHeight: '450px' }}>
+                        <Table stickyHeader>
+                            <TableHead>
+                                <TableRow className={classes.row}>
+                                    <TableCell className={classes.cell}>Организация</TableCell>
+                                    <TableCell className={classes.cell}>Сайт</TableCell>
+                                    <TableCell className={classes.cell}>Адрес</TableCell>
+                                    <TableCell className={classes.cell}>Телефон</TableCell>
+                                    <TableCell className={classes.cell}>Часы работы</TableCell>
+                                    <TableCell className={classes.cell}>Виды вторсырья</TableCell>
+                                    <TableCell className={classes.cell}>Координаты </TableCell>
+                                    <TableCell className={classes.cell}>Статус</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {(rowsPerPage > 0
+                                    ? tableData.slice(
+                                        page * rowsPerPage,
+                                        page * rowsPerPage + rowsPerPage
+                                    )
+                                    : tableData
+                                ).map((row) => (
+                                    <TableRow
+                                        className={classes.row}
+                                        onClick={() => rowHandler(row.id)}
+                                        key={row.id}
+                                        sx={{
+                                            '&:hover': {
+                                                background: '#EDF7FD',
+                                                cursor: 'pointer'
+                                            }
+                                        }}
+                                    >
+                                        <TableCell className={classes.cell}>{row.name}</TableCell>
+                                        <TableCell
+                                            className={
+                                                row.website
+                                                    ? classes.cell
+                                                    : classes.cell + ' ' + classes.noData
+                                            }
+                                        >
+                                            {row.website ? row.website : 'Нет данных'}
+                                        </TableCell>
+                                        <TableCell className={classes.cell}>
+                                            {row.address}
+                                        </TableCell>
+                                        <TableCell
+                                            className={
+                                                row.phoneNumber
+                                                    ? classes.cell
+                                                    : classes.cell + ' ' + classes.noData
+                                            }
+                                        >
+                                            {row.phoneNumber ? row.phoneNumber : 'Нет данных'}
+                                        </TableCell>
+                                        <TableCell
+                                            className={
+                                                classes.cell + ' ' + classes.noData
+                                                // row.schedule
+                                                // 	? classes.cell
+                                                // : classes.cell + " " + classes.noData
+                                            }
+                                        >
+                                            {'Нет данных'}
+                                            {/* {row.schedule ? trimSchedule(row.schedule) : "Нет данных"} */}
+                                        </TableCell>
+                                        <TableCell className={classes.cell}>
+                                            {row.recyclableTypes.slice().join(', ')}
+                                        </TableCell>
+                                        <TableCell className={classes.cell}>
+                                            {row.location.latitude} - {row.location.longitude}
+                                        </TableCell>
+                                        <TableCell className={classes.cell}>
+                                            {row.displayed ? chipDisplayed : chipHidden}
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <TablePagination
+                        slots={{
+                            root: 'div',
+                            toolbar: 'div'
+                        }}
+                        labelRowsPerPage={'Строк на странице'}
+                        labelDisplayedRows={function defaultLabelDisplayedRows({
+                            from,
+                            to,
+                            count
+                        }) {
+                            return `${from}–${to} из ${count !== -1 ? count : `more than ${to}`}`;
+                        }}
+                        className={classes.pagination}
+                        rowsPerPageOptions={[5, 10, 15, { label: 'Все', value: -1 }]}
+                        count={tableData.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        slotProps={{
+                            select: {
+                                'aria-label': 'rows per page'
+                            },
+                            actions: {
+                                showFirstButton: true,
+                                showLastButton: true
+                            }
+                        }}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </>
+            )}
         </>
     );
 };
