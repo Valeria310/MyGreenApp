@@ -185,6 +185,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                               classes.pointForm__textarea_error
                                             : classes.pointForm__textarea
                                     }
+                                    maxLength={100}
                                     aria-label="Наименование организации"
                                     {...register('title', {
                                         required: {
@@ -194,11 +195,6 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:,"().№ ]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 100,
-                                            message:
-                                                'Наименование организации должно быть не более 100 символов'
                                         }
                                     })}
                                 />
@@ -226,14 +222,11 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                     id="website"
                                     className={classes.pointForm__textarea}
                                     aria-label="Ссылка на сайт организации (опционально)"
+                                    maxLength={50}
                                     {...register('website', {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:.]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 50,
-                                            message: 'Имя сайта должно быть не более 50 символов'
                                         }
                                     })}
                                 />
@@ -271,6 +264,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                             : classes.pointForm__textarea
                                     }
                                     aria-label="Адрес"
+                                    maxLength={100}
                                     {...register('address', {
                                         required: {
                                             value: true,
@@ -279,10 +273,6 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:,"№(). ]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 100,
-                                            message: 'Адрес должен быть не более 100 символов'
                                         }
                                     })}
                                 />
@@ -305,15 +295,11 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                     id="phone"
                                     className={classes.pointForm__textarea}
                                     aria-label="Контактный телефон (опционально)"
+                                    maxLength={100}
                                     {...register('phone', {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-() ]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 100,
-                                            message:
-                                                'Номер телефона должен быть не более 100 символов'
                                         }
                                     })}
                                 />
@@ -339,15 +325,11 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                     id="schedule"
                                     className={classes.pointForm__textarea}
                                     aria-label="Время работы"
+                                    maxLength={300}
                                     {...register('schedule', {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:,;(). ]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 300,
-                                            message:
-                                                'Время работы должно быть не более 300 символов'
                                         }
                                     })}
                                 />
@@ -460,7 +442,8 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                               classes.pointForm__textarea_error
                                             : classes.pointForm__textarea
                                     }
-                                    aria-label="Координаты пункта приема вторсырья "
+                                    aria-label="Координаты пункта приема вторсырья"
+                                    maxLength={100}
                                     {...register('coordinates', {
                                         required: {
                                             value: true,
@@ -469,10 +452,6 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                         pattern: {
                                             value: /^(?!.*\.$)(0|[1-9]+)(?:[.]\d*|)\s?(0|[1-9]+)(?:[.]\d*|)$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 100,
-                                            message: 'Координаты должны быть не более 100 символов'
                                         }
                                     })}
                                 />
