@@ -41,6 +41,7 @@ interface State extends SnackbarOrigin {
 }
 
 const PointForm: React.FC<Partial<MarkerType>> = (props) => {
+    console.log('props: ', props);
     const navigate = useNavigate();
 
     // Popup

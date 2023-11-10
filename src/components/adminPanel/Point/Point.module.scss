@@ -12,6 +12,10 @@
   }
 }
 
+.noData {
+  color: rgba($color-black, 0.38) !important;
+}
+
 .point__link {
   display: flex;
   align-items: center;
