@@ -11,7 +11,7 @@ import {
     TableRow,
     TableCell
 } from '@mui/material';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // import { markersState } from "src/constants/MapState";
@@ -28,38 +28,7 @@ type dataAPI = {
         latitude: number;
         longitude: number;
     };
-    workingHours: {
-        TUESDAY: {
-            openingTime: string;
-            closingTime: string;
-            lunchStartTime: string;
-            lunchEndTime: string;
-        };
-        WEDNESDAY: {
-            openingTime: string;
-            closingTime: string;
-            lunchStartTime: string;
-            lunchEndTime: string;
-        };
-        THURSDAY: {
-            openingTime: string;
-            closingTime: string;
-            lunchStartTime: string;
-            lunchEndTime: string;
-        };
-        MONDAY: {
-            openingTime: string;
-            closingTime: string;
-            lunchStartTime: string;
-            lunchEndTime: string;
-        };
-        FRIDAY: {
-            openingTime: string;
-            closingTime: string;
-            lunchStartTime: string;
-            lunchEndTime: string;
-        };
-    };
+    workingHours: string;
     recyclableTypes: string[];
     displayed: boolean;
 };
@@ -83,14 +52,6 @@ const PointsList = () => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
-
-    // const tableData = markersState;
-
-    // useEffect(() => {
-    //     fetch('https://31.184.254.112:8081/recycling-points/')
-    //         .then((res) => res.json())
-    //         .then((data) => setTableData(data));
-    // }, []);
 
     async function getData() {
         try {
@@ -184,14 +145,14 @@ const PointsList = () => {
                                         </TableCell>
                                         <TableCell
                                             className={
-                                                classes.cell + ' ' + classes.noData
-                                                // row.schedule
-                                                // 	? classes.cell
-                                                // : classes.cell + " " + classes.noData
+                                                row.workingHours
+                                                    ? classes.cell
+                                                    : classes.cell + ' ' + classes.noData
                                             }
                                         >
-                                            {'Нет данных'}
-                                            {/* {row.schedule ? trimSchedule(row.schedule) : "Нет данных"} */}
+                                            {row.workingHours
+                                                ? trimSchedule(row.workingHours)
+                                                : 'Нет данных'}
                                         </TableCell>
                                         <TableCell className={classes.cell}>
                                             {row.recyclableTypes.slice().join(', ')}
