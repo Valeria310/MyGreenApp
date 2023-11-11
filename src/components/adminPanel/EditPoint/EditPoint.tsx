@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Box } from '@mui/material';
+import { Box, LinearProgress } from '@mui/material';
+import axios from 'axios';
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
@@ -8,7 +9,6 @@ import { useParams } from 'react-router-dom';
 
 import classes from './EditPoint.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
-import { markersState } from '../../../constants/MapState';
 import s from '../../MapSection/MapSection.module.scss';
 import AdminHeader from '../AdminHeader';
 import PointForm from '../PointForm';
@@ -17,8 +17,26 @@ type PointId = {
     id: string;
 };
 
+type dataAPI = {
+    id: number;
+    name: string | undefined;
+    address: string;
+    phoneNumber: string;
+    website: string;
+    location: {
+        latitude: number;
+        longitude: number;
+    };
+    workingHours: string;
+    recyclableTypes: string[];
+    displayed: boolean;
+    info: string;
+};
+
 const EditPoint: React.FC = () => {
     const { id } = useParams<PointId>();
+
+    const [pointData, setPointData] = React.useState<dataAPI>();
 
     const customIcon = new L.Icon({
         iconUrl: pointIcon,
@@ -27,24 +45,28 @@ const EditPoint: React.FC = () => {
 
     const token = 'xZpKoSPd2lxvjHa2OY9UT0kBT6StaY0c7pnbhNF1RPCPKAexPRuo2P8x8KKICtO3';
 
-    // const pointData = markersState[Number(id) - 1];
-    const idx = markersState.findIndex((el) => el.id === Number(id));
+    async function getData() {
+        try {
+            const response = await axios.get(`https://31.184.254.112:8081/recycling-points/${id}`);
+            setPointData(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    React.useEffect(() => {
+        getData();
+    }, []);
 
     let content = null;
 
-    if (idx === -1) {
+    if (!pointData) {
         content = (
-            <h1>
-                ERROR 404!
-                <br />
-                <br />
-                PAGE NOT FOUND
-            </h1>
+            <Box sx={{ width: '100%' }}>
+                <LinearProgress />
+            </Box>
         );
     } else {
-        const pointData = markersState[idx];
-        pointData.display = true;
-
         content = (
             <>
                 <AdminHeader />
@@ -64,10 +86,13 @@ const EditPoint: React.FC = () => {
                                     url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
                                 />
                                 <MarkerClusterGroup chunkedLoading>
-                                    {pointData.display ? (
+                                    {pointData.displayed ? (
                                         <Marker
                                             key={pointData.id}
-                                            position={[pointData.latitude, pointData.longitude]}
+                                            position={[
+                                                pointData.location.latitude,
+                                                pointData.location.longitude
+                                            ]}
                                             icon={customIcon}
                                         >
                                             <Popup
@@ -76,7 +101,7 @@ const EditPoint: React.FC = () => {
                                                 maxWidth={370}
                                             >
                                                 <div className={s.popupHeader}>
-                                                    {pointData.title}
+                                                    {pointData.name}
                                                 </div>
                                                 <div className={s.popupAddressWrapper}>
                                                     <ul className={s.address}>
@@ -87,12 +112,12 @@ const EditPoint: React.FC = () => {
                                                         </li>
                                                         <li className={s.phone}>
                                                             <div className={s.popupAddressContent}>
-                                                                {pointData.phone}
+                                                                {pointData.phoneNumber}
                                                             </div>
                                                         </li>
                                                         <li className={s.schedule}>
                                                             <div className={s.popupAddressContent}>
-                                                                {pointData.schedule}
+                                                                {pointData.workingHours}
                                                             </div>
                                                         </li>
                                                         <li className={s.website}>
@@ -107,9 +132,11 @@ const EditPoint: React.FC = () => {
                                                 <div className={s.popupFooter}>
                                                     Перерабатываем:
                                                     <ul className={s.wasteTypes}>
-                                                        {pointData.wasteTypes.map((item, i) => (
-                                                            <li key={i}>{item}</li>
-                                                        ))}
+                                                        {pointData.recyclableTypes.map(
+                                                            (item, i) => (
+                                                                <li key={i}>{item}</li>
+                                                            )
+                                                        )}
                                                     </ul>
                                                 </div>
                                             </Popup>

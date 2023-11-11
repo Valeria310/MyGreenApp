@@ -4,6 +4,7 @@ import { TablePagination } from '@mui/base/TablePagination';
 import {
     Box,
     Chip,
+    LinearProgress,
     TableContainer,
     Table,
     TableHead,
@@ -13,8 +14,6 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-// import { markersState } from "src/constants/MapState";
 
 import classes from './PointsList.module.scss';
 
@@ -35,6 +34,7 @@ type dataAPI = {
 
 const PointsList = () => {
     const navigate = useNavigate();
+
     const [tableData, setTableData] = React.useState<dataAPI[]>([]);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -56,7 +56,6 @@ const PointsList = () => {
     async function getData() {
         try {
             const response = await axios.get('https://31.184.254.112:8081/recycling-points/');
-            console.log(response.data);
             setTableData(response.data);
         } catch (error) {
             console.error(error);
@@ -66,10 +65,6 @@ const PointsList = () => {
     useEffect(() => {
         getData();
     }, []);
-
-    useEffect(() => {
-        console.log(tableData);
-    }, [tableData]);
 
     const chipDisplayed = <Chip label={'Отображается'} variant="outlined" color="success" />;
     const chipHidden = <Chip label={'Не отображается'} variant="outlined" color="error" />;
@@ -85,7 +80,9 @@ const PointsList = () => {
     return (
         <>
             {tableData.length === 0 ? (
-                'Loading...'
+                <Box sx={{ width: '100%' }}>
+                    <LinearProgress />
+                </Box>
             ) : (
                 <>
                     <TableContainer component={Box} sx={{ maxHeight: '450px' }}>

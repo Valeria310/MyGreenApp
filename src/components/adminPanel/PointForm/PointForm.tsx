@@ -14,12 +14,29 @@ import {
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { MarkerType, markersState, filterType, waste } from 'src/constants/MapState';
+import { waste } from 'src/constants/MapState';
 
 import classes from './PointForm.module.scss';
+
+type dataAPI = {
+    id: number;
+    name: string | undefined;
+    address: string;
+    phoneNumber: string;
+    website: string;
+    location: {
+        latitude: number;
+        longitude: number;
+    };
+    workingHours: string;
+    recyclableTypes: string[];
+    displayed: boolean;
+    info: string;
+};
 
 type FormValues = {
     title: string;
@@ -28,7 +45,7 @@ type FormValues = {
     phone: string;
     schedule: string;
     coordinates?: string | undefined;
-    wasteTypes: Array<filterType>;
+    wasteTypes: string[];
     display: boolean | string | undefined;
     id: number | undefined;
     info: string | undefined;
@@ -40,9 +57,23 @@ interface State extends SnackbarOrigin {
     open: boolean;
 }
 
-const PointForm: React.FC<Partial<MarkerType>> = (props) => {
-    console.log('props: ', props);
+const PointForm: React.FC<Partial<dataAPI>> = (props) => {
     const navigate = useNavigate();
+    const [tableData, setTableData] = React.useState<dataAPI[]>([]);
+
+    // List of all points
+    async function getData() {
+        try {
+            const response = await axios.get('https://31.184.254.112:8081/recycling-points/');
+            setTableData(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    React.useEffect(() => {
+        getData();
+    }, []);
 
     // Popup
     const [state, setState] = React.useState<State>({
@@ -64,18 +95,17 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
     const form = useForm<FormValues>({
         mode: 'onBlur',
         defaultValues: {
-            title: props ? props.title : '',
+            title: props ? props.name : '',
             website: props ? props.website : '',
             address: props ? props.address : '',
-            phone: props ? props.phone : '',
-            schedule: props ? props.schedule : '',
-            wasteTypes: props ? props.wasteTypes : [],
-            coordinates:
-                props.latitude && props.longitude
-                    ? props.latitude.toString() + ' ' + props.longitude.toString()
-                    : '',
-            display: props ? props.display : false,
-            id: props ? props.id : markersState[markersState.length - 1].id + 1,
+            phone: props ? props.phoneNumber : '',
+            schedule: props ? props.workingHours : '',
+            wasteTypes: props ? props.recyclableTypes : [],
+            coordinates: props.location
+                ? props.location.latitude.toString() + ' ' + props.location.longitude.toString()
+                : '',
+            display: props ? props.displayed : false,
+            id: props ? props.id : tableData[tableData.length - 1].id + 1,
             info: props ? props.info : ''
         }
     });
@@ -98,33 +128,35 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
             delete resultData.coordinates;
         }
         resultData.display = toBoolean(resultData.display);
-        resultData.id = data.id ? data.id : markersState[markersState.length - 1].id + 1;
+        resultData.id = data.id ? data.id : tableData[tableData.length - 1].id + 1;
         resultData.info = data.info ? data.info : '';
-        console.log('=== Result data to database:', resultData);
 
-        const newPoint: MarkerType = {
+        const newPoint: dataAPI = {
             id: resultData.id,
-            title: resultData.title,
+            name: resultData.title,
             website: resultData.website,
             address: resultData.address,
-            schedule: resultData.schedule,
-            phone: resultData.phone,
-            latitude: resultData.latitude,
-            longitude: resultData.longitude,
+            workingHours: resultData.schedule,
+            phoneNumber: resultData.phone,
+            location: {
+                latitude: resultData.latitude,
+                longitude: resultData.longitude
+            },
             info: resultData.info,
-            wasteTypes: resultData.wasteTypes,
-            display: Boolean(resultData.display)
+            recyclableTypes: resultData.wasteTypes,
+            displayed: Boolean(resultData.display)
         };
+        console.log('=== Result data to database:', newPoint);
 
-        const isPointExists = markersState.some((point) => point.id === newPoint.id);
+        const isPointExists = tableData.some((point) => point.id === newPoint.id);
 
         if (isPointExists) {
-            const idx = markersState.findIndex((el) => el.id === newPoint.id);
-            markersState[idx] = newPoint;
+            // method PATCH
+            console.log('== Should update info with method PATCH');
         } else {
-            markersState.push(newPoint);
+            // method POST
+            console.log('== Should add new info with method POST');
         }
-        console.log('=== markersState from onSubmit: ', markersState);
 
         setState({ ...state, open: true });
         setTimeout(() => navigate(-1), 1500);
@@ -367,8 +399,8 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                     control={
                                                         <Checkbox
                                                             defaultChecked={
-                                                                props.wasteTypes &&
-                                                                props.wasteTypes.includes(item)
+                                                                props.recyclableTypes &&
+                                                                props.recyclableTypes.includes(item)
                                                                     ? true
                                                                     : false
                                                             }
@@ -395,8 +427,8 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                     control={
                                                         <Checkbox
                                                             defaultChecked={
-                                                                props.wasteTypes &&
-                                                                props.wasteTypes.includes(item)
+                                                                props.recyclableTypes &&
+                                                                props.recyclableTypes.includes(item)
                                                                     ? true
                                                                     : false
                                                             }
@@ -471,7 +503,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                             <RadioGroup
                                 sx={{ mb: '48px', alignItems: 'flex-start' }}
                                 aria-labelledby="Статус"
-                                defaultValue={props.display ? props.display : true}
+                                defaultValue={props.displayed ? props.displayed : true}
                                 name="status-radio-buttons-group"
                             >
                                 <FormControlLabel
