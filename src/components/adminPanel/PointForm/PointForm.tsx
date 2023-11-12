@@ -23,7 +23,7 @@ import { waste } from 'src/constants/MapState';
 import classes from './PointForm.module.scss';
 
 type dataAPI = {
-    id: number;
+    id?: number;
     name: string | undefined;
     address: string;
     phoneNumber: string;
@@ -35,7 +35,7 @@ type dataAPI = {
     workingHours: string;
     recyclableTypes: string[];
     displayed: boolean;
-    info: string;
+    info?: string;
 };
 
 type FormValues = {
@@ -58,7 +58,9 @@ interface State extends SnackbarOrigin {
 }
 
 const PointForm: React.FC<Partial<dataAPI>> = (props) => {
+    console.log('props: ', props);
     const navigate = useNavigate();
+
     const [tableData, setTableData] = React.useState<dataAPI[]>([]);
 
     // List of all points
@@ -105,7 +107,6 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                 ? props.location.latitude.toString() + ' ' + props.location.longitude.toString()
                 : '',
             display: props ? props.displayed : false,
-            id: props ? props.id : tableData[tableData.length - 1].id + 1,
             info: props ? props.info : ''
         }
     });
@@ -118,8 +119,51 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
         isDirty = true;
     }
 
+    const adminToken =
+        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmFkbWluIiwiaWF0IjoxNjk5ODEyNjIyLCJleHAiOjE2OTk4MTYyMjIsInR5cGUiOiJBQ0NFU1MifQ.XJlpaI1Ul2OhJIiDbZBZ6VU2BGP4AYnfag9YFiNLmw8qo47FYPZK6lrgjTF3M_W-0AiW1CRRCP4E8uQpQnsXeg';
+
+    // manipulations with points
+    async function createNewPoint(myData: dataAPI) {
+        try {
+            const response = await axios.post(
+                'https://31.184.254.112:8081/admin/recycling-points',
+                JSON.stringify(myData),
+                {
+                    headers: {
+                        'Content-type': 'application/json',
+                        Authorization: `Bearer ${adminToken}`
+                    }
+                }
+            );
+            // console.log(JSON.stringify(myData));
+            // console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async function updatePoint(myData: dataAPI, pointId: number | undefined) {
+        try {
+            const response = await axios.patch(
+                `https://31.184.254.112:8081/admin/recycling-points/${pointId}`,
+                JSON.stringify(myData),
+                {
+                    headers: {
+                        'Content-type': 'application/json',
+                        Authorization: `Bearer ${adminToken}`
+                    }
+                }
+            );
+            // console.log(JSON.stringify(myData));
+            // console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     const onSubmit = (data: FormValues) => {
         const resultData: FormValues = { ...data };
+        console.log('resultData: ', resultData);
 
         if (data.coordinates) {
             const latLong = data.coordinates.split(' ');
@@ -128,34 +172,32 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
             delete resultData.coordinates;
         }
         resultData.display = toBoolean(resultData.display);
-        resultData.id = data.id ? data.id : tableData[tableData.length - 1].id + 1;
-        resultData.info = data.info ? data.info : '';
 
         const newPoint: dataAPI = {
-            id: resultData.id,
             name: resultData.title,
-            website: resultData.website,
             address: resultData.address,
-            workingHours: resultData.schedule,
             phoneNumber: resultData.phone,
+            website: resultData.website,
             location: {
                 latitude: resultData.latitude,
                 longitude: resultData.longitude
             },
-            info: resultData.info,
+            workingHours: resultData.schedule,
             recyclableTypes: resultData.wasteTypes,
             displayed: Boolean(resultData.display)
         };
         console.log('=== Result data to database:', newPoint);
 
-        const isPointExists = tableData.some((point) => point.id === newPoint.id);
+        const isPointExists = tableData.some((point) => point.id === props.id);
 
         if (isPointExists) {
             // method PATCH
-            console.log('== Should update info with method PATCH');
+            // console.log('== Should update info with method PATCH');
+            updatePoint(newPoint, props.id);
         } else {
             // method POST
-            console.log('== Should add new info with method POST');
+            // console.log('== Should add new info with method POST');
+            createNewPoint(newPoint);
         }
 
         setState({ ...state, open: true });
@@ -331,7 +373,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                     maxLength={100}
                                     {...register('phone', {
                                         pattern: {
-                                            value: /^[A-Za-zА-ЯЁа-яё0-9-() ]+$/,
+                                            value: /^[A-Za-zА-ЯЁа-яё0-9-()+ ]+$/,
                                             message: 'Некорректное значение'
                                         }
                                     })}
