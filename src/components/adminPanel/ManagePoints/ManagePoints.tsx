@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import AddIcon from '@mui/icons-material/Add';
-import { Box, Button, Paper, Tab, Tabs } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Button, LinearProgress, Paper, Tab, Tabs } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
 
 import classes from './ManagePoints.module.scss';
 import AdminHeader from '../AdminHeader';
@@ -43,13 +43,23 @@ function CustomTabPanel(props: TabPanelProps) {
 }
 
 const ManagePoints = () => {
+    const navigate = useNavigate();
+
+    const isUserLoggedIn = localStorage.getItem('EcoHub') ? true : false;
+
+    useEffect(() => {
+        if (!localStorage.getItem('EcoHub')) {
+            navigate('/login');
+        }
+    }, []);
+
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
 
-    return (
+    const content = (
         <>
             <AdminHeader />
             <Box className={classes.managePoints}>
@@ -82,6 +92,8 @@ const ManagePoints = () => {
             </Box>
         </>
     );
+
+    return isUserLoggedIn ? content : <LinearProgress />;
 };
 
 export default ManagePoints;
