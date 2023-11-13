@@ -412,11 +412,23 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                         }
                                     })}
                                 />
+
                                 {watchForm.schedule ? (
                                     renderStringLength(watchForm.schedule, 300)
                                 ) : (
                                     <FormHelperText sx={{ ml: '15px' }}>0/300</FormHelperText>
                                 )}
+                                <FormHelperText sx={{ ml: '15px' }}>
+                                    Можно указывать дни отдельно, диапазон дней, только рабочее
+                                    время, рабочее время + обед. Если день не указан - он считается
+                                    выходным. Точка в конце предложения{' '}
+                                    <strong>обязательна.</strong>
+                                    <br />
+                                    <b>Пример 1:</b> Пн-Пт: 9:00-17:00, 13:00-14:00.
+                                    <br />
+                                    <b>Пример 2:</b> Пн-Пт: 9:00-17:00, 13:00-14:00; Сб:
+                                    09:00-13:00, 12:00-12:30.
+                                </FormHelperText>
                                 {errors.schedule?.message ? (
                                     <FormHelperText sx={{ ml: '15px', color: 'red' }}>
                                         {errors.schedule.message}
