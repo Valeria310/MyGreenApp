@@ -7,7 +7,7 @@ import axios from 'axios';
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import classes from './Point.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
@@ -34,6 +34,16 @@ type dataAPI = {
 };
 
 const Point: React.FC = () => {
+    const navigate = useNavigate();
+
+    const isUserLoggedIn = localStorage.getItem('EcoHub') ? true : false;
+
+    useEffect(() => {
+        if (!localStorage.getItem('EcoHub')) {
+            navigate('/login');
+        }
+    }, []);
+
     const { id } = useParams<PointId>();
 
     const [pointData, setPointDate] = useState<dataAPI>();

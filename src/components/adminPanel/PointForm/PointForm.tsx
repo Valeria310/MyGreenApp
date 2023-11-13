@@ -58,10 +58,10 @@ interface State extends SnackbarOrigin {
 }
 
 const PointForm: React.FC<Partial<dataAPI>> = (props) => {
-    console.log('props: ', props);
     const navigate = useNavigate();
 
     const [tableData, setTableData] = React.useState<dataAPI[]>([]);
+    const [serverError, setServerError] = React.useState('');
 
     // List of all points
     async function getData() {
@@ -93,6 +93,29 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
         setState({ ...state, open: false });
     };
 
+    function trimDaysOffAndLunch(str: string | undefined) {
+        let idx;
+        const strNoLunch = str?.replaceAll('обед: ', '');
+        let result = strNoLunch;
+
+        if (typeof str === 'undefined') return '';
+
+        if (strNoLunch?.includes('; Сб: в')) {
+            idx = strNoLunch.indexOf('; Сб: в');
+            result = strNoLunch.slice(0, idx);
+            return result + '.';
+        }
+        if (strNoLunch?.includes('; Вс: в')) {
+            idx = strNoLunch.indexOf('; Вс: в');
+            result = strNoLunch.slice(0, idx);
+            return result + '.';
+        }
+
+        idx = strNoLunch?.indexOf(';');
+        result = strNoLunch?.slice(0, idx);
+        return result + '.';
+    }
+
     // Form validation
     const form = useForm<FormValues>({
         mode: 'onBlur',
@@ -101,7 +124,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
             website: props ? props.website : '',
             address: props ? props.address : '',
             phone: props ? props.phoneNumber : '',
-            schedule: props ? props.workingHours : '',
+            schedule: props ? trimDaysOffAndLunch(props.workingHours) : '',
             wasteTypes: props ? props.recyclableTypes : [],
             coordinates: props.location
                 ? props.location.latitude.toString() + ' ' + props.location.longitude.toString()
@@ -119,12 +142,8 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
         isDirty = true;
     }
 
-    // const adminToken =
-    //     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmFkbWluIiwiaWF0IjoxNjk5ODEyNjIyLCJleHAiOjE2OTk4MTYyMjIsInR5cGUiOiJBQ0NFU1MifQ.XJlpaI1Ul2OhJIiDbZBZ6VU2BGP4AYnfag9YFiNLmw8qo47FYPZK6lrgjTF3M_W-0AiW1CRRCP4E8uQpQnsXeg';
-
     const dataFromLS = JSON.parse(localStorage.getItem('EcoHub') || '{}');
     const adminTokenFromLS = dataFromLS?.accessToken;
-    // console.log('adminTokenFromLS: ', adminTokenFromLS);
 
     // manipulations with points
     async function createNewPoint(myData: dataAPI) {
@@ -139,10 +158,22 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                     }
                 }
             );
-            // console.log(JSON.stringify(myData));
-            // console.log(response.data);
-        } catch (error) {
-            console.error(error);
+            setState({ ...state, open: true });
+            setTimeout(() => navigate(-1), 2000);
+        } catch (err) {
+            console.log('err: ', err);
+            if (axios.isAxiosError(err)) {
+                if (!err?.response) {
+                    console.error('No Server Response');
+                    setServerError('No Server Response');
+                } else if (err.response?.status >= 400 && err.response?.status < 500) {
+                    console.error(err.response.data.error + ': ' + err.response.data.message);
+                    setServerError(err.response.data.error + ': ' + err.response.data.message);
+                } else if (err.response?.status >= 500) {
+                    console.error(err.response.data.error);
+                    setServerError(err.response.data.error);
+                }
+            }
         }
     }
 
@@ -158,16 +189,29 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                     }
                 }
             );
-            // console.log(JSON.stringify(myData));
-            // console.log(response.data);
-        } catch (error) {
-            console.error(error);
+
+            setState({ ...state, open: true });
+            setTimeout(() => navigate(-1), 2000);
+        } catch (err) {
+            console.log('err: ', err);
+            if (axios.isAxiosError(err)) {
+                if (!err?.response) {
+                    console.error('No Server Response');
+                    setServerError('No Server Response');
+                } else if (err.response?.status >= 400 && err.response?.status < 500) {
+                    console.error(err.response.data.error + ': ' + err.response.data.message);
+                    setServerError(err.response.data.error + ': ' + err.response.data.message);
+                } else if (err.response?.status >= 500) {
+                    console.error(err.response.data.error);
+                    setServerError(err.response.data.error);
+                }
+            }
         }
     }
 
     const onSubmit = (data: FormValues) => {
         const resultData: FormValues = { ...data };
-        console.log('resultData: ', resultData);
+        // console.log('resultData: ', resultData);
 
         if (data.coordinates) {
             const latLong = data.coordinates.split(' ');
@@ -190,22 +234,17 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
             recyclableTypes: resultData.wasteTypes,
             displayed: Boolean(resultData.display)
         };
-        console.log('=== Result data to database:', newPoint);
+        // console.log('=== Result data to database:', newPoint);
 
         const isPointExists = tableData.some((point) => point.id === props.id);
 
         if (isPointExists) {
             // method PATCH
-            // console.log('== Should update info with method PATCH');
             updatePoint(newPoint, props.id);
         } else {
             // method POST
-            // console.log('== Should add new info with method POST');
             createNewPoint(newPoint);
         }
-
-        setState({ ...state, open: true });
-        setTimeout(() => navigate(-1), 1500);
     };
 
     const toBoolean = (value: boolean | string | undefined) => {
@@ -232,7 +271,26 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
 
     const wasteWithoutAll = waste.slice(1);
 
-    return (
+    const errorAlert = (message: string) => {
+        return (
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                <Alert severity="error">{message}</Alert>
+                <Button
+                    variant="contained"
+                    size="large"
+                    sx={{ margin: '16px auto' }}
+                    onClick={() => {
+                        setServerError('');
+                        navigate(-1);
+                    }}
+                >
+                    Back
+                </Button>
+            </Box>
+        );
+    };
+
+    const content = (
         <>
             <div className={classes.pointForm}>
                 <div className={classes.pointForm__container}>
@@ -423,9 +481,9 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                     выходным. Точка в конце предложения{' '}
                                     <strong>обязательна.</strong>
                                     <br />
-                                    <b>Пример 1:</b> Пн-Пт: 9:00-17:00, 13:00-14:00.
+                                    <b>Пример 1:</b> Пн-Пт: 09:00-17:00, 13:00-14:00.
                                     <br />
-                                    <b>Пример 2:</b> Пн-Пт: 9:00-17:00, 13:00-14:00; Сб:
+                                    <b>Пример 2:</b> Пн-Пт: 09:00-17:00, 13:00-14:00; Сб:
                                     09:00-13:00, 12:00-12:30.
                                 </FormHelperText>
                                 {errors.schedule?.message ? (
@@ -613,6 +671,8 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
             </div>
         </>
     );
+
+    return serverError ? errorAlert(serverError) : content;
 };
 
 export default PointForm;
