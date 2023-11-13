@@ -71,6 +71,7 @@
     opacity: 0.5;
   }
   & input {
+    width: 100%;
     margin-bottom: 15px;
     @media screen and (min-width: 500px) {
       margin-bottom: 20px;
@@ -80,6 +81,7 @@
     }
   }
   & input, & textarea {
+    width: 100%;
     transition: none;
     background-color: inherit;
     border: 1px solid $color-black;
@@ -290,4 +292,16 @@
     background-color: #EAEBEA;
     color: #7C7C7C;
   }
+}
+
+
+.feedbackFormError {
+  color: red;
+}
+
+
+.feedbackFormInputLabelWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
