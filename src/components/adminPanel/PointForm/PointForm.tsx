@@ -119,8 +119,12 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
         isDirty = true;
     }
 
-    const adminToken =
-        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmFkbWluIiwiaWF0IjoxNjk5ODEyNjIyLCJleHAiOjE2OTk4MTYyMjIsInR5cGUiOiJBQ0NFU1MifQ.XJlpaI1Ul2OhJIiDbZBZ6VU2BGP4AYnfag9YFiNLmw8qo47FYPZK6lrgjTF3M_W-0AiW1CRRCP4E8uQpQnsXeg';
+    // const adminToken =
+    //     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbmFkbWluIiwiaWF0IjoxNjk5ODEyNjIyLCJleHAiOjE2OTk4MTYyMjIsInR5cGUiOiJBQ0NFU1MifQ.XJlpaI1Ul2OhJIiDbZBZ6VU2BGP4AYnfag9YFiNLmw8qo47FYPZK6lrgjTF3M_W-0AiW1CRRCP4E8uQpQnsXeg';
+
+    const dataFromLS = JSON.parse(localStorage.getItem('EcoHub') || '{}');
+    const adminTokenFromLS = dataFromLS?.accessToken;
+    // console.log('adminTokenFromLS: ', adminTokenFromLS);
 
     // manipulations with points
     async function createNewPoint(myData: dataAPI) {
@@ -131,7 +135,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                 {
                     headers: {
                         'Content-type': 'application/json',
-                        Authorization: `Bearer ${adminToken}`
+                        Authorization: `Bearer ${adminTokenFromLS}`
                     }
                 }
             );
@@ -150,7 +154,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                 {
                     headers: {
                         'Content-type': 'application/json',
-                        Authorization: `Bearer ${adminToken}`
+                        Authorization: `Bearer ${adminTokenFromLS}`
                     }
                 }
             );

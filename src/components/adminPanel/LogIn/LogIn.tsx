@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
+
 import { Box, Button, InputAdornment, TextField } from '@mui/material';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
 import classes from './Login.module.scss';
@@ -9,6 +12,19 @@ type FormValues = {
     password: string;
 };
 
+interface UserDataToServer {
+    usernameOrEmail: string;
+    password: string;
+    rememberMe: true;
+}
+interface UserDataFromServer {
+    accessToken: string;
+    email: string | null;
+    refreshToken: string;
+    role: string;
+    username: string;
+}
+
 const LogIn = () => {
     const form = useForm<FormValues>({
         mode: 'onBlur'
@@ -16,8 +32,36 @@ const LogIn = () => {
     const { register, handleSubmit, formState } = form;
     const { errors } = formState;
 
+    async function authorization(user: UserDataToServer) {
+        try {
+            const response = await axios.post(
+                'https://31.184.254.112:8081/auth/login',
+                JSON.stringify(user),
+                {
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                }
+            );
+            // console.log('response: ', response.data);
+            const dataFromServer: UserDataFromServer = response.data;
+            localStorage.setItem('EcoHub', JSON.stringify(dataFromServer));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     const onSubmit = (data: FormValues) => {
         console.log('Form submitted', data);
+
+        const dataToServer: UserDataToServer = {
+            usernameOrEmail: data.username,
+            password: data.password,
+            rememberMe: true
+        };
+
+        console.log('dataToServer: ', dataToServer);
+        authorization(dataToServer);
     };
 
     return (
