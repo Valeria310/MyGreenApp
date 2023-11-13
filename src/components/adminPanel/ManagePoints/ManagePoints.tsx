@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import AddIcon from '@mui/icons-material/Add';
 import { Box, Button, LinearProgress, Paper, Tab, Tabs } from '@mui/material';
@@ -53,7 +53,7 @@ const ManagePoints = () => {
         }
     }, []);
 
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);

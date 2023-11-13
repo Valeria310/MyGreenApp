@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 
 import { Box, LinearProgress } from '@mui/material';
 import axios from 'axios';
@@ -38,7 +38,7 @@ const EditPoint: React.FC = () => {
 
     const isUserLoggedIn = localStorage.getItem('EcoHub') ? true : false;
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!localStorage.getItem('EcoHub')) {
             navigate('/login');
         }
@@ -46,7 +46,7 @@ const EditPoint: React.FC = () => {
 
     const { id } = useParams<PointId>();
 
-    const [pointData, setPointData] = React.useState<dataAPI>();
+    const [pointData, setPointData] = useState<dataAPI>();
 
     const customIcon = new L.Icon({
         iconUrl: pointIcon,
@@ -64,7 +64,7 @@ const EditPoint: React.FC = () => {
         }
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         getData();
     }, []);
 
@@ -163,87 +163,7 @@ const EditPoint: React.FC = () => {
         );
     }
 
-    // const pointData = markersState[idx];
-    // pointData.display = true;
-
-    return (
-        <>
-            {content}
-            {/* <AdminHeader />
-            <Box className={classes.editPoint}>
-                <Box className={classes.editPoint__container}>
-                    <Box className={classes.editPoint__inner}>
-                        <h1 className={classes.editPoint__title}>Редактирование точки</h1>
-                        <PointForm {...pointData} />
-                        <MapContainer
-                            className={classes.editPoint__mapContainer}
-                            center={[53.9024716, 27.5618225]}
-                            zoom={11.5}
-                            scrollWheelZoom={false}
-                        >
-                            <TileLayer
-                                attribution='<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors'
-                                url={`https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=${token}&lang=ru`}
-                            />
-                            <MarkerClusterGroup chunkedLoading>
-                                {pointData.display ? (
-                                    <Marker
-                                        key={pointData.id}
-                                        position={[pointData.latitude, pointData.longitude]}
-                                        icon={customIcon}
-                                    >
-                                        <Popup
-                                            className={s.popup}
-                                            keepInView={false}
-                                            maxWidth={370}
-                                        >
-                                            <div className={s.popupHeader}>{pointData.title}</div>
-                                            <div className={s.popupAddressWrapper}>
-                                                <ul className={s.address}>
-                                                    <li className={s.locationPoint}>
-                                                        <div className={s.popupAddressContent}>
-                                                            {pointData.address}
-                                                        </div>
-                                                    </li>
-                                                    <li className={s.phone}>
-                                                        <div className={s.popupAddressContent}>
-                                                            {pointData.phone}
-                                                        </div>
-                                                    </li>
-                                                    <li className={s.schedule}>
-                                                        <div className={s.popupAddressContent}>
-                                                            {pointData.schedule}
-                                                        </div>
-                                                    </li>
-                                                    <li className={s.website}>
-                                                        <div className={s.popupAddressContent}>
-                                                            <a href={pointData.website}>
-                                                                {pointData.website}
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div className={s.popupFooter}>
-                                                Перерабатываем:
-                                                <ul className={s.wasteTypes}>
-                                                    {pointData.wasteTypes.map((item, i) => (
-                                                        <li key={i}>{item}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </Popup>
-                                    </Marker>
-                                ) : (
-                                    ''
-                                )}
-                            </MarkerClusterGroup>
-                        </MapContainer>
-                    </Box>
-                </Box>
-            </Box> */}
-        </>
-    );
+    return content;
 };
 
 export default EditPoint;

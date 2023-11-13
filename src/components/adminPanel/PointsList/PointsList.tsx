@@ -73,9 +73,9 @@ const PointsList = () => {
         navigate(`point/${ref}`);
     };
 
-    const trimSchedule = (str: string) => {
-        return str[0] === 'В' ? str.slice(14) : str;
-    };
+    // const trimSchedule = (str: string) => {
+    //     return str[0] === 'В' ? str.slice(14) : str;
+    // };
 
     return (
         <>
@@ -147,9 +147,7 @@ const PointsList = () => {
                                                     : classes.cell + ' ' + classes.noData
                                             }
                                         >
-                                            {row.workingHours
-                                                ? trimSchedule(row.workingHours)
-                                                : 'Нет данных'}
+                                            {row.workingHours ? row.workingHours : 'Нет данных'}
                                         </TableCell>
                                         <TableCell className={classes.cell}>
                                             {row.recyclableTypes.slice().join(', ')}

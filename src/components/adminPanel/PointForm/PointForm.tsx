@@ -166,12 +166,21 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                 if (!err?.response) {
                     console.error('No Server Response');
                     setServerError('No Server Response');
-                } else if (err.response?.status >= 400 && err.response?.status < 500) {
+                } else if (err.response?.status === 400) {
+                    console.error(err.response.data);
+
+                    const errMessage = Object.values(err.response.data).toString();
+                    setServerError(errMessage);
+                } else if (err.response?.status > 400 && err.response?.status < 500) {
                     console.error(err.response.data.error + ': ' + err.response.data.message);
-                    setServerError(err.response.data.error + ': ' + err.response.data.message);
+
+                    const errMessage = err.response.data.error + ': ' + err.response.data.message;
+                    setServerError(errMessage);
                 } else if (err.response?.status >= 500) {
                     console.error(err.response.data.error);
-                    setServerError(err.response.data.error);
+
+                    const errMessage = err.response.data.error;
+                    setServerError(errMessage);
                 }
             }
         }
@@ -198,12 +207,21 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                 if (!err?.response) {
                     console.error('No Server Response');
                     setServerError('No Server Response');
-                } else if (err.response?.status >= 400 && err.response?.status < 500) {
+                } else if (err.response?.status === 400) {
+                    console.error(err.response.data);
+
+                    const errMessage = Object.values(err.response.data).toString();
+                    setServerError(errMessage);
+                } else if (err.response?.status > 400 && err.response?.status < 500) {
                     console.error(err.response.data.error + ': ' + err.response.data.message);
-                    setServerError(err.response.data.error + ': ' + err.response.data.message);
+
+                    const errMessage = err.response.data.error + ': ' + err.response.data.message;
+                    setServerError(errMessage);
                 } else if (err.response?.status >= 500) {
                     console.error(err.response.data.error);
-                    setServerError(err.response.data.error);
+
+                    const errMessage = err.response.data.error;
+                    setServerError(errMessage);
                 }
             }
         }
