@@ -283,7 +283,6 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                 ) : (
                                     <FormHelperText sx={{ ml: '15px' }}>0/100</FormHelperText>
                                 )}
-
                                 {errors.title?.message ? (
                                     <FormHelperText sx={{ ml: '15px', color: 'red' }}>
                                         {errors.title.message}
