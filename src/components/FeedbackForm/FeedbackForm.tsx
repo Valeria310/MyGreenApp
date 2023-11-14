@@ -1,6 +1,6 @@
-import { useState, useEffect, MouseEvent, FC } from 'react';
+import { useState, useEffect, MouseEvent, FC, useRef } from 'react';
 
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 
 import selectDownArrowIcon from 'src/assets/icons/select-down-arrow.svg';
 import selectUpArrowIcon from 'src/assets/icons/select-up-arrow.svg';
@@ -10,6 +10,8 @@ import s from  './FeedbackForm.module.scss';
 import { FeedbackFormProps } from './FeedbackFormProps';
 import { Input } from './Input';
 import { desc_validation, email_validation, name_validation } from './InputValidations';
+import axios from 'axios';
+
 
 export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
 
@@ -17,6 +19,11 @@ export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
 
     const onSubmit = methods.handleSubmit(data => {
         console.log(data);
+
+        axios.post("https://31.184.254.112:8081/feedbacks", data)
+            .then (response=>console.log(response))
+            .catch(err => console.log(err))
+
     });
 
     const dropdownRef = useClickOutside(() => setOpenDropdown(false));
@@ -54,8 +61,12 @@ export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
 
 
 
+
     return (
+
         <FormProvider {...methods}>
+
+
             <form  onSubmit={e => e.preventDefault()}
                 noValidate
                 className={s.feedbackForm}>
@@ -69,6 +80,19 @@ export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
                     </div>
                     <div className={s.feedbackFormField}>
                         <Input  {...email_validation} />
+                    </div>
+                    <div className={`${s.feedbackFormField} ${s.paddingTop}`}>
+                        <label>Тип сообщения</label>
+                    <select {...methods.register("messageTopic", { required: {
+                            value: true,
+                            message: 'Обязательно'
+                        } } )} className={s.customSelectNew}>
+                        <option value="">Выберите...</option>
+                        <option value="Вопрос">Вопрос</option>
+                        <option value="Предложение">Предложение</option>
+                        <option value="Проблема/жалоба">Проблема/жалоба</option>
+                        <option value="Отзыв">Отзыв</option>
+                    </select>
                     </div>
 
 
@@ -113,19 +137,19 @@ export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
                     <div className={s.feedbackFormField}>
                         <Input  {...desc_validation} />
                     </div>
-                    <span>{methods.watch('description') ? methods.watch('description').length: '0'}/500</span>
+                    <div className={s.messageCounter}>{methods.watch('description') ? methods.watch('description').length: '0'}/500</div>
 
-                    <div className={s.feedbackFormField}>
-                        <label htmlFor='message'>Сообщение</label>
-                        <textarea
-                            id='message'
-                            name='message'
-                            maxLength={500}
-                            value={formData.message}
-                            onChange={(e) => setFormField(e.target.name, e.target.value)}
-                        />
-                        <div className={s.messageCounter}>{count}/500</div>
-                    </div>
+                    {/*<div className={s.feedbackFormField}>*/}
+                    {/*    <label htmlFor='message'>Сообщение</label>*/}
+                    {/*    <textarea*/}
+                    {/*        id='message'*/}
+                    {/*        name='message'*/}
+                    {/*        maxLength={500}*/}
+                    {/*        value={formData.message}*/}
+                    {/*        onChange={(e) => setFormField(e.target.name, e.target.value)}*/}
+                    {/*    />*/}
+                    {/*    <div className={s.messageCounter}>{count}/500</div>*/}
+                    {/*</div>*/}
                 </div>
                 <div className={s.feedbackFormPolytics}>
                     <button type='button' className={`${s.feedbackFormCheckbox}${agreed ? ' ' + s.selected : ''}`} onClick={() => setAgreed(!agreed)} />

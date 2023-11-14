@@ -7,7 +7,7 @@
 *-------------------------------------------------------------------*/
 
 export const name_validation = {
-    name: 'Имя',
+    name: 'name',
     label: 'Имя',
     type: 'text',
     id: 'name',
@@ -15,29 +15,29 @@ export const name_validation = {
     validation: {
         required: {
             value: true,
-            message: 'Обязательно'
+            message: 'Обязательное поле'
         },
         maxLength: {
             value: 30,
-            message: '30 characters max'
+            message: '30 символов максимум'
         }
     }
 };
 
 export const desc_validation = {
-    name: 'description',
-    label: 'description',
+    name: 'messageContent',
+    label: 'Сообщение',
     multiline: true,
     id: 'description',
-    placeholder: 'write description ...',
+    placeholder: '',
     validation: {
         required: {
             value: true,
-            message: 'required'
+            message: 'Обязательное поле'
         },
         maxLength: {
-            value: 200,
-            message: '200 characters max'
+            value: 500,
+            message: '500 символов максимум'
         }
     }
 };
@@ -75,7 +75,7 @@ export const num_validation = {
 };
 
 export const email_validation = {
-    name: 'E-mail',
+    name: 'email',
     label: 'E-mail',
     type: 'email',
     id: 'email',
@@ -83,7 +83,7 @@ export const email_validation = {
     validation: {
         required: {
             value: true,
-            message: 'Обязательно'
+            message: 'Обязательное поле'
         },
         pattern: {
             value:
