@@ -148,7 +148,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
 
     async function updateAccessToken(refToken: string) {
         try {
-            await axios.post('https://31.184.254.112:8081/admin/refresh-token', {
+            await axios.post('https://31.184.254.112:8081/auth/refresh-token', {
                 headers: {
                     Authorization: `Bearer ${refToken}`
                 }
