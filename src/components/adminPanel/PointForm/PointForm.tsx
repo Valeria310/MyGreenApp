@@ -144,11 +144,24 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
 
     const dataFromLS = JSON.parse(localStorage.getItem('EcoHub') || '{}');
     const adminTokenFromLS = dataFromLS?.accessToken;
+    const refreshTokenFromLS = dataFromLS?.refreshToken;
+
+    async function updateAccessToken(refToken: string) {
+        try {
+            await axios.post('https://31.184.254.112:8081/admin/refresh-token', {
+                headers: {
+                    Authorization: `Bearer ${refToken}`
+                }
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
     // manipulations with points
     async function createNewPoint(myData: dataAPI) {
         try {
-            const response = await axios.post(
+            await axios.post(
                 'https://31.184.254.112:8081/admin/recycling-points',
                 JSON.stringify(myData),
                 {
@@ -171,7 +184,16 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
 
                     const errMessage = Object.values(err.response.data).toString();
                     setServerError(errMessage);
-                } else if (err.response?.status > 400 && err.response?.status < 500) {
+                } else if (err.response?.status === 401 && dataFromLS) {
+                    console.error(err.response.data);
+
+                    updateAccessToken(refreshTokenFromLS);
+                } else if (err.response?.status === 401 && !dataFromLS) {
+                    console.error(err.response.data.error + ': ' + err.response.data.message);
+
+                    const errMessage = err.response.data.error + ': ' + err.response.data.message;
+                    setServerError(errMessage);
+                } else if (err.response?.status > 401 && err.response?.status < 500) {
                     console.error(err.response.data.error + ': ' + err.response.data.message);
 
                     const errMessage = err.response.data.error + ': ' + err.response.data.message;
@@ -188,7 +210,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
 
     async function updatePoint(myData: dataAPI, pointId: number | undefined) {
         try {
-            const response = await axios.patch(
+            await axios.patch(
                 `https://31.184.254.112:8081/admin/recycling-points/${pointId}`,
                 JSON.stringify(myData),
                 {
@@ -212,7 +234,16 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
 
                     const errMessage = Object.values(err.response.data).toString();
                     setServerError(errMessage);
-                } else if (err.response?.status > 400 && err.response?.status < 500) {
+                } else if (err.response?.status === 401 && dataFromLS) {
+                    console.error(err.response.data);
+
+                    updateAccessToken(refreshTokenFromLS);
+                } else if (err.response?.status === 401 && !dataFromLS) {
+                    console.error(err.response.data.error + ': ' + err.response.data.message);
+
+                    const errMessage = err.response.data.error + ': ' + err.response.data.message;
+                    setServerError(errMessage);
+                } else if (err.response?.status > 401 && err.response?.status < 500) {
                     console.error(err.response.data.error + ': ' + err.response.data.message);
 
                     const errMessage = err.response.data.error + ': ' + err.response.data.message;
