@@ -26,8 +26,8 @@ type dataAPI = {
     id?: number;
     name: string | undefined;
     address: string;
-    phoneNumber: string;
-    website: string;
+    phoneNumber: string | null;
+    website: string | null;
     location: {
         latitude: number;
         longitude: number;
@@ -40,9 +40,9 @@ type dataAPI = {
 
 type FormValues = {
     title: string;
-    website: string;
+    website: string | null;
     address: string;
-    phone: string;
+    phone: string | null;
     schedule: string;
     coordinates?: string | undefined;
     wasteTypes: string[];
@@ -242,8 +242,8 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
         const newPoint: dataAPI = {
             name: resultData.title,
             address: resultData.address,
-            phoneNumber: resultData.phone,
-            website: resultData.website,
+            phoneNumber: resultData.phone ? resultData.phone : null,
+            website: resultData.website ? resultData.website : null,
             location: {
                 latitude: resultData.latitude,
                 longitude: resultData.longitude
@@ -252,7 +252,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
             recyclableTypes: resultData.wasteTypes,
             displayed: Boolean(resultData.display)
         };
-        // console.log('=== Result data to database:', newPoint);
+        console.log('=== Result data to database:', newPoint);
 
         const isPointExists = tableData.some((point) => point.id === props.id);
 
