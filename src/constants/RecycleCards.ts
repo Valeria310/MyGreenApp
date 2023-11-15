@@ -1,4 +1,14 @@
-import { DangerContent, ElectroContent, GlassContent, LargeContent, MetalContent, PaperContent, PlasticContent, RagContent, RecycleContent } from './RecycleContent';
+import {
+    DangerContent,
+    ElectroContent,
+    GlassContent,
+    LargeContent,
+    MetalContent,
+    PaperContent,
+    PlasticContent,
+    RagContent,
+    RecycleContent
+} from './RecycleContent';
 import dangerImg from '../assets/images/recycle-danger.jpg';
 import electroImg from '../assets/images/recycle-electro.jpg';
 import glassImg from '../assets/images/recycle-glass.jpg';
@@ -8,12 +18,18 @@ import paperImg from '../assets/images/recycle-paper.jpg';
 import plasticImg from '../assets/images/recycle-plastic.jpg';
 import ragImg from '../assets/images/recycle-rag.jpg';
 
-
-
 export interface RecycleCard {
     heading: string;
     image: string;
-    type: 'plastic' | 'paper' | 'glass' | 'large' | 'electro' | 'danger' | 'metal' | 'rag';
+    type:
+        | 'plastic'
+        | 'paper'
+        | 'glass'
+        | 'large'
+        | 'electro'
+        | 'danger'
+        | 'metal'
+        | 'rag';
     content: RecycleContent | null;
 }
 
@@ -37,7 +53,7 @@ export const RecycleCards: RecycleCard[] = [
         content: GlassContent
     },
     {
-        heading: 'Крупногабаритные отходы',
+        heading: 'Крупногабаритные деревянные отходы',
         image: largeImg,
         type: 'large',
         content: LargeContent
