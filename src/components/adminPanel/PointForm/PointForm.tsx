@@ -185,9 +185,13 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                     const errMessage = Object.values(err.response.data).toString();
                     setServerError(errMessage);
                 } else if (err.response?.status === 401 && dataFromLS) {
-                    console.error(err.response.data);
+                    console.error(err.response.data.message);
 
-                    updateAccessToken(refreshTokenFromLS);
+                    const errMessage = 'JWT expired! Please, relogin.';
+                    setServerError(errMessage);
+                    localStorage.removeItem('EcoHub');
+
+                    // updateAccessToken(refreshTokenFromLS);
                 } else if (err.response?.status === 401 && !dataFromLS) {
                     console.error(err.response.data.error + ': ' + err.response.data.message);
 
@@ -235,9 +239,13 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                     const errMessage = Object.values(err.response.data).toString();
                     setServerError(errMessage);
                 } else if (err.response?.status === 401 && dataFromLS) {
-                    console.error(err.response.data);
+                    console.error(err.response.data.message);
 
-                    updateAccessToken(refreshTokenFromLS);
+                    const errMessage = 'JWT expired! Please, relogin.';
+
+                    setServerError(errMessage);
+                    localStorage.removeItem('EcoHub');
+                    // updateAccessToken(refreshTokenFromLS);
                 } else if (err.response?.status === 401 && !dataFromLS) {
                     console.error(err.response.data.error + ': ' + err.response.data.message);
 
@@ -324,17 +332,31 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
         return (
             <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                 <Alert severity="error">{message}</Alert>
-                <Button
-                    variant="contained"
-                    size="large"
-                    sx={{ margin: '16px auto' }}
-                    onClick={() => {
-                        setServerError('');
-                        navigate(-1);
-                    }}
-                >
-                    Back
-                </Button>
+                {message.includes('expired') ? (
+                    <Button
+                        variant="contained"
+                        size="large"
+                        sx={{ margin: '16px auto' }}
+                        onClick={() => {
+                            setServerError('');
+                            navigate('/login');
+                        }}
+                    >
+                        Login
+                    </Button>
+                ) : (
+                    <Button
+                        variant="contained"
+                        size="large"
+                        sx={{ margin: '16px auto' }}
+                        onClick={() => {
+                            setServerError('');
+                            navigate(-1);
+                        }}
+                    >
+                        Back
+                    </Button>
+                )}
             </Box>
         );
     };

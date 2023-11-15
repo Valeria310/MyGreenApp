@@ -55,7 +55,7 @@ const PointsList = () => {
 
     async function getData() {
         try {
-            const response = await axios.get('https://31.184.254.112:8081/recycling-points/');
+            const response = await axios.get('https://31.184.254.112:8082/recycling-points/');
             setTableData(response.data);
         } catch (error) {
             console.error(error);
@@ -102,9 +102,9 @@ const PointsList = () => {
                             <TableBody>
                                 {(rowsPerPage > 0
                                     ? tableData.slice(
-                                        page * rowsPerPage,
-                                        page * rowsPerPage + rowsPerPage
-                                    )
+                                          page * rowsPerPage,
+                                          page * rowsPerPage + rowsPerPage
+                                      )
                                     : tableData
                                 ).map((row) => (
                                     <TableRow
