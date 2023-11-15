@@ -30,7 +30,7 @@ export const NavCards: NavCard[] = [
             }
         ],
         buttonValue: 'Что перерабатываем',
-        href: '#recycle'
+        href: '/recycle'
     },
     {
         heading: 'Сортировка отходов',
