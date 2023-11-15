@@ -23,6 +23,11 @@
     border-color: #000000;
 }
 
+.disabled {
+    pointer-events: none;
+    border-color: #000000;
+}
+
 @media (max-width: 1250px) {
     .navigation {
         gap: 44px;

@@ -1,4 +1,4 @@
-@import "../../index.scss";
+@import '../../index.scss';
 
 .header {
     position: sticky;
@@ -46,7 +46,7 @@
             z-index: 1003;
         }
     }
-    
+
     &-mobile-menu {
         position: absolute;
         right: -100%;
@@ -54,13 +54,13 @@
         max-width: 350px;
         width: 100%;
         height: 100%;
-        background: #F6FCEA;
+        background: #f6fcea;
         display: none;
         align-items: center;
         flex-direction: column;
         justify-content: space-between;
         z-index: 1002;
-        transition: right .5s;
+        transition: right 0.5s;
         &.opened {
             right: 0;
         }
@@ -107,7 +107,7 @@
     &:nth-child(2) {
         top: 50%;
     }
-    
+
     &:last-child {
         width: 50%;
         align-self: flex-end;
@@ -173,7 +173,7 @@
     padding: 10px 25px;
     border-radius: 35px;
     border: 1px solid #070707;
-    background: #F6FCEA;
+    background: #f6fcea;
     font-family: $font-primary;
     font-size: 24px;
     font-style: normal;
@@ -187,6 +187,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 3;
 
     & .search-input {
         width: 0;
@@ -197,7 +198,7 @@
         height: 26px;
 
         &::placeholder {
-            color: rgba(7, 7, 7, 0.40)
+            color: rgba(7, 7, 7, 0.4);
         }
     }
 
@@ -205,7 +206,7 @@
         width: 92%;
         height: 0;
         margin: 0 auto;
-        background-color: rgba(7, 7, 7, 0.60);
+        background-color: rgba(7, 7, 7, 0.6);
     }
 
     &.opened {
@@ -220,15 +221,17 @@
             height: auto;
             padding: 16px 0;
             padding-bottom: 0;
-            border-color: #F6FCEA;
+            border-color: #f6fcea;
             border-radius: 35px;
             background-color: $color-white;
-            box-shadow: 0px 25px 35px 0px rgba(0, 0, 0, 0.06), 0px 0px 5px 0px rgba(0, 0, 0, 0.10);
+            box-shadow:
+                0px 25px 35px 0px rgba(0, 0, 0, 0.06),
+                0px 0px 5px 0px rgba(0, 0, 0, 0.1);
 
             & .search-input {
                 padding: 0 24px;
             }
-            
+
             & .underline {
                 height: 1px;
                 margin-top: 16px;
@@ -256,10 +259,11 @@
     padding: 0 24px;
     display: flex;
     align-items: center;
+    color: inherit;
 
     &:hover {
         cursor: pointer;
-        background: #E3EFDD;
+        background: #e3efdd;
     }
 }
 
@@ -270,10 +274,28 @@
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
-    z-index: 2;
+    z-index: 4;
+    transition: all 0s;
 
     &.opened {
-        background-image: url(../../assets/icons/cross.svg);
+        pointer-events: none;
+        visibility: hidden;
+        z-index: 0;
+    }
+}
+.close-search {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 24px;
+    top: 10px;
+    background-image: url(../../assets/icons/cross.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all 0.1s;
+    &.hidden {
+        visibility: hidden;
     }
 }
 
@@ -331,7 +353,7 @@
         & .header-mobile-menu {
             display: block;
         }
-        
+
         & .header-mobile-menu {
             display: flex;
             position: fixed;
@@ -362,11 +384,11 @@
         height: 40px;
     }
 
-    .search-form{
+    .search-form {
         font-size: 20px;
 
         &.opened {
-            width: 82%
+            width: 82%;
         }
     }
 
@@ -406,14 +428,15 @@
             z-index: 1004;
         }
     }
-        
+
     .search-btn {
         position: relative;
-        right: 0vw;width: 24px;
+        right: 0vw;
+        width: 24px;
         height: 24px;
-    
+
         &.opened {
-            transition: all .5s;
+            // transition: all 0.5s;
             right: -5vw;
             z-index: 1005;
         }
@@ -421,6 +444,14 @@
 
     .res-item {
         height: 26px;
+    }
+
+    .close-search {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 20px;
+        top: 12px;
     }
 }
 
@@ -454,13 +485,13 @@
         width: 20px;
 
         &:first-child {
-        top: calc(50% - 6px);
-    }
-        
+            top: calc(50% - 6px);
+        }
+
         &:nth-child(2) {
             top: calc(50% - 1px);
         }
-        
+
         &:last-child {
             top: calc(50% + 4px);
         }
@@ -469,7 +500,7 @@
     .cross .burger-line:last-child {
         width: 20px;
     }
-    
+
     .plug {
         width: 24px;
         height: 24px;

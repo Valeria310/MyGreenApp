@@ -7,6 +7,7 @@ import ManagePoints from 'src/pages/adminPanel/ManagePoints';
 import PointPage from 'src/pages/adminPanel/PointPage';
 import { Homepage } from 'src/pages/Homepage/Homepage';
 import { RecyclePage } from 'src/pages/RecyclePage/RecyclePage';
+import { SearchResultsList } from 'src/pages/SearchResultsList/SearchResultsList';
 
 export const AppRoutes = () => {
     return (
@@ -18,6 +19,7 @@ export const AppRoutes = () => {
             <Route path="/admin/create-new-point" element={<CreatePointPage />} />
             <Route path="/admin/point/:id" element={<PointPage />} />
             <Route path="/admin/point/:id/edit" element={<EditPointPage />} />
+            <Route path="/search-results" element={<SearchResultsList />} />
         </Routes>
     );
 };

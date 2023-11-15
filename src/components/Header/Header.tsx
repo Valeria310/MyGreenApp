@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 
-import { Navigation } from './../Navigation/Navigation';
-import './Header.scss';
-import { SearchForm } from './SearchForm';
+import { Link } from 'react-router-dom';
 
+import { Navigation } from './../Navigation/Navigation';
+import { SearchForm } from './SearchForm';
+import './Header.scss';
 
 export const Header = () => {
     let prevPos = 0;
@@ -13,7 +14,7 @@ export const Header = () => {
     let isMenuOpen = false;
     const firtsBlockHeight = 902;
     let position = 0;
-    let isSearchFormOpened = false;
+
     window.addEventListener('resize', () => {
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -23,27 +24,31 @@ export const Header = () => {
         const elem = document.getElementById('header');
         elem?.addEventListener('mouseover', handleMouseover, false);
         elem?.addEventListener('mouseout', handleMouseout, false);
-        const currentPos:number = window.pageYOffset;
-        if((currentPos>=firtsBlockHeight) && (currentPos < prevPos) && !isStarted){
+        const currentPos: number = window.pageYOffset;
+        if (currentPos >= firtsBlockHeight && currentPos < prevPos && !isStarted) {
             elem?.classList.add('visible');
             isStarted = true;
             changeVisible = setTimeout(() => {
-                if(mousePosition === 'out') {
+                if (mousePosition === 'out') {
                     elem?.classList.remove('visible');
                     isStarted = false;
                 } else {
-                    elem?.addEventListener('mouseout', () => {
-                        elem?.classList.remove('visible');
-                        isStarted = false;
-                    }, { once: true });
+                    elem?.addEventListener(
+                        'mouseout',
+                        () => {
+                            elem?.classList.remove('visible');
+                            isStarted = false;
+                        },
+                        { once: true }
+                    );
                 }
             }, 3000);
-        } else if((currentPos<firtsBlockHeight) || (currentPos > prevPos)) {
+        } else if (currentPos < firtsBlockHeight || currentPos > prevPos) {
             isStarted = false;
             clearTimeout(changeVisible);
             elem?.classList.remove('visible');
         }
-        prevPos=currentPos;
+        prevPos = currentPos;
     };
 
     const handleMouseover = () => {
@@ -55,7 +60,7 @@ export const Header = () => {
     };
 
     const handlePlugClick = () => {
-        if(isMenuOpen === true) {
+        if (isMenuOpen === true) {
             document.body.style.overflowY = 'auto';
             window.scrollTo(0, position);
             const burger = document.getElementById('burger');
@@ -75,8 +80,8 @@ export const Header = () => {
             }, 100);
             mousePosition = 'out';
         } else {
-            const burger = document.getElementById('burger');    
-            position=window.pageYOffset;
+            const burger = document.getElementById('burger');
+            position = window.pageYOffset;
             const menu = document.getElementById('menu');
             const bodyPlug = document.getElementById('body-plug');
             const header = document.getElementById('header');
@@ -94,20 +99,19 @@ export const Header = () => {
     };
 
     const handleSearchClick = () => {
-        const searchForm = document.getElementById('searchForm');
+        const searchForm = document.getElementsByClassName('search-form');
         const searchBtn = document.getElementById('searchBtn');
-        const searchInput = document.getElementById('searchInput'); 
+        const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 
-        if (isSearchFormOpened) {
-            searchForm?.classList.remove('opened');
+        if (searchForm[0]?.classList.contains('opened')) {
+            searchForm[0]?.classList.remove('opened');
+            searchForm[0]?.classList.remove('showes');
             searchBtn?.classList.remove('opened');
-            isSearchFormOpened = false;
             searchInput?.blur();
         } else {
-            searchForm?.classList.add('opened');
+            searchForm[0]?.classList.add('opened');
             searchBtn?.classList.add('opened');
             searchInput?.focus();
-            isSearchFormOpened = true;
         }
     };
 
@@ -129,10 +133,10 @@ export const Header = () => {
         document.body.style.overflowY = 'auto';
     };
 
-    document.addEventListener('click', (e)=> {
+    document.addEventListener('click', (e) => {
         const links = document.getElementsByClassName('navigation_link');
         const burger = document.getElementById('burger');
-        if(e.target == links[3] || e.target == links[4] || e.target == links[5] ) {
+        if (e.target == links[3] || e.target == links[4] || e.target == links[5]) {
             const menu = document.getElementById('menu');
             const bodyPlug = document.getElementById('body-plug');
             const header = document.getElementById('header');
@@ -150,7 +154,7 @@ export const Header = () => {
         }
     });
 
-    window.addEventListener('hashchange', ()=> {
+    window.addEventListener('hashchange', () => {
         const menu = document.getElementById('menu');
         const bodyPlug = document.getElementById('body-plug');
         const burger = document.getElementById('burger');
@@ -162,7 +166,6 @@ export const Header = () => {
         header?.classList.remove('visible');
         isStarted = false;
         isMenuOpen = false;
-        isSearchFormOpened = false;
         document.body.style.overflowY = 'auto';
         const container = header?.getElementsByClassName('container')[0];
         container?.classList.remove('opened-menu');
@@ -173,31 +176,35 @@ export const Header = () => {
         setTimeout(() => {
             window.addEventListener('scroll', scrollHandler, false);
         }, 1000);
-        
+
         return () => window.removeEventListener('scroll', scrollHandler, false);
     });
 
-    return (<header className='header visible' id='header'>
-        <div className="container">
-            <a className="logo" href='/'></a>
-            <div className="navigation-wrapper">
-                <Navigation />
-                <SearchForm />
-                <div className="search-btn" id='searchBtn' onClick={handleSearchClick}></div>
+    return (
+        <header className="header visible" id="header">
+            <div className="container">
+                <a className="logo" href="/"></a>
+                <div className="navigation-wrapper">
+                    <Navigation />
+                    <SearchForm />
+                    <div className="search-btn" id="searchBtn" onClick={handleSearchClick}></div>
+                </div>
+                <div className="header-mobile-burger" id="burger">
+                    <div className="burger-line"></div>
+                    <div className="burger-line"></div>
+                    <div className="burger-line"></div>
+                </div>
+                <div className="plug" onClick={handlePlugClick}></div>
+                <Link to={'/login'} className="logUp-btn desk">
+                    Войти
+                </Link>
+                <div className="header-mobile-menu" id="menu">
+                    <Navigation />
+                    <div className="logUp-btn mob">Войти</div>
+                    <span className="headrer-menu-text">info@ecohub.by</span>
+                </div>
             </div>
-            <div className="header-mobile-burger" id='burger'>
-                <div className="burger-line"></div>
-                <div className="burger-line"></div>
-                <div className="burger-line"></div>
-            </div>
-            <div className="plug" onClick={handlePlugClick}></div>
-            <div className="logUp-btn desk">Войти</div>
-            <div className="header-mobile-menu" id='menu'>
-                <Navigation />
-                <div className="logUp-btn mob">Войти</div>
-                <span className='headrer-menu-text'>info@ecohub.by</span> 
-            </div>
-        </div>
-        <div className="body-plug" id='body-plug' onClick={handleBodyPlugClick}></div>
-    </header>);
+            <div className="body-plug" id="body-plug" onClick={handleBodyPlugClick}></div>
+        </header>
+    );
 };

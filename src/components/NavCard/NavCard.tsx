@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { useWindowWidth } from 'src/hooks/useWindowWidth';
 
 import s from './NavCard.module.scss';
@@ -10,7 +12,6 @@ import NavArrow from '../../assets/icons/nav-arrow.svg';
 
 export const NavCard: FC<NavCardProps> = ({ card }) => {
     const width = useWindowWidth();
-
     return (
         <div className={s.navCard}>
             <div className={s.navCardImage}>
@@ -24,10 +25,10 @@ export const NavCard: FC<NavCardProps> = ({ card }) => {
                     { card.content.map(content => <p key={content.id}>{ content.text }</p>) }
                 </div>
                 <div className={s.navCardButton}>
-                    <a href={card.href}>
+                    <Link to={card.href} className="logUp-btn desk">
                         <span>{card.buttonValue}</span>
                         <img src={width < 1200 ? (width < 768 ? NavArrowMobile : NavArrowTab) : NavArrow} alt='arrow' />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

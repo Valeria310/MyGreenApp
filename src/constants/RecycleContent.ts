@@ -36,6 +36,7 @@ import clothes from '../assets/icons/rag/1_clothes.svg';
 import boots from '../assets/icons/rag/2_boots.svg';
 import textile from '../assets/icons/rag/3_textile.svg';
 
+
 interface RecycleInfoDescription {
     id: number;
     text: string;
@@ -182,18 +183,22 @@ export const PlasticContent: RecycleContent = {
             description: [
                 {
                     id: 1,
-                    text: 'Канистры, ведра'
+                    text: 'Твердые пластмассовые изделия'
                 },
                 {
                     id: 2,
-                    text: 'Пластиковые пакеты'
+                    text: 'Канистры, ведра'
                 },
                 {
                     id: 3,
-                    text: 'Мусорные мешки'
+                    text: 'Пластиковые пакеты'
                 },
                 {
                     id: 4,
+                    text: 'Мусорные мешки'
+                },
+                {
+                    id: 5,
                     text: 'Пленки'
                 }
             ],
@@ -224,10 +229,6 @@ export const PlasticContent: RecycleContent = {
                 {
                     id: 3,
                     text: 'Корпуса техники'
-                },
-                {
-                    id: 4,
-                    text: 'Полипропеленовые ящики'
                 }
             ],
             status: 'Подлежит переработке'
@@ -553,14 +554,6 @@ export const GlassContent: RecycleContent = {
                 {
                     id: 3,
                     text: 'Баночки от лекарств'
-                },
-                {
-                    id: 4,
-                    text: 'Оконные стекла'
-                },
-                {
-                    id: 5,
-                    text: 'Мебельные стекла'
                 }
             ],
             status: 'Подлежит переработке'
@@ -577,14 +570,22 @@ export const GlassContent: RecycleContent = {
             description: [
                 {
                     id: 1,
-                    text: 'Автомобильные стекла'
+                    text: 'Оконные стекла'
                 },
                 {
                     id: 2,
-                    text: 'Армированные стекла'
+                    text: 'Мебельные стекла'
                 },
                 {
                     id: 3,
+                    text: 'Автомобильные стекла'
+                },
+                {
+                    id: 4,
+                    text: 'Армированные стекла'
+                },
+                {
+                    id: 5,
                     text: 'Зеркала'
                 }
             ],
@@ -660,7 +661,7 @@ export const LargeContent: RecycleContent = {
     columns: [
         {
             id: 1,
-            name: 'Крупно\u00ADгабаритные деревянные отходы',
+            name: 'Крупно\u00ADгабаритные отходы',
             images: [
                 {
                     id: 1,
@@ -670,15 +671,15 @@ export const LargeContent: RecycleContent = {
             description: [
                 {
                     id: 1,
-                    text: 'Мебель'
+                    text: 'Диваны'
                 },
                 {
                     id: 2,
-                    text: 'Оконные рамы'
+                    text: 'Шкафы'
                 },
                 {
                     id: 3,
-                    text: 'Двери и др.'
+                    text: 'Другие габаритные предметы'
                 }
             ],
             status: 'Подлежит переработке'
@@ -718,7 +719,7 @@ export const DangerContent: RecycleContent = {
             description: [
                 {
                     id: 1,
-                    text: 'Батарейки'
+                    text: 'Пальчиковые батарейки'
                 },
                 {
                     id: 2,
@@ -797,26 +798,18 @@ export const DangerContent: RecycleContent = {
             description: [
                 {
                     id: 1,
-                    text: 'Ртутные лампы'
-                },
-                {
-                    id: 2,
                     text: 'Люминесцентные лампы'
                 },
                 {
-                    id: 3,
+                    id: 2,
                     text: 'Светодиодные лампы'
-                },
-                {
-                    id: 4,
-                    text: 'Исключение! Лампы накаливания'
                 }
             ],
             status: 'Подлежит переработке'
         },
         {
             id: 5,
-            name: 'Термометры',
+            name: 'Ртуть\u00ADсодержащие',
             images: [
                 {
                     id: 1,
@@ -826,19 +819,7 @@ export const DangerContent: RecycleContent = {
             description: [
                 {
                     id: 1,
-                    text: 'Электронные'
-                },
-                {
-                    id: 2,
-                    text: ' Спиртовые'
-                },
-                {
-                    id: 3,
-                    text: 'Ртутьсодержащие'
-                },
-                {
-                    id: 4,
-                    text: 'Инфракрасные и др.'
+                    text: 'Градусники'
                 }
             ],
             status: 'Подлежит переработке'
@@ -851,7 +832,7 @@ export const ElectroContent: RecycleContent = {
     columns: [
         {
             id: 1,
-            name: 'Электронная техника, бытовая техника, оргтехника, электро\u00ADприборы',
+            name: 'Электронная и бытовая техника',
             images: [
                 {
                     id: 1,
@@ -900,11 +881,23 @@ export const MetalContent: RecycleContent = {
             description: [
                 {
                     id: 1,
-                    text: 'Цветной металл (медь, алюминий, цинк, серебро, золото): алюминевые банки, медные трубы, электропроводка, драгоценные изделия и др.'
+                    text: 'Цветной металл (медь, алюминий, цинк, серебро, золото)'
                 },
                 {
                     id: 2,
-                    text: 'Черный металлом (железо, чугун, нержавеющая сталь): арматура, инструмент, запчасти, металлические изделия и конструкции (посуда, ограждения, металлические части мебели, двери, фурнитура и др.)'
+                    text: 'Лом и отходы черных металлов (чугунные изделия и ванны)'
+                },
+                {
+                    id: 3,
+                    text: 'Инструмент'
+                },
+                {
+                    id: 4,
+                    text: 'Алюминиевые банки'
+                },
+                {
+                    id: 5,
+                    text: 'Различное оборудование и его корпуса'
                 }
             ],
             status: 'Подлежит переработке'
