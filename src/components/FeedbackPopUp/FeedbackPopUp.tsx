@@ -14,6 +14,7 @@ export const FeedbackPopUp:FC<FeedbackPopUpProps> = ({ show, onClose, data }) =>
             noBorderRadiusMobile={true}
         >
             <FeedbackForm data={data} />
+
         </PopUp>
     );
 };

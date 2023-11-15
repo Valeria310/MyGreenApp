@@ -4,6 +4,7 @@ import contactIcon from 'src/assets/icons/contact-us.svg';
 
 import s from './ContactButton.module.scss';
 import FeedbackPopUp from '../FeedbackPopUp';
+import ErrorPopUp from '../ErrorPopUp';
 
 export interface FormData {
     name: string;
@@ -29,6 +30,7 @@ export const ContactButton = () => {
                 </div>
             }
             <FeedbackPopUp show={showForm} onClose={() => setShowForm(false)} data={{ formData, setFormData }} />
+            {/*<ErrorPopUp show={showForm} onClose={() => setShowForm(false)} />*/}
         </div>
     );
 };
