@@ -14,24 +14,35 @@ import axios from 'axios';
 import { SuccessPopUp } from '../SuccessPopUp/SuccessPopUp';
 
 
-export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
+export const FeedbackForm:FC<FeedbackFormProps> = ({ showResultPopUp, data }) => {
+
+const [messageTopic, setMessageTopic] = useState("")
+
+    console.log(messageTopic)
 
     const methods = useForm();
 
-    const onSubmit = methods.handleSubmit(data => {
+    const onSubmit = methods.handleSubmit((data, messageTopic) => {
+
+        debugger
+
+        const dataObgWithMassageTopic = {...data, messageTopic1: messageTopic}
+
+        console.log(dataObgWithMassageTopic)
 
         const objToSend = JSON.stringify(data);
 
         console.log(objToSend);
 
-        axios.post("https://31.184.254.112:8081/feedbacks", objToSend, {
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-            .then (response=>console.log(response))
-            .catch(err => console.log(err))
-
+        // axios.post("https://31.184.254.112:8081/feedbacks", objToSend, {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     }
+        // })
+        //     .then (response=>{console.log(response);
+        // showResultPopUp("success")})
+        //     .catch(err => {console.log(err);
+        //         showResultPopUp("error")})
     });
 
     const dropdownRef = useClickOutside(() => setOpenDropdown(false));
@@ -58,12 +69,24 @@ export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
             [field]: value
         });
     };
+    //
+    // const handleSelect = (e: MouseEvent) => {
+    //
+    //     const item = e.target;
+    //
+    //     console.log((item as HTMLLIElement).textContent)
+    //     if (item) {
+    //         setMessageTopic((item as HTMLLIElement).textContent || '')
+    //         setFormField('messageType', (item as HTMLLIElement).textContent || '');
+    //     }
+    //     setOpenDropdown(false);
+    // };
+    const handleSelect = (messageTopic1: string) => {
 
-    const handleSelect = (e: MouseEvent) => {
-        const item = e.target;
-        if (item) {
-            setFormField('messageType', (item as HTMLLIElement).textContent || '');
-        }
+        console.log(messageTopic1);
+
+        setMessageTopic(messageTopic1);
+
         setOpenDropdown(false);
     };
 
@@ -133,10 +156,16 @@ export const FeedbackForm:FC<FeedbackFormProps> = ({ data }) => {
                             </button>
                             {openDropdown &&
                             <ul className={s.selectDropdown}>
-                                <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Вопрос</li>
-                                <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Предложение</li>
-                                <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Проблема/жалоба</li>
-                                <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Отзыв</li>
+                                {/*<li className={s.selectItem} onClick={(e) => handleSelect(e)}>Вопрос</li>*/}
+                                {/*<li className={s.selectItem} onClick={(e) => handleSelect(e)}>Предложение</li>*/}
+                                {/*<li className={s.selectItem} onClick={(e) => handleSelect(e)}>Проблема/жалоба</li>*/}
+                                {/*<li className={s.selectItem} onClick={(e) => handleSelect(e)}>Отзыв</li>       */}
+                                <li className={s.selectItem} onClick={() => handleSelect("QUESTION")}>Вопрос</li>
+                                <li className={s.selectItem} onClick={() => handleSelect("OFFER")}>Предложение</li>
+                                <li className={s.selectItem} onClick={() => handleSelect("PROBLEM")}>Проблема/жалоба</li>
+                                <li className={s.selectItem} onClick={() => handleSelect("REVIEW")}>Отзыв</li>
+
+
                             </ul>
                             }
                         </div>
