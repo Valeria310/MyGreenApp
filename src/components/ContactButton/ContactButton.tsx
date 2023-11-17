@@ -5,6 +5,8 @@ import contactIcon from 'src/assets/icons/contact-us.svg';
 import s from './ContactButton.module.scss';
 import FeedbackPopUp from '../FeedbackPopUp';
 import ErrorPopUp from '../ErrorPopUp';
+import SuccessPopUp from '../SuccessPopUp';
+import { CircularProgress } from '@mui/material';
 
 export interface FormData {
     name: string;
@@ -50,6 +52,8 @@ export const ContactButton = () => {
             }
             <FeedbackPopUp showResultPopUp={showResultPopUpHandler} show={showForm} onClose={() => setShowForm(false)} data={{ formData, setFormData }} />
             {showErrorPopUp && <ErrorPopUp show={showErrorPopUp} onClose={() => setShowErrorPopUp(false)} />}
+            {showSuccessPopUp && <SuccessPopUp show={showSuccessPopUp} onClose={() => setShowSuccessPopUp(false)} />}
+
         </div>
     );
 };

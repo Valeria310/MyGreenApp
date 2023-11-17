@@ -6,49 +6,73 @@ import selectDownArrowIcon from 'src/assets/icons/select-down-arrow.svg';
 import selectUpArrowIcon from 'src/assets/icons/select-up-arrow.svg';
 import { useClickOutside } from 'src/hooks/useClickOutside';
 
-import s from  './FeedbackForm.module.scss';
+import s from './FeedbackForm.module.scss';
 import { FeedbackFormProps } from './FeedbackFormProps';
 import { Input } from './Input';
 import { desc_validation, email_validation, name_validation } from './InputValidations';
 import axios from 'axios';
 import { SuccessPopUp } from '../SuccessPopUp/SuccessPopUp';
+import { CircularProgress } from '@mui/material';
 
 
-export const FeedbackForm:FC<FeedbackFormProps> = ({ showResultPopUp, data }) => {
+export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp, data }) => {
 
-const [messageTopic, setMessageTopic] = useState("")
+    const [messageTopic, setMessageTopic] = useState('');
+    const [showProgress, setShowProgress] = useState(false);
 
-    console.log(messageTopic)
+    const [formData1, setFormData1] = useState({});
 
     const methods = useForm();
 
-    const onSubmit = methods.handleSubmit((data, messageTopic) => {
+   // methods.watch((data, { name, type }) => console.log(data, name, type))
+    methods.watch((data) => localStorage.setItem("formData", JSON.stringify(data)))
 
-        debugger
+    const onSubmit = methods.handleSubmit((data) => {
 
-        const dataObgWithMassageTopic = {...data, messageTopic1: messageTopic}
 
-        console.log(dataObgWithMassageTopic)
 
-        const objToSend = JSON.stringify(data);
+
+        setShowProgress(true)
+
+        let messageTopicToSend = 'REVIEW';
+
+        if (messageTopic === 'Вопрос') {
+            messageTopicToSend = 'QUESTION';
+        } else if (messageTopic === 'Предложение') {
+            messageTopicToSend = 'OFFER';
+        } else if (messageTopic === 'Проблема/жалоба') {
+            messageTopicToSend = 'PROBLEM';
+        } else if (messageTopic === 'Отзыв') {
+            messageTopicToSend = 'REVIEW';
+        }
+
+        const dataObgWithMassageTopic = { ...data, messageTopic: messageTopicToSend };
+
+        const objToSend = JSON.stringify(dataObgWithMassageTopic);
 
         console.log(objToSend);
 
-        // axios.post("https://31.184.254.112:8081/feedbacks", objToSend, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     }
-        // })
-        //     .then (response=>{console.log(response);
-        // showResultPopUp("success")})
-        //     .catch(err => {console.log(err);
-        //         showResultPopUp("error")})
+        axios.post('https://31.184.254.112:8081/feedbacks', objToSend, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                setShowProgress(false)
+                console.log(response);
+                showResultPopUp('success');
+            })
+            .catch(err => {
+                setShowProgress(false)
+                console.log(err);
+                showResultPopUp('error');
+            });
     });
 
     const dropdownRef = useClickOutside(() => setOpenDropdown(false));
     // Form state control
     const [formData, setFormData] = [data.formData, data.setFormData];
-    
+
     // Message symbols count
     const [count, setCount] = useState(0);
     // Checkbox control
@@ -56,75 +80,70 @@ const [messageTopic, setMessageTopic] = useState("")
     // Select dropdown control
     const [openDropdown, setOpenDropdown] = useState(false);
 
-    useEffect(() => {
-        setCount(formData.message.length);
-    }, [formData.message]);
+    // useEffect(() => {
+    //     setCount(formData.message.length);
+    // }, [formData.message]);
 
+
+    useEffect(()=>{
+        methods.setValue("name", "Andrei")
+    })
 
     const setFormField = (field: string, value: string) => {
 
-        console.log(field, value)
+        console.log(field, value);
         setFormData({
             ...formData,
             [field]: value
         });
     };
-    //
-    // const handleSelect = (e: MouseEvent) => {
-    //
-    //     const item = e.target;
-    //
-    //     console.log((item as HTMLLIElement).textContent)
-    //     if (item) {
-    //         setMessageTopic((item as HTMLLIElement).textContent || '')
-    //         setFormField('messageType', (item as HTMLLIElement).textContent || '');
-    //     }
-    //     setOpenDropdown(false);
-    // };
-    const handleSelect = (messageTopic1: string) => {
 
-        console.log(messageTopic1);
+    const handleSelect = (e: MouseEvent) => {
 
-        setMessageTopic(messageTopic1);
+        const item = e.target;
 
+        console.log((item as HTMLLIElement).textContent);
+        if (item) {
+            setMessageTopic((item as HTMLLIElement).textContent || '');
+            setFormField('messageType', (item as HTMLLIElement).textContent || '');
+        }
         setOpenDropdown(false);
     };
-
-
 
 
     return (
 
         <FormProvider {...methods}>
 
-
-            <form  onSubmit={e => e.preventDefault()}
-                noValidate
-                className={s.feedbackForm}>
+            {showProgress&&<CircularProgress/>}
+            <form onSubmit={e => e.preventDefault()}
+                  noValidate
+                  className={s.feedbackForm}>
                 <h2 className={s.feedbackFormHeading}>Связаться с нами</h2>
-                <p className={s.feedbackFormDescription}>Если у вас есть вопросы или предложения, пожалуйста, заполните  форму ниже</p>
+                <p className={s.feedbackFormDescription}>Если у вас есть вопросы или предложения, пожалуйста, заполните
+                    форму ниже</p>
                 <div className={s.feedbackFields}>
 
 
                     <div className={s.feedbackFormField}>
-                        <Input  {...name_validation} />
+                        <Input   {...name_validation} />
                     </div>
                     <div className={s.feedbackFormField}>
                         <Input  {...email_validation} />
                     </div>
-                    <div className={`${s.feedbackFormField} ${s.paddingTop}`}>
-                        <label>Тип сообщения</label>
-                    <select {...methods.register("messageTopic", { required: {
-                            value: true,
-                            message: 'Обязательно'
-                        } } )} className={s.customSelectNew}>
-                        <option value="">Выберите...</option>
-                        <option value="QUESTION">Вопрос</option>
-                        <option value="OFFER">Предложение</option>
-                        <option value="PROBLEM">Проблема/жалоба</option>
-                        <option value="REVIEW">Отзыв</option>
-                    </select>
-                    </div>
+                    {/*<div className={`${s.feedbackFormField} ${s.paddingTop}`}>*/}
+                    {/*    <label>Тип сообщения</label>*/}
+                    {/*<select {...methods.register("messageTopic", { required: {*/}
+                    {/*        value: true,*/}
+                    {/*        message: 'Обязательно'*/}
+                    {/*    } } )} className={s.customSelectNew}>*/}
+                    {/*    <option value="">Выберите...</option>*/}
+                    {/*    <option value="QUESTION">Вопрос</option>*/}
+                    {/*    <option value="OFFER">Предложение</option>*/}
+                    {/*    <option value="PROBLEM">Проблема/жалоба</option>*/}
+                    {/*    <option value="REVIEW">Отзыв</option>*/}
+                    {/*</select>*/}
+                    {/*</div>*/}
 
 
                     {/*<div className={s.feedbackFormField}>*/}
@@ -150,23 +169,20 @@ const [messageTopic, setMessageTopic] = useState("")
                     <div className={`${s.feedbackFormField} ${s.paddingTop}`}>
                         <label>Тип сообщения</label>
                         <div ref={dropdownRef}>
-                            <button type='button' className={s.customSelect} onClick={() => setOpenDropdown(!openDropdown)}>
+                            <button type="button" className={s.customSelect}
+                                    onClick={() => setOpenDropdown(!openDropdown)}>
                                 <span>{formData.messageType}</span>
-                                <img src={openDropdown ? selectUpArrowIcon : selectDownArrowIcon} alt='down' />
+                                <img src={openDropdown ? selectUpArrowIcon : selectDownArrowIcon} alt="down"/>
                             </button>
                             {openDropdown &&
-                            <ul className={s.selectDropdown}>
-                                {/*<li className={s.selectItem} onClick={(e) => handleSelect(e)}>Вопрос</li>*/}
-                                {/*<li className={s.selectItem} onClick={(e) => handleSelect(e)}>Предложение</li>*/}
-                                {/*<li className={s.selectItem} onClick={(e) => handleSelect(e)}>Проблема/жалоба</li>*/}
-                                {/*<li className={s.selectItem} onClick={(e) => handleSelect(e)}>Отзыв</li>       */}
-                                <li className={s.selectItem} onClick={() => handleSelect("QUESTION")}>Вопрос</li>
-                                <li className={s.selectItem} onClick={() => handleSelect("OFFER")}>Предложение</li>
-                                <li className={s.selectItem} onClick={() => handleSelect("PROBLEM")}>Проблема/жалоба</li>
-                                <li className={s.selectItem} onClick={() => handleSelect("REVIEW")}>Отзыв</li>
+                                <ul className={s.selectDropdown}>
+                                    <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Вопрос</li>
+                                    <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Предложение</li>
+                                    <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Проблема/жалоба</li>
+                                    <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Отзыв</li>
 
 
-                            </ul>
+                                </ul>
                             }
                         </div>
                     </div>
@@ -174,7 +190,9 @@ const [messageTopic, setMessageTopic] = useState("")
                     <div className={s.feedbackFormField}>
                         <Input  {...desc_validation} />
                     </div>
-                    <div className={s.messageCounter}>{methods.watch('messageContent') ? methods.watch('messageContent').length: '0'}/500</div>
+                    <div
+                        className={s.messageCounter}>{methods.watch('messageContent') ? methods.watch('messageContent').length : '0'}/500
+                    </div>
 
                     {/*<div className={s.feedbackFormField}>*/}
                     {/*    <label htmlFor='message'>Сообщение</label>*/}
@@ -189,14 +207,17 @@ const [messageTopic, setMessageTopic] = useState("")
                     {/*</div>*/}
                 </div>
                 <div className={s.feedbackFormPolytics}>
-                    <button type='button' className={`${s.feedbackFormCheckbox}${agreed ? ' ' + s.selected : ''}`} onClick={() => setAgreed(!agreed)} />
-                    <input type='checkbox' id="agree" checked={agreed} onChange={() => setAgreed(!agreed)} />
+                    <button type="button" className={`${s.feedbackFormCheckbox}${agreed ? ' ' + s.selected : ''}`}
+                            onClick={() => setAgreed(!agreed)}/>
+                    <input type="checkbox" id="agree" checked={agreed} onChange={() => setAgreed(!agreed)}/>
                     <span>
                         <label onClick={() => setAgreed(!agreed)}>отправляя сообщение, вы соглашаетесь&nbsp;</label>
-                        <span>c <a href='#'>политикой конфиденциальности</a></span>
+                        <span>c <a href="#">политикой конфиденциальности</a></span>
                     </span>
                 </div>
-                <button type='submit' className={s.feedbackFormSubmitBtn} disabled={!agreed} onClick={onSubmit}>Отправить</button>
+                <button type="submit" className={s.feedbackFormSubmitBtn} disabled={!agreed}
+                        onClick={onSubmit}>Отправить
+                </button>
             </form>
         </FormProvider>
     );
