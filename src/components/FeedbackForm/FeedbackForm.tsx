@@ -5,34 +5,36 @@ import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 import selectDownArrowIcon from 'src/assets/icons/select-down-arrow.svg';
 import selectUpArrowIcon from 'src/assets/icons/select-up-arrow.svg';
 import { useClickOutside } from 'src/hooks/useClickOutside';
-
 import s from './FeedbackForm.module.scss';
 import { FeedbackFormProps } from './FeedbackFormProps';
 import { Input } from './Input';
 import { desc_validation, email_validation, name_validation } from './InputValidations';
 import axios from 'axios';
-import { SuccessPopUp } from '../SuccessPopUp/SuccessPopUp';
 import { CircularProgress } from '@mui/material';
 
 
-export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp, data }) => {
+type FormDataObjType = {
+    name: string,
+    email: string,
+    messageContent: string,
+    messageTopic: 'REVIEW' | 'QUESTION' | 'OFFER' | 'PROBLEM'
+}
+
+
+export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
 
     const [messageTopic, setMessageTopic] = useState('');
     const [showProgress, setShowProgress] = useState(false);
 
-    const [formData1, setFormData1] = useState({});
+    console.log(messageTopic)
 
     const methods = useForm();
 
-   // methods.watch((data, { name, type }) => console.log(data, name, type))
-    methods.watch((data) => localStorage.setItem("formData", JSON.stringify(data)))
+    methods.watch((data) => localStorage.setItem('feedbackFormData', JSON.stringify(data)));
 
     const onSubmit = methods.handleSubmit((data) => {
 
-
-
-
-        setShowProgress(true)
+        setShowProgress(true);
 
         let messageTopicToSend = 'REVIEW';
 
@@ -46,9 +48,9 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp, data }) =
             messageTopicToSend = 'REVIEW';
         }
 
-        const dataObgWithMassageTopic = { ...data, messageTopic: messageTopicToSend };
+        const dataObgWithMessageTopic = { ...data, messageTopic: messageTopicToSend };
 
-        const objToSend = JSON.stringify(dataObgWithMassageTopic);
+        const objToSend = JSON.stringify(dataObgWithMessageTopic);
 
         console.log(objToSend);
 
@@ -58,54 +60,114 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp, data }) =
             }
         })
             .then(response => {
-                setShowProgress(false)
+                setShowProgress(false);
                 console.log(response);
                 showResultPopUp('success');
             })
             .catch(err => {
-                setShowProgress(false)
+                setShowProgress(false);
                 console.log(err);
                 showResultPopUp('error');
             });
     });
 
     const dropdownRef = useClickOutside(() => setOpenDropdown(false));
-    // Form state control
-    const [formData, setFormData] = [data.formData, data.setFormData];
 
-    // Message symbols count
-    const [count, setCount] = useState(0);
+    // Form state control
+
+    const [formData, setFormData] = useState<FormDataObjType>({
+        name: '',
+        email: '',
+        messageContent: '',
+        messageTopic: 'REVIEW'
+    });
+
+
     // Checkbox control
     const [agreed, setAgreed] = useState(false);
+
     // Select dropdown control
     const [openDropdown, setOpenDropdown] = useState(false);
 
+
+    useEffect(() => {
+
+        const formDataFromLocalStorage = localStorage.getItem('feedbackFormData');
+        if (formDataFromLocalStorage) {
+            const formDataCopy = JSON.parse(formDataFromLocalStorage);
+            setFormData({
+                ...formDataCopy
+            });
+            methods.setValue('name', formDataCopy.name);
+            methods.setValue('email', formDataCopy.email);
+            methods.setValue('messageContent', formDataCopy.messageContent);
+        }
+
+
+        const messageTopicFromLocalStorage = localStorage.getItem('messageTopic');
+        if(messageTopicFromLocalStorage) {
+           const messageTopicFromLocalStorageCopy = JSON.parse(messageTopicFromLocalStorage).messageTopic;
+            setMessageTopic(messageTopicFromLocalStorageCopy)
+        }
+
+
+
+    }, []);
+
+    console.log(formData);
+
+
     // useEffect(() => {
-    //     setCount(formData.message.length);
-    // }, [formData.message]);
+    //
+    //     if (localStorage) {
+    //         const formDataFromLocalStorage = localStorage.getItem("formData");
+    //         if (formDataFromLocalStorage) {
+    //             const formDataCopy = JSON.parse(formDataFromLocalStorage);
+    //             setFormData({ ...formDataCopy });
+    //             console.log(formData)
+    //             console.log(formDataCopy)
+    //             if (formDataCopy) {
+    //                 methods.setValue('name', formDataCopy.name);
+    //             }
+    //         }
+    //     }
+    // }, []);
 
 
-    useEffect(()=>{
-        methods.setValue("name", "Andrei")
-    })
+    //
+    // useEffect(()=>{
+    //     //methods.setValue("name", "Andrei")
+    //
+    //
+    //     if(formData) {
+    //         debugger
+    //         methods.setValue("name", formData.name)
+    //     }
+    //
+    //
+    // },[])
 
-    const setFormField = (field: string, value: string) => {
 
-        console.log(field, value);
-        setFormData({
-            ...formData,
-            [field]: value
-        });
-    };
+    // const setFormField = (field: string, value: string) => {
+    //
+    //     console.log(field, value);
+    //     // setFormData({
+    //     //     ...formData,
+    //     //     [field]: value
+    //     // });
+    // };
 
     const handleSelect = (e: MouseEvent) => {
 
         const item = e.target;
 
-        console.log((item as HTMLLIElement).textContent);
+        const itemValue = (item as HTMLLIElement).textContent
+
+        console.log(itemValue);
+
         if (item) {
-            setMessageTopic((item as HTMLLIElement).textContent || '');
-            setFormField('messageType', (item as HTMLLIElement).textContent || '');
+            setMessageTopic(itemValue || '');
+            localStorage.messageTopic = JSON.stringify({messageTopic: itemValue});
         }
         setOpenDropdown(false);
     };
@@ -115,7 +177,7 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp, data }) =
 
         <FormProvider {...methods}>
 
-            {showProgress&&<CircularProgress/>}
+            {showProgress && <CircularProgress/>}
             <form onSubmit={e => e.preventDefault()}
                   noValidate
                   className={s.feedbackForm}>
@@ -171,7 +233,7 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp, data }) =
                         <div ref={dropdownRef}>
                             <button type="button" className={s.customSelect}
                                     onClick={() => setOpenDropdown(!openDropdown)}>
-                                <span>{formData.messageType}</span>
+                                <span>{messageTopic}</span>
                                 <img src={openDropdown ? selectUpArrowIcon : selectDownArrowIcon} alt="down"/>
                             </button>
                             {openDropdown &&

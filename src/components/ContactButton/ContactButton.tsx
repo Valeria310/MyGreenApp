@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import contactIcon from 'src/assets/icons/contact-us.svg';
 
@@ -6,7 +6,7 @@ import s from './ContactButton.module.scss';
 import FeedbackPopUp from '../FeedbackPopUp';
 import ErrorPopUp from '../ErrorPopUp';
 import SuccessPopUp from '../SuccessPopUp';
-import { CircularProgress } from '@mui/material';
+
 
 export interface FormData {
     name: string;
@@ -22,12 +22,13 @@ export const ContactButton = () => {
 
 
 
-    const [formData, setFormData] = useState<FormData>({
-        name: '',
-        email: '',
-        messageType: 'Отзыв',
-        message: ''
-    });
+    // const [formData, setFormData] = useState<FormData>({
+    //     name: '',
+    //     email: '',
+    //     messageType: 'Отзыв',
+    //     message: ''
+    // });
+
 
     const showResultPopUpHandler =(result:string)=>{
 
@@ -50,7 +51,8 @@ export const ContactButton = () => {
                     <img src={contactIcon} alt='contact-us' />
                 </div>
             }
-            <FeedbackPopUp showResultPopUp={showResultPopUpHandler} show={showForm} onClose={() => setShowForm(false)} data={{ formData, setFormData }} />
+            {/*<FeedbackPopUp showResultPopUp={showResultPopUpHandler} show={showForm} onClose={() => setShowForm(false)} data={{ formData, setFormData }} />*/}
+            <FeedbackPopUp showResultPopUp={showResultPopUpHandler} show={showForm} onClose={() => setShowForm(false)}  />
             {showErrorPopUp && <ErrorPopUp show={showErrorPopUp} onClose={() => setShowErrorPopUp(false)} />}
             {showSuccessPopUp && <SuccessPopUp show={showSuccessPopUp} onClose={() => setShowSuccessPopUp(false)} />}
 
