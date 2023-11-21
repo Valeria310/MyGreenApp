@@ -42,38 +42,6 @@ export const desc_validation = {
     }
 };
 
-export const password_validation = {
-    name: 'password',
-    label: 'password',
-    type: 'password',
-    id: 'password',
-    placeholder: 'type password ...',
-    validation: {
-        required: {
-            value: true,
-            message: 'required'
-        },
-        minLength: {
-            value: 6,
-            message: 'min 6 characters'
-        }
-    }
-};
-
-export const num_validation = {
-    name: 'num',
-    label: 'number',
-    type: 'number',
-    id: 'num',
-    placeholder: 'write a random number',
-    validation: {
-        required: {
-            value: true,
-            message: 'required'
-        }
-    }
-};
-
 export const email_validation = {
     name: 'email',
     label: 'E-mail',
@@ -84,6 +52,14 @@ export const email_validation = {
         required: {
             value: true,
             message: 'Обязательное поле'
+        },
+        minLength: {
+            value: 5,
+            message: 'введите не менее 5 символов'
+        },
+        maxLength: {
+            value: 50,
+            message: '50 символов максимум'
         },
         pattern: {
             value:

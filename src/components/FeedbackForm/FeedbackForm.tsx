@@ -1,86 +1,26 @@
-import { useState, useEffect, MouseEvent, FC, useRef } from 'react';
+import { useState, useEffect, MouseEvent, FC } from 'react';
 
-import { FormProvider, useForm, useFormContext } from 'react-hook-form';
+import { CircularProgress } from '@mui/material';
+import { green } from '@mui/material/colors';
+import axios from 'axios';
+import { FormProvider, useForm } from 'react-hook-form';
 
 import selectDownArrowIcon from 'src/assets/icons/select-down-arrow.svg';
 import selectUpArrowIcon from 'src/assets/icons/select-up-arrow.svg';
 import { useClickOutside } from 'src/hooks/useClickOutside';
+
 import s from './FeedbackForm.module.scss';
 import { FeedbackFormProps } from './FeedbackFormProps';
 import { Input } from './Input';
 import { desc_validation, email_validation, name_validation } from './InputValidations';
-import axios from 'axios';
-import { CircularProgress } from '@mui/material';
 
-
-type FormDataObjType = {
-    name: string,
-    email: string,
-    messageContent: string,
-    messageTopic: 'REVIEW' | 'QUESTION' | 'OFFER' | 'PROBLEM'
-}
-
+type MessageTopicForBackEndType = 'REVIEW' | 'QUESTION' | 'OFFER' | 'PROBLEM' | ''
 
 export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
 
-    const [messageTopic, setMessageTopic] = useState('');
+    const [messageTopic, setMessageTopic] = useState<string>('');
     const [showProgress, setShowProgress] = useState(false);
-
-    console.log(messageTopic)
-
-    const methods = useForm();
-
-    methods.watch((data) => localStorage.setItem('feedbackFormData', JSON.stringify(data)));
-
-    const onSubmit = methods.handleSubmit((data) => {
-
-        setShowProgress(true);
-
-        let messageTopicToSend = 'REVIEW';
-
-        if (messageTopic === 'Вопрос') {
-            messageTopicToSend = 'QUESTION';
-        } else if (messageTopic === 'Предложение') {
-            messageTopicToSend = 'OFFER';
-        } else if (messageTopic === 'Проблема/жалоба') {
-            messageTopicToSend = 'PROBLEM';
-        } else if (messageTopic === 'Отзыв') {
-            messageTopicToSend = 'REVIEW';
-        }
-
-        const dataObgWithMessageTopic = { ...data, messageTopic: messageTopicToSend };
-
-        const objToSend = JSON.stringify(dataObgWithMessageTopic);
-
-        console.log(objToSend);
-
-        axios.post('https://31.184.254.112:8081/feedbacks', objToSend, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => {
-                setShowProgress(false);
-                console.log(response);
-                showResultPopUp('success');
-            })
-            .catch(err => {
-                setShowProgress(false);
-                console.log(err);
-                showResultPopUp('error');
-            });
-    });
-
     const dropdownRef = useClickOutside(() => setOpenDropdown(false));
-
-    // Form state control
-
-    const [formData, setFormData] = useState<FormDataObjType>({
-        name: '',
-        email: '',
-        messageContent: '',
-        messageTopic: 'REVIEW'
-    });
 
 
     // Checkbox control
@@ -90,97 +30,87 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
 
 
+    const methods = useForm();
+
+    methods.watch((data) => localStorage.setItem('feedbackFormData', JSON.stringify(data)));
+
+    const onSubmit = methods.handleSubmit((data) => {
+
+        setShowProgress(true);
+
+        let messageTopicForBackEnd: MessageTopicForBackEndType = '';
+
+        if (messageTopic === 'Вопрос') {
+            messageTopicForBackEnd = 'QUESTION';
+        } else if (messageTopic === 'Предложение') {
+            messageTopicForBackEnd = 'OFFER';
+        } else if (messageTopic === 'Проблема/жалоба') {
+            messageTopicForBackEnd = 'PROBLEM';
+        } else if (messageTopic === 'Отзыв') {
+            messageTopicForBackEnd = 'REVIEW';
+        }
+
+
+        const dataObgWithMessageTopic = { ...data, messageTopic: messageTopicForBackEnd };
+
+        const objToSend = JSON.stringify(dataObgWithMessageTopic);
+
+        axios.post('https://31.184.254.112:8081/feedbacks', objToSend, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(() => {
+                methods.reset();
+                setShowProgress(false);
+                showResultPopUp('success');
+            })
+            .catch(() => {
+                setShowProgress(false);
+                showResultPopUp('error');
+            });
+    });
+
+
     useEffect(() => {
 
         const formDataFromLocalStorage = localStorage.getItem('feedbackFormData');
         if (formDataFromLocalStorage) {
             const formDataCopy = JSON.parse(formDataFromLocalStorage);
-            setFormData({
-                ...formDataCopy
-            });
             methods.setValue('name', formDataCopy.name);
             methods.setValue('email', formDataCopy.email);
             methods.setValue('messageContent', formDataCopy.messageContent);
         }
 
-
         const messageTopicFromLocalStorage = localStorage.getItem('messageTopic');
-        if(messageTopicFromLocalStorage) {
-           const messageTopicFromLocalStorageCopy = JSON.parse(messageTopicFromLocalStorage).messageTopic;
-            setMessageTopic(messageTopicFromLocalStorageCopy)
+        if (messageTopicFromLocalStorage) {
+            const messageTopicFromLocalStorageCopy = JSON.parse(messageTopicFromLocalStorage).messageTopic;
+            setMessageTopic(messageTopicFromLocalStorageCopy);
         }
-
 
 
     }, []);
 
-    console.log(formData);
-
-
-    // useEffect(() => {
-    //
-    //     if (localStorage) {
-    //         const formDataFromLocalStorage = localStorage.getItem("formData");
-    //         if (formDataFromLocalStorage) {
-    //             const formDataCopy = JSON.parse(formDataFromLocalStorage);
-    //             setFormData({ ...formDataCopy });
-    //             console.log(formData)
-    //             console.log(formDataCopy)
-    //             if (formDataCopy) {
-    //                 methods.setValue('name', formDataCopy.name);
-    //             }
-    //         }
-    //     }
-    // }, []);
-
-
-    //
-    // useEffect(()=>{
-    //     //methods.setValue("name", "Andrei")
-    //
-    //
-    //     if(formData) {
-    //         debugger
-    //         methods.setValue("name", formData.name)
-    //     }
-    //
-    //
-    // },[])
-
-
-    // const setFormField = (field: string, value: string) => {
-    //
-    //     console.log(field, value);
-    //     // setFormData({
-    //     //     ...formData,
-    //     //     [field]: value
-    //     // });
-    // };
 
     const handleSelect = (e: MouseEvent) => {
 
         const item = e.target;
+        const itemValue = (item as HTMLLIElement).textContent;
 
-        const itemValue = (item as HTMLLIElement).textContent
-
-        console.log(itemValue);
-
-        if (item) {
-            setMessageTopic(itemValue || '');
-            localStorage.messageTopic = JSON.stringify({messageTopic: itemValue});
+        if (itemValue) {
+            setMessageTopic(itemValue);
+            localStorage.messageTopic = JSON.stringify({ messageTopic: itemValue });
         }
         setOpenDropdown(false);
     };
-
 
     return (
 
         <FormProvider {...methods}>
 
-            {showProgress && <CircularProgress/>}
             <form onSubmit={e => e.preventDefault()}
-                  noValidate
-                  className={s.feedbackForm}>
+                noValidate
+                className={s.feedbackForm}>
                 <h2 className={s.feedbackFormHeading}>Связаться с нами</h2>
                 <p className={s.feedbackFormDescription}>Если у вас есть вопросы или предложения, пожалуйста, заполните
                     форму ниже</p>
@@ -193,46 +123,12 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
                     <div className={s.feedbackFormField}>
                         <Input  {...email_validation} />
                     </div>
-                    {/*<div className={`${s.feedbackFormField} ${s.paddingTop}`}>*/}
-                    {/*    <label>Тип сообщения</label>*/}
-                    {/*<select {...methods.register("messageTopic", { required: {*/}
-                    {/*        value: true,*/}
-                    {/*        message: 'Обязательно'*/}
-                    {/*    } } )} className={s.customSelectNew}>*/}
-                    {/*    <option value="">Выберите...</option>*/}
-                    {/*    <option value="QUESTION">Вопрос</option>*/}
-                    {/*    <option value="OFFER">Предложение</option>*/}
-                    {/*    <option value="PROBLEM">Проблема/жалоба</option>*/}
-                    {/*    <option value="REVIEW">Отзыв</option>*/}
-                    {/*</select>*/}
-                    {/*</div>*/}
 
-
-                    {/*<div className={s.feedbackFormField}>*/}
-                    {/*    <label htmlFor='name'>Имя</label>*/}
-                    {/*    <input*/}
-                    {/*        type='text'*/}
-                    {/*        id='name'*/}
-                    {/*        name='name'*/}
-                    {/*        value={formData.name}*/}
-                    {/*        onChange={(e) => setFormField(e.target.name, e.target.value)}*/}
-                    {/*    />*/}
-                    {/*</div>*/}
-                    {/*<div className={s.feedbackFormField}>*/}
-                    {/*    <label htmlFor='email'>E-mail</label>*/}
-                    {/*    <input*/}
-                    {/*        type='email'*/}
-                    {/*        id='email'*/}
-                    {/*        name='email'*/}
-                    {/*        value={formData.email}*/}
-                    {/*        onChange={(e) => setFormField(e.target.name, e.target.value)}*/}
-                    {/*    />*/}
-                    {/*</div>*/}
                     <div className={`${s.feedbackFormField} ${s.paddingTop}`}>
                         <label>Тип сообщения</label>
                         <div ref={dropdownRef}>
                             <button type="button" className={s.customSelect}
-                                    onClick={() => setOpenDropdown(!openDropdown)}>
+                                onClick={() => setOpenDropdown(!openDropdown)}>
                                 <span>{messageTopic}</span>
                                 <img src={openDropdown ? selectUpArrowIcon : selectDownArrowIcon} alt="down"/>
                             </button>
@@ -242,8 +138,6 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
                                     <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Предложение</li>
                                     <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Проблема/жалоба</li>
                                     <li className={s.selectItem} onClick={(e) => handleSelect(e)}>Отзыв</li>
-
-
                                 </ul>
                             }
                         </div>
@@ -256,30 +150,29 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
                         className={s.messageCounter}>{methods.watch('messageContent') ? methods.watch('messageContent').length : '0'}/500
                     </div>
 
-                    {/*<div className={s.feedbackFormField}>*/}
-                    {/*    <label htmlFor='message'>Сообщение</label>*/}
-                    {/*    <textarea*/}
-                    {/*        id='message'*/}
-                    {/*        name='message'*/}
-                    {/*        maxLength={500}*/}
-                    {/*        value={formData.message}*/}
-                    {/*        onChange={(e) => setFormField(e.target.name, e.target.value)}*/}
-                    {/*    />*/}
-                    {/*    <div className={s.messageCounter}>{count}/500</div>*/}
-                    {/*</div>*/}
                 </div>
                 <div className={s.feedbackFormPolytics}>
                     <button type="button" className={`${s.feedbackFormCheckbox}${agreed ? ' ' + s.selected : ''}`}
-                            onClick={() => setAgreed(!agreed)}/>
+                        onClick={() => setAgreed(!agreed)}/>
                     <input type="checkbox" id="agree" checked={agreed} onChange={() => setAgreed(!agreed)}/>
                     <span>
                         <label onClick={() => setAgreed(!agreed)}>отправляя сообщение, вы соглашаетесь&nbsp;</label>
                         <span>c <a href="#">политикой конфиденциальности</a></span>
                     </span>
                 </div>
+
                 <button type="submit" className={s.feedbackFormSubmitBtn} disabled={!agreed}
-                        onClick={onSubmit}>Отправить
+                    onClick={onSubmit}>Отправить
                 </button>
+                {showProgress && <CircularProgress
+                    sx={{
+                        color: green[500],
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        marginLeft: '-20px'
+                    }}
+                />}
             </form>
         </FormProvider>
     );

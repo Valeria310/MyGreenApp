@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { FieldErrors, useFormContext } from 'react-hook-form';
 
 import s from  './FeedbackForm.module.scss';
 
@@ -10,23 +10,21 @@ type PropsType = {
     validation: any,
     name: string,
     multiline?: boolean,
-    className?: string,
 }
 
-export const Input = ({ label, type, id, placeholder, validation, name, multiline, className}: PropsType) => {
+export const Input = ({ label, type, id, placeholder, validation, name, multiline }: PropsType) => {
 
-    function findInputError(errors:any, name:any):any {
-        const filtered = Object.keys(errors)
+    function findInputError(errors: any, name:string):any {
+        return  Object.keys(errors)
             .filter(key => key.includes(name))
             .reduce((cur, key) => {
                 return Object.assign(cur, { error: errors[key] });
             }, {});
-        return filtered;
     }
 
-    const isFormInvalid = (err:any) => {
-        if (Object.keys(err).length > 0) return true;
-        return false;
+
+    const isFormInvalid = (err:FieldErrors) => {
+        return (Object.keys(err).length > 0)
     };
 
 
@@ -59,7 +57,6 @@ export const Input = ({ label, type, id, placeholder, validation, name, multilin
             {multiline ? (
                 <textarea
                     id={id}
-                    // type={type}
                     className=''
                     placeholder={placeholder}
                     {...register(`${name}`, validation)}
@@ -77,16 +74,7 @@ export const Input = ({ label, type, id, placeholder, validation, name, multilin
     );
 };
 
-
-
 const InputError = ( message: any) => {
     return <div className={s.feedbackFormError}> {message.message}</div>;
 
-};
-
-const framer_error = {
-    initial: { opacity: 0, y: 10 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 10 },
-    transition: { duration: 0.2 }
 };
