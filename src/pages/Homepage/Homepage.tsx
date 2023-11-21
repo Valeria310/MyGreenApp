@@ -11,6 +11,7 @@ import { Ticker } from 'src/components/Ticker/Ticker';
 import { useFixedContactButton } from 'src/hooks/useFixedContactButton';
 
 import './Homepage.scss';
+import { SuccessPopUp } from '../../components/SuccessPopUp/SuccessPopUp';
 
 export const Homepage = () => {
     useEffect(() => {
@@ -29,7 +30,7 @@ export const Homepage = () => {
     return (
         <React.Fragment>
             <Header />
-            <div className="home-sticky-container">
+            <div className='home-sticky-container'>
                 <ParallaxSection />
                 <NavSection />
                 <RecycleSection expandable={false} />

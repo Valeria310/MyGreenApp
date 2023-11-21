@@ -71,6 +71,7 @@
     opacity: 0.5;
   }
   & input {
+    width: 100%;
     margin-bottom: 15px;
     @media screen and (min-width: 500px) {
       margin-bottom: 20px;
@@ -80,6 +81,7 @@
     }
   }
   & input, & textarea {
+    width: 100%;
     transition: none;
     background-color: inherit;
     border: 1px solid $color-black;
@@ -127,7 +129,6 @@
   border-radius: 10px;
   border: 1px solid $color-black;
   background-color: #F6FCEA;
-  cursor: pointer;
   min-height: 50px;
   outline: none;
   margin-top: 10px;
@@ -162,7 +163,7 @@
   list-style-type: none;
   border-radius: 10px;
   background-color: #F6FCEA;
-  box-shadow: 0px 2px 8px 2px rgba(12, 54, 38, 0.15), 0px 1px 6px 0px rgba(12, 54, 38, 0.30);
+  box-shadow: 0 2px 8px 2px rgba(12, 54, 38, 0.15), 0 1px 6px 0 rgba(12, 54, 38, 0.30);
   width: 100%;
   position: absolute;
   left: 0;
@@ -290,4 +291,16 @@
     background-color: #EAEBEA;
     color: #7C7C7C;
   }
+}
+
+
+.feedbackFormError {
+  color: red;
+}
+
+
+.feedbackFormInputLabelWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
