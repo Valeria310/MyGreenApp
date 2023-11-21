@@ -153,10 +153,43 @@
         align-items: center;
         text-decoration: none;
         padding: 8px 15px 8px 0;
+        border-radius: 35px;
+        border: 2px solid transparent;
+        outline: none;
+
         @media screen and (min-width: 600px) {
-            padding: 11px 15px 11px 0;
+            padding: 15px 15px 15px 20px;
+            margin-left: -20px;
+        }
+
+        &:hover {
+            background: #E3EFDD;
+        }
+        &:active {
+            background: #D4E5D4;
+        }
+        &:focus {
+            border: 2px solid #1B7A59;
         }
     }
+
+    &_disabled {
+        a{
+            span {
+                color: #7C7C7C;
+            }
+            &:hover {
+                background: none;
+            }
+            &:active {
+                background: none;
+            }
+            &:focus {
+                border: 2px solid transparent;
+            }
+        }
+    }
+
     span {
         letter-spacing: 0.2px;
         color: #1B7A59;
@@ -171,7 +204,8 @@
             margin-right: 5px;
         }
         @media screen and (min-width: 1200px) {
-            font-size: 28px;
+            font-size: 24px;
+            line-height: 110%;
             margin-right: 20px;
         }
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import ContactButton from 'src/components/ContactButton';
 import { Footer } from 'src/components/Footer/Footer';
@@ -14,21 +14,31 @@ import './Homepage.scss';
 import { SuccessPopUp } from '../../components/SuccessPopUp/SuccessPopUp';
 
 export const Homepage = () => {
+    useEffect(() => {
+        const elementId = location.hash.substring(1); // Remove the leading '#' from the URL hash
+        scrollToElement(elementId);
+    }, [location]);
+
+    const scrollToElement = (elementId: string) => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
     const [ref] = useFixedContactButton();
 
     return (
         <React.Fragment>
             <Header />
             <div className='home-sticky-container'>
-
                 <ParallaxSection />
                 <NavSection />
                 <RecycleSection expandable={false} />
                 <MapSection />
                 <ContactButton />
             </div>
-            <section ref={ref} className='ticker'>
-                <Ticker/>
+            <section ref={ref} className="ticker">
+                <Ticker />
             </section>
             <footer className="footer">
                 <Footer />

@@ -1,5 +1,9 @@
-import { Box, Button, InputAdornment, TextField } from '@mui/material';
+import { useState } from 'react';
+
+import { Alert, Box, Button, InputAdornment, TextField } from '@mui/material';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './Login.module.scss';
 import logo from '../../../assets/images/Logo.png';
@@ -9,18 +13,91 @@ type FormValues = {
     password: string;
 };
 
+interface UserDataToServer {
+    usernameOrEmail: string;
+    password: string;
+    rememberMe: true;
+}
+interface UserDataFromServer {
+    accessToken: string;
+    email: string | null;
+    refreshToken: string;
+    role: string;
+    username: string;
+}
+
 const LogIn = () => {
+    const [authError, setAuthError] = useState('');
+
+    const navigate = useNavigate();
+
     const form = useForm<FormValues>({
         mode: 'onBlur'
     });
     const { register, handleSubmit, formState } = form;
     const { errors } = formState;
 
+    async function authorization(user: UserDataToServer) {
+        try {
+            const response = await axios.post(
+                'https://31.184.254.112:8081/auth/login',
+                JSON.stringify(user),
+                {
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                }
+            );
+
+            const dataFromServer: UserDataFromServer = response.data;
+            localStorage.setItem('EcoHub', JSON.stringify(dataFromServer));
+
+            navigate('/admin');
+        } catch (err) {
+            console.log('err: ', err);
+            if (axios.isAxiosError(err)) {
+                if (!err?.response) {
+                    console.log('No Server Response');
+                } else if (err.response?.status === 400) {
+                    console.error(err.response.data.error);
+                    setAuthError(err.response.data.error);
+                } else if (err.response?.status === 401) {
+                    console.error(err.response.data.error);
+                    setAuthError(err.response.data.error);
+                } else if (err.response?.status === 404) {
+                    console.error(err.response.data.error);
+                    setAuthError(err.response.data.error);
+                } else {
+                    console.error(err.response.data.error);
+                    setAuthError(err.response.data.error);
+                }
+            }
+        }
+    }
+
+    function clearLoginFormFields(object: UserDataToServer) {
+        let clearedObject = object;
+        clearedObject = {
+            usernameOrEmail: '',
+            password: '',
+            rememberMe: true
+        };
+        return clearedObject;
+    }
+
     const onSubmit = (data: FormValues) => {
-        console.log('Form submitted', data);
+        const dataToServer: UserDataToServer = {
+            usernameOrEmail: data.username,
+            password: data.password,
+            rememberMe: true
+        };
+
+        authorization(dataToServer);
+
+        clearLoginFormFields(dataToServer);
     };
 
-    return (
+    const content = (
         <Box className={classes.logIn}>
             <img className="LogIn__logo" src={logo} alt="" />
             <form className={classes.logIn__form} onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -105,6 +182,27 @@ const LogIn = () => {
             </form>
         </Box>
     );
+
+    const errorAlert = (message: string) => {
+        return (
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                <Alert severity="error">{message}</Alert>
+                <Button
+                    variant="contained"
+                    size="large"
+                    sx={{ margin: '16px auto' }}
+                    onClick={() => {
+                        setAuthError('');
+                        navigate('/login');
+                    }}
+                >
+                    Back
+                </Button>
+            </Box>
+        );
+    };
+
+    return authError ? errorAlert(authError) : content;
 };
 
 export default LogIn;

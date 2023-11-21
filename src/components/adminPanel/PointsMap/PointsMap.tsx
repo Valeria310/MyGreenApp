@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Box, Chip } from '@mui/material';
+import axios from 'axios';
 import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 
 import classes from './PointsMap.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
-import {
-    FilterButtonsObjType,
-    filterButtonsState,
-    markersState,
-    waste
-} from '../../../constants/MapState';
+import { FilterButtonsObjType, filterButtonsState, waste } from '../../../constants/MapState';
 import s from '../../MapSection/MapSection.module.scss';
+
+type dataAPI = {
+    id: number;
+    name: string;
+    address: string;
+    phoneNumber: string;
+    website: string;
+    location: {
+        latitude: number;
+        longitude: number;
+    };
+    workingHours: string;
+    recyclableTypes: string[];
+    displayed: boolean;
+};
 
 const customIcon = new L.Icon({
     iconUrl: pointIcon,
@@ -21,14 +32,24 @@ const customIcon = new L.Icon({
 });
 
 const PointsMap = () => {
+    const [tableData, setTableData] = useState<dataAPI[]>([]);
     const [filterButtons, setFilterButtons] =
         useState<Array<FilterButtonsObjType>>(filterButtonsState);
 
+    async function getData() {
+        try {
+            const response = await axios.get('https://31.184.254.112:8082/recycling-points/');
+            setTableData(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, []);
+
     const changeButtonStatus = (id: string) => {
-        // const updatedFilterButtons = filterButtons.map((b) =>
-        //     b.id === id ? { id: b.id, wasteTitle: b.wasteTitle, isActive: !b.isActive } : b
-        // );
-        // setFilterButtons(updatedFilterButtons);
         if (id === 'all') {
             filterButtons[0].isActive = !filterButtons[0].isActive;
         } else {
@@ -53,12 +74,14 @@ const PointsMap = () => {
         setFilterButtons([...filterButtons]);
     };
 
-    const filteredMarkers = markersState;
-    filteredMarkers.map((m) => (m.display = false));
+    const filteredMarkers = tableData;
+    filteredMarkers.map((m) => (m.displayed = false));
 
     for (let i = 1; i < filterButtons.length; i++) {
         if (filterButtons[i].isActive) {
-            filteredMarkers.map((m) => (m.wasteTypes.includes(waste[i]) ? (m.display = true) : m));
+            filteredMarkers.map((m) =>
+                m.recyclableTypes.includes(waste[i]) ? (m.displayed = true) : m
+            );
         }
     }
 
@@ -95,10 +118,14 @@ const PointsMap = () => {
                 />
                 <MarkerClusterGroup chunkedLoading>
                     {filteredMarkers.map((m, i) =>
-                        m.display ? (
-                            <Marker key={i} position={[m.latitude, m.longitude]} icon={customIcon}>
+                        m.displayed ? (
+                            <Marker
+                                key={i}
+                                position={[m.location.latitude, m.location.longitude]}
+                                icon={customIcon}
+                            >
                                 <Popup className={s.popup} keepInView={false} maxWidth={370}>
-                                    <div className={s.popupHeader}>{m.title}</div>
+                                    <div className={s.popupHeader}>{m.name}</div>
                                     <div className={s.popupAddressWrapper}>
                                         <ul className={s.address}>
                                             <li className={s.locationPoint}>
@@ -108,12 +135,12 @@ const PointsMap = () => {
                                             </li>
                                             <li className={s.phone}>
                                                 <div className={s.popupAddressContent}>
-                                                    {m.phone}
+                                                    {m.phoneNumber}
                                                 </div>
                                             </li>
                                             <li className={s.schedule}>
                                                 <div className={s.popupAddressContent}>
-                                                    {m.schedule}
+                                                    {m.workingHours}
                                                 </div>
                                             </li>
                                             <li className={s.website}>
@@ -126,7 +153,7 @@ const PointsMap = () => {
                                     <div className={s.popupFooter}>
                                         Перерабатываем:
                                         <ul className={s.wasteTypes}>
-                                            {m.wasteTypes.map((item, i) => (
+                                            {m.recyclableTypes.map((item, i) => (
                                                 <li key={i}>{item}</li>
                                             ))}
                                         </ul>

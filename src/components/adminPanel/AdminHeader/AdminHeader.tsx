@@ -1,18 +1,34 @@
 import React from 'react';
 
-import { Box, FormControl, InputLabel, MenuItem } from '@mui/material';
+import { Box, Button, FormControl, InputLabel, MenuItem } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 import classes from './AdminHeader.module.scss';
 import logo from '../../../assets/images/logo-admin.png';
 
 const AdminHeader = () => {
+    const navigate = useNavigate();
+
     const [role, setRole] = React.useState('admin');
 
     const handleChange = (event: SelectChangeEvent) => {
         setRole(event.target.value);
     };
+
+    const userName = JSON.parse(localStorage.getItem('EcoHub') || '{}')?.username;
+
+    async function logOut() {
+        try {
+            const response = await axios.post('https://31.184.254.112:8081/auth/logout');
+            navigate('/login');
+            localStorage.removeItem('EcoHub');
+        } catch (err) {
+            console.log('err: ', err);
+        }
+    }
+
     return (
         <Box className={classes.adminHeader}>
             <Box className={classes.adminHeader__container}>
@@ -29,8 +45,12 @@ const AdminHeader = () => {
                             value={role}
                             onChange={handleChange}
                         >
-                            <MenuItem value="admin">admin</MenuItem>
-                            <MenuItem value="user">user</MenuItem>
+                            <MenuItem value="admin">{userName}</MenuItem>
+                            <MenuItem value="user" onClick={logOut}>
+                                <Button sx={{ p: 0, m: 0, justifyContent: 'flex-start' }}>
+                                    logout
+                                </Button>
+                            </MenuItem>
                         </Select>
                     </FormControl>
                 </Box>

@@ -14,21 +14,38 @@ import {
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { MarkerType, markersState, filterType, waste } from 'src/constants/MapState';
+import { waste } from 'src/constants/MapState';
 
 import classes from './PointForm.module.scss';
 
+type dataAPI = {
+    id?: number;
+    name: string | undefined;
+    address: string;
+    phoneNumber: string | null;
+    website: string | null;
+    location: {
+        latitude: number;
+        longitude: number;
+    };
+    workingHours: string;
+    recyclableTypes: string[];
+    displayed: boolean;
+    info?: string;
+};
+
 type FormValues = {
     title: string;
-    website: string;
+    website: string | null;
     address: string;
-    phone: string;
+    phone: string | null;
     schedule: string;
     coordinates?: string | undefined;
-    wasteTypes: Array<filterType>;
+    wasteTypes: string[];
     display: boolean | string | undefined;
     id: number | undefined;
     info: string | undefined;
@@ -40,8 +57,25 @@ interface State extends SnackbarOrigin {
     open: boolean;
 }
 
-const PointForm: React.FC<Partial<MarkerType>> = (props) => {
+const PointForm: React.FC<Partial<dataAPI>> = (props) => {
     const navigate = useNavigate();
+
+    const [tableData, setTableData] = React.useState<dataAPI[]>([]);
+    const [serverError, setServerError] = React.useState('');
+
+    // List of all points
+    async function getData() {
+        try {
+            const response = await axios.get('https://31.184.254.112:8081/recycling-points/');
+            setTableData(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    React.useEffect(() => {
+        getData();
+    }, []);
 
     // Popup
     const [state, setState] = React.useState<State>({
@@ -59,22 +93,43 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
         setState({ ...state, open: false });
     };
 
+    function trimDaysOffAndLunch(str: string | undefined) {
+        let idx;
+        const strNoLunch = str?.replaceAll('обед: ', '');
+        let result = strNoLunch;
+
+        if (typeof str === 'undefined') return '';
+
+        if (strNoLunch?.includes('; Сб: в')) {
+            idx = strNoLunch.indexOf('; Сб: в');
+            result = strNoLunch.slice(0, idx);
+            return result + '.';
+        }
+        if (strNoLunch?.includes('; Вс: в')) {
+            idx = strNoLunch.indexOf('; Вс: в');
+            result = strNoLunch.slice(0, idx);
+            return result + '.';
+        }
+
+        idx = strNoLunch?.indexOf(';');
+        result = strNoLunch?.slice(0, idx);
+        return result + '.';
+    }
+
     // Form validation
     const form = useForm<FormValues>({
         mode: 'onBlur',
         defaultValues: {
-            title: props ? props.title : '',
+            title: props ? props.name : '',
             website: props ? props.website : '',
             address: props ? props.address : '',
-            phone: props ? props.phone : '',
-            schedule: props ? props.schedule : '',
-            wasteTypes: props ? props.wasteTypes : [],
-            coordinates:
-                props.latitude && props.longitude
-                    ? props.latitude.toString() + ' ' + props.longitude.toString()
-                    : '',
-            display: props ? props.display : false,
-            id: props ? props.id : markersState[markersState.length - 1].id + 1,
+            phone: props ? props.phoneNumber : '',
+            schedule: props ? trimDaysOffAndLunch(props.workingHours) : '',
+            wasteTypes: props ? props.recyclableTypes : [],
+            coordinates: props.location
+                ? props.location.latitude.toString() + ' ' + props.location.longitude.toString()
+                : '',
+            display: props ? props.displayed : false,
             info: props ? props.info : ''
         }
     });
@@ -87,8 +142,133 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
         isDirty = true;
     }
 
+    const dataFromLS = JSON.parse(localStorage.getItem('EcoHub') || '{}');
+    const adminTokenFromLS = dataFromLS?.accessToken;
+    const refreshTokenFromLS = dataFromLS?.refreshToken;
+
+    async function updateAccessToken(refToken: string) {
+        try {
+            await axios.post('https://31.184.254.112:8081/auth/refresh-token', {
+                headers: {
+                    Authorization: `Bearer ${refToken}`
+                }
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    // manipulations with points
+    async function createNewPoint(myData: dataAPI) {
+        try {
+            await axios.post(
+                'https://31.184.254.112:8081/admin/recycling-points',
+                JSON.stringify(myData),
+                {
+                    headers: {
+                        'Content-type': 'application/json',
+                        Authorization: `Bearer ${adminTokenFromLS}`
+                    }
+                }
+            );
+            setState({ ...state, open: true });
+            setTimeout(() => navigate(-1), 2000);
+        } catch (err) {
+            console.log('err: ', err);
+            if (axios.isAxiosError(err)) {
+                if (!err?.response) {
+                    console.error('No Server Response');
+                    setServerError('No Server Response');
+                } else if (err.response?.status === 400) {
+                    console.error(err.response.data);
+
+                    const errMessage = Object.values(err.response.data).toString();
+                    setServerError(errMessage);
+                } else if (err.response?.status === 401 && dataFromLS) {
+                    console.error(err.response.data.message);
+
+                    const errMessage = 'JWT expired! Please, relogin.';
+                    setServerError(errMessage);
+                    localStorage.removeItem('EcoHub');
+
+                    // updateAccessToken(refreshTokenFromLS);
+                } else if (err.response?.status === 401 && !dataFromLS) {
+                    console.error(err.response.data.error + ': ' + err.response.data.message);
+
+                    const errMessage = err.response.data.error + ': ' + err.response.data.message;
+                    setServerError(errMessage);
+                } else if (err.response?.status > 401 && err.response?.status < 500) {
+                    console.error(err.response.data.error + ': ' + err.response.data.message);
+
+                    const errMessage = err.response.data.error + ': ' + err.response.data.message;
+                    setServerError(errMessage);
+                } else if (err.response?.status >= 500) {
+                    console.error(err.response.data.error);
+
+                    const errMessage = err.response.data.error;
+                    setServerError(errMessage);
+                }
+            }
+        }
+    }
+
+    async function updatePoint(myData: dataAPI, pointId: number | undefined) {
+        try {
+            await axios.patch(
+                `https://31.184.254.112:8081/admin/recycling-points/${pointId}`,
+                JSON.stringify(myData),
+                {
+                    headers: {
+                        'Content-type': 'application/json',
+                        Authorization: `Bearer ${adminTokenFromLS}`
+                    }
+                }
+            );
+
+            setState({ ...state, open: true });
+            setTimeout(() => navigate(-1), 2000);
+        } catch (err) {
+            console.log('err: ', err);
+            if (axios.isAxiosError(err)) {
+                if (!err?.response) {
+                    console.error('No Server Response');
+                    setServerError('No Server Response');
+                } else if (err.response?.status === 400) {
+                    console.error(err.response.data);
+
+                    const errMessage = Object.values(err.response.data).toString();
+                    setServerError(errMessage);
+                } else if (err.response?.status === 401 && dataFromLS) {
+                    console.error(err.response.data.message);
+
+                    const errMessage = 'JWT expired! Please, relogin.';
+
+                    setServerError(errMessage);
+                    localStorage.removeItem('EcoHub');
+                    // updateAccessToken(refreshTokenFromLS);
+                } else if (err.response?.status === 401 && !dataFromLS) {
+                    console.error(err.response.data.error + ': ' + err.response.data.message);
+
+                    const errMessage = err.response.data.error + ': ' + err.response.data.message;
+                    setServerError(errMessage);
+                } else if (err.response?.status > 401 && err.response?.status < 500) {
+                    console.error(err.response.data.error + ': ' + err.response.data.message);
+
+                    const errMessage = err.response.data.error + ': ' + err.response.data.message;
+                    setServerError(errMessage);
+                } else if (err.response?.status >= 500) {
+                    console.error(err.response.data.error);
+
+                    const errMessage = err.response.data.error;
+                    setServerError(errMessage);
+                }
+            }
+        }
+    }
+
     const onSubmit = (data: FormValues) => {
         const resultData: FormValues = { ...data };
+        // console.log('resultData: ', resultData);
 
         if (data.coordinates) {
             const latLong = data.coordinates.split(' ');
@@ -97,36 +277,31 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
             delete resultData.coordinates;
         }
         resultData.display = toBoolean(resultData.display);
-        resultData.id = data.id ? data.id : markersState[markersState.length - 1].id + 1;
-        resultData.info = data.info ? data.info : '';
-        console.log('=== Result data to database:', resultData);
 
-        const newPoint: MarkerType = {
-            id: resultData.id,
-            title: resultData.title,
-            website: resultData.website,
+        const newPoint: dataAPI = {
+            name: resultData.title,
             address: resultData.address,
-            schedule: resultData.schedule,
-            phone: resultData.phone,
-            latitude: resultData.latitude,
-            longitude: resultData.longitude,
-            info: resultData.info,
-            wasteTypes: resultData.wasteTypes,
-            display: Boolean(resultData.display)
+            phoneNumber: resultData.phone ? resultData.phone : null,
+            website: resultData.website ? resultData.website : null,
+            location: {
+                latitude: resultData.latitude,
+                longitude: resultData.longitude
+            },
+            workingHours: resultData.schedule,
+            recyclableTypes: resultData.wasteTypes,
+            displayed: Boolean(resultData.display)
         };
+        console.log('=== Result data to database:', newPoint);
 
-        const isPointExists = markersState.some((point) => point.id === newPoint.id);
+        const isPointExists = tableData.some((point) => point.id === props.id);
 
         if (isPointExists) {
-            const idx = markersState.findIndex((el) => el.id === newPoint.id);
-            markersState[idx] = newPoint;
+            // method PATCH
+            updatePoint(newPoint, props.id);
         } else {
-            markersState.push(newPoint);
+            // method POST
+            createNewPoint(newPoint);
         }
-        console.log('=== markersState from onSubmit: ', markersState);
-
-        setState({ ...state, open: true });
-        setTimeout(() => navigate(-1), 1500);
     };
 
     const toBoolean = (value: boolean | string | undefined) => {
@@ -153,7 +328,40 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
 
     const wasteWithoutAll = waste.slice(1);
 
-    return (
+    const errorAlert = (message: string) => {
+        return (
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                <Alert severity="error">{message}</Alert>
+                {message.includes('expired') ? (
+                    <Button
+                        variant="contained"
+                        size="large"
+                        sx={{ margin: '16px auto' }}
+                        onClick={() => {
+                            setServerError('');
+                            navigate('/login');
+                        }}
+                    >
+                        Login
+                    </Button>
+                ) : (
+                    <Button
+                        variant="contained"
+                        size="large"
+                        sx={{ margin: '16px auto' }}
+                        onClick={() => {
+                            setServerError('');
+                            navigate(-1);
+                        }}
+                    >
+                        Back
+                    </Button>
+                )}
+            </Box>
+        );
+    };
+
+    const content = (
         <>
             <div className={classes.pointForm}>
                 <div className={classes.pointForm__container}>
@@ -185,6 +393,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                               classes.pointForm__textarea_error
                                             : classes.pointForm__textarea
                                     }
+                                    maxLength={100}
                                     aria-label="Наименование организации"
                                     {...register('title', {
                                         required: {
@@ -194,11 +403,6 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:,"().№ ]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 100,
-                                            message:
-                                                'Наименование организации должно быть не более 100 символов'
                                         }
                                     })}
                                 />
@@ -208,7 +412,6 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                 ) : (
                                     <FormHelperText sx={{ ml: '15px' }}>0/100</FormHelperText>
                                 )}
-
                                 {errors.title?.message ? (
                                     <FormHelperText sx={{ ml: '15px', color: 'red' }}>
                                         {errors.title.message}
@@ -226,14 +429,11 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                     id="website"
                                     className={classes.pointForm__textarea}
                                     aria-label="Ссылка на сайт организации (опционально)"
+                                    maxLength={50}
                                     {...register('website', {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:.]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 50,
-                                            message: 'Имя сайта должно быть не более 50 символов'
                                         }
                                     })}
                                 />
@@ -271,6 +471,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                             : classes.pointForm__textarea
                                     }
                                     aria-label="Адрес"
+                                    maxLength={100}
                                     {...register('address', {
                                         required: {
                                             value: true,
@@ -279,10 +480,6 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:,"№(). ]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 100,
-                                            message: 'Адрес должен быть не более 100 символов'
                                         }
                                     })}
                                 />
@@ -305,15 +502,11 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                     id="phone"
                                     className={classes.pointForm__textarea}
                                     aria-label="Контактный телефон (опционально)"
+                                    maxLength={100}
                                     {...register('phone', {
                                         pattern: {
-                                            value: /^[A-Za-zА-ЯЁа-яё0-9-() ]+$/,
+                                            value: /^[A-Za-zА-ЯЁа-яё0-9-()+ ]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 100,
-                                            message:
-                                                'Номер телефона должен быть не более 100 символов'
                                         }
                                     })}
                                 />
@@ -339,23 +532,31 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                     id="schedule"
                                     className={classes.pointForm__textarea}
                                     aria-label="Время работы"
+                                    maxLength={300}
                                     {...register('schedule', {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:,;(). ]+$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 300,
-                                            message:
-                                                'Время работы должно быть не более 300 символов'
                                         }
                                     })}
                                 />
+
                                 {watchForm.schedule ? (
                                     renderStringLength(watchForm.schedule, 300)
                                 ) : (
                                     <FormHelperText sx={{ ml: '15px' }}>0/300</FormHelperText>
                                 )}
+                                <FormHelperText sx={{ ml: '15px' }}>
+                                    Можно указывать дни отдельно, диапазон дней, только рабочее
+                                    время, рабочее время + обед. Если день не указан - он считается
+                                    выходным. Точка в конце предложения{' '}
+                                    <strong>обязательна.</strong>
+                                    <br />
+                                    <b>Пример 1:</b> Пн-Пт: 09:00-17:00, 13:00-14:00.
+                                    <br />
+                                    <b>Пример 2:</b> Пн-Пт: 09:00-17:00, 13:00-14:00; Сб:
+                                    09:00-13:00, 12:00-12:30.
+                                </FormHelperText>
                                 {errors.schedule?.message ? (
                                     <FormHelperText sx={{ ml: '15px', color: 'red' }}>
                                         {errors.schedule.message}
@@ -384,8 +585,8 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                     control={
                                                         <Checkbox
                                                             defaultChecked={
-                                                                props.wasteTypes &&
-                                                                props.wasteTypes.includes(item)
+                                                                props.recyclableTypes &&
+                                                                props.recyclableTypes.includes(item)
                                                                     ? true
                                                                     : false
                                                             }
@@ -412,8 +613,8 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                                     control={
                                                         <Checkbox
                                                             defaultChecked={
-                                                                props.wasteTypes &&
-                                                                props.wasteTypes.includes(item)
+                                                                props.recyclableTypes &&
+                                                                props.recyclableTypes.includes(item)
                                                                     ? true
                                                                     : false
                                                             }
@@ -460,7 +661,8 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                               classes.pointForm__textarea_error
                                             : classes.pointForm__textarea
                                     }
-                                    aria-label="Координаты пункта приема вторсырья "
+                                    aria-label="Координаты пункта приема вторсырья"
+                                    maxLength={100}
                                     {...register('coordinates', {
                                         required: {
                                             value: true,
@@ -469,10 +671,6 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                                         pattern: {
                                             value: /^(?!.*\.$)(0|[1-9]+)(?:[.]\d*|)\s?(0|[1-9]+)(?:[.]\d*|)$/,
                                             message: 'Некорректное значение'
-                                        },
-                                        maxLength: {
-                                            value: 100,
-                                            message: 'Координаты должны быть не более 100 символов'
                                         }
                                     })}
                                 />
@@ -491,7 +689,7 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
                             <RadioGroup
                                 sx={{ mb: '48px', alignItems: 'flex-start' }}
                                 aria-labelledby="Статус"
-                                defaultValue={props.display ? props.display : true}
+                                defaultValue={props.displayed ? props.displayed : true}
                                 name="status-radio-buttons-group"
                             >
                                 <FormControlLabel
@@ -544,6 +742,8 @@ const PointForm: React.FC<Partial<MarkerType>> = (props) => {
             </div>
         </>
     );
+
+    return serverError ? errorAlert(serverError) : content;
 };
 
 export default PointForm;
