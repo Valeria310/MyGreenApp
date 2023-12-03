@@ -199,8 +199,12 @@ export const Header = () => {
                     Войти
                 </Link>
                 <div className="header-mobile-menu" id="menu">
-                    <Navigation />
-                    <div className="logUp-btn mob">Войти</div>
+                    <div className="header-mobile-menu-inner">
+                        <Navigation />
+                        <Link to={'/login'} className="logUp-btn mob">
+                            Войти
+                        </Link>
+                    </div>
                     <span className="headrer-menu-text">info@ecohub.by</span>
                 </div>
             </div>

@@ -5,6 +5,12 @@ import { Navigation } from '../Navigation/Navigation';
 import './Footer.scss';
 
 export const Footer = () => {
+    const handleClick = () => {
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        });
+    };
     return (
         <React.Fragment>
             <div className="footer_hill"></div>
@@ -20,7 +26,7 @@ export const Footer = () => {
                 <span className="socials">info@ecohub.by</span>
             </div>
             <div className="footer_info">© 2023 EcoHub. All Rights Reserved.</div>
-            <a href="#" className='up-btn'></a>
+            <div onClick={handleClick} className='up-btn'></div>
         </React.Fragment>
     );
 };

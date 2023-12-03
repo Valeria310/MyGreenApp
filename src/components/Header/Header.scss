@@ -83,6 +83,8 @@
 }
 
 .logo {
+    position: relative;
+    z-index: 1003;
     display: block;
     left: 0;
     width: 66px;
@@ -359,6 +361,12 @@
             position: fixed;
             width: 350px;
             border-radius: 30px 0px 0px 30px;
+
+            &-inner {
+                display: flex;
+                flex-direction: column;
+                gap: 50px
+            }
 
             & .navigation {
                 display: flex;
