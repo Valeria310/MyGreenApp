@@ -1,19 +1,27 @@
 import { FC } from 'react';
 
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useWindowWidth } from 'src/hooks/useWindowWidth';
 
 import s from './NavCard.module.scss';
 import { NavCardProps } from './NavCardProps';
-import NavArrowDisabled from '../../assets/icons/nav-arrow-dis.svg';
-import NavArrowMobileDisabled from '../../assets/icons/nav-arrow-mobile-dis.svg';
 import NavArrowMobile from '../../assets/icons/nav-arrow-mobile.svg';
 import NavArrowTab from '../../assets/icons/nav-arrow-tab.svg';
 import NavArrow from '../../assets/icons/nav-arrow.svg';
 
 export const NavCard: FC<NavCardProps> = ({ card }) => {
     const width = useWindowWidth();
+    const navigate = useNavigate();
+    const handleClick = (url: string) => {
+        if(url.includes('#')) {
+            navigate(url, { state: url.slice(url.indexOf('#') + 1) });
+            const section=document.getElementById(location.hash.slice(1));
+            section?.scrollIntoView({ behavior:'smooth' });
+        } else {
+            navigate(url);
+        }
+    };
     return (
         <div className={s.navCard}>
             <div className={s.navCardImage}>
@@ -27,10 +35,10 @@ export const NavCard: FC<NavCardProps> = ({ card }) => {
                     ))}
                 </div>
                 <div className={s.navCardButton}>
-                    <Link to={card.href} className="logUp-btn desk">
+                    <div onClick={() => handleClick(card.href)} className={s.navCardLink}>
                         <span>{card.buttonValue}</span>
                         <img src={width < 1200 ? (width < 768 ? NavArrowMobile : NavArrowTab) : NavArrow} alt='arrow' />
-                    </Link>
+                    </div>
                 </div>
             </div>
         </div>

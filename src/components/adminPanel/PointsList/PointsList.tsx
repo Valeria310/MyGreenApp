@@ -102,9 +102,9 @@ const PointsList = () => {
                             <TableBody>
                                 {(rowsPerPage > 0
                                     ? tableData.slice(
-                                          page * rowsPerPage,
-                                          page * rowsPerPage + rowsPerPage
-                                      )
+                                        page * rowsPerPage,
+                                        page * rowsPerPage + rowsPerPage
+                                    )
                                     : tableData
                                 ).map((row) => (
                                     <TableRow

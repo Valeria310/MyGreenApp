@@ -11,7 +11,7 @@ export interface NavCard {
     image: string;
     content: NavCardContent[];
     buttonValue: string;
-    href: string | undefined;
+    href: string;
     isDisabled?: boolean;
 }
 
@@ -46,6 +46,6 @@ export const NavCards: NavCard[] = [
             }
         ],
         buttonValue: 'Куда сдавать',
-        href: '#map'
+        href: '/#map'
     }
 ];

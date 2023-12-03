@@ -222,3 +222,19 @@
         }
     }
 }
+
+.navCardLink {
+    display: inline-flex;
+    color: #070707;
+    font-family: $font-primary;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    
+    &:hover {
+        border-color: #000000;
+    }
+}
