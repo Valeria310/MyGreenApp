@@ -45,6 +45,10 @@
   box-shadow: none !important;
   background-color: $color-white !important;
   border: 1px solid $color-black !important;
+  
+  &::before{
+    display: none;
+  }
 }
 
 .privacyPolicy__accordionSummary {
