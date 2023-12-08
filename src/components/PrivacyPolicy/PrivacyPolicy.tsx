@@ -16,12 +16,13 @@ const PrivacyPolicy = () => {
                     <p className={classes.privacyPolicy__text}>
                         Настоящая Политика конфиденциальности персональных данных (далее — Политика
                         конфиденциальности) действует в отношении всей информации, которую сайт
-                        www.ecohub.by, может получить о Пользователе во время использования сайта.
+                        <b>www.ecohub.by</b>, может получить о Пользователе во время использования
+                        сайта.
                     </p>
                 </Box>
                 <Box>
                     {/* 1. Определение терминов */}
-                    <Accordion className={classes.privacyPolicy__accordion} sx={{ mb: 2 }}>
+                    <Accordion className={classes.privacyPolicy__accordion}>
                         <AccordionSummary
                             sx={{ p: 0, m: 0 }}
                             className={classes.privacyPolicy__accordionSummary}
@@ -41,8 +42,12 @@ const PrivacyPolicy = () => {
                             >
                                 <ul>
                                     <li>
-                                        1.1.1 «Сайт» – сайт www.ecohub.by.
+                                        1.1. В настоящей Политике конфиденциальности используются
+                                        следующие термины:
                                         <ul className={classes.privacyPolicy__innerList}>
+                                            <li>
+                                                1.1.1 «Сайт» – сайт <b>www.ecohub.by</b>.
+                                            </li>
                                             <li>
                                                 1.1.2. «Администратор» – уполномоченный сотрудник по
                                                 управлению сайтом, действующий от имени Общества с
@@ -103,7 +108,7 @@ const PrivacyPolicy = () => {
                     </Accordion>
 
                     {/* 2. Общие положения */}
-                    <Accordion className={classes.privacyPolicy__accordion} sx={{ mb: 2 }}>
+                    <Accordion className={classes.privacyPolicy__accordion}>
                         <AccordionSummary
                             sx={{ p: 0, m: 0 }}
                             className={classes.privacyPolicy__accordionSummary}
@@ -148,7 +153,7 @@ const PrivacyPolicy = () => {
                     </Accordion>
 
                     {/* 3. Предмет Политики конфиденциальности */}
-                    <Accordion className={classes.privacyPolicy__accordion} sx={{ mb: 2 }}>
+                    <Accordion className={classes.privacyPolicy__accordion}>
                         <AccordionSummary
                             sx={{ p: 0, m: 0 }}
                             className={classes.privacyPolicy__accordionSummary}
@@ -231,7 +236,7 @@ const PrivacyPolicy = () => {
                     </Accordion>
 
                     {/* 4. Цели сбора персональной информации пользователя */}
-                    <Accordion className={classes.privacyPolicy__accordion} sx={{ mb: 2 }}>
+                    <Accordion className={classes.privacyPolicy__accordion}>
                         <AccordionSummary
                             sx={{ p: 0, m: 0 }}
                             className={classes.privacyPolicy__accordionSummary}
@@ -304,7 +309,7 @@ const PrivacyPolicy = () => {
                     </Accordion>
 
                     {/* 5. Способы и сроки обработки персональной информации */}
-                    <Accordion className={classes.privacyPolicy__accordion} sx={{ mb: 2 }}>
+                    <Accordion className={classes.privacyPolicy__accordion}>
                         <AccordionSummary
                             sx={{ p: 0, m: 0 }}
                             className={classes.privacyPolicy__accordionSummary}
@@ -363,7 +368,7 @@ const PrivacyPolicy = () => {
                     </Accordion>
 
                     {/* 6. Обязательства сторон */}
-                    <Accordion className={classes.privacyPolicy__accordion} sx={{ mb: 2 }}>
+                    <Accordion className={classes.privacyPolicy__accordion}>
                         <AccordionSummary
                             sx={{ p: 0, m: 0 }}
                             className={classes.privacyPolicy__accordionSummary}
@@ -438,7 +443,7 @@ const PrivacyPolicy = () => {
                     </Accordion>
 
                     {/* 7. Ответственность сторон */}
-                    <Accordion className={classes.privacyPolicy__accordion} sx={{ mb: 2 }}>
+                    <Accordion className={classes.privacyPolicy__accordion}>
                         <AccordionSummary
                             sx={{ p: 0, m: 0 }}
                             className={classes.privacyPolicy__accordionSummary}
@@ -487,7 +492,7 @@ const PrivacyPolicy = () => {
                     </Accordion>
 
                     {/* 8. Разрешение споров */}
-                    <Accordion className={classes.privacyPolicy__accordion} sx={{ mb: 2 }}>
+                    <Accordion className={classes.privacyPolicy__accordion}>
                         <AccordionSummary
                             sx={{ p: 0, m: 0 }}
                             className={classes.privacyPolicy__accordionSummary}
@@ -533,7 +538,7 @@ const PrivacyPolicy = () => {
                     </Accordion>
 
                     {/* 9. Дополнительные условия */}
-                    <Accordion className={classes.privacyPolicy__accordion} sx={{ mb: 2 }}>
+                    <Accordion className={classes.privacyPolicy__accordion}>
                         <AccordionSummary
                             sx={{ p: 0, m: 0 }}
                             className={classes.privacyPolicy__accordionSummary}
