@@ -187,7 +187,8 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                 } else if (err.response?.status === 401 && dataFromLS) {
                     console.error(err.response.data.message);
 
-                    const errMessage = 'JWT expired! Please, relogin.';
+                    const errMessage =
+                        'Срок действия токена закончился. Пожалуйста, перезайдите в учетную запись.';
                     setServerError(errMessage);
                     localStorage.removeItem('EcoHub');
 
