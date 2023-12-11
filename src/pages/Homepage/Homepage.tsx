@@ -30,7 +30,7 @@ export const Homepage = () => {
     return (
         <React.Fragment>
             <Header />
-            <div className='home-sticky-container'>
+            <div className="home-sticky-container">
                 <ParallaxSection />
                 <NavSection />
                 <RecycleSection expandable={false} />

@@ -6,6 +6,7 @@ import LogInPage from 'src/pages/adminPanel/LogInPage';
 import ManagePoints from 'src/pages/adminPanel/ManagePoints';
 import PointPage from 'src/pages/adminPanel/PointPage';
 import { Homepage } from 'src/pages/Homepage/Homepage';
+import { PrivacyPolicyPage } from 'src/pages/PrivacyPolicy/PrivacyPolicyPage';
 import { RecyclePage } from 'src/pages/RecyclePage/RecyclePage';
 import { SearchResultsList } from 'src/pages/SearchResultsList/SearchResultsList';
 
@@ -20,6 +21,7 @@ export const AppRoutes = () => {
             <Route path="/admin/point/:id" element={<PointPage />} />
             <Route path="/admin/point/:id/edit" element={<EditPointPage />} />
             <Route path="/search-results" element={<SearchResultsList />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Routes>
     );
 };
