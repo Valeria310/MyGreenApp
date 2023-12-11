@@ -271,7 +271,9 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
         // console.log('resultData: ', resultData);
 
         if (data.coordinates) {
-            const latLong = data.coordinates.split(' ');
+            const latLong = data.coordinates.includes(', ')
+                ? data.coordinates.split(', ')
+                : data.coordinates.split(' ');
             resultData.latitude = Number(latLong[0]);
             resultData.longitude = Number(latLong[1]);
             delete resultData.coordinates;
@@ -291,7 +293,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
             recyclableTypes: resultData.wasteTypes,
             displayed: Boolean(resultData.display)
         };
-        console.log('=== Result data to database:', newPoint);
+        // console.log('=== Result data to database:', newPoint);
 
         const isPointExists = tableData.some((point) => point.id === props.id);
 
@@ -342,21 +344,9 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                             navigate('/login');
                         }}
                     >
-                        Login
+                        Войти
                     </Button>
-                ) : (
-                    <Button
-                        variant="contained"
-                        size="large"
-                        sx={{ margin: '16px auto' }}
-                        onClick={() => {
-                            setServerError('');
-                            navigate(-1);
-                        }}
-                    >
-                        Back
-                    </Button>
-                )}
+                ) : null}
             </Box>
         );
     };
@@ -402,7 +392,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                         },
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:,"().№ ]+$/,
-                                            message: 'Некорректное значение'
+                                            message: 'Пример: ОАО "Белвторресурсы"'
                                         }
                                     })}
                                 />
@@ -433,7 +423,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                     {...register('website', {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:.]+$/,
-                                            message: 'Некорректное значение'
+                                            message: 'Пример: https://belvtorresurs.by/'
                                         }
                                     })}
                                 />
@@ -479,7 +469,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                         },
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:,"№(). ]+$/,
-                                            message: 'Некорректное значение'
+                                            message: 'Пример: Минск, ул.Челюскинцев, 30'
                                         }
                                     })}
                                 />
@@ -506,7 +496,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                     {...register('phone', {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-()+ ]+$/,
-                                            message: 'Некорректное значение'
+                                            message: 'Пример: +375 17 999-99-99'
                                         }
                                     })}
                                 />
@@ -536,7 +526,8 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                     {...register('schedule', {
                                         pattern: {
                                             value: /^[A-Za-zА-ЯЁа-яё0-9-/:,;(). ]+$/,
-                                            message: 'Некорректное значение'
+                                            message:
+                                                'Пример: Время работы: Пн-Пт: с 09:00 до 17:00 (обед 14:00-15:00) Сб: с 09:00 до 14:00; вых: Воскресенье.'
                                         }
                                     })}
                                 />
@@ -669,8 +660,8 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                             message: 'Обязательное поле'
                                         },
                                         pattern: {
-                                            value: /^(?!.*\.$)(0|[1-9]+)(?:[.]\d*|)\s?(0|[1-9]+)(?:[.]\d*|)$/,
-                                            message: 'Некорректное значение'
+                                            value: /^(?!.*\.$)(0|[1-9]+)(?:[.]\d*|)(,\s|\s)?(0|[1-9]+)(?:[.]\d*|)$/,
+                                            message: 'Пример: 53.84620314128737, 27.6388538825039'
                                         }
                                     })}
                                 />
@@ -689,7 +680,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                             <RadioGroup
                                 sx={{ mb: '48px', alignItems: 'flex-start' }}
                                 aria-labelledby="Статус"
-                                defaultValue={props.displayed ? props.displayed : true}
+                                defaultValue={props.displayed}
                                 name="status-radio-buttons-group"
                             >
                                 <FormControlLabel
@@ -716,6 +707,11 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
                                     Отменить
                                 </Button>
                             </Box>
+
+                            <Box sx={{ mt: '16px' }}>
+                                {serverError ? errorAlert(serverError) : null}
+                            </Box>
+
                             <Snackbar
                                 anchorOrigin={{ vertical, horizontal }}
                                 open={open}
@@ -743,7 +739,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
         </>
     );
 
-    return serverError ? errorAlert(serverError) : content;
+    return content;
 };
 
 export default PointForm;
