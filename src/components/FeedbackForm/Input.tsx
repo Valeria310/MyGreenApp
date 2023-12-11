@@ -24,7 +24,7 @@ export const Input = ({ label, type, id, placeholder, validation, name, multilin
 
 
     const isFormInvalid = (err:FieldErrors) => {
-        return (Object.keys(err).length > 0)
+        return (Object.keys(err).length > 0);
     };
 
 
