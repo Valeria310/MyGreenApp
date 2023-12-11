@@ -48,7 +48,7 @@ const AdminHeader = () => {
                             <MenuItem value="admin">{userName}</MenuItem>
                             <MenuItem value="user" onClick={logOut}>
                                 <Button sx={{ p: 0, m: 0, justifyContent: 'flex-start' }}>
-                                    logout
+                                    выйти
                                 </Button>
                             </MenuItem>
                         </Select>
