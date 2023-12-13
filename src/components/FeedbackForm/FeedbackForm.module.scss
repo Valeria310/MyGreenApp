@@ -95,6 +95,13 @@
       padding: 18px 10px;
       min-height: 60px;
     }
+
+    &.inputError {
+
+      border: 1px solid $color-error;
+
+    }
+
     &:hover {
       border: 1.5px solid $color-black;
     }
@@ -295,7 +302,13 @@
 
 
 .feedbackFormError {
-  color: red;
+  color: $color-error;
+}
+
+.inputError {
+
+  border: 1px solid $color-error;
+
 }
 
 
@@ -304,3 +317,4 @@
   flex-direction: row;
   justify-content: space-between;
 }
+

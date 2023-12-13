@@ -57,15 +57,16 @@ export const Input = ({ label, type, id, placeholder, validation, name, multilin
             {multiline ? (
                 <textarea
                     id={id}
-                    className=''
+                    className={isInvalid? s.inputError : ''}
                     placeholder={placeholder}
                     {...register(`${name}`, validation)}
+                    maxLength={500}
                 ></textarea>
             ) : (
                 <input
                     id={id}
                     type={type}
-                    className=''
+                    className={isInvalid? s.inputError : ''}
                     placeholder={placeholder}
                     {...register(name, validation)}
                 />

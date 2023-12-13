@@ -4,6 +4,7 @@ import { CircularProgress } from '@mui/material';
 import { green } from '@mui/material/colors';
 import axios from 'axios';
 import { FormProvider, useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 import selectDownArrowIcon from 'src/assets/icons/select-down-arrow.svg';
 import selectUpArrowIcon from 'src/assets/icons/select-up-arrow.svg';
@@ -13,6 +14,7 @@ import s from './FeedbackForm.module.scss';
 import { FeedbackFormProps } from './FeedbackFormProps';
 import { Input } from './Input';
 import { desc_validation, email_validation, name_validation } from './InputValidations';
+
 
 type MessageTopicForBackEndType = 'REVIEW' | 'QUESTION' | 'OFFER' | 'PROBLEM' | ''
 
@@ -30,7 +32,7 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
 
 
-    const methods = useForm();
+    const methods = useForm({ mode: 'onBlur' });
 
     methods.watch((data) => localStorage.setItem('feedbackFormData', JSON.stringify(data)));
 
@@ -116,13 +118,13 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
                     форму ниже</p>
                 <div className={s.feedbackFields}>
 
-
                     <div className={s.feedbackFormField}>
                         <Input   {...name_validation} />
                     </div>
                     <div className={s.feedbackFormField}>
                         <Input  {...email_validation} />
                     </div>
+
 
                     <div className={`${s.feedbackFormField} ${s.paddingTop}`}>
                         <label>Тип сообщения</label>
@@ -157,7 +159,8 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
                     <input type="checkbox" id="agree" checked={agreed} onChange={() => setAgreed(!agreed)}/>
                     <span>
                         <label onClick={() => setAgreed(!agreed)}>отправляя сообщение, вы соглашаетесь&nbsp;</label>
-                        <span>c <a href="#">политикой конфиденциальности</a></span>
+                        {/*<span>c <a href="/privacy-policy/">политикой конфиденциальности</a></span> */}
+                        <span>c <Link to={'/privacy-policy/'}>политикой конфиденциальности</Link></span>
                     </span>
                 </div>
 
