@@ -12,6 +12,7 @@ export const name_validation = {
     type: 'text',
     id: 'name',
     placeholder: '',
+    maxLength: 30,
     validation: {
         required: {
             value: true,
@@ -20,6 +21,11 @@ export const name_validation = {
         maxLength: {
             value: 30,
             message: '30 символов максимум'
+        },
+        pattern: {
+            value:
+               /^[a-z-_а-я0-9 ]+$/i,
+            message: 'Введите корректное Имя'
         }
     }
 };
