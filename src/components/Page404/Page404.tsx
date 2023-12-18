@@ -1,5 +1,3 @@
-import React from 'react';
-
 import classes from './Page404.module.scss';
 import page404Image from '../../assets/images/404.svg';
 

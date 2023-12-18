@@ -30,8 +30,8 @@ export const Homepage = () => {
 
     return (
         <React.Fragment>
-            <Page404 />
-            {/* <Header />
+            {/* <Page404 /> */}
+            <Header />
             <div className="home-sticky-container">
                 <ParallaxSection />
                 <NavSection />
@@ -44,7 +44,7 @@ export const Homepage = () => {
             </section>
             <footer className="footer">
                 <Footer />
-            </footer> */}
+            </footer>
         </React.Fragment>
     );
 };
