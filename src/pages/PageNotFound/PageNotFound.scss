@@ -1,0 +1,24 @@
+@import "../../index.scss";
+
+.page404-sticky-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: $color-white;
+
+  @media screen and (min-width: 1200px) {
+    // padding: 10px 0 45px;
+  }
+}
+
+.footer {
+  position: relative;
+  // max-width: 1440px;
+  height: 637px;
+  padding-top: 43px;
+  // margin: 0 auto;
+  background-image: url(../../assets/images/footer_img.png);
+  background-size: cover;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+}
