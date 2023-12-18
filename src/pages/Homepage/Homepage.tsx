@@ -5,6 +5,7 @@ import { Footer } from 'src/components/Footer/Footer';
 import { Header } from 'src/components/Header/Header';
 import MapSection from 'src/components/MapSection/MapSection';
 import NavSection from 'src/components/NavSection';
+import Page404 from 'src/components/Page404';
 import { ParallaxSection } from 'src/components/Parallax/Parallax';
 import RecycleSection from 'src/components/RecycleSection';
 import { Ticker } from 'src/components/Ticker/Ticker';
@@ -29,7 +30,8 @@ export const Homepage = () => {
 
     return (
         <React.Fragment>
-            <Header />
+            <Page404 />
+            {/* <Header />
             <div className="home-sticky-container">
                 <ParallaxSection />
                 <NavSection />
@@ -42,7 +44,7 @@ export const Homepage = () => {
             </section>
             <footer className="footer">
                 <Footer />
-            </footer>
+            </footer> */}
         </React.Fragment>
     );
 };
