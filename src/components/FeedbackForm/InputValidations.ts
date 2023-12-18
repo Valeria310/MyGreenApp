@@ -12,6 +12,7 @@ export const name_validation = {
     type: 'text',
     id: 'name',
     placeholder: '',
+    maxLength: 30,
     validation: {
         required: {
             value: true,
@@ -20,6 +21,11 @@ export const name_validation = {
         maxLength: {
             value: 30,
             message: '30 символов максимум'
+        },
+        pattern: {
+            value:
+               /^[a-z-_а-я0-9 ]+$/i,
+            message: 'Введите корректное Имя'
         }
     }
 };
@@ -64,7 +70,7 @@ export const email_validation = {
         pattern: {
             value:
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            message: 'Введен некорректный e-mail'
+            message: 'Введите корректный e-mail адрес'
         }
     }
 };

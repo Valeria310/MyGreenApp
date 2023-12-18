@@ -7,12 +7,13 @@ type PropsType = {
     type?: string,
     id: string,
     placeholder: string,
+    maxLength?: number,
     validation: any,
     name: string,
     multiline?: boolean,
 }
 
-export const Input = ({ label, type, id, placeholder, validation, name, multiline }: PropsType) => {
+export const Input = ({ label, type, id, placeholder, maxLength, validation, name, multiline }: PropsType) => {
 
     function findInputError(errors: any, name:string):any {
         return  Object.keys(errors)
@@ -57,16 +58,18 @@ export const Input = ({ label, type, id, placeholder, validation, name, multilin
             {multiline ? (
                 <textarea
                     id={id}
-                    className=''
+                    className={isInvalid? s.inputError : ''}
                     placeholder={placeholder}
                     {...register(`${name}`, validation)}
+                    maxLength={500}
                 ></textarea>
             ) : (
                 <input
                     id={id}
                     type={type}
-                    className=''
+                    className={isInvalid? s.inputError : ''}
                     placeholder={placeholder}
+                    maxLength={maxLength}
                     {...register(name, validation)}
                 />
             )}
