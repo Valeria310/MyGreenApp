@@ -11,180 +11,181 @@
 }
 
 .plasticCardContent {
-    height: 351px;
+  // height: 351px; +33px
+  height: 351px;
 }
 
 .paperCardContent {
-    height: 420px;
+  height: 420px;
 }
 
 .glassCardContent {
-    height: 351px;
+  height: 351px;
 }
 
 .largeCardContent {
-    height: 351px;
+  height: 351px;
 }
 
 .electroCardContent {
-    height: 351px;
+  height: 351px;
 }
 
 .dangerCardContent {
-    height: 351px;
+  height: 351px;
 }
 
 .metalCardContent {
-    height: 414px;
+  height: 414px;
 }
 
 .ragCardContent {
-    height: 351px;
+  height: 351px;
 }
 
 .recycleTable {
   border-collapse: collapse;
   width: 100%;
-  &Row {  
-      border-top: 1px solid $color-black;
+  &Row {
+    border-top: 1px solid $color-black;
   }
   &Rowplastic:last-child {
-      .recycleTableImages {
-          padding: 5px;
-      }
+    .recycleTableImages {
+      padding: 5px;
+    }
   }
   &Rowpaper {
-      &:last-child .recycleTableHeading {
-          padding: 16px 15px;
-      }
+    &:last-child .recycleTableHeading {
+      padding: 16px 15px;
+    }
   }
   &Rowglass {
-      &:first-child .recycleTableHeading {
-          padding: 28px 15px;
-      }
+    &:first-child .recycleTableHeading {
+      padding: 28px 15px;
+    }
   }
-  
+
   &Rowlarge {
-      min-height: 83px;
+    min-height: 83px;
   }
   &Rowelectro {
-      .recycleTableHeading {
-          padding: 10px 13px;
-      }
+    .recycleTableHeading {
+      padding: 10px 13px;
+    }
   }
   &Rowdanger {
-      min-height: 83px;
+    min-height: 83px;
   }
   &Rowmetal {
-      min-height: 83px;
+    min-height: 83px;
   }
   &Heading {
     text-align: center;
     color: $color-black;
     white-space: pre-line;
     @media screen and (min-width: 768px) {
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 140%;
-        max-width: 144px;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      max-width: 144px;
     }
     @media screen and (min-width: 1200px) {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 26px;
-        padding: 10px 15px;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 26px;
+      padding: 10px 15px;
     }
   }
   &Heading, &Data {
-      border-style: solid;
-      border-color: $color-black;
-      border-width: 0 1px;
-      @media screen and (min-width: 768px) {
-        min-width: 143px;
-      }
-      @media screen and (min-width: 1200px) {
-        min-width: 195px;
-      }
+    border-style: solid;
+    border-color: $color-black;
+    border-width: 0 1px;
+    @media screen and (min-width: 768px) {
+      min-width: 143px;
+    }
+    @media screen and (min-width: 1200px) {
+      min-width: 195px;
+    }
   }
   &Row &Heading:first-child {
-      border-left: none;
-      word-wrap:normal;
+    border-left: none;
+    word-wrap:normal;
   }
   &Row &Data:last-child {
-      border-right: none;
+    border-right: none;
   }
   &Row:nth-child(5) {
-      @media screen and (min-width: 1200px) {
-        .recycleTableHeading {
-            padding: 12.5px 15px;
-        }
+    @media screen and (min-width: 1200px) {
+      .recycleTableHeading {
+        padding: 12.5px 15px;
       }
+    }
   }
   &Rowplastic:nth-child(5) {
-      .recycleTableDescription {
-          padding: 20px;
-      }
+    .recycleTableDescription {
+      padding: 20px;
+    }
   }
   &Rowplastic:last-child {
-      .recycleTableDescription {
-          padding: 9.5px 20px;
-      }
+    .recycleTableDescription {
+      padding: 9.5px 20px;
+    }
   }
   &Images {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      padding: 8px;
-      &:last-child {
-          column-gap: 5px;
-      }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 8px;
+    &:last-child {
+      column-gap: 5px;
+    }
   }
   &Description {
     color: $color-black;
     @media screen and (min-width: 768px) {
-        padding: 10px;
-        min-width: 245px;
+      padding: 10px;
+      min-width: 245px;
     }
     @media screen and (min-width: 1200px) {
-        padding: 9.5px 20px;
-        width: 585px;
+      padding: 9.5px 20px;
+      width: 585px;
     }
-    ul {     
-        margin: 0;
-        padding: 0;
+    ul {
+      margin: 0;
+      padding: 0;
+      @media screen and (min-width: 768px) {
+        padding-left: 10px;
+        padding-inline-start: 10px;
+        padding-inline-end: 10px;
+      }
+      @media screen and (min-width: 1200px) {
+        padding-left: 9.5px;
+        padding-inline-start: 25px;
+        padding-inline-end: 10px;
+      }
+      li {
+        color: $color-black;
+        white-space: pre-line;
         @media screen and (min-width: 768px) {
-            padding-left: 10px;
-            padding-inline-start: 10px;
-            padding-inline-end: 10px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 140%;
         }
         @media screen and (min-width: 1200px) {
-            padding-left: 9.5px;
-            padding-inline-start: 25px;
-            padding-inline-end: 10px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 21px;
         }
-        li {
-            color: $color-black;
-            white-space: pre-line;
-            @media screen and (min-width: 768px) {
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 140%;
-            }
-            @media screen and (min-width: 1200px) {
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 21px;
-            }
-        }
-        li::marker{
-            font-size: 10px;
-            line-height: 16px;
-            color: $color-black;
-        }
+      }
+      li::marker{
+        font-size: 10px;
+        line-height: 16px;
+        color: $color-black;
+      }
     }
   }
   &SecondLife {
@@ -192,57 +193,57 @@
     color: $color-black;
     background-color: #CAE3F9;
     white-space: pre-line;
-      @media screen and (min-width: 768px) {
-        display: none;
-      }
-      @media screen and (min-width: 1000px) {
-        display: table-cell;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 140%;
-        padding: 20px;
-        min-width: 148px;
-      }
-      @media screen and (min-width: 1200px) {
-        display: none;
-      }
-      @media screen and (min-width: 1250px) {
-        display: table-cell;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 21px;
-        padding: 21px;
-        text-align: left;
-        max-width: 148px;
-      }
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    @media screen and (min-width: 1000px) {
+      display: table-cell;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      padding: 20px;
+      min-width: 148px;
+    }
+    @media screen and (min-width: 1200px) {
+      display: none;
+    }
+    @media screen and (min-width: 1250px) {
+      display: table-cell;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 21px;
+      padding: 21px;
+      text-align: left;
+      max-width: 148px;
+    }
   }
   &Status {
     text-align: center;
     color: $color-black;
     white-space: pre-line;
-      @media screen and (min-width: 768px) {
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 140%;
-        padding: 20px;
-        min-width: 158px;
-      }
-      @media screen and (min-width: 1200px) {
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 23px;
-        padding: 18px 38px;
-        text-align: left;
-        max-width: 195px;
-      }
+    @media screen and (min-width: 768px) {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      padding: 20px;
+      min-width: 158px;
+    }
+    @media screen and (min-width: 1200px) {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 23px;
+      padding: 18px 38px;
+      text-align: left;
+      max-width: 195px;
+    }
   }
 }
 
 .recycleStatus {
   &Red {
-      background: #FF9595;
+    background: #FF9595;
   }
   &Green {
-      background: #94B9AB;
+    background: #94B9AB;
   }
 }
