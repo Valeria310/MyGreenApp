@@ -16,6 +16,8 @@ export const RecycleCardMobileList: FC<RecycleCardMobileListProps> = ({ items })
             className={s.recycleRowList}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
+            slidesPerView={1.1}
+            spaceBetween={10}
             pagination={{
                 enabled: true,
                 clickable: true
