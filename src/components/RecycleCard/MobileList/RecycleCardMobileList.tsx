@@ -16,7 +16,7 @@ export const RecycleCardMobileList: FC<RecycleCardMobileListProps> = ({ items })
             className={s.recycleRowList}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            slidesPerView={1.1}
+            slidesPerView={items.length === 1 ? 1 : 1.1}
             spaceBetween={10}
             pagination={{
                 enabled: true,
@@ -30,7 +30,13 @@ export const RecycleCardMobileList: FC<RecycleCardMobileListProps> = ({ items })
 
                 return (
                     <SwiperSlide key={item.id} className={s.recycleRow}>
-                        <div className={s.recycleRowContent}>
+                        <div
+                            className={
+                                items.length !== 1
+                                    ? s.recycleRowContent
+                                    : s.recycleRowContent + ' ' + s.recycleRowContent_oneItem
+                            }
+                        >
                             <div className={s.recycleRowContentWrapper}>
                                 <div className={s.recycleRowHeader}>
                                     <h4>{item.name}</h4>
