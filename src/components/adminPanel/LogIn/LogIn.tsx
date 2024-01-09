@@ -40,7 +40,7 @@ const LogIn = () => {
     async function authorization(user: UserDataToServer) {
         try {
             const response = await axios.post(
-                'https://31.184.254.112:8081/auth/login',
+                'https://kosten.gin.by/auth/login',
                 JSON.stringify(user),
                 {
                     headers: {

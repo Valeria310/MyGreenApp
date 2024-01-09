@@ -57,7 +57,7 @@ const EditPoint: React.FC = () => {
 
     async function getData() {
         try {
-            const response = await axios.get(`https://31.184.254.112:8081/recycling-points/${id}`);
+            const response = await axios.get(`https://kosten.gin.by/recycling-points/${id}`);
             setPointData(response.data);
         } catch (error) {
             console.error(error);

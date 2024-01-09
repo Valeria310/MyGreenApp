@@ -66,7 +66,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
     // List of all points
     async function getData() {
         try {
-            const response = await axios.get('https://31.184.254.112:8081/recycling-points/');
+            const response = await axios.get('https://kosten.gin.by/recycling-points/');
             setTableData(response.data);
         } catch (error) {
             console.error(error);
@@ -148,7 +148,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
 
     async function updateAccessToken(refToken: string) {
         try {
-            await axios.post('https://31.184.254.112:8081/auth/refresh-token', {
+            await axios.post('https://kosten.gin.by/auth/refresh-token', {
                 headers: {
                     Authorization: `Bearer ${refToken}`
                 }
@@ -162,7 +162,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
     async function createNewPoint(myData: dataAPI) {
         try {
             await axios.post(
-                'https://31.184.254.112:8081/admin/recycling-points',
+                'https://kosten.gin.by/admin/recycling-points',
                 JSON.stringify(myData),
                 {
                     headers: {
@@ -216,7 +216,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
     async function updatePoint(myData: dataAPI, pointId: number | undefined) {
         try {
             await axios.patch(
-                `https://31.184.254.112:8081/admin/recycling-points/${pointId}`,
+                `https://kosten.gin.by/admin/recycling-points/${pointId}`,
                 JSON.stringify(myData),
                 {
                     headers: {

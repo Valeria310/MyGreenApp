@@ -55,7 +55,7 @@ const PointsList = () => {
 
     async function getData() {
         try {
-            const response = await axios.get('https://31.184.254.112:8081/recycling-points/');
+            const response = await axios.get('https://kosten.gin.by/recycling-points/');
             setTableData(response.data);
         } catch (error) {
             console.error(error);
