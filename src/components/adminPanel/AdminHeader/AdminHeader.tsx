@@ -21,7 +21,7 @@ const AdminHeader = () => {
 
     async function logOut() {
         try {
-            const response = await axios.post('https://31.184.254.112:8081/auth/logout');
+            const response = await axios.post('https://kosten.gin.by/auth/logout');
             navigate('/login');
             localStorage.removeItem('EcoHub');
         } catch (err) {
