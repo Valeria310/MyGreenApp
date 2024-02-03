@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -15,13 +15,18 @@ export const Header = () => {
     const firtsBlockHeight = 902;
     let position = 0;
 
+    const headerElem = useRef<HTMLElement>(null);
+    const burger = useRef<HTMLDivElement>(null);
+    const menu = useRef<HTMLDivElement>(null);
+    const bodyPlug = useRef<HTMLDivElement>(null);
+    const container = useRef<HTMLDivElement>(null);
+
     window.addEventListener('resize', () => {
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
 
-    const scrollHandler = () => {
-        const elem = document.getElementById('header');
+    const scrollHandler = (elem: HTMLElement | null) => {
         elem?.addEventListener('mouseover', handleMouseover, false);
         elem?.addEventListener('mouseout', handleMouseout, false);
         const currentPos: number = window.pageYOffset;
@@ -59,42 +64,37 @@ export const Header = () => {
         mousePosition = 'out';
     };
 
+    const closeBurgerMenu = () => {
+        burger?.current?.classList.remove('cross');
+        menu?.current?.classList.remove('opened');
+        bodyPlug?.current?.classList.remove('opened');
+        headerElem?.current?.classList.remove('fixed');
+        headerElem?.current?.classList.remove('visible');
+        container?.current?.classList.remove('opened-menu');
+        isStarted = false;
+        isMenuOpen = false;
+        document.body.style.overflowY = 'auto';
+    };
+
     const handlePlugClick = () => {
         if (isMenuOpen === true) {
-            document.body.style.overflowY = 'auto';
             window.scrollTo(0, position);
-            const burger = document.getElementById('burger');
-            const menu = document.getElementById('menu');
-            const bodyPlug = document.getElementById('body-plug');
-            const header = document.getElementById('header');
-            const container = header?.getElementsByClassName('container')[0];
+            document.body.style.overflowY = 'auto';
             setTimeout(() => {
-                burger?.classList.remove('cross');
-                menu?.classList.remove('opened');
-                bodyPlug?.classList.remove('opened');
-                header?.classList.remove('fixed');
-                header?.classList.remove('visible');
-                isStarted = false;
-                isMenuOpen = false;
-                container?.classList.remove('opened-menu');
+                closeBurgerMenu();
             }, 100);
             mousePosition = 'out';
         } else {
-            const burger = document.getElementById('burger');
             position = window.pageYOffset;
-            const menu = document.getElementById('menu');
-            const bodyPlug = document.getElementById('body-plug');
-            const header = document.getElementById('header');
-            menu?.classList.add('opened');
-            bodyPlug?.classList.add('opened');
-            burger?.classList.add('cross');
-            header?.classList.add('fixed');
+            menu?.current?.classList.add('opened');
+            bodyPlug?.current?.classList.add('opened');
+            burger?.current?.classList.add('cross');
+            headerElem?.current?.classList.add('fixed');
             setTimeout(() => {
                 isMenuOpen = true;
             }, 300);
             document.body.style.overflowY = 'hidden';
-            const container = header?.getElementsByClassName('container')[0];
-            container?.classList.add('opened-menu');
+            container?.current?.classList.add('opened-menu');
         }
     };
 
@@ -116,80 +116,54 @@ export const Header = () => {
     };
 
     const handleBodyPlugClick = () => {
-        const burger = document.getElementById('burger');
-        const menu = document.getElementById('menu');
-        const bodyPlug = document.getElementById('body-plug');
-        const header = document.getElementById('header');
-        const container = header?.getElementsByClassName('container')[0];
-
-        burger?.classList.remove('cross');
-        menu?.classList.remove('opened');
-        bodyPlug?.classList.remove('opened');
-        header?.classList.remove('fixed');
-        header?.classList.remove('visible');
-        isStarted = false;
-        isMenuOpen = false;
-        container?.classList.remove('opened-menu');
-        document.body.style.overflowY = 'auto';
+        closeBurgerMenu();
     };
 
     document.addEventListener('click', (e) => {
         const links = document.getElementsByClassName('navigation_link');
-        const burger = document.getElementById('burger');
         if (e.target == links[3] || e.target == links[4] || e.target == links[5]) {
-            const menu = document.getElementById('menu');
-            const bodyPlug = document.getElementById('body-plug');
-            const header = document.getElementById('header');
-            menu?.classList.remove('opened');
-            bodyPlug?.classList.remove('opened');
-            burger?.classList.remove('cross');
-            header?.classList.remove('fixed');
-            header?.classList.remove('visible');
-            isStarted = false;
-            isMenuOpen = false;
-            document.body.style.overflowY = 'auto';
-            const container = header?.getElementsByClassName('container')[0];
-            container?.classList.remove('opened-menu');
+            closeBurgerMenu();
+            container?.current?.classList.remove('opened-menu');
             mousePosition = 'out';
         }
     });
 
     window.addEventListener('hashchange', () => {
-        const menu = document.getElementById('menu');
-        const bodyPlug = document.getElementById('body-plug');
-        const burger = document.getElementById('burger');
-        const header = document.getElementById('header');
-        menu?.classList.remove('opened');
-        bodyPlug?.classList.remove('opened');
-        burger?.classList.remove('cross');
-        header?.classList.remove('fixed');
-        header?.classList.remove('visible');
-        isStarted = false;
-        isMenuOpen = false;
-        document.body.style.overflowY = 'auto';
-        const container = header?.getElementsByClassName('container')[0];
-        container?.classList.remove('opened-menu');
+        closeBurgerMenu();
         mousePosition = 'out';
     });
 
     useEffect(() => {
         setTimeout(() => {
-            window.addEventListener('scroll', scrollHandler, false);
+            window.addEventListener(
+                'scroll',
+                () => {
+                    scrollHandler(headerElem.current);
+                },
+                false
+            );
         }, 1000);
 
-        return () => window.removeEventListener('scroll', scrollHandler, false);
+        return () =>
+            window.removeEventListener(
+                'scroll',
+                () => {
+                    scrollHandler(headerElem.current);
+                },
+                false
+            );
     });
 
     return (
-        <header className="header visible" id="header">
-            <div className="container">
+        <header className="header visible" id="header" ref={headerElem}>
+            <div ref={container} className="container">
                 <a className="logo" href="/"></a>
                 <div className="navigation-wrapper">
                     <Navigation />
                     <SearchForm />
                     <div className="search-btn" id="searchBtn" onClick={handleSearchClick}></div>
                 </div>
-                <div className="header-mobile-burger" id="burger">
+                <div ref={burger} className="header-mobile-burger" id="burger">
                     <div className="burger-line"></div>
                     <div className="burger-line"></div>
                     <div className="burger-line"></div>
@@ -198,7 +172,7 @@ export const Header = () => {
                 <Link to={'/login'} className="logUp-btn desk">
                     Войти
                 </Link>
-                <div className="header-mobile-menu" id="menu">
+                <div ref={menu} className="header-mobile-menu" id="menu">
                     <div className="header-mobile-menu-inner">
                         <Navigation />
                         <Link to={'/login'} className="logUp-btn mob">
@@ -208,7 +182,7 @@ export const Header = () => {
                     <span className="headrer-menu-text">info@ecohub.by</span>
                 </div>
             </div>
-            <div className="body-plug" id="body-plug" onClick={handleBodyPlugClick}></div>
+            <div ref={bodyPlug} className="body-plug" id="body-plug" onClick={handleBodyPlugClick}></div>
         </header>
     );
 };
