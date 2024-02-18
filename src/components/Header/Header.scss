@@ -65,6 +65,12 @@
             right: 0;
         }
     }
+    .search-form {
+        border-color: transparent;
+    }
+    .search-btn {
+        display: block;
+    }
 }
 
 .body-plug {
@@ -162,12 +168,16 @@
     position: relative;
     margin-right: 25px;
 }
-
+.search-plug {
+    height: 40px;
+    width: 40px;
+    position: relative;
+}
 .search-form {
     position: absolute;
-    right: -25px;
-    top: -10px;
-    height: 60px;
+    right: -26px;
+    top: -11px;
+    min-height: 60px;
     width: 90px;
     padding: 10px 25px;
     border-radius: 35px;
@@ -180,13 +190,14 @@
     line-height: 110%;
     letter-spacing: 0.3px;
     color: $color-black;
-    opacity: 0;
+    opacity: 1;
     transition: auto;
     transition-timing-function: ease-in;
     display: flex;
     flex-direction: column;
     justify-content: center;
     z-index: 3;
+    transition: all 0.5s;
 
     & .search-input {
         width: 0;
@@ -210,6 +221,7 @@
 
     &.opened {
         transition: all 0.5s;
+        border-color: #070707;
         width: 105%;
         opacity: 1;
         & .search-input {
@@ -217,7 +229,6 @@
         }
 
         &.showes {
-            height: auto;
             padding: 16px 0;
             padding-bottom: 0;
             border-color: #f6fcea;
@@ -267,18 +278,23 @@
 }
 
 .search-btn {
+    display: none;
     width: 40px;
     height: 40px;
+    position: absolute;
+    opacity: 1;
+    top: 10px;
+    right: 25px;
     background-image: url(../../assets/icons/search.svg);
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
     z-index: 4;
-    transition: all 0s;
+    transition: all 0.2s;
 
     &.opened {
         pointer-events: none;
-        visibility: hidden;
+        opacity: 0;
         z-index: 0;
     }
 }
@@ -292,8 +308,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
-    transition: all 0.1s;
+    transition: all 0.2s;
+    opacity: 1;
     &.hidden {
+        opacity: 0;
         visibility: hidden;
     }
 }
@@ -421,8 +439,8 @@
     }
 
     .search-form {
-        height: 50px;
-        padding: 13px 15px;
+        min-height: 50px;
+        padding: 10px 15px;
         font-size: 16px;
         line-height: 140%;
         top: -13px;
@@ -434,11 +452,16 @@
         }
     }
 
-    .search-btn {
+    .search-plug {
+        height: 24px;
+        width: 24px;
         position: relative;
-        right: 0vw;
+    }
+    .search-btn {
+        position: absolute;
         width: 24px;
         height: 24px;
+        top: 12px;
 
         &.opened {
             // transition: all 0.5s;

@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
 export const SearchForm = () => {
+    const searchForm = useRef<HTMLFormElement>(null);
+    const searchBtn = useRef<HTMLDivElement>(null);
+    const searchInput = useRef<HTMLInputElement>(null);
+
     const [results, setResults] = useState<string[]>([]);
     const [resultsList, setResultsList] = useState<any[]>([]);
     const [inputValue, setInputValue] = React.useState('');
@@ -81,7 +85,7 @@ export const SearchForm = () => {
         event.currentTarget.classList.add('hidden');
     };
 
-    const handleTagLinkClick=(event: React.MouseEvent<HTMLAnchorElement>)=>{
+    const handleTagLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
         const searchForm = event.currentTarget.parentElement?.parentElement;
         const searchInput = searchForm?.firstChild as HTMLInputElement;
         const closeSearchBtn = searchInput?.parentElement?.lastChild as HTMLDivElement;
@@ -94,11 +98,25 @@ export const SearchForm = () => {
         setInputValue('');
         setResults([]);
         searchInput?.blur();
+        searchBtn.current?.classList.remove('opened');
         closeSearchBtn?.classList.add('hidden');
+    };
+    const handleSearchClick = () => {
+        if (searchForm.current?.classList.contains('opened')) {
+            searchForm.current?.classList.remove('opened');
+            searchForm.current?.classList.remove('showes');
+            searchBtn.current?.classList.remove('opened');
+            searchInput.current?.blur();
+        } else {
+            searchForm.current?.classList.add('opened');
+            searchBtn.current?.classList.add('opened');
+            searchInput.current?.focus();
+        }
     };
 
     return (
         <form
+            ref={searchForm}
             className="search-form"
             onSubmit={(e) => {
                 e.preventDefault();
@@ -106,6 +124,7 @@ export const SearchForm = () => {
             }}
         >
             <input
+                ref={searchInput}
                 key={1}
                 className="search-input"
                 id="searchInput"
@@ -118,10 +137,19 @@ export const SearchForm = () => {
                 onFocus={(e: React.FormEvent<HTMLInputElement>) => showCloseSearchBtn(e)}
                 onBlur={(e: React.FormEvent<HTMLInputElement>) => hideCloseSearchBtn(e)}
             />
+            <div ref={searchBtn} className="search-btn" id="searchBtn" onClick={handleSearchClick}></div>
             <div className="underline"></div>
             <div className="res-list">
                 {results.map((result, i) => (
-                    <Link to={'/search-results'} state={[result, resultsList]} className="res-item" key={i} onClick={(e)=>{handleTagLinkClick(e);}}>
+                    <Link
+                        to={'/search-results'}
+                        state={[result, resultsList]}
+                        className="res-item"
+                        key={i}
+                        onClick={(e) => {
+                            handleTagLinkClick(e);
+                        }}
+                    >
                         {result}
                     </Link>
                 ))}

@@ -98,23 +98,6 @@ export const Header = () => {
         }
     };
 
-    const handleSearchClick = () => {
-        const searchForm = document.getElementsByClassName('search-form');
-        const searchBtn = document.getElementById('searchBtn');
-        const searchInput = document.getElementById('searchInput') as HTMLInputElement;
-
-        if (searchForm[0]?.classList.contains('opened')) {
-            searchForm[0]?.classList.remove('opened');
-            searchForm[0]?.classList.remove('showes');
-            searchBtn?.classList.remove('opened');
-            searchInput?.blur();
-        } else {
-            searchForm[0]?.classList.add('opened');
-            searchBtn?.classList.add('opened');
-            searchInput?.focus();
-        }
-    };
-
     const handleBodyPlugClick = () => {
         closeBurgerMenu();
     };
@@ -160,8 +143,8 @@ export const Header = () => {
                 <a className="logo" href="/"></a>
                 <div className="navigation-wrapper">
                     <Navigation />
+                    <div className="search-plug"></div>
                     <SearchForm />
-                    <div className="search-btn" id="searchBtn" onClick={handleSearchClick}></div>
                 </div>
                 <div ref={burger} className="header-mobile-burger" id="burger">
                     <div className="burger-line"></div>
