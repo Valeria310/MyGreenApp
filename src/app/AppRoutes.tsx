@@ -11,7 +11,12 @@ import { PrivacyPolicyPage } from 'src/pages/PrivacyPolicy/PrivacyPolicyPage';
 import { RecyclePage } from 'src/pages/RecyclePage/RecyclePage';
 import { SearchResultsList } from 'src/pages/SearchResultsList/SearchResultsList';
 
+import { useRefreshScroll } from '../hooks/useRefreshScroll';
+
 export const AppRoutes = () => {
+
+    useRefreshScroll();
+
     return (
         <Routes>
             <Route path="/" element={<Homepage />} />
