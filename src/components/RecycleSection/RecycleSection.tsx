@@ -2,19 +2,25 @@ import { FC } from 'react';
 
 import s from './RecycleSection.module.scss';
 import { RecycleSectionProps } from './RecycleSectionProps';
+import ScrollToTop from '../../app/ScrollToTop';
 import { RecycleCards } from '../../constants/RecycleCards';
 import RecycleCard from '../RecycleCard';
 
 
+
 export const RecycleSection:FC<RecycleSectionProps> = ({ expandable }) => {
     return (
-        <section id="recycle">
-            <div className={s.recycleWrapper}>
-                <h2 className={s.recycleHeading}>Что перерабатываем?</h2>
-                <div className={s.recycleInfo}>
-                    {RecycleCards.map(item => <RecycleCard key={item.heading} card={item} expandable={expandable} />)}
+        <>
+            <ScrollToTop/>
+            <section id="recycle">
+                <div className={s.recycleWrapper}>
+                    <h2 className={s.recycleHeading}>Что перерабатываем?</h2>
+                    <div className={s.recycleInfo}>
+                        {RecycleCards.map(item => <RecycleCard key={item.heading} card={item} expandable={expandable} />)}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
+
     );
 };
