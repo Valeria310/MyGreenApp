@@ -35,7 +35,6 @@ export const SearchResultsList = () => {
                 <h2 className="results-title">Результаты поиска</h2>
                 <p className="results-count">Количество результатов: {filteredData.length}</p>
                 <SearchForm />
-                {/* <div className="clear-btn" onClick={handleCleanClick}></div> */}
                 <ul className="results-list">
                     {filteredData.map((res: Result, i: number) => (
                         <ResultItem key={i} itemData={res} searchTag={state[0]} />
