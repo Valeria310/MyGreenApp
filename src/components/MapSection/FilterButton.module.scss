@@ -40,7 +40,7 @@
 @media screen and (min-width: 350px) {
 
   button:nth-child(3) {
-    margin-right: 0px;
+    margin-right: 0;
   }
 }
 
@@ -59,7 +59,7 @@
     min-width: 90px;
     font-size: 16px;
     padding: 7px 15px;
-    margin: 0px 15px 20px 0px;
+    margin: 0 15px 20px 0;
   }
 
 }
@@ -71,7 +71,7 @@
     min-width: 115px;
     font-size: 20px;
     padding: 10px 20px;
-    margin: 0px 15px 20px 0px;
+    margin: 0 15px 20px 0;
   }
 
 }
@@ -79,13 +79,9 @@
 
 @media only screen and (min-width: 1435px) {
 
-  button:nth-child(7) {
-    margin-right: 0px;
-  }
-
   button:nth-child(10) {
-     margin-right: 100px;
-   }
+    margin-right: 100px;
+  }
 }
 
 
@@ -96,7 +92,7 @@
   .filterButton {
     min-width: 140px;
     padding: 13px 25px;
-    margin: 0px 20px 25px 0px;
+    margin: 0 20px 25px 0;
     font-size: 24px;
   }
 
