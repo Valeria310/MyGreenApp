@@ -1,0 +1,69 @@
+@import '../../index.scss';
+
+
+.newsWrapper {
+  padding: 30px 115px 30px 135px;
+  background: $color-white;
+}
+
+
+.newsHeader {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  align-items: center;
+}
+
+
+.seeMoreLink {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  color: #1B7A59;
+}
+
+
+.newsContent {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+
+.mainNews {
+  display: flex;
+  flex-direction: column;
+  width: 570px;
+}
+
+.mainNewsPhoto {
+  width: 570px;
+  height: 300px;
+  border-radius: 15px;
+  margin-bottom: -20px;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsTitle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 140%;
+  color: $color-black;
+  padding: 0 20px 15px 30px;
+}
+
+.newsTitleLink {
+  color: $color-black;
+}
+
+.newsDate {
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 0 30px 30px;
+}
+

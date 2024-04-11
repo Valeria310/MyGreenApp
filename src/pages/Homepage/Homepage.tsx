@@ -1,17 +1,17 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 import ContactButton from 'src/components/ContactButton';
-import {Footer} from 'src/components/Footer/Footer';
-import {Header} from 'src/components/Header/Header';
+import { Footer } from 'src/components/Footer/Footer';
+import { Header } from 'src/components/Header/Header';
 import MapSection from 'src/components/MapSection/MapSection';
 import NavSection from 'src/components/NavSection';
-import {ParallaxSection} from 'src/components/Parallax/Parallax';
+import { ParallaxSection } from 'src/components/Parallax/Parallax';
 import RecycleSection from 'src/components/RecycleSection';
-import {Ticker} from 'src/components/Ticker/Ticker';
-import {useFixedContactButton} from 'src/hooks/useFixedContactButton';
+import { Ticker } from 'src/components/Ticker/Ticker';
+import { useFixedContactButton } from 'src/hooks/useFixedContactButton';
 
 import './Homepage.scss';
-import {NewsSection} from "../../components/News";
+import { NewsSection } from '../../components/News';
 
 export const Homepage = () => {
 
@@ -23,7 +23,7 @@ export const Homepage = () => {
     const scrollToElement = (elementId: string) => {
         const element = document.getElementById(elementId);
         if (element) {
-            element.scrollIntoView({behavior: 'smooth', block: 'start'});
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
 
