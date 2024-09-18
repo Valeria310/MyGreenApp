@@ -16,6 +16,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import classes from './PointsList.module.scss';
+import { baseURL } from '../../../common/common.api';
 
 type dataAPI = {
     id: number;
@@ -55,7 +56,7 @@ const PointsList = () => {
 
     async function getData() {
         try {
-            const response = await axios.get('https://kosten.gin.by/recycling-points/');
+            const response = await axios.get(baseURL + 'recycling-points');
             setTableData(response.data);
         } catch (error) {
             console.error(error);

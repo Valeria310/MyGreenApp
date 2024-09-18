@@ -21,6 +21,7 @@ import { useNavigate } from 'react-router-dom';
 import { waste } from 'src/constants/MapState';
 
 import classes from './PointForm.module.scss';
+import { baseURL } from '../../../common/common.api';
 
 type dataAPI = {
     id?: number;
@@ -66,7 +67,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
     // List of all points
     async function getData() {
         try {
-            const response = await axios.get('https://kosten.gin.by/recycling-points/');
+            const response = await axios.get(baseURL + 'recycling-points');
             setTableData(response.data);
         } catch (error) {
             console.error(error);
@@ -355,10 +356,9 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
     const content = (
         <>
             <div className={classes.pointForm}>
-                <div className={classes.pointForm__container}>
-                    <div className={classes.pointForm__inner}>
+                <div>
+                    <div>
                         <form
-                            className={classes.pointForm__form}
                             onSubmit={handleSubmit(onSubmit)}
                             noValidate
                         >
