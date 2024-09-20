@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import classes from './Login.module.scss';
 import logo from '../../../assets/images/Logo.png';
+import { baseURL } from '../../../common/common.api';
 
 type FormValues = {
     username: string;
@@ -39,9 +40,7 @@ const LogIn = () => {
 
     async function authorization(user: UserDataToServer) {
         try {
-            const response = await axios.post(
-                'https://kosten.gin.by/auth/login',
-                JSON.stringify(user),
+            const response = await axios.post(baseURL + 'auth/login', JSON.stringify(user),
                 {
                     headers: {
                         'Content-type': 'application/json'
@@ -100,7 +99,7 @@ const LogIn = () => {
     const content = (
         <Box className={classes.logIn}>
             <img className="LogIn__logo" src={logo} alt="" />
-            <form className={classes.logIn__form} onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <h1 className={classes.logIn__title}>Войти в панель администрирования</h1>
                 <Box>
                     <TextField

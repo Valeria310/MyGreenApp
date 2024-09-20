@@ -149,7 +149,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
 
     async function updateAccessToken(refToken: string) {
         try {
-            await axios.post('https://kosten.gin.by/auth/refresh-token', {
+            await axios.post(baseURL + 'auth/refresh-token', {
                 headers: {
                     Authorization: `Bearer ${refToken}`
                 }
@@ -162,8 +162,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
     // manipulations with points
     async function createNewPoint(myData: dataAPI) {
         try {
-            await axios.post(
-                'https://kosten.gin.by/admin/recycling-points',
+            await axios.post(baseURL + 'recycling-points',
                 JSON.stringify(myData),
                 {
                     headers: {
@@ -217,7 +216,7 @@ const PointForm: React.FC<Partial<dataAPI>> = (props) => {
     async function updatePoint(myData: dataAPI, pointId: number | undefined) {
         try {
             await axios.patch(
-                `https://kosten.gin.by/admin/recycling-points/${pointId}`,
+                baseURL + `admin/recycling-points/${pointId}`,
                 JSON.stringify(myData),
                 {
                     headers: {
