@@ -11,6 +11,7 @@ import { Ticker } from 'src/components/Ticker/Ticker';
 import { useFixedContactButton } from 'src/hooks/useFixedContactButton';
 
 import './Homepage.scss';
+import { NewsSection } from '../../components/News';
 
 export const Homepage = () => {
 
@@ -34,6 +35,7 @@ export const Homepage = () => {
             <Header/>
             <div className="home-sticky-container">
                 <ParallaxSection/>
+                <NewsSection/>
                 <NavSection/>
                 <RecycleSection expandable={false}/>
                 <MapSection/>
