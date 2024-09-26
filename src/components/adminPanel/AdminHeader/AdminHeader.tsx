@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import classes from './AdminHeader.module.scss';
 import logo from '../../../assets/images/logo-admin.png';
+import { baseURL } from '../../../common/common.api';
 
 const AdminHeader = () => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const AdminHeader = () => {
 
     async function logOut() {
         try {
-            const response = await axios.post('https://kosten.gin.by/auth/logout');
+            const response = await axios.post(baseURL + 'auth/logout');
             navigate('/login');
             localStorage.removeItem('EcoHub');
         } catch (err) {

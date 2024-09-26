@@ -14,6 +14,7 @@ import s from './FeedbackForm.module.scss';
 import { FeedbackFormProps } from './FeedbackFormProps';
 import { Input } from './Input';
 import { desc_validation, email_validation, name_validation } from './InputValidations';
+import { baseURL } from '../../common/common.api';
 
 type MessageTopicForBackEndType = 'REVIEW' | 'QUESTION' | 'OFFER' | 'PROBLEM' | '';
 
@@ -52,7 +53,7 @@ export const FeedbackForm: FC<FeedbackFormProps> = ({ showResultPopUp }) => {
         const objToSend = JSON.stringify(dataObgWithMessageTopic);
 
         axios
-            .post('https://kosten.gin.by/feedbacks', objToSend, {
+            .post(baseURL + 'feedbacks', objToSend, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

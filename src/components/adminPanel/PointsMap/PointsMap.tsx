@@ -8,8 +8,10 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 
 import classes from './PointsMap.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
+import { baseURL } from '../../../common/common.api';
 import { FilterButtonsObjType, filterButtonsState, waste } from '../../../constants/MapState';
 import s from '../../MapSection/MapSection.module.scss';
+
 
 type dataAPI = {
     id: number;
@@ -38,7 +40,7 @@ const PointsMap = () => {
 
     async function getData() {
         try {
-            const response = await axios.get('https://kosten.gin.by/recycling-points/');
+            const response = await axios.get(baseURL + 'recycling-points');
             setTableData(response.data);
         } catch (error) {
             console.error(error);

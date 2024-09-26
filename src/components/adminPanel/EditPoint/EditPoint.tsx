@@ -9,9 +9,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import classes from './EditPoint.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
+import { baseURL } from '../../../common/common.api';
 import s from '../../MapSection/MapSection.module.scss';
 import AdminHeader from '../AdminHeader';
 import PointForm from '../PointForm';
+
 
 type PointId = {
     id: string;
@@ -57,7 +59,7 @@ const EditPoint: React.FC = () => {
 
     async function getData() {
         try {
-            const response = await axios.get(`https://kosten.gin.by/recycling-points/${id}`);
+            const response = await axios.get(baseURL + `recycling-points/${id}`);
             setPointData(response.data);
         } catch (error) {
             console.error(error);
@@ -82,7 +84,7 @@ const EditPoint: React.FC = () => {
                 <AdminHeader />
                 <Box className={classes.editPoint}>
                     <Box className={classes.editPoint__container}>
-                        <Box className={classes.editPoint__inner}>
+                        <Box>
                             <h1 className={classes.editPoint__title}>Редактирование точки</h1>
                             <PointForm {...pointData} />
                             <MapContainer

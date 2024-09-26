@@ -11,8 +11,10 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import classes from './Point.module.scss';
 import pointIcon from '../../../assets/images/point_icon.svg';
+import { baseURL } from '../../../common/common.api';
 import s from '../../MapSection/MapSection.module.scss';
 import AdminHeader from '../AdminHeader';
+
 
 type PointId = {
     id: string;
@@ -57,7 +59,7 @@ const Point: React.FC = () => {
 
     async function getData() {
         try {
-            const response = await axios.get(`https://kosten.gin.by/recycling-points/${id}`);
+            const response = await axios.get(baseURL + `recycling-points/${id}`);
             setPointDate(response.data);
         } catch (error) {
             console.error(error);
