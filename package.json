@@ -1,7 +1,7 @@
 {
     "name": "ecohub",
     "version": "0.1.0",
-    "homepage": "https://fstk1337.link/mygreenapp",
+    "homepage": "https://ecohub.rrc.by/",
     "private": true,
     "dependencies": {
         "@emotion/react": "^11.11.1",
