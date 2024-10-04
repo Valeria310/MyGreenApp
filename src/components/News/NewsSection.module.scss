@@ -1,32 +1,15 @@
 @import '../../index.scss';
 
-
-.newsWrapper {
+.newsContainer {
   padding: 30px 115px 30px 135px;
   background: $color-white;
 }
-
 
 .newsHeader {
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
   align-items: center;
-}
-
-
-.seeMoreLink {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  color: #1B7A59;
-}
-
-
-.newsContent {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid black;
 }
 
 
@@ -43,18 +26,31 @@
   margin-bottom: -20px;
 }
 
-.news {
+
+.newsContent {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  gap: 30px;
+}
+
+.newsColumn {
   display: flex;
   flex-direction: column;
+  margin-top: 18px;
+  gap: 10px;
+}
+
+.newsWrapper {
+  padding: 10px 0 5px 0;
 }
 
 .newsTitle {
   font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 140%;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
   color: $color-black;
-  padding: 0 20px 15px 30px;
 }
 
 .newsTitleLink {
@@ -64,6 +60,20 @@
 .newsDate {
   font-weight: 400;
   font-size: 16px;
-  padding: 0 0 30px 30px;
+  padding-top: 5px;
 }
+
+.seeMoreLinkWrapper {
+  display: flex;
+  justify-content: right;
+  padding-top: 20px;
+}
+
+.seeMoreLink {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  color: #1B7A59;
+}
+
 
