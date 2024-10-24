@@ -15,8 +15,8 @@ export const NewsSection = () => {
                 </div>
                 <div className={s.newsContent}>
                     <div className={s.mainNews}>
-                        <a href={'#'} className={s.newsTitleLink}><img alt={"Новость"} src={mainPhoto} className={s.mainNewsPhoto}/></a>
-                        <h5><a href={'#'} className={s.newsTitleLink}>Новогодние экотрадиции: как отметить праздники без вреда для природы</a></h5>
+                        <a href={'#'}><img alt={'Новость'} src={mainPhoto} className={s.mainNewsPhoto}/></a>
+                        <div className={s.mainNewsTitle}><h5><a href={'#'} className={s.newsTitleLink}>Новогодние экотрадиции: как отметить праздники без вреда для природы</a></h5></div>
                     </div>
                     <div className={s.newsColumn}>
                         <div className={s.newsWrapper}>
@@ -29,6 +29,12 @@ export const NewsSection = () => {
                         <div className={s.newsWrapper}>
                             <div className={s.newsTitle}><a href={'#'} className={s.newsTitleLink}>Первая в мире
                                 скважина на вулкане может стать источником «неограниченной энергии»</a>
+                            </div>
+                            <div className={s.newsDate}>28.12.2023</div>
+                        </div>
+                        <div className={s.newsWrapper}>
+                            <div className={s.newsTitle}><a href={'#'} className={s.newsTitleLink}>Новогодние
+                                экотрадиции: как отметить праздники без вреда для природы</a>
                             </div>
                             <div className={s.newsDate}>28.12.2023</div>
                         </div>

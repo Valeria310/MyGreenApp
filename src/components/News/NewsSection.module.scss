@@ -1,14 +1,19 @@
 @import '../../index.scss';
 
 .newsContainer {
-  padding: 30px 115px 30px 135px;
+  padding: 40px 25px;
   background: $color-white;
+  @media screen and (min-width: 768px) {
+    padding: 55px 39px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 96px 135px;
+  }
 }
 
 .newsHeader {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
   align-items: center;
 }
 
@@ -16,33 +21,68 @@
 .mainNews {
   display: flex;
   flex-direction: column;
-  width: 570px;
+  width: 50%;
 }
 
 .mainNewsPhoto {
-  width: 570px;
-  height: 300px;
+  max-width: 100%;
+  max-height: 360px;
   border-radius: 15px;
-  margin-bottom: -20px;
 }
-
 
 .newsContent {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
   gap: 30px;
+  margin-top: 20px;
 }
 
 .newsColumn {
+  width: 50%;
   display: flex;
   flex-direction: column;
   margin-top: 18px;
   gap: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-top: 18px;
+  }
 }
 
 .newsWrapper {
-  padding: 10px 0 5px 0;
+  padding: 0 20px 0 0;
+    &:nth-child(4) {
+       display: none;
+     }
+  //&:nth-child(2) {
+  //  display: none;
+  //}
+  ////display: none;
+  //:last-child {
+  //  display: none;
+  //}
+  //@media screen and (min-width: 768px) {
+  //  padding: 0 20px 0 0;
+  //  &:last-child {
+  //     display: none;
+  //   }
+  //}
+  //@media screen and (min-width: 1200px) {
+  //  padding: 0 20px 0 0;
+  //  display: block;
+  //}
+}
+
+
+
+
+
+
+.mainNewsTitle {
+ padding-right: 10px;
 }
 
 .newsTitle {
@@ -66,7 +106,7 @@
 .seeMoreLinkWrapper {
   display: flex;
   justify-content: right;
-  padding-top: 20px;
+  padding: 20px 10px 0 0;
 }
 
 .seeMoreLink {
